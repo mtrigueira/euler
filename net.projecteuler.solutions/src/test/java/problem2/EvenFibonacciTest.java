@@ -1,19 +1,21 @@
 package problem2;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class EvenFibonacciTest {
+public class EvenFibonacciTest {
+    private static EvenFibonnacciSequence f;
+    @BeforeAll
+    static void setUp() {
+        f = new EvenFibonnacciSequence();
+    }
+
     @ParameterizedTest
-    @CsvSource({
-            "0, 0",
-            "2, 2",
-            "10, 8",
-            "44, 34"
-    })
-    void assertSumForLimit(int expected, int limit) {
-        assertEquals(expected, EvenFibonacci.sum(limit));
+    @ValueSource(ints = {2, 8, 34, 144, 610, 2584, 10946, 46368, 196418, 832040, 3524578})
+    void evenFibonnacciTest(int i) {
+        assertEquals(i, f.next());
     }
 }

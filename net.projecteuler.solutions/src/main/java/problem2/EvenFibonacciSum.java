@@ -1,14 +1,12 @@
 package problem2;
 
-import static problem2.Evenness.isEven;
-
-public class EvenFibonacci {
+public class EvenFibonacciSum {
     public static int sum(int limit) {
-        FibonnacciSequence fib = new FibonnacciSequence();
+        Sequence fib = new EvenFibonnacciSequence();
         int sum = 0;
 
         for (int a = fib.next(); a <= limit; a = fib.next())
-            if (isEven(a)) sum += a;
+            sum += a;
 
         return sum;
     }

@@ -1,8 +1,11 @@
 package problem2;
 
-public class FibonnacciSequence {
+import static problem2.Evenness.isEven;
+
+public class FibonnacciSequence extends Sequence {
     private int previous = 0;
     private int current = 1;
+    @Override
     public int next() {
         int temp = current;
         current = previous + current;
@@ -12,12 +15,13 @@ public class FibonnacciSequence {
 
     public static void main(String[] args) {
         FibonnacciSequence fib = new FibonnacciSequence();
+        fib.next();
         int i = fib.next();
         System.out.print(i);
-        fib.next();
 
         while (i <= 4000000) {
-            System.out.print(", "+i);
+            if(isEven(i))
+                System.out.print(", "+i);
             i = fib.next();
         }
     }
