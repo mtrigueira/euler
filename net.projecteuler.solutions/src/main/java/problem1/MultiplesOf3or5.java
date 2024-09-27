@@ -1,11 +1,7 @@
 package problem1;
 
 public class MultiplesOf3or5 {
-    static int sum(int i) {
-        return new MultiplesOf3or5().calculateSum(i);
-    }
-
-    private int calculateSum(int limit) {
+    static int sum(int limit) {
         int doubleCounts = sumOfMultiplesOf(15, limit);
 
         return sumOfMultiplesOf(3, limit)
@@ -13,7 +9,7 @@ public class MultiplesOf3or5 {
                 - doubleCounts;
     }
 
-    private int sumOfMultiplesOf(int n, int limit) {
+    private static int sumOfMultiplesOf(int n, int limit) {
         int numberOfMultiples = (limit - 1) / n;
 
         return sumOfNaturalNumbersTo(numberOfMultiples) * n;
