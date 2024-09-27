@@ -2,24 +2,18 @@ package problem1;
 
 public class MultiplesOf3or5 {
     static int sum(int i) {
-        return new MultiplesOf3or5(i).sum;
+        return new MultiplesOf3or5().calculateSum(i);
     }
 
-    private final int limit;
-    private final int sum;
+    private int calculateSum(int limit) {
+        int doubleCounts = sumOfMultiplesOf(15, limit);
 
-    private MultiplesOf3or5(int limit) {
-        this.limit = limit;
-        sum = calculateSum();
+        return sumOfMultiplesOf(3, limit)
+                + sumOfMultiplesOf(5, limit)
+                - doubleCounts;
     }
 
-    private int calculateSum() {
-        int doubleCounts = sumOfMultiplesOf(15);
-
-        return sumOfMultiplesOf(3) + sumOfMultiplesOf(5) - doubleCounts;
-    }
-
-    private int sumOfMultiplesOf(int n) {
+    private int sumOfMultiplesOf(int n, int limit) {
         int numberOfMultiples = (limit - 1) / n;
 
         return sumOfNaturalNumbersTo(numberOfMultiples) * n;
