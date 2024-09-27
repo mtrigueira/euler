@@ -2,6 +2,9 @@ package problem3;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.OptionalLong;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,6 +34,12 @@ class LargestPrimeFactorTest {
             "13195, 29"
     })
     void testLargestPrimeFactor(int i, int expected) {
-        assertEquals(expected, LargestPrimeFactor.largestPrimeFactor(i));
+        assertEquals(expected, LargestPrimeFactor.of(i).orElseThrow());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0, 1})
+    void testNoLargestPrimeFactor(int i) {
+        assertEquals(OptionalLong.empty(), LargestPrimeFactor.of(i));
     }
 }
