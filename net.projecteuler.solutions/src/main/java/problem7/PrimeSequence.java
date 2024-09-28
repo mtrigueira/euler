@@ -6,7 +6,7 @@ public class PrimeSequence extends Sequence {
     private long current = 2;
 
     @Override
-    public int next() {
+    public long next() {
         long last = current;
         if (current == 2)
             return (int)current++;

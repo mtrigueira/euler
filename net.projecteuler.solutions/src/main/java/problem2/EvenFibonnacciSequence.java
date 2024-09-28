@@ -6,7 +6,7 @@ public class EvenFibonnacciSequence extends Sequence {
     private int previous = 2;
     private int current = 0;
     @Override
-    public int next() {
+    public long next() {
         int temp = current;
         current = previous + 4*current;
         previous = temp;
@@ -15,7 +15,7 @@ public class EvenFibonnacciSequence extends Sequence {
 
     public static void main(String[] args) {
         EvenFibonnacciSequence fib = new EvenFibonnacciSequence();
-        int i = fib.next();
+        long i = fib.next();
 
         while (i <= 4000000) {
             System.out.print(", "+i);

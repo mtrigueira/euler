@@ -1,7 +1,7 @@
 package problem2;
 
 class Evenness {
-    static boolean isEven(int i) {
+    static boolean isEven(long i) {
         return i % 2==0;
     }
 }

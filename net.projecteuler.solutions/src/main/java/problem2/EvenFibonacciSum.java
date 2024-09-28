@@ -8,11 +8,11 @@ public class EvenFibonacciSum {
         System.out.println(sum(4000000));
     }
 
-    public static int sum(int limit) {
+    public static long sum(int limit) {
         Sequence fib = new EvenFibonnacciSequence();
-        int sum = 0;
+        long sum = 0;
 
-        for (int a = fib.next(); a <= limit; a = fib.next())
+        for (long a = fib.next(); a <= limit; a = fib.next())
             sum += a;
 
         return sum;

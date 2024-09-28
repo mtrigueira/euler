@@ -1,5 +1,5 @@
 package utils;
 
 public abstract class Sequence {
-    public abstract int next();
+    public abstract long next();
 }

@@ -8,7 +8,7 @@ public class FibonnacciSequence extends Sequence {
     private int previous = 0;
     private int current = 1;
     @Override
-    public int next() {
+    public long next() {
         int temp = current;
         current = previous + current;
         previous = temp;
@@ -18,7 +18,7 @@ public class FibonnacciSequence extends Sequence {
     public static void main(String[] args) {
         FibonnacciSequence fib = new FibonnacciSequence();
         fib.next();
-        int i = fib.next();
+        long i = fib.next();
         System.out.print(i);
 
         while (i <= 4000000) {
