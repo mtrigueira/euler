@@ -1,5 +1,7 @@
 package problem2;
 
+import utils.Sequence;
+
 import static problem2.Evenness.isEven;
 
 public class FibonnacciSequence extends Sequence {

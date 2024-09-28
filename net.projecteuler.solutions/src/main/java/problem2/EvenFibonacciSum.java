@@ -1,5 +1,7 @@
 package problem2;
 
+import utils.Sequence;
+
 public class EvenFibonacciSum {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=2

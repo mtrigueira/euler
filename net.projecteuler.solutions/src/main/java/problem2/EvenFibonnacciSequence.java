@@ -1,5 +1,7 @@
 package problem2;
 
+import utils.Sequence;
+
 public class EvenFibonnacciSequence extends Sequence {
     private int previous = 2;
     private int current = 0;
