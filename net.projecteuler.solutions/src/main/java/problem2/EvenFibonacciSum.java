@@ -1,6 +1,11 @@
 package problem2;
 
 public class EvenFibonacciSum {
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=2
+        System.out.println(sum(4000000));
+    }
+
     public static int sum(int limit) {
         Sequence fib = new EvenFibonnacciSequence();
         int sum = 0;
@@ -9,9 +14,5 @@ public class EvenFibonacciSum {
             sum += a;
 
         return sum;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(sum(4000000));
     }
 }

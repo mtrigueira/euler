@@ -1,6 +1,11 @@
 package problem1;
 
 public class MultiplesOf3or5 {
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=1
+        System.out.println(sum(1000));
+    }
+
     static int sum(int limit) {
         int doubleCounts = sumOfMultiplesOf(15, limit);
 
@@ -18,9 +23,5 @@ public class MultiplesOf3or5 {
     static int sumOfNaturalNumbersTo(int n) {
         // Gauss sum of pairs trick
         return n * (n + 1) / 2;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(sum(1000));
     }
 }

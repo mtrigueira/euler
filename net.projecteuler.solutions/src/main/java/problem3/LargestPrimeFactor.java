@@ -3,8 +3,13 @@ package problem3;
 import java.util.OptionalLong;
 
 public class LargestPrimeFactor {
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=3
+        System.out.println(of(600851475143L));
+    }
+
     static OptionalLong of(long n) {
-        if(n<2) return OptionalLong.empty();
+        if (n < 2) return OptionalLong.empty();
         return OptionalLong.of(new LargestPrimeFactor(n).calculate());
     }
 
@@ -26,7 +31,7 @@ public class LargestPrimeFactor {
     }
 
     private long sqrtWithDecimalTruncation(long n) {
-        return (long)Math.sqrt(n);
+        return (long) Math.sqrt(n);
     }
 
     private long calculate() {
@@ -40,14 +45,14 @@ public class LargestPrimeFactor {
 
     private void removeOddFactors() {
         long candidate = 3;
-        while (n > 1 && candidate<=maxFactor) {
+        while (n > 1 && candidate <= maxFactor) {
             removeFactor(candidate);
             candidate += 2;
         }
-        if(n!=1) largest = n;
+        if (n != 1) largest = n;
     }
 
-     private void removeFactor(long factor) {
+    private void removeFactor(long factor) {
         while (isAFactor(factor))
             removeFactorOnce(factor);
     }
@@ -60,9 +65,5 @@ public class LargestPrimeFactor {
         n /= factor;
         largest = factor;
         maxFactor = sqrtWithDecimalTruncation(n);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(of(600851475143L));
     }
 }
