@@ -1,6 +1,11 @@
 package problem8;
 
 public class LargestProductInASeries {
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=8
+        System.out.println(ofWidth(BIG_NUMBER, 13));
+    }
+    
     static final String BIG_NUMBER =
         "73167176531330624919225119674426574742355349194934"+
         "96983520312774506326239578318016984801869478851843"+
@@ -22,16 +27,12 @@ public class LargestProductInASeries {
         "84580156166097919133875499200524063689912560717606"+
         "05886116467109405077541002256983155200055935729725"+
         "71636269561882670428252483600823257530420752963450";
-
-    public static void main(String[] args) {
-        System.out.println(greatestProduct(BIG_NUMBER, 13));
+    
+    static long ofWidth(String number, int width) {
+        return ofWidth(new WideNumber(number, width));
     }
 
-    static long greatestProduct(String number, int width) {
-        return greatestProduct(new WideNumber(number, width));
-    }
-
-    private static long greatestProduct(WideNumber number) {
+    private static long ofWidth(WideNumber number) {
         long max = 0;
 
         for(;number.hasNext();number.next())

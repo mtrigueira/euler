@@ -2,6 +2,7 @@ package problem9;
 
 public class SpecialPythagoreanTriplet {
     public static void main(String[] args) {
+        // https://projecteuler.net/problem=9
         System.out.println(productWhenSumEquals(1000));
     }
 
