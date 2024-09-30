@@ -12,7 +12,7 @@ public class DigitNumber extends Sequence {
 
 
     public long next()  {
-        long value = 0;
+        long value = digits[index];
         index++;
 
         return value;
