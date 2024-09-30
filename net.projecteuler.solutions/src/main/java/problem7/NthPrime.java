@@ -1,5 +1,6 @@
 package problem7;
 
+import utils.PrimeSequence;
 import utils.Sequence;
 
 public class NthPrime {

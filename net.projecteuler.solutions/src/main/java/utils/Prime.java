@@ -1,4 +1,4 @@
-package problem7;
+package utils;
 
 public class Prime {
     private final long candidate;

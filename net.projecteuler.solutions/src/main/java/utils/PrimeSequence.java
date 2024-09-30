@@ -1,6 +1,4 @@
-package problem7;
-
-import utils.Sequence;
+package utils;
 
 public class PrimeSequence extends Sequence {
     private long current = 2;
