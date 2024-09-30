@@ -3,25 +3,16 @@ package problem1;
 public class MultiplesOf3or5 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=1
-        System.out.println(sum(1000));
+        System.out.println(naturalNumberSumOfMultiplesOf3or5(1000));
     }
 
-    static int sum(int limit) {
-        int doubleCounts = sumOfMultiplesOf(15, limit);
+    static int naturalNumberSumOfMultiplesOf3or5(int i) {
+        var n = NaturalNumber.of(i);
+        int doubleCounts = n.sumOfMultiplesOf(15);
 
-        return sumOfMultiplesOf(3, limit)
-                + sumOfMultiplesOf(5, limit)
+        return n.sumOfMultiplesOf(3)
+                + n.sumOfMultiplesOf(5)
                 - doubleCounts;
     }
-
-    private static int sumOfMultiplesOf(int n, int limit) {
-        int numberOfMultiples = (limit - 1) / n;
-
-        return sumOfNaturalNumbersTo(numberOfMultiples) * n;
-    }
-
-    static int sumOfNaturalNumbersTo(int n) {
-        // Gauss sum of pairs trick
-        return n * (n + 1) / 2;
-    }
 }
+

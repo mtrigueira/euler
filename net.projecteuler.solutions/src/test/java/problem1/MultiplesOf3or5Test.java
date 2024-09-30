@@ -4,27 +4,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static problem1.MultiplesOf3or5.sumOfNaturalNumbersTo;
-import static problem1.MultiplesOf3or5.sum;
 
 public class MultiplesOf3or5Test {
-    @ParameterizedTest(name = "sumOfNaturalNumbersTo({0}) = {1}")
-    @CsvSource({
-            "1, 1",
-            "2, 3",
-            "3, 6",
-            "4, 10",
-            "5, 15",
-            "6, 21",
-            "7, 28",
-            "8, 36",
-            "9, 45",
-            "10, 55"
-    })
-    void checkSumToIs(int n, int expected) {
-        assertEquals(expected, sumOfNaturalNumbersTo(n));
-    }
-
     @ParameterizedTest(name = "sum({0}) = {1}")
     @CsvSource({
             "2, 0",
@@ -37,7 +18,7 @@ public class MultiplesOf3or5Test {
             "11, 33",
             "16, 60"
     })
-    void calculateIs(int limit, int expectedSum) {
-        assertEquals(expectedSum, sum(limit));
+    void sumIsTest(int value, int expectedSum) {
+        assertEquals(expectedSum, MultiplesOf3or5.naturalNumberSumOfMultiplesOf3or5(value));
     }
 }
