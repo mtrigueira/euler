@@ -15,10 +15,10 @@ public class BruteForcePrime extends Prime {
     }
 
     private boolean isPrime() {
-        return !hasFactorGreatherThanOrEqualTo2();
+        return !hasFactorGreaterThanOrEqualTo2();
     }
 
-    private boolean hasFactorGreatherThanOrEqualTo2() {
+    private boolean hasFactorGreaterThanOrEqualTo2() {
         long maxPotentialFactor = (long)Math.sqrt(candidate);
 
         for(long i=2;i<=maxPotentialFactor;i++)

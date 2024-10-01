@@ -9,9 +9,8 @@ public class PrimeSequence extends Sequence {
         if (current == 2)
             return (int)current++;
 
-        current += 2;
-        while (!Prime.isPrime(current))
-            current += 2;
+        do current += 2;
+        while (!Prime.isPrime(current));
 
         if (last > (long) Integer.MAX_VALUE) throw new RuntimeException("Prime sequence overflow");
         return (int) last;

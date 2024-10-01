@@ -15,7 +15,7 @@ public class FibonacciTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89})
-    void fibonnacciTest(int i) {
+    void fibonacciTest(int i) {
         assertEquals(i, f.next());
     }
 }
