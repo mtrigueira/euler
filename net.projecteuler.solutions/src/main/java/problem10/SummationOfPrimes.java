@@ -5,7 +5,9 @@ import utils.PrimeSequence;
 public class SummationOfPrimes {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
+        long start=System.currentTimeMillis();
         System.out.println(below(2000000));
+        System.out.println("Time taken: "+(System.currentTimeMillis()-start)+"ms");
     }
 
     static long below(int limit) {
