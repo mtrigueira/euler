@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static problem8.LargestProductInASeries.BIG_NUMBER;
 
-class LargestProductInASeriesTest {
+class LargestGridProductInASeriesTest {
     @Test
     void greatestProductZero() {
         assertEquals(0, LargestProductInASeries.ofWidth("", 1));

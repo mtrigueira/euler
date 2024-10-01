@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LargestPalindromeProductTest {
+public class LargestPalindromeGridProductTest {
     @Test
     void forOneDigit() {
         assertEquals(9L,LargestPalindromeProduct.productOfDigits(1));

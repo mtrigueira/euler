@@ -1,8 +1,8 @@
 package problem8;
 
-public class WideNumber extends DigitNumber {
+public class WideNumberSequence extends DigitNumberSequence {
     private final int width;
-    public WideNumber(String number, int width) {
+    public WideNumberSequence(String number, int width) {
         super(number);
         this.width = width;
     }

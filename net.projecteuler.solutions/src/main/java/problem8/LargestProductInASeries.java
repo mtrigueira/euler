@@ -29,10 +29,10 @@ public class LargestProductInASeries {
         "71636269561882670428252483600823257530420752963450";
     
     static long ofWidth(String number, int width) {
-        return ofWidth(new WideNumber(number, width));
+        return ofWidth(new WideNumberSequence(number, width));
     }
 
-    private static long ofWidth(WideNumber number) {
+    private static long ofWidth(WideNumberSequence number) {
         long max = 0;
 
         for(;number.hasNext();number.next())

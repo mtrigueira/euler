@@ -1,20 +1,10 @@
-package problem8;
+package utils;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class DigitNumberTest {
-    private static final DigitNumber seriesdigitNumber = new DigitNumber("0123456789");
-
-    @ParameterizedTest
-    @ValueSource(ints = {0,1,2,3,4,5,6,7,8,9})
-    void cruise(int expected) {
-        assertEquals(expected, seriesdigitNumber.next());
-    }
-
     @Test
     void toByteArrayEmptyString() {
         assertArrayEquals(new byte[]{}, DigitNumber.toByteArray(""));
