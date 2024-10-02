@@ -1,11 +1,12 @@
 package utils;
 
-import problem8.DigitNumberSequence;
-
 public class DigitNumber {
-    protected final byte[] digits;
+    public static DigitNumber of(String string) {
+        return new DigitNumber(string);
+    }
 
-    public DigitNumber(String number) {
+    protected final byte[] digits;
+    DigitNumber(String number) {
         this.digits = DigitNumberSequence.toByteArray(number);
     }
 
@@ -16,5 +17,13 @@ public class DigitNumber {
             a[i] = (byte) Character.getNumericValue(number.charAt(i));
 
         return a;
+    }
+
+    public int sumOfDigits() {
+        int sum = 0;
+
+        for (byte digit : digits) sum += digit;
+
+        return sum;
     }
 }

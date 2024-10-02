@@ -1,4 +1,4 @@
-package problem8;
+package utils;
 
 public class WideNumberSequence extends DigitNumberSequence {
     private final int width;

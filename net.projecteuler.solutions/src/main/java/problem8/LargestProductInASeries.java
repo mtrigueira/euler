@@ -1,5 +1,7 @@
 package problem8;
 
+import utils.WideNumberSequence;
+
 public class LargestProductInASeries {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=8
