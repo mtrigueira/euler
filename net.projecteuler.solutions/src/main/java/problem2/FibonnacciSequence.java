@@ -2,7 +2,7 @@ package problem2;
 
 import utils.Sequence;
 
-import static problem2.Evenness.isEven;
+import static utils.Evenness.isEven;
 
 public class FibonnacciSequence extends Sequence {
     private int previous = 0;

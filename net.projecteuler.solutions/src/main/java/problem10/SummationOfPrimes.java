@@ -1,13 +1,14 @@
 package problem10;
 
 import utils.PrimeSequence;
+import utils.Timer;
 
 public class SummationOfPrimes {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
-        long start=System.currentTimeMillis();
+        Timer timer = Timer.start();
         System.out.println(below(2000000));
-        System.out.println("Time taken: "+(System.currentTimeMillis()-start)+"ms");
+        timer.println();
     }
 
     static long below(int limit) {
