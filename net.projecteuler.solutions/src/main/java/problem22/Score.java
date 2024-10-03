@@ -6,11 +6,16 @@ import java.util.stream.Stream;
 class Score {
     private final AtomicInteger index = new AtomicInteger(1);
 
-    long score(Stream<String> names) {
-        return names.mapToLong(this::nameScore).sum();
+    static long nameScore(int index, String name) {
+        return index * Worth.nameWorth(name);
+    }
+
+    static long of(Stream<String> names) {
+        Score score = new Score();
+        return names.mapToLong(score::nameScore).sum();
     }
 
     private long nameScore(String name) {
-        return NamesScores.nameScore(index.getAndIncrement(), name);
+        return nameScore(index.getAndIncrement(), name);
     }
 }
