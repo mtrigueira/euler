@@ -1,6 +1,6 @@
 package problem10;
 
-import utils.PrimeSequence;
+import utils.sequence.PrimeSequence;
 import utils.Timer;
 
 public class SummationOfPrimes {

@@ -1,4 +1,6 @@
-package utils;
+package utils.sequence;
+
+import utils.DigitNumber;
 
 public class DigitNumberSequence extends DigitNumber {
     public DigitNumberSequence(String number) {

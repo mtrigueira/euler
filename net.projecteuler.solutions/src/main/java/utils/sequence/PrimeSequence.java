@@ -1,4 +1,7 @@
-package utils;
+package utils.sequence;
+
+import utils.Prime;
+import utils.Sequence;
 
 public class PrimeSequence extends Sequence {
     private long current = 2;

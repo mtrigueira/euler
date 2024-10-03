@@ -1,7 +1,7 @@
 package problem7;
 
-import utils.PrimeSequence;
 import utils.Sequence;
+import utils.sequence.PrimeSequence;
 
 public class NthPrime {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class NthPrime {
     public static long prime(int n) {
         Sequence seq = new PrimeSequence();
 
-        for(int i=1;i<n;i++)
+        for (int i = 1; i < n; i++)
             seq.next();
 
         return seq.next();

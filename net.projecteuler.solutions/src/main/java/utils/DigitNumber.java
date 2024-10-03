@@ -1,12 +1,14 @@
 package utils;
 
+import utils.sequence.DigitNumberSequence;
+
 public class DigitNumber {
     public static DigitNumber of(String string) {
         return new DigitNumber(string);
     }
 
     protected final byte[] digits;
-    DigitNumber(String number) {
+    protected DigitNumber(String number) {
         this.digits = DigitNumberSequence.toByteArray(number);
     }
 

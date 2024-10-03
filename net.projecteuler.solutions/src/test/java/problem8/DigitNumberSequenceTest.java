@@ -2,7 +2,7 @@ package problem8;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import utils.DigitNumberSequence;
+import utils.sequence.DigitNumberSequence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

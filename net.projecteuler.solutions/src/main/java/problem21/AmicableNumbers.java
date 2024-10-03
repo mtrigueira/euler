@@ -27,22 +27,22 @@ public class AmicableNumbers {
     }
 
     boolean hasAmicable(int i) {
-        int sum = sums[i];
+        long sum = sums[i];
         if (sum == i) return false;
         if (sum >= sums.length) return sumOfProperDivisors(sum) == i;
 
-        return sums[sum] == i;
+        return sums[(int) sum] == i;
     }
 
-    private final int[] sums;
+    private final long[] sums;
 
     AmicableNumbers(int limit) {
-        sums = new int[limit + 1];
+        sums = new long[limit + 1];
         for (int i = 1; i <= limit; i++)
             sums[i] = sumOfProperDivisors(i);
     }
 
-    private static int sumOfProperDivisors(int i) {
+    private static long sumOfProperDivisors(long i) {
         return sum(ProperDivisors.of(i));
     }
 
@@ -50,7 +50,7 @@ public class AmicableNumbers {
         return a != b && (sums[a] == b) && (sums[b] == a);
     }
 
-    private static int sum(Set<Integer> set) {
-        return set.stream().reduce(0, Integer::sum);
+    private static long sum(Set<Long> set) {
+        return set.stream().reduce(0L, Long::sum);
     }
 }

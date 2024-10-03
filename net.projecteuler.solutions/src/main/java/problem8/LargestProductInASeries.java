@@ -1,6 +1,6 @@
 package problem8;
 
-import utils.WideNumberSequence;
+import utils.sequence.WideNumberSequence;
 
 public class LargestProductInASeries {
     public static void main(String[] args) {
