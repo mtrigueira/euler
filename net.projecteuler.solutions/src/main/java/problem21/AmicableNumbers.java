@@ -3,13 +3,15 @@ package problem21;
 import java.util.Set;
 
 public class AmicableNumbers {
-    public static void main(String[] args) {
+    public static final int LIMIT = 10000;
 
-        System.out.println(below(10000));
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=21
+        System.out.println(below(LIMIT));
     }
 
-    private static int below(int limit) {
-        return new AmicableNumbers(limit).sum();
+    static int below(int limit) {
+        return new AmicableNumbers(limit - 1).sum();
     }
 
     private int sum() {
@@ -25,12 +27,12 @@ public class AmicableNumbers {
     boolean hasAmicable(int i) {
         int sum = sums[i];
         if (sum == i) return false;
-        if (sum >= sums.length) return false;
+        if (sum >= sums.length) return sumOfProperDivisors(sum) == i;
 
         return sums[sum] == i;
     }
 
-    private int[] sums;
+    private final int[] sums;
 
     AmicableNumbers(int limit) {
         sums = new int[limit + 1];
@@ -43,7 +45,7 @@ public class AmicableNumbers {
     }
 
     boolean areAmicable(int a, int b) {
-        return a == b ? false : (sums[a] == b) && (sums[b] == a);
+        return a != b && (sums[a] == b) && (sums[b] == a);
     }
 
     private static int sumOfFactors(int i) {

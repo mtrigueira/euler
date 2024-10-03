@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AmicableNumbersTest {
     @ParameterizedTest
-    @CsvSource({"220,284","1184,1210","2620,2924"})
+    @CsvSource({"220,284", "1184,1210", "2620,2924"})
     void areAmicable220and284(int a, int b) {
         assertTrue(new AmicableNumbers(b).areAmicable(a, b));
     }
@@ -20,15 +20,24 @@ class AmicableNumbersTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {220,284,1184,1210,2620,2924})
+    @ValueSource(ints = {220, 284, 1184, 1210, 2620, 2924})
     void hasAmicable(int a) {
         assertTrue(new AmicableNumbers(2924).hasAmicable(a));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {221,285,1185,1211,2621,2923})
+    @ValueSource(ints = {221, 285, 1185, 1211, 2621, 2923})
     void hasNoAmicable(int a) {
         assertFalse(new AmicableNumbers(2924).hasAmicable(a));
     }
 
+    @Test
+    void below220() {
+        assertTrue(new AmicableNumbers(221).hasAmicable(220));
+    }
+
+    @Test
+    void sumBelow220() {
+        assertEquals(0, AmicableNumbers.below(220));
+    }
 }
