@@ -1,5 +1,7 @@
 package problem5;
 
+import utils.Factorial;
+
 public class SmallestMultiple {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=5
@@ -7,17 +9,13 @@ public class SmallestMultiple {
     }
 
     public static long of(int n) {
-        long maxCandidate = factorial(n);
+        long maxCandidate = Factorial.of(n);
 
         for (long candidate = 1; candidate <= maxCandidate; candidate++)
             if (isDivisibleByNaturalNumbersTo(candidate, n))
                 return candidate;
 
         return -1;
-    }
-
-    static long factorial(long n) {
-        return (n == 1) ? 1 : n * factorial(n - 1);
     }
 
     static boolean isDivisibleByNaturalNumbersTo(long multiple, long n) {

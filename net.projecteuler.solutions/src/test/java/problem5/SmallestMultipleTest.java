@@ -1,6 +1,7 @@
 package problem5;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import utils.Factorial;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,6 +38,6 @@ class SmallestMultipleTest {
             "2432902008176640000, 20"
     })
     void factorial(long expected, long i) {
-        assertEquals(expected, SmallestMultiple.factorial(i));
+        assertEquals(expected, Factorial.of(i));
     }
 }
