@@ -1,4 +1,4 @@
-package problem21;
+package utils;
 
 import org.junit.jupiter.api.Test;
 

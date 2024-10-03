@@ -1,5 +1,7 @@
 package problem21;
 
+import utils.ProperDivisors;
+
 import java.util.Set;
 
 public class AmicableNumbers {
@@ -41,15 +43,11 @@ public class AmicableNumbers {
     }
 
     private static int sumOfProperDivisors(int i) {
-        return sumOfFactors(i) - i;
+        return sum(ProperDivisors.of(i));
     }
 
     boolean areAmicable(int a, int b) {
         return a != b && (sums[a] == b) && (sums[b] == a);
-    }
-
-    private static int sumOfFactors(int i) {
-        return sum(Factors.of(i));
     }
 
     private static int sum(Set<Integer> set) {

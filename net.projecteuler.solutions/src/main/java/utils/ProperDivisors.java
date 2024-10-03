@@ -1,18 +1,17 @@
-package problem21;
+package utils;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-class Factors {
+public class ProperDivisors {
     private final int n;
-
-    private Factors(int n) {
-        this.n = n;
-    }
+    private ProperDivisors(int n) {
+            this.n = n;
+        }
 
     public static Set<Integer> of(int i) {
-        return new Factors(i).of();
+        return new ProperDivisors(i).of();
     }
 
     public Set<Integer> of() {
@@ -26,8 +25,6 @@ class Factors {
                 s.add(i);
                 s.add(n / i);
             }
-
-        s.add(n);
 
         return s;
     }
