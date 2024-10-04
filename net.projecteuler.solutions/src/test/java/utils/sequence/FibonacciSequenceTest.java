@@ -1,4 +1,4 @@
-package problem2;
+package utils.sequence;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FibonacciTest {
+public class FibonacciSequenceTest {
     private static FibonnacciSequence f;
     @BeforeAll
     static void setUp() {
@@ -14,7 +14,7 @@ public class FibonacciTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 5, 8, 13, 21, 34, 55, 89})
+    @ValueSource(ints = {1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89})
     void fibonacciTest(int i) {
         assertEquals(i, f.next());
     }
