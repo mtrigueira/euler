@@ -10,7 +10,15 @@ import static java.math.BigInteger.TWO;
 import static utils.operator.BigComparisonOperator.equal;
 
 public class PrimeSequence extends Sequence {
-    private BigInteger current = TWO;
+    private BigInteger current;
+
+    public PrimeSequence(BigInteger start) {
+        this.current = start;
+    }
+
+    public PrimeSequence() {
+        this(TWO);
+    }
 
     @Override
     public BigInteger next() {
