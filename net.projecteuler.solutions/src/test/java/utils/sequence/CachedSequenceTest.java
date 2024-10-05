@@ -1,7 +1,6 @@
 package utils.sequence;
 
 import org.junit.jupiter.api.Test;
-import utils.Sequence;
 
 import java.math.BigInteger;
 
@@ -10,7 +9,7 @@ import static java.math.BigInteger.ZERO;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CachedSequenceTest {
-    Sequence testSequence = new Sequence() {
+    final Sequence testSequence = new Sequence() {
         private BigInteger i = ZERO;
         @Override
         public BigInteger next() {
