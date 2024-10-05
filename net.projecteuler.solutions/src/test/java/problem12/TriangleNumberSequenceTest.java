@@ -10,6 +10,6 @@ class TriangleNumberSequenceTest {
     @ParameterizedTest
     @ValueSource(longs =   {1,3,6,10,15,21,28})
     void getTriangleNumber(long next) {
-        assertEquals(next, triangleNumberSequence.next());
+        assertEquals(next, triangleNumberSequence.next().longValueExact());
     }
 }

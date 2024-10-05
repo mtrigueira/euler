@@ -2,25 +2,32 @@ package problem14;
 
 import utils.Sequence;
 
+import java.math.BigInteger;
+
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.TWO;
 import static utils.Evenness.isEven;
 
 public class CollatzSequence extends Sequence {
-    public static CollatzSequence of(int i) {
-        return new CollatzSequence(i);
+    public static CollatzSequence of(long i) {
+        return new CollatzSequence(BigInteger.valueOf(i));
     }
-    private long n;
-    private CollatzSequence(long start) {
+
+    private static final BigInteger THREE = BigInteger.valueOf(3);
+    private BigInteger n;
+
+    private CollatzSequence(BigInteger start) {
         n = start;
     }
 
     @Override
-    public long next() {
-        long old = n;
+    public BigInteger next() {
+        BigInteger old = n;
 
         if (isEven(n))
-            n /= 2;
+            n = n.divide(TWO);
         else
-            n = 3 * n + 1;
+            n = n.multiply(THREE).add(ONE);
 
         return old;
     }

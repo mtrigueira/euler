@@ -46,4 +46,8 @@ public class BigComparisonOperator {
     public static boolean eq(BigInteger a, BigInteger b) {
         return equal(a, b);
     }
+
+    public static boolean neq(BigInteger a, BigInteger b) {
+        return notEqual(a, b);
+    }
 }

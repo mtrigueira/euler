@@ -14,7 +14,7 @@ public class HighlyDivisibleTriangleNumber {
         int count = 0;
 
         while (count < numberOfDivisors) {
-            candidate = sequence.next();
+            candidate = sequence.next().longValueExact();
             count = countFactors(candidate);
         }
 

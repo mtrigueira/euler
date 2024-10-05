@@ -2,14 +2,18 @@ package utils.sequence;
 
 import utils.Sequence;
 
+import java.math.BigInteger;
+
+import static java.math.BigInteger.ONE;
 import static utils.Aliquot.isAbundant;
 
 public class AbundantSequence extends Sequence {
-    private static final int FIRST_ABUNDANT_NUMBER = 12;
-    private long n = FIRST_ABUNDANT_NUMBER - 1;
+    private static final BigInteger FIRST_ABUNDANT_NUMBER = BigInteger.valueOf(12);
+    private BigInteger n = FIRST_ABUNDANT_NUMBER.subtract(ONE);
     @Override
-    public long next() {
-        do n++;
+    public BigInteger next() {
+        do
+            n = n.add(ONE);
         while (!isAbundant(n));
 
         return n;

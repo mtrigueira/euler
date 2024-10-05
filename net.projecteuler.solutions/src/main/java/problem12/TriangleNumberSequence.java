@@ -2,13 +2,19 @@ package problem12;
 
 import utils.Sequence;
 
+import java.math.BigInteger;
+
+import static java.math.BigInteger.*;
+import static java.math.BigInteger.ONE;
+
 public class TriangleNumberSequence extends Sequence {
-    private long current = 0;
-    private long count = 1;
+    private BigInteger current = ZERO;
+    private BigInteger count = ONE;
+
     @Override
-    public long next() {
-        current += count;
-        count+=1;
+    public BigInteger next() {
+        current = current.add(count);
+        count = count.add(ONE);
         return current;
     }
 }

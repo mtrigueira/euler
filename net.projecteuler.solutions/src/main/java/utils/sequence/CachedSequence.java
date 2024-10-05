@@ -2,6 +2,7 @@ package utils.sequence;
 
 import utils.Sequence;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +14,17 @@ public class CachedSequence extends Sequence {
     }
 
     private final Sequence sequence;
-    private final List<Long> cache = new ArrayList<>();
+    private final List<BigInteger> cache = new ArrayList<>();
     private CachedSequence(Sequence sequence) {
         this.sequence = sequence;
     }
 
     @Override
-    public long next() {
+    public BigInteger next() {
         if(current < cache.size())
             return cache.get(current++);
 
-        long value = sequence.next();
+        BigInteger value = sequence.next();
         cache.add(value);
         current++;
         return value;

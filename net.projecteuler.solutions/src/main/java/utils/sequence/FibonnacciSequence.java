@@ -8,12 +8,7 @@ public class FibonnacciSequence extends Sequence {
     private BigInteger previous = BigInteger.ZERO;
     private BigInteger current = BigInteger.ONE;
 
-    @Override
-    public long next() {
-        return nextBig().longValueExact();
-    }
-
-    public BigInteger nextBig() {
+    public BigInteger next() {
         BigInteger temp = current;
         current = previous.add(current);
         previous = temp;

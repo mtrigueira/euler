@@ -15,7 +15,7 @@ public class SummationOfPrimes {
         PrimeSequence seq = new PrimeSequence();
         long sum = 0;
 
-        for (long prime = seq.next();prime<limit;prime = seq.next())
+        for (long prime = seq.next().longValueExact(); prime<limit; prime = seq.next().longValueExact())
             sum += prime;
 
         return sum;

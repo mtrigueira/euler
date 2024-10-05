@@ -27,7 +27,7 @@ public class LongestCollatzSequence {
         CollatzSequence seq = CollatzSequence.of(i);
         int length = 0;
 
-        for(long n = seq.next(); n != 1; n= seq.next())
+        for(long n = seq.next().longValueExact(); n != 1; n= seq.next().longValueExact())
             length++;
 
         return length;

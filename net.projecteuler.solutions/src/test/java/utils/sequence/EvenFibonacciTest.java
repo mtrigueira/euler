@@ -1,4 +1,4 @@
-package problem2;
+package utils.sequence;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,6 +16,6 @@ public class EvenFibonacciTest {
     @ParameterizedTest
     @ValueSource(ints = {2, 8, 34, 144, 610, 2584, 10946, 46368, 196418, 832040, 3524578})
     void evenFibonacciTest(int i) {
-        assertEquals(i, f.next());
+        assertEquals(i, f.next().longValueExact());
     }
 }

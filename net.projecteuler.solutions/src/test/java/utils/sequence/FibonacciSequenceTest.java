@@ -16,6 +16,6 @@ public class FibonacciSequenceTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89})
     void fibonacciTest(int i) {
-        assertEquals(i, f.next());
+        assertEquals(i, f.next().longValueExact());
     }
 }

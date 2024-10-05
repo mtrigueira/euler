@@ -29,7 +29,7 @@ public class NonAbundantSums {
         if (n > NON_ABUNDANT_SUM_CEILING) return true;
 
         seq.reset();
-        for (long i = seq.next(); i <= n / 2; i = seq.next())
+        for (long i = seq.next().longValueExact(); i <= n / 2; i = seq.next().longValueExact())
             if (isAbundant(n - i))
                 return true;
 

@@ -22,37 +22,37 @@ class BigComparisonOperatorTest {
         assertValueComparedWithASmallerValue(value);
     }
 
-    private static void assertValueComparedWithItself(BigInteger value) {
+    private static void assertValueComparedWithItself(BigInteger a) {
         // a == b
-        BigInteger a = value;
         assertFalse(lessThan(a, a));
         assertTrue(lessThanOrEqual(a, a));
         assertTrue(equal(a, a));
+        assertFalse(notEqual(a, a));
         assertFalse(greaterThan(a, a));
         assertTrue(greaterThanOrEqual(a, a));
         assertShortcuts(a, a);
     }
 
 
-    private static void assertValueComparedWithABiggerValue(BigInteger value) {
+    private static void assertValueComparedWithABiggerValue(BigInteger a) {
         // a < b
-        BigInteger a = value;
         BigInteger b = LONG_MAX_VALUE;
         assertTrue(lessThan(a, b));
         assertTrue(lessThanOrEqual(a, b));
         assertFalse(equal(a, b));
+        assertTrue(notEqual(a, b));
         assertFalse(greaterThan(a, b));
         assertFalse(greaterThanOrEqual(a, b));
         assertShortcuts(a, b);
     }
 
-    private static void assertValueComparedWithASmallerValue(BigInteger value) {
+    private static void assertValueComparedWithASmallerValue(BigInteger a) {
         // a > b
-        BigInteger a = value;
         BigInteger b = LONG_MIN_VALUE;
         assertFalse(lessThan(a, b));
         assertFalse(lessThanOrEqual(a, b));
         assertFalse(equal(a, b));
+        assertTrue(notEqual(a, b));
         assertTrue(greaterThan(a, b));
         assertTrue(greaterThanOrEqual(a, b));
         assertShortcuts(a, b);
@@ -62,6 +62,7 @@ class BigComparisonOperatorTest {
         assertEquals(lessThan(a, b), lt(a, b));
         assertEquals(lessThanOrEqual(a, b), lte(a, b));
         assertEquals(equal(a, b), eq(a, b));
+        assertEquals(notEqual(a, b), neq(a, b));
         assertEquals(greaterThan(a, b), gt(a, b));
         assertEquals(greaterThanOrEqual(a, b), gte(a, b));
     }
