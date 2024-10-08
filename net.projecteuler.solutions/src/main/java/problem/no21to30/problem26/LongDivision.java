@@ -7,7 +7,7 @@ import java.util.List;
 import static java.math.BigInteger.TEN;
 import static java.math.BigInteger.ZERO;
 
-class LongDivision {
+public class LongDivision {
     private BigInteger numerator;
     private final BigInteger denominator;
     private final List<BigPair> digits = new ArrayList<>();

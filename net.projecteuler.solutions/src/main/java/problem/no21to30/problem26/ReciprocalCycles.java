@@ -1,5 +1,7 @@
 package problem.no21to30.problem26;
 
+import utils.Fraction;
+
 public class ReciprocalCycles {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=26

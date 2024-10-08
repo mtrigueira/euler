@@ -11,7 +11,6 @@ public class LexicographicPermutations {
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=24
-
         System.out.println(permutation(1_000_000, DIGITS));
     }
 

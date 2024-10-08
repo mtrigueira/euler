@@ -1,7 +1,7 @@
 package problem.no21to30.problem26;
 
-class FractionStringMaker {
-    static String toString(LongDivision ld) {
+public class FractionStringMaker {
+    public static String toString(LongDivision ld) {
         String s = ld.nextDigit() + "." + decimalsUntilTerminationOrRecursion(ld);
 
         if (ld.isRecurringCycle())

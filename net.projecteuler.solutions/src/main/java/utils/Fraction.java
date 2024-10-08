@@ -1,6 +1,9 @@
-package problem.no21to30.problem26;
+package utils;
 
-class Fraction {
+import problem.no21to30.problem26.LongDivision;
+import problem.no21to30.problem26.FractionStringMaker;
+
+public class Fraction {
     public static Fraction of(int numerator, int denominator) {
         LongDivision ld = LongDivision.of(numerator, denominator);
 
@@ -15,11 +18,11 @@ class Fraction {
         reciprocalLength = n.contains("(") ? n.indexOf(")") - n.indexOf("(") : 0;
     }
 
-    boolean isReciprocalCycle() {
+    public boolean isReciprocalCycle() {
         return reciprocalLength > 0;
     }
 
-    int reciprocalLength() {
+    public int reciprocalLength() {
         return reciprocalLength;
     }
 
