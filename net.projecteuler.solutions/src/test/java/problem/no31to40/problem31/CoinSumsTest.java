@@ -1,9 +1,9 @@
-package problem.no31to40;
+package problem.no31to40.problem31;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static problem.no31to40.CoinSums.countWaysToMakeUsingAnyNumberOfCoins;
+import static problem.no31to40.problem31.CoinSums.countWaysToMakeUsingAnyNumberOfCoins;
 
 class CoinSumsTest {
     @Test

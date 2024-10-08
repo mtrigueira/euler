@@ -1,4 +1,4 @@
-package problem.no31to40;
+package problem.no31to40.problem31;
 
 public class CoinSums {
     public static void main(String[] args) {
