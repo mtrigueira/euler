@@ -2,11 +2,12 @@ package utils;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Combiner<T> {
     private final List<T> prefix;
     private final Set<T> set;
-    private Consumer<List<T>> processCombination;
+    private Function<List<T>,Boolean> processCombination;
 
     private Combiner(Set<T> set) {
         TreeSet<T> determanisticSet = new TreeSet<>(set);
@@ -15,7 +16,8 @@ public class Combiner<T> {
         processCombination = Combiner::doNothing;
     }
 
-    private static <T> void doNothing(List<T> combination) {
+    private static <T> boolean doNothing(List<T> combination) {
+        return true;
     }
 
     public static <T> Combiner<T> of(Set<T> digits) {
@@ -23,22 +25,30 @@ public class Combiner<T> {
     }
 
     public void combine(Consumer<List<T>> processCombination) {
+        this.processCombination = wrapProcessThatDoesntReturnEarlyExifFlag -> {
+            processCombination.accept(wrapProcessThatDoesntReturnEarlyExifFlag);
+            return false;
+        };
+        combine(set);
+    }
+
+    public void combine(Function<List<T>, Boolean> processCombination) {
         this.processCombination = processCombination;
         combine(set);
     }
 
-    private void combine(Set<T> set) {
-        if (set.isEmpty()) {
-            processCombination.accept(prefix);
-            return;
-        }
+    private boolean combine(Set<T> set) {
+        if (set.isEmpty())
+            return processCombination.apply(prefix);
+
         Set<T> remainder = new HashSet<>(set);
         for (T element : set) {
             remainder.remove(element);
             prefix.add(element);
-            combine(remainder);
+            if(combine(remainder)) return true;
             prefix.remove(element);
             remainder.add(element);
         }
+        return false;
     }
 }
