@@ -26,7 +26,7 @@ class LongDivision {
         BigInteger times = numerator.divide(denominator);
         numerator = numerator.subtract(times.multiply(denominator)).multiply(TEN);
         BigPair pair = BigPair.of(numerator, times);
-        if(digits.contains(pair)) {
+        if (digits.contains(pair)) {
             recurringCycle = digits.indexOf(pair);
         } else {
             digits.add(pair);
@@ -46,15 +46,7 @@ class LongDivision {
         return recurringCycle;
     }
 
-    static class BigPair {
-        final BigInteger a;
-        final BigInteger b;
-
-        public BigPair(BigInteger a, BigInteger b) {
-            this.a = a;
-            this.b = b;
-        }
-
+    record BigPair(BigInteger a, BigInteger b) {
         public static BigPair of(BigInteger a, BigInteger b) {
             return new BigPair(a, b);
         }
