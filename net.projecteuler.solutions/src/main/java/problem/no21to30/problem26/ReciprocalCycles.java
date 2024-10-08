@@ -1,6 +1,6 @@
 package problem.no21to30.problem26;
 
-import utils.Fraction;
+import utils.Decimal;
 
 public class ReciprocalCycles {
     public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class ReciprocalCycles {
         int max = 0;
         int maxIndex = 0;
         for (int i = 2; i < 1000; i++) {
-            Fraction fraction = Fraction.of(1, i);
+            Decimal fraction = Decimal.of(1, i);
             if (fraction.isReciprocalCycle())
                 if (fraction.reciprocalLength() > max) {
                     max = fraction.reciprocalLength();

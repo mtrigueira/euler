@@ -1,6 +1,6 @@
 package problem.no21to30.problem26;
 
-public class FractionStringMaker {
+public class DecimalStringMaker {
     public static String toString(LongDivision ld) {
         String s = ld.nextDigit() + "." + decimalsUntilTerminationOrRecursion(ld);
 
