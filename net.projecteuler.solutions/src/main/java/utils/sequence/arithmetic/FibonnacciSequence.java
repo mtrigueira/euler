@@ -4,7 +4,7 @@ import utils.sequence.Sequence;
 
 import java.math.BigInteger;
 
-public class FibonnacciSequence extends Sequence {
+public class FibonnacciSequence extends Sequence<BigInteger> {
     private BigInteger previous = BigInteger.ZERO;
     private BigInteger current = BigInteger.ONE;
 

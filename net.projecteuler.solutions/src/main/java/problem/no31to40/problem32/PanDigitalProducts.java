@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PandigitalProducts  {
+public class PanDigitalProducts {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=32
         Combiner<Integer> combiner = Combiner.of(DIGITS);
-        combiner.combine(PandigitalProducts::accumulateWhereIdentityMatches);
+        combiner.combine(PanDigitalProducts::accumulateWhereIdentityMatches);
         System.out.println(products.stream().mapToInt(x->x).sum());
     }
 

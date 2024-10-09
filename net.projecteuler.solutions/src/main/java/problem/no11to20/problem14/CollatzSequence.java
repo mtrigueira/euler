@@ -8,7 +8,7 @@ import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
 import static utils.property.Evenness.isEven;
 
-public class CollatzSequence extends Sequence {
+public class CollatzSequence extends Sequence<BigInteger> {
     public static CollatzSequence of(long i) {
         return new CollatzSequence(BigInteger.valueOf(i));
     }

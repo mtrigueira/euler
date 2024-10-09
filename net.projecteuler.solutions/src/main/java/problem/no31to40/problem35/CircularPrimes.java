@@ -1,10 +1,11 @@
 package problem.no31to40.problem35;
 
-import utils.operator.BigComparisonOperator;
+import utils.prime.Prime;
 import utils.sequence.arithmetic.PrimeSequence;
 
 import java.math.BigInteger;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static utils.data.DigitNumber.toByteArray;
@@ -14,33 +15,33 @@ public class CircularPrimes {
     public static void main(String[] args) {
         int count = 0;
 
-        for (int prime : primes)
+        for (Prime prime : primes)
             if (isCircularPrime(prime))
                 count++;
 
         System.out.println(count);
     }
 
-    private static final Set<Integer> primes = makePrimeSet();
+    private static final Set<Prime> primes = makePrimeSet();
 
-    private static Set<Integer> makePrimeSet() {
-        HashSet<Integer> set = new HashSet<>();
-        PrimeSequence primeSequence = new PrimeSequence();
+    private static Set<Prime> makePrimeSet() {
+        HashSet<Prime> set = new HashSet<>();
+        PrimeSequence primeSequence = PrimeSequence.fromFirst();
+        BigInteger limit = BigInteger.valueOf(1_000_000);
 
-        for (BigInteger prime = primeSequence.next(); BigComparisonOperator.lessThan(prime, 1_000_000); prime = primeSequence.next())
-            set.add(prime.intValueExact());
+        for (Prime prime = primeSequence.next(); prime.toBigInteger().compareTo(limit) < 0; prime = primeSequence.next())
+            set.add(prime);
 
         return set;
     }
 
-    static boolean isCircularPrime(int prime) {
-        int digits = lengthOfDigits(prime);
+    static boolean isCircularPrime(Prime prime) {
+        int primeInt = prime.toBigInteger().intValueExact();
+        int digits = lengthOfDigits(primeInt);
 
-        for (int i = 0; i < digits - 1; i++) {
-            prime = rotate(prime);
-            if (!primes.contains(prime))
+        for (int i = 0; i < digits - 1; i++)
+            if (rotate(primeInt).isEmpty())
                 return false;
-        }
 
         return true;
     }
@@ -49,7 +50,11 @@ public class CircularPrimes {
         return (int) Math.log10(i) + 1;
     }
 
-    private static int rotate(int prime) {
+    private static Optional<Prime> rotate(int prime) {
+        return Prime.of(BigInteger.valueOf(rotate2(prime)));
+    }
+
+    private static int rotate2(int prime) {
         byte[] bytes = rotate(toByteArray(prime));
         return Math.toIntExact(toLong(bytes));
     }

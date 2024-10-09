@@ -7,15 +7,15 @@ import java.util.TreeSet;
 import static java.math.BigInteger.TWO;
 import static utils.operator.BigComparisonOperator.lessThan;
 
-class CachedPrime extends BruteForcePrime {
+class CachedPrimeChecker extends BruteForcePrimeChecker {
     public static boolean isPrime(BigInteger candidate) {
         if (lessThan(candidate,TWO)) return false;
         if (primes.contains(candidate)) return true;
 
-        return new CachedPrime(candidate).isPrime();
+        return new CachedPrimeChecker(candidate).isPrime();
     }
 
-    private CachedPrime(BigInteger candidate) {
+    private CachedPrimeChecker(BigInteger candidate) {
         super(candidate);
     }
 
@@ -26,10 +26,11 @@ class CachedPrime extends BruteForcePrime {
     }
 
     private boolean isPrime() {
-        if (!BruteForcePrime.isPrime(candidate))
+        if (!BruteForcePrimeChecker.isPrime(candidate))
             return false;
 
         primes.add(candidate);
+
         return true;
     }
 }

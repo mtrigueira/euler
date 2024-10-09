@@ -1,6 +1,5 @@
 package problem.no1to10.problem7;
 
-import utils.sequence.Sequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 public class NthPrime {
@@ -10,11 +9,11 @@ public class NthPrime {
     }
 
     public static long prime(int n) {
-        Sequence seq = new PrimeSequence();
+        PrimeSequence seq = PrimeSequence.fromFirst();
 
         for (int i = 1; i < n; i++)
             seq.next();
 
-        return seq.next().longValueExact();
+        return seq.next().toBigInteger().longValueExact();
     }
 }

@@ -2,7 +2,7 @@ package problem.no21to30.problem27;
 
 import java.math.BigInteger;
 
-import static utils.prime.Prime.isPrime;
+import static utils.prime.PrimeChecker.isPrime;
 
 public class QuadraticPrimes {
     public static void main(String[] args) {

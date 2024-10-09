@@ -4,6 +4,8 @@ import utils.Stopwatch;
 import utils.sequence.arithmetic.AbundantSequence;
 import utils.sequence.CachedSequence;
 
+import java.math.BigInteger;
+
 import static utils.operator.Aliquot.isAbundant;
 
 public class NonAbundantSums {
@@ -14,7 +16,7 @@ public class NonAbundantSums {
     }
 
     static final int NON_ABUNDANT_SUM_CEILING = 28123;
-    static final CachedSequence seq = CachedSequence.of(new AbundantSequence());
+    static final CachedSequence<BigInteger> seq = CachedSequence.of(new AbundantSequence());
 
     static long sumOfNonAbundantSums(int n) {
         long sum = 0;

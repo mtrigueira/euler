@@ -13,7 +13,7 @@ class PrimeTest {
     }
 
     private static void assertIsNotPrime(int notPrime) {
-        boolean isPrime = Prime.isPrime(notPrime);
+        boolean isPrime = PrimeChecker.isPrime(notPrime);
         assertPrimeImplementations(notPrime, isPrime);
         assertFalse(isPrime);
     }
@@ -21,13 +21,13 @@ class PrimeTest {
     @ParameterizedTest
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89})
     void isPrime(int prime) {
-        boolean isPrime = Prime.isPrime(prime);
+        boolean isPrime = PrimeChecker.isPrime(prime);
         assertPrimeImplementations(prime, isPrime);
         assertTrue(isPrime);
     }
 
     private static void assertPrimeImplementations(int candidate, boolean isPrime) {
-        assertEquals(isPrime, BruteForcePrime.isPrime(candidate));
-        assertEquals(isPrime, CachedPrime.isPrime(candidate));
+        assertEquals(isPrime, BruteForcePrimeChecker.isPrime(candidate));
+        assertEquals(isPrime, CachedPrimeChecker.isPrime(candidate));
     }
 }

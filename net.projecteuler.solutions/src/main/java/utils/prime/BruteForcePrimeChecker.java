@@ -6,14 +6,14 @@ import static java.math.BigInteger.*;
 import static utils.operator.BigComparisonOperator.equal;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
-class BruteForcePrime extends Prime {
+class BruteForcePrimeChecker extends PrimeChecker {
     public static boolean isPrime(BigInteger candidate) {
-        return new BruteForcePrime(candidate).isPrime();
+        return new BruteForcePrimeChecker(candidate).isPrime();
     }
 
     final BigInteger candidate;
 
-    BruteForcePrime(BigInteger candidate) {
+    BruteForcePrimeChecker(BigInteger candidate) {
         this.candidate = candidate;
     }
 
@@ -24,8 +24,8 @@ class BruteForcePrime extends Prime {
     private boolean hasFactorGreaterThanOrEqualTo2() {
         BigInteger maxPotentialFactor = candidate.sqrt();
 
-        for(BigInteger i=TWO;lessThanOrEqual(i,maxPotentialFactor);i=i.add(ONE))
-            if(isAFactor(i))
+        for (BigInteger i = TWO; lessThanOrEqual(i, maxPotentialFactor); i = i.add(ONE))
+            if (isAFactor(i))
                 return true;
 
         return false;

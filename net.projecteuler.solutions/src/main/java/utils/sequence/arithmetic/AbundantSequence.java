@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import static java.math.BigInteger.ONE;
 import static utils.operator.Aliquot.isAbundant;
 
-public class AbundantSequence extends Sequence {
+public class AbundantSequence extends Sequence<BigInteger> {
     private static final BigInteger FIRST_ABUNDANT_NUMBER = BigInteger.valueOf(12);
     private BigInteger n = FIRST_ABUNDANT_NUMBER.subtract(ONE);
     @Override

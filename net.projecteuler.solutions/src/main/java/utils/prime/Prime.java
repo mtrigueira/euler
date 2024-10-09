@@ -1,18 +1,42 @@
 package utils.prime;
 
 import java.math.BigInteger;
+import java.util.Objects;
+import java.util.Optional;
 
-import static java.math.BigInteger.TWO;
-import static utils.operator.BigComparisonOperator.lessThan;
+public class Prime {
+    private final BigInteger value;
+    private final long longValue;
 
-public abstract class Prime {
-    public static boolean isPrime(long candidate) {
-        return isPrime(BigInteger.valueOf(candidate));
+    public Prime(BigInteger value) {
+        this.value = value;
+        longValue = value.longValue();
     }
 
-    public static boolean isPrime(BigInteger candidate) {
-        if (lessThan(candidate, TWO)) return false;
+    public static Optional<Prime> of(BigInteger i) {
+        return PrimeChecker.isPrime(i)?Optional.of(new Prime(i)):Optional.empty();
+    }
 
-        return CachedPrime.isPrime(candidate);
+    public BigInteger toBigInteger() {
+        return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Prime prime = (Prime) o;
+        if (((Prime) o).longValue != longValue) return false;
+        return Objects.equals(value, prime.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(longValue);
+    }
+
+    @Override
+    public String toString() {
+        return value.toString();
     }
 }

@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.*;
 
-public class TriangleNumberSequence extends Sequence {
+public class TriangleNumberSequence extends Sequence<BigInteger> {
     private BigInteger current = ZERO;
     private BigInteger count = ONE;
 

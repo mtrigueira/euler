@@ -1,6 +1,5 @@
 package problem.no1to10.problem2;
 
-import utils.sequence.Sequence;
 import utils.sequence.arithmetic.EvenFibonnacciSequence;
 
 public class EvenFibonacciSum {
@@ -10,7 +9,7 @@ public class EvenFibonacciSum {
     }
 
     public static long sum(int limit) {
-        Sequence fib = new EvenFibonnacciSequence();
+        EvenFibonnacciSequence fib = new EvenFibonnacciSequence();
         long sum = 0;
 
         for (long a = fib.next().longValueExact(); a <= limit; a = fib.next().longValueExact())

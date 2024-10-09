@@ -1,40 +1,46 @@
 package utils.sequence.arithmetic;
 
 import utils.prime.Prime;
+import utils.prime.PrimeChecker;
 import utils.sequence.Sequence;
 
 import java.math.BigInteger;
 
-import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.TWO;
-import static utils.operator.BigComparisonOperator.equal;
+public class PrimeSequence extends Sequence<Prime> {
+    private static final Prime TWO = Prime.of(BigInteger.TWO).orElseThrow();
+    private static final Prime THREE = Prime.of(BigInteger.valueOf(3)).orElseThrow();
+    private static final Prime FIRST_PRIME = TWO;
+    private Prime current;
 
-public class PrimeSequence extends Sequence {
-    private BigInteger current;
-
-    public PrimeSequence(BigInteger start) {
+    private PrimeSequence(Prime start) {
         this.current = start;
     }
 
-    public PrimeSequence() {
-        this(TWO);
+    private PrimeSequence() {
+        this(FIRST_PRIME);
     }
 
     public static PrimeSequence from(int i) {
-        return new PrimeSequence(BigInteger.valueOf(i));
+        return new PrimeSequence(Prime.of(BigInteger.valueOf(i)).orElseThrow());
+    }
+
+    public static PrimeSequence fromFirst() {
+        return new PrimeSequence();
     }
 
     @Override
-    public BigInteger next() {
-        BigInteger last = current;
-        if (equal(current, TWO)) {
-            current = current.add(ONE);
+    public Prime next() {
+        Prime last = current;
+        if (TWO.equals(current)) {
+            current = THREE;
             return last;
         }
 
+        BigInteger currentValue = current.toBigInteger();
         do
-            current = current.add(TWO);
-        while (!Prime.isPrime(current));
+            currentValue = BigInteger.TWO.add(currentValue);
+        while (!PrimeChecker.isPrime(currentValue));
+        current = Prime.of(currentValue).orElseThrow();
 
         return last;
     }

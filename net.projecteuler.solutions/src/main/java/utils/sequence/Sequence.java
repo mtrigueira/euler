@@ -1,7 +1,5 @@
 package utils.sequence;
 
-import java.math.BigInteger;
-
-public abstract class Sequence {
-    public abstract BigInteger next();
+public abstract class Sequence<T> {
+    public abstract T next();
 }

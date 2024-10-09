@@ -2,39 +2,35 @@ package utils.sequence;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
-
-import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.ZERO;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CachedSequenceTest {
-    final Sequence testSequence = new Sequence() {
-        private BigInteger i = ZERO;
+    final Sequence<Integer> simpleTestSequence = new Sequence<>() {
+        private int i = 0;
+
         @Override
-        public BigInteger next() {
-            i = i.add(ONE);
+        public Integer next() {
+            i++;
             return i;
         }
     };
 
     @Test
     void testSequence() {
-        Sequence cachedSequence = testSequence;
-        assertEquals(1, cachedSequence.next().longValueExact());
-        assertEquals(2, cachedSequence.next().longValueExact());
-        assertEquals(3, cachedSequence.next().longValueExact());
+        assertEquals(1, simpleTestSequence.next());
+        assertEquals(2, simpleTestSequence.next());
+        assertEquals(3, simpleTestSequence.next());
     }
 
     @Test
     void cachedSequence() {
-        CachedSequence cachedSequence = CachedSequence.of(testSequence);
-        assertEquals(1, cachedSequence.next().longValueExact());
-        assertEquals(2, cachedSequence.next().longValueExact());
-        assertEquals(3, cachedSequence.next().longValueExact());
+        CachedSequence<Integer> cachedSequence = CachedSequence.of(simpleTestSequence);
+        assertEquals(1, cachedSequence.next());
+        assertEquals(2, cachedSequence.next());
+        assertEquals(3, cachedSequence.next());
         cachedSequence.reset();
-        assertEquals(1, cachedSequence.next().longValueExact());
-        assertEquals(2, cachedSequence.next().longValueExact());
-        assertEquals(3, cachedSequence.next().longValueExact());
+        assertEquals(1, cachedSequence.next());
+        assertEquals(2, cachedSequence.next());
+        assertEquals(3, cachedSequence.next());
     }
 }

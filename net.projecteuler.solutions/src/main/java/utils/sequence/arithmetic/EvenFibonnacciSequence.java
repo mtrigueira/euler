@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.*;
 
-public class EvenFibonnacciSequence extends Sequence {
+public class EvenFibonnacciSequence extends Sequence<BigInteger> {
     private static final BigInteger FOUR = BigInteger.valueOf(4);
     private BigInteger previous = TWO;
     private BigInteger current = ZERO;

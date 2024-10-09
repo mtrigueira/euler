@@ -1,10 +1,9 @@
 package problem.no31to40.problem37;
 
+import utils.prime.Prime;
 import utils.sequence.arithmetic.PrimeSequence;
 
-import java.math.BigInteger;
-
-import static utils.prime.Prime.isPrime;
+import static utils.prime.PrimeChecker.isPrime;
 
 public class TruncatablePrimes {
     public static void main(String[] args) {
@@ -15,11 +14,11 @@ public class TruncatablePrimes {
     private static long sumOfPrimesTruncatableInBothDirections() {
         long sum = 0;
         PrimeSequence primes = PrimeSequence.from(11);
-        BigInteger prime = primes.next();
+        Prime prime = primes.next();
 
         for (int count = 0; count < 11; prime = primes.next())
             if (isTruncatablePrimeBothDirections(prime)) {
-                sum += prime.longValueExact();
+                sum += prime.toBigInteger().longValueExact();
                 count++;
             }
 
@@ -48,8 +47,8 @@ public class TruncatablePrimes {
         return isTruncatablePrime(i, true);
     }
 
-    public static boolean isTruncatablePrimeBothDirections(BigInteger big) {
-        long i = big.longValueExact();
+    public static boolean isTruncatablePrimeBothDirections(Prime prime) {
+        long i = prime.toBigInteger().longValueExact();
         return isTruncatablePrime(i, true) && isTruncatablePrime(i, false);
     }
 }

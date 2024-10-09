@@ -34,17 +34,17 @@ public class DigitCancellingFractions {
     }
 
     private static Optional<SimpleFraction> pairIfAccidentallyCorrect(int nLeft, int dLeft, int nRight, int dRight, double originalQuotient) {
-        if (isAccidentiallyCorrect(nLeft, dLeft, nRight, dRight, originalQuotient))
+        if (isAccidentallyCorrect(nLeft, dLeft, nRight, dRight, originalQuotient))
             return Optional.of(SimpleFraction.of(nRight, dRight));
 
-        if (isAccidentiallyCorrect(nLeft, dRight, nRight, dLeft, originalQuotient))
+        if (isAccidentallyCorrect(nLeft, dRight, nRight, dLeft, originalQuotient))
             return Optional.of(SimpleFraction.of(nRight, dLeft));
 
         if (!isTrivial(nRight)) {
-            if (isAccidentiallyCorrect(nRight, dLeft, nLeft, dRight, originalQuotient))
+            if (isAccidentallyCorrect(nRight, dLeft, nLeft, dRight, originalQuotient))
                 return Optional.of(SimpleFraction.of(nLeft, dRight));
 
-            if (isAccidentiallyCorrect(nRight, dRight, nLeft, dLeft, originalQuotient))
+            if (isAccidentallyCorrect(nRight, dRight, nLeft, dLeft, originalQuotient))
                 return Optional.of(SimpleFraction.of(nLeft, dLeft));
         }
 
@@ -55,7 +55,7 @@ public class DigitCancellingFractions {
         return nRight == 0;
     }
 
-    private static boolean isAccidentiallyCorrect(
+    private static boolean isAccidentallyCorrect(
             int nCommon, int dCommon, int nRemaining, int dRemaining, double originalQuotient) {
         return nCommon == dCommon && (double) nRemaining / dRemaining == originalQuotient;
     }
