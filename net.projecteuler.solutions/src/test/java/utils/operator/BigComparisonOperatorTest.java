@@ -33,7 +33,6 @@ class BigComparisonOperatorTest {
         assertShortcuts(a, a);
     }
 
-
     private static void assertValueComparedWithABiggerValue(BigInteger a) {
         // a < b
         BigInteger b = LONG_MAX_VALUE;
@@ -44,6 +43,10 @@ class BigComparisonOperatorTest {
         assertFalse(greaterThan(a, b));
         assertFalse(greaterThanOrEqual(a, b));
         assertShortcuts(a, b);
+
+        // b < i
+        int i = a.intValueExact();
+        assertFalse(lessThan(b, i));
     }
 
     private static void assertValueComparedWithASmallerValue(BigInteger a) {
@@ -56,6 +59,10 @@ class BigComparisonOperatorTest {
         assertTrue(greaterThan(a, b));
         assertTrue(greaterThanOrEqual(a, b));
         assertShortcuts(a, b);
+
+        // b > i
+        int i = a.intValueExact();
+        assertTrue(lessThan(b, i));
     }
 
     private static void assertShortcuts(BigInteger a, BigInteger b) {

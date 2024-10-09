@@ -50,4 +50,8 @@ public class BigComparisonOperator {
     public static boolean neq(BigInteger a, BigInteger b) {
         return notEqual(a, b);
     }
+
+    public static boolean lessThan(BigInteger prime, int i) {
+        return lessThan(prime, BigInteger.valueOf(i));
+    }
 }

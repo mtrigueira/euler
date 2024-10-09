@@ -33,6 +33,20 @@ public class DigitNumber {
         return digits;
     }
 
+    public static long toLong(byte[] digits) {
+        long result = 0;
+        int units = 1;
+        for (byte digit : digits) {
+            int digitValue = digit * units;
+            if (digitValue<0) throw new IllegalArgumentException("Overflow exception?");
+            result += digitValue;
+            if (result<0) throw new IllegalArgumentException("Overflow exception");
+            units *= 10;
+        }
+
+        return result;
+    }
+
     public static int countDigits(long number) {
         if (number < 0) throw new IllegalArgumentException("Number must be non-negative");
         return (int) (Math.log10(number) + 1);
