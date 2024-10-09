@@ -16,4 +16,9 @@ public class TriangleNumberSequence extends Sequence<BigInteger> {
         count = count.add(ONE);
         return current;
     }
+
+    @Override
+    public boolean hasNext() {
+        return true;
+    }
 }

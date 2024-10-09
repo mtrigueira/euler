@@ -2,6 +2,7 @@ package problem.no31to40.problem35;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import utils.prime.CircularPrimeChecker;
 import utils.prime.Prime;
 
 import java.math.BigInteger;
@@ -12,7 +13,7 @@ class CircularPrimesTest {
     @ParameterizedTest
     @ValueSource(ints = {2, 3, 5, 7, 11, 13, 17, 31, 37, 71,73,79,97,262151})
     void isCircularPrime(int i) {
-        assertTrue(CircularPrimes.isCircularPrime(toPrime(i)));
+        assertTrue(CircularPrimeChecker.isCircularPrime(toPrime(i)));
     }
 
     private static Prime toPrime(int i) {

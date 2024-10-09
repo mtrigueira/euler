@@ -1,10 +1,8 @@
 package utils.sequence.arithmetic;
 
-import utils.sequence.Sequence;
-
 import java.math.BigInteger;
 
-public class FibonnacciSequence extends Sequence<BigInteger> {
+public class FibonnacciSequence extends ArithmeticNumberSequence<BigInteger> {
     private BigInteger previous = BigInteger.ZERO;
     private BigInteger current = BigInteger.ONE;
 
@@ -14,6 +12,7 @@ public class FibonnacciSequence extends Sequence<BigInteger> {
         previous = temp;
         return previous;
     }
+
     public static FibonnacciSequence of() {
         return new FibonnacciSequence();
     }

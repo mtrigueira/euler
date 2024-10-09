@@ -2,6 +2,7 @@ package problem.no31to40.problem37;
 
 import org.junit.jupiter.api.Test;
 import utils.prime.Prime;
+import utils.prime.TruncatablePrimeChecker;
 
 import java.math.BigInteger;
 
@@ -14,14 +15,14 @@ class TruncatablePrimesTest {
 
     @Test
     void isTruncatablePrimeBothDirections() {
-        assertTrue(TruncatablePrimes.isTruncatablePrimeBothDirections(TRUNCATABLE_IN_BOTH_DIRECTIONS));
-        assertFalse(TruncatablePrimes.isTruncatablePrimeBothDirections(NOT_TRUNCATABLE));
+        assertTrue(TruncatablePrimeChecker.isTruncatablePrimeBothDirections(TRUNCATABLE_IN_BOTH_DIRECTIONS));
+        assertFalse(TruncatablePrimeChecker.isTruncatablePrimeBothDirections(NOT_TRUNCATABLE));
     }
 
     @Test
     void isTruncatablePrime() {
-        assertTrue(TruncatablePrimes.isTruncatablePrime(3797));
-        assertFalse(TruncatablePrimes.isTruncatablePrime(3798));
+        assertTrue(TruncatablePrimeChecker.isTruncatablePrime(3797));
+        assertFalse(TruncatablePrimeChecker.isTruncatablePrime(3798));
     }
 
     private static Prime toPrime(int i) {

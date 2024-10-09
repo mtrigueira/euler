@@ -13,6 +13,11 @@ class CachedSequenceTest {
             i++;
             return i;
         }
+
+        @Override
+        public boolean hasNext() {
+            return true;
+        }
     };
 
     @Test

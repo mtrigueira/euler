@@ -31,4 +31,9 @@ public class CollatzSequence extends Sequence<BigInteger> {
 
         return old;
     }
+
+    @Override
+    public boolean hasNext() {
+        return true;
+    }
 }

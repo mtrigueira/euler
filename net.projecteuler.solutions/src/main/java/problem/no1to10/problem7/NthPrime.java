@@ -14,6 +14,6 @@ public class NthPrime {
         for (int i = 1; i < n; i++)
             seq.next();
 
-        return seq.next().toBigInteger().longValueExact();
+        return seq.next().longValueExact();
     }
 }

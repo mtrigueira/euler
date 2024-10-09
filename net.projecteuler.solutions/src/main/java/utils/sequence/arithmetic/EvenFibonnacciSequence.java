@@ -1,12 +1,11 @@
 package utils.sequence.arithmetic;
 
-import utils.sequence.Sequence;
-
 import java.math.BigInteger;
 
-import static java.math.BigInteger.*;
+import static java.math.BigInteger.TWO;
+import static java.math.BigInteger.ZERO;
 
-public class EvenFibonnacciSequence extends Sequence<BigInteger> {
+public class EvenFibonnacciSequence extends ArithmeticNumberSequence<BigInteger> {
     private static final BigInteger FOUR = BigInteger.valueOf(4);
     private BigInteger previous = TWO;
     private BigInteger current = ZERO;

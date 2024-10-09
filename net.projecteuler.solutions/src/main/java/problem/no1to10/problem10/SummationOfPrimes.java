@@ -20,7 +20,7 @@ public class SummationOfPrimes {
         PrimeSequence seq = PrimeSequence.fromFirst();
         BigInteger sum = ZERO;
 
-        for (BigInteger prime = seq.next().toBigInteger(); lessThan(prime,limit); prime = seq.next().toBigInteger())
+        for (BigInteger prime = seq.next(); lessThan(prime,limit); prime = seq.next())
             sum = sum.add(prime);
 
         return sum.longValueExact();

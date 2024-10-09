@@ -2,11 +2,9 @@ package utils.sequence.arithmetic;
 
 import utils.prime.Prime;
 import utils.prime.PrimeChecker;
-import utils.sequence.Sequence;
-
 import java.math.BigInteger;
 
-public class PrimeSequence extends Sequence<Prime> {
+public class PrimeSequence extends ArithmeticSequence<Prime> {
     private static final Prime TWO = Prime.of(BigInteger.TWO).orElseThrow();
     private static final Prime THREE = Prime.of(BigInteger.valueOf(3)).orElseThrow();
     private static final Prime FIRST_PRIME = TWO;
@@ -36,12 +34,17 @@ public class PrimeSequence extends Sequence<Prime> {
             return last;
         }
 
-        BigInteger currentValue = current.toBigInteger();
+        BigInteger currentValue = current;
         do
             currentValue = BigInteger.TWO.add(currentValue);
         while (!PrimeChecker.isPrime(currentValue));
         current = Prime.of(currentValue).orElseThrow();
 
         return last;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return true;
     }
 }

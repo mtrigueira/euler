@@ -10,10 +10,10 @@ public class CachedSequence<T> extends Sequence<T> {
         return new CachedSequence<>(sequence);
     }
 
-    private final Sequence<T> sequence;
+    private final Sequence<T> wrappedSequence;
     private final List<T> cache = new ArrayList<>();
-    private CachedSequence(Sequence<T> sequence) {
-        this.sequence = sequence;
+    private CachedSequence(Sequence<T> wrappedSequence) {
+        this.wrappedSequence = wrappedSequence;
     }
 
     @Override
@@ -21,10 +21,17 @@ public class CachedSequence<T> extends Sequence<T> {
         if(current < cache.size())
             return cache.get(current++);
 
-        T value = sequence.next();
+        T value = wrappedSequence.next();
         cache.add(value);
         current++;
         return value;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if(current < cache.size())
+            return true;
+        return wrappedSequence.hasNext();
     }
 
     public void reset() {
