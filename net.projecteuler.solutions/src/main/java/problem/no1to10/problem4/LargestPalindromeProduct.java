@@ -1,5 +1,7 @@
 package problem.no1to10.problem4;
 
+import utils.Palindrome;
+
 public class LargestPalindromeProduct {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=4
