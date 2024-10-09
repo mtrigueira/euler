@@ -20,6 +20,10 @@ public class PrimeSequence extends Sequence {
         this(TWO);
     }
 
+    public static PrimeSequence from(int i) {
+        return new PrimeSequence(BigInteger.valueOf(i));
+    }
+
     @Override
     public BigInteger next() {
         BigInteger last = current;

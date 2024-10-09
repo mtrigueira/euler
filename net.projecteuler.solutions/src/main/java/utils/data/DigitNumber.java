@@ -35,14 +35,10 @@ public class DigitNumber {
 
     public static long toLong(byte[] digits) {
         long result = 0;
-        int units = 1;
-        for (byte digit : digits) {
-            int digitValue = digit * units;
-            if (digitValue<0) throw new IllegalArgumentException("Overflow exception?");
-            result += digitValue;
-            if (result<0) throw new IllegalArgumentException("Overflow exception");
-            units *= 10;
-        }
+        for (byte digit : digits)
+            result = result * 10 + digit;
+
+        if (result<0) throw new IllegalArgumentException("Overflow exception?");
 
         return result;
     }
