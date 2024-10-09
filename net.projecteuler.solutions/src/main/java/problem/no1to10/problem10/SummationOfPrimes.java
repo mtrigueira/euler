@@ -1,14 +1,14 @@
 package problem.no1to10.problem10;
 
 import utils.sequence.arithmetic.PrimeSequence;
-import utils.Timer;
+import utils.Stopwatch;
 
 public class SummationOfPrimes {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
-        Timer timer = Timer.start();
+        Stopwatch stopwatch = Stopwatch.start();
         System.out.println(below(2000000));
-        timer.println();
+        stopwatch.println();
     }
 
     static long below(int limit) {

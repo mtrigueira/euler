@@ -3,7 +3,7 @@ package utils.sequence.given;
 public class WideNumberSequence extends DigitNumberSequence {
     private final int width;
     public WideNumberSequence(String number, int width) {
-        super(number);
+        super(toByteArray(number));
         this.width = width;
     }
 

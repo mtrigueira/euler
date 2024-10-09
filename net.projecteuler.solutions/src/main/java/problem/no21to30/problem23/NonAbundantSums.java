@@ -1,6 +1,6 @@
 package problem.no21to30.problem23;
 
-import utils.Timer;
+import utils.Stopwatch;
 import utils.sequence.arithmetic.AbundantSequence;
 import utils.sequence.CachedSequence;
 
@@ -8,7 +8,7 @@ import static utils.operator.Aliquot.isAbundant;
 
 public class NonAbundantSums {
     public static void main(String[] args) {
-        Timer t = Timer.start();
+        Stopwatch t = Stopwatch.start();
         System.out.println(sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
         t.println();
     }

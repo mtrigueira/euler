@@ -3,11 +3,15 @@ package utils.sequence.given;
 import utils.data.DigitNumber;
 
 public class DigitNumberSequence extends DigitNumber {
-    public DigitNumberSequence(String number) {
-        super(number);
+    public static DigitNumberSequence of(String number) {
+        return new DigitNumberSequence(toByteArray(number));
     }
 
     int index = 0;
+
+    protected DigitNumberSequence(byte[] digits) {
+        super(digits);
+    }
 
     public long next()  {
         long value = digits[index];

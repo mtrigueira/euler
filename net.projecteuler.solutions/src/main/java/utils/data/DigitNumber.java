@@ -1,15 +1,17 @@
 package utils.data;
 
-import utils.sequence.given.DigitNumberSequence;
-
 public class DigitNumber {
-    public static DigitNumber of(String string) {
-        return new DigitNumber(string);
+    public static DigitNumber of(String number) {
+        return new DigitNumber(toByteArray(number));
+    }
+
+    public static DigitNumber of(long i) {
+        return new DigitNumber(toByteArray(i));
     }
 
     protected final byte[] digits;
-    protected DigitNumber(String number) {
-        this.digits = DigitNumberSequence.toByteArray(number);
+    protected DigitNumber(byte[] digits) {
+        this.digits = digits;
     }
 
     public static byte[] toByteArray(String number) {
@@ -19,6 +21,25 @@ public class DigitNumber {
             a[i] = (byte) Character.getNumericValue(number.charAt(i));
 
         return a;
+    }
+
+    public static byte[] toByteArray(long number) {
+        int count = countDigits(number);
+        byte[] digits = new byte[count];
+
+        for (int i = count-1; i >=0; i--)
+            digits[i] = (byte) ((number/Math.pow(10,i)) % 10);
+
+        return digits;
+    }
+
+    public static int countDigits(long number) {
+        if (number < 0) throw new IllegalArgumentException("Number must be non-negative");
+        return (int) (Math.log10(number) + 1);
+    }
+
+    public byte[] digits() {
+        return digits;
     }
 
     public int sumOfDigits() {

@@ -1,8 +1,8 @@
 package utils;
 
-public class Timer {
-    public static Timer start() {
-        return new Timer();
+public class Stopwatch {
+    public static Stopwatch start() {
+        return new Stopwatch();
     }
 
     private final long start = System.currentTimeMillis();
