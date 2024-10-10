@@ -1,6 +1,6 @@
 package utils.sequence;
 
-class IntegerSequence extends Sequence<Integer> {
+public class IntegerSequence extends Sequence<Integer> {
     private int i = 0;
 
     @Override
