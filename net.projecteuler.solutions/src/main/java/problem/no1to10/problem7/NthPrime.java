@@ -1,6 +1,7 @@
 package problem.no1to10.problem7;
 
 import utils.prime.Prime;
+import utils.sequence.LimitedSequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 public class NthPrime {
@@ -10,11 +11,8 @@ public class NthPrime {
     }
 
     public static Prime prime(int n) {
-        PrimeSequence seq = PrimeSequence.fromFirst();
+        LimitedSequence<Prime> seq = LimitedSequence.of(PrimeSequence.fromFirst(),n);
 
-        for (int i = 1; i < n; i++)
-            seq.next();
-
-        return seq.next();
+        return seq.last();
     }
 }

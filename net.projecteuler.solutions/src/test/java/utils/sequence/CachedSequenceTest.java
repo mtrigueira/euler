@@ -5,31 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CachedSequenceTest {
-    final Sequence<Integer> simpleTestSequence = new Sequence<>() {
-        private int i = 0;
-
-        @Override
-        public Integer next() {
-            i++;
-            return i;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
-    };
-
-    @Test
-    void testSequence() {
-        assertEquals(1, simpleTestSequence.next());
-        assertEquals(2, simpleTestSequence.next());
-        assertEquals(3, simpleTestSequence.next());
-    }
+    final IntegerSequence integerSequence = new IntegerSequence();
 
     @Test
     void cachedSequence() {
-        CachedSequence<Integer> cachedSequence = CachedSequence.of(simpleTestSequence);
+        CachedSequence<Integer> cachedSequence = CachedSequence.of(integerSequence);
         assertEquals(1, cachedSequence.next());
         assertEquals(2, cachedSequence.next());
         assertEquals(3, cachedSequence.next());
