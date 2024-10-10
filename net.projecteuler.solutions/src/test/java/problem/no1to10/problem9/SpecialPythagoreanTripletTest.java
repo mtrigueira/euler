@@ -2,6 +2,7 @@ package problem.no1to10.problem9;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import utils.Triplet;
 
 import static org.junit.jupiter.api.Assertions.*;
 

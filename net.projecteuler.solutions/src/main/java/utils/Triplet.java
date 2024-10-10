@@ -1,6 +1,6 @@
-package problem.no1to10.problem9;
+package utils;
 
-class Triplet {
+public class Triplet {
     public static Triplet of(int a, int b, int c) {
         return new Triplet(a, b, c);
     }
@@ -13,11 +13,16 @@ class Triplet {
         this.c = c;
     }
 
-    final int sum() {
+    public final int sum() {
         return a + b + c;
     }
 
-    final int product() {
+    public final int product() {
         return a * b * c;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + a + ", " + b + ", " + c + '}';
     }
 }
