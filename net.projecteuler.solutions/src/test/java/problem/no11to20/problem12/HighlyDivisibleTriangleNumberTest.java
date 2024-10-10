@@ -1,33 +1,19 @@
 package problem.no11to20.problem12;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HighlyDivisibleTriangleNumberTest {
-    @Test
-    void countFactors0() {
-        assertEquals(0, HighlyDivisibleTriangleNumber.countFactors(0));
-    }
-
-    @Test
-    void countFactors1() {
-        assertEquals(1, HighlyDivisibleTriangleNumber.countFactors(1));
-    }
-
-    @Test
-    void countFactors3() {
-        assertEquals(2, HighlyDivisibleTriangleNumber.countFactors(3));
-    }
-
-    @Test
-    void countFactors6() {
-        assertEquals(4, HighlyDivisibleTriangleNumber.countFactors(6));
-    }
-
-    @Test
-    void countFactors28() {
-        assertEquals(6, HighlyDivisibleTriangleNumber.countFactors(28));
+    @ParameterizedTest
+    @CsvSource({"0,0","1,1", "3,2", "6,4", "10,4", "15,4", "21,4", "28,6", "36,9"})
+    void countFactors0(int operand, int count) {
+        BigInteger candidate = BigInteger.valueOf(operand);
+        assertEquals(count, HighlyDivisibleTriangleNumber.countFactors(candidate));
     }
 
     @Test

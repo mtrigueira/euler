@@ -11,7 +11,11 @@ public class PanDigitalProducts {
         // https://projecteuler.net/problem=32
         Combiner<Integer> combiner = Combiner.of(DIGITS);
         combiner.combine(PanDigitalProducts::accumulateWhereIdentityMatches);
-        System.out.println(products.stream().mapToInt(x->x).sum());
+        System.out.println(
+                products.stream()
+                .mapToInt(x->x)
+                .sum()
+        );
     }
 
     private static final Set<Integer> products = new HashSet<>();

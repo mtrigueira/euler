@@ -6,7 +6,9 @@ import utils.sequence.CachedSequence;
 
 import java.math.BigInteger;
 
+import static java.math.BigInteger.TWO;
 import static utils.operator.Aliquot.isAbundant;
+import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class NonAbundantSums {
     public static void main(String[] args) {
@@ -29,10 +31,12 @@ public class NonAbundantSums {
 
     static boolean hasAbundantSum(int n) {
         if (n > NON_ABUNDANT_SUM_CEILING) return true;
+        BigInteger b = BigInteger.valueOf(n);
 
         seq.reset();
-        for (long i = seq.next().longValueExact(); i <= n / 2; i = seq.next().longValueExact())
-            if (isAbundant(n - i))
+        BigInteger max = BigInteger.valueOf(n).divide(TWO);
+        for (BigInteger i = seq.next(); lessThanOrEqual(i, max); i = seq.next())
+            if (isAbundant(b.subtract(i)))
                 return true;
 
         return false;

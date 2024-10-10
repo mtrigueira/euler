@@ -3,10 +3,12 @@ package problem.no1to10.problem3;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import utils.prime.Prime;
 
-import java.util.OptionalLong;
+import java.math.BigInteger;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LargestPrimeFactorTest {
     @ParameterizedTest
@@ -34,12 +36,16 @@ class LargestPrimeFactorTest {
             "13195, 29"
     })
     void testLargestPrimeFactor(int i, int expected) {
-        assertEquals(expected, LargestPrimeFactor.of(i).orElseThrow());
+        assertEquals(optionalPrime(expected), LargestPrimeFactor.largestPrimeFactor(i));
+    }
+
+    private static Optional<Prime> optionalPrime(int expected) {
+        return Prime.of(BigInteger.valueOf(expected));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 1})
     void testNoLargestPrimeFactor(int i) {
-        assertEquals(OptionalLong.empty(), LargestPrimeFactor.of(i));
+        assertEquals(Optional.empty(), LargestPrimeFactor.largestPrimeFactor(i));
     }
 }

@@ -1,5 +1,7 @@
 package problem.no11to20.problem17;
 
+import java.util.stream.IntStream;
+
 public class NumberLetterCounts {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=17
@@ -8,19 +10,16 @@ public class NumberLetterCounts {
 
     private static final String NOT_ALPHABETIC = "[^a-z]";
     static int forNumbersTo(int n) {
-        int sum=0;
-
-        for(int i = 1; i<=n; i++)
-            sum += lengthOfWordsExcludingNonAlphabeticCharactersFor(i);
-
-        return sum;
+        return IntStream.rangeClosed(1, n)
+                .map(NumberLetterCounts::lengthOfWordsExcludingNonAlphabeticCharacters)
+                .sum();
     }
 
-    private static int lengthOfWordsExcludingNonAlphabeticCharactersFor(int number) {
-        return wordsExcludingNonAlphabeticCharactersFor(number).length();
+    private static int lengthOfWordsExcludingNonAlphabeticCharacters(int number) {
+        return wordsExcludingNonAlphabeticCharacters(number).length();
     }
 
-    private static String wordsExcludingNonAlphabeticCharactersFor(int number) {
+    private static String wordsExcludingNonAlphabeticCharacters(int number) {
         return NumberWord.of(number).replaceAll(NOT_ALPHABETIC, "");
     }
 }

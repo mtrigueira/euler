@@ -1,5 +1,7 @@
 package problem.no11to20.problem14;
 
+import utils.sequence.arithmetic.CollatzSequence;
+
 public class LongestCollatzSequence {
 
     public static final int LIMIT = 1000000;

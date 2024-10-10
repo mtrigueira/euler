@@ -13,6 +13,7 @@ public class ThousandDigitFibonacciNumber {
     static long indexOfFirstFibonacciNumberWithLengthAtLeast(int i) {
         FibonnacciSequence fib = FibonnacciSequence.of();
         long count = 0;
+
         for(BigInteger a = fib.next();; a = fib.next()) {
             count++;
             if(a.toString().length() >= i)

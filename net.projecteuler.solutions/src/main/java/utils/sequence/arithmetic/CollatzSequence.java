@@ -1,6 +1,4 @@
-package problem.no11to20.problem14;
-
-import utils.sequence.Sequence;
+package utils.sequence.arithmetic;
 
 import java.math.BigInteger;
 
@@ -8,7 +6,7 @@ import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
 import static utils.property.Evenness.isEven;
 
-public class CollatzSequence extends Sequence<BigInteger> {
+public class CollatzSequence extends ArithmeticNumberSequence<BigInteger> {
     public static CollatzSequence of(long i) {
         return new CollatzSequence(BigInteger.valueOf(i));
     }
@@ -30,10 +28,5 @@ public class CollatzSequence extends Sequence<BigInteger> {
             n = n.multiply(THREE).add(ONE);
 
         return old;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return true;
     }
 }

@@ -1,4 +1,4 @@
-package problem.no11to20.problem14;
+package utils.sequence.arithmetic;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

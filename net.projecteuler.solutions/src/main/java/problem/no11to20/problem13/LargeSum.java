@@ -117,10 +117,12 @@ public class LargeSum {
     }
 
     private static BigInteger addNumbers(String[] numbers) {
-        return getBigIntegerStream(numbers).reduce(BigInteger.ZERO, BigInteger::add);
+        return getBigIntegerStream(numbers)
+                .reduce(BigInteger.ZERO, BigInteger::add);
     }
 
     private static Stream<BigInteger> getBigIntegerStream(String[] numbers) {
-        return Arrays.stream(numbers).map(BigInteger::new);
+        return Arrays.stream(numbers)
+                .map(BigInteger::new);
     }
 }

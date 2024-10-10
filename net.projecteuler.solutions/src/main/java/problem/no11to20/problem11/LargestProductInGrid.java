@@ -4,8 +4,7 @@ import utils.data.GridNumber;
 
 public class LargestProductInGrid {
     public static void main(String[] args) {
-        int maxProduct = GRID.findMaxProduct(4);
-        System.out.println(maxProduct);
+        System.out.println(GRID.findMaxProduct(4));
     }
 
     static final Grid GRID = Grid.of(GridNumber.toShortGrid("""

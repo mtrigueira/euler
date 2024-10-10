@@ -1,5 +1,7 @@
 package utils.data;
 
+import java.math.BigInteger;
+
 public class DigitNumber {
     public static DigitNumber of(String number) {
         return new DigitNumber(toByteArray(number));
@@ -7,6 +9,10 @@ public class DigitNumber {
 
     public static DigitNumber of(long i) {
         return new DigitNumber(toByteArray(i));
+    }
+
+    public static DigitNumber of(BigInteger i) {
+        return of(i.toString());
     }
 
     protected final byte[] digits;

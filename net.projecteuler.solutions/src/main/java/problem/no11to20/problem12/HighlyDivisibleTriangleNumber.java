@@ -1,35 +1,35 @@
 package problem.no11to20.problem12;
 
-public class HighlyDivisibleTriangleNumber {
-    public static void main(String[] args) {
-        int numberOfDivisors = 500;
+import utils.property.Factors;
+import utils.sequence.arithmetic.TriangleNumberSequence;
 
-        System.out.println(withOver(numberOfDivisors));
+import java.math.BigInteger;
+
+import static java.math.BigInteger.ZERO;
+
+public class HighlyDivisibleTriangleNumber {
+
+    public static final int NUMBER_OF_DIVISORS = 500;
+
+    public static void main(String[] args) {
+        System.out.println(withOver(NUMBER_OF_DIVISORS));
     }
 
     static long withOver(int numberOfDivisors) {
-        if(numberOfDivisors<1) return 0;
+        if (numberOfDivisors < 1) return 0;
         TriangleNumberSequence sequence = new TriangleNumberSequence();
-        long candidate = 0;
+        BigInteger candidate = ZERO;
         int count = 0;
 
         while (count < numberOfDivisors) {
-            candidate = sequence.next().longValueExact();
+            candidate = sequence.next();
             count = countFactors(candidate);
         }
 
-        return candidate;
+        return candidate.longValueExact();
     }
 
-    static int countFactors(long candidate) {
-        if (candidate<1) return 0;
-        if (candidate==1) return 1;
-        int count=0;
-
-        for(int i=1;i<=Math.sqrt(candidate);i++)
-            if(candidate % i==0)
-                count+=2;
-
-        return count;
+    static int countFactors(BigInteger candidate) {
+        return Factors.of(candidate.longValueExact()).size();
     }
 }

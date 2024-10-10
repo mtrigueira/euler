@@ -14,13 +14,17 @@ public class DigitCancellingFractions {
             for (int j = i + 1; j <= 99; j++)
                 cancellingDigits(i, j).ifPresent(simpleFractions::add);
 
-        Optional<Integer> productDenominator = simpleFractions.stream()
+        Optional<Integer> productDenominator = getProductDenominator(simpleFractions);
+
+        System.out.println(productDenominator.map(Objects::toString).orElse("Not found"));
+    }
+
+    private static Optional<Integer> getProductDenominator(ArrayList<SimpleFraction> simpleFractions) {
+        return simpleFractions.stream()
                 .map(SimpleFraction::simplify)
                 .reduce(SimpleFraction::multiply)
                 .map(SimpleFraction::simplify)
                 .map(Fraction::denominator);
-
-        System.out.println(productDenominator.map(Objects::toString).orElse("Not found"));
     }
 
     private static Optional<SimpleFraction> cancellingDigits(int n, int d) {
@@ -35,24 +39,28 @@ public class DigitCancellingFractions {
 
     private static Optional<SimpleFraction> pairIfAccidentallyCorrect(int nLeft, int dLeft, int nRight, int dRight, double originalQuotient) {
         if (isAccidentallyCorrect(nLeft, dLeft, nRight, dRight, originalQuotient))
-            return Optional.of(SimpleFraction.of(nRight, dRight));
+            return optionalSimpleFraction(nRight, dRight);
 
         if (isAccidentallyCorrect(nLeft, dRight, nRight, dLeft, originalQuotient))
-            return Optional.of(SimpleFraction.of(nRight, dLeft));
+            return optionalSimpleFraction(nRight, dLeft);
 
         if (!isTrivial(nRight)) {
             if (isAccidentallyCorrect(nRight, dLeft, nLeft, dRight, originalQuotient))
-                return Optional.of(SimpleFraction.of(nLeft, dRight));
+                return optionalSimpleFraction(nLeft, dRight);
 
             if (isAccidentallyCorrect(nRight, dRight, nLeft, dLeft, originalQuotient))
-                return Optional.of(SimpleFraction.of(nLeft, dLeft));
+                return optionalSimpleFraction(nLeft, dLeft);
         }
 
         return Optional.empty();
     }
 
-    private static boolean isTrivial(int nRight) {
-        return nRight == 0;
+    private static Optional<SimpleFraction> optionalSimpleFraction(int nRight, int dRight) {
+        return Optional.of(SimpleFraction.of(nRight, dRight));
+    }
+
+    private static boolean isTrivial(int i) {
+        return i == 0;
     }
 
     private static boolean isAccidentallyCorrect(

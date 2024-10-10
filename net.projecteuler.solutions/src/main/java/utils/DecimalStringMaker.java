@@ -1,4 +1,4 @@
-package problem.no21to30.problem26;
+package utils;
 
 public class DecimalStringMaker {
     public static String toString(LongDivision ld) {

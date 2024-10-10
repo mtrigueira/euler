@@ -1,9 +1,10 @@
 package utils.prime;
 
+import utils.property.Factors;
+
 import java.math.BigInteger;
 
 import static java.math.BigInteger.*;
-import static utils.operator.BigComparisonOperator.equal;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 class BruteForcePrimeChecker extends PrimeChecker {
@@ -25,13 +26,10 @@ class BruteForcePrimeChecker extends PrimeChecker {
         BigInteger maxPotentialFactor = candidate.sqrt();
 
         for (BigInteger i = TWO; lessThanOrEqual(i, maxPotentialFactor); i = i.add(ONE))
-            if (isAFactor(i))
+            if (Factors.isFactor(candidate, i))
                 return true;
 
         return false;
     }
 
-    private boolean isAFactor(BigInteger factor) {
-        return equal(candidate.mod(factor), ZERO);
-    }
 }

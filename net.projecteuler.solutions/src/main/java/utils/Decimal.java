@@ -1,8 +1,5 @@
 package utils;
 
-import problem.no21to30.problem26.LongDivision;
-import problem.no21to30.problem26.DecimalStringMaker;
-
 public class Decimal extends Fraction {
     public static Decimal of(int numerator, int denominator) {
         return new Decimal(numerator, denominator);

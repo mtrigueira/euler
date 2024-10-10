@@ -1,4 +1,4 @@
-package problem.no11to20.problem12;
+package utils.property;
 
 public class Triangular {
     static long atPosition(long i) {

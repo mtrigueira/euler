@@ -21,7 +21,7 @@ public class Factorial {
         return factorial(n);
     }
 
-    public static BigInteger factorial(BigInteger n) {
+    private static BigInteger factorial(BigInteger n) {
         return ONE.equals(n) ? ONE : n.multiply(factorial(n.subtract(ONE)));
     }
 

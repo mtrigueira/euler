@@ -2,6 +2,9 @@ package problem.no1to10.problem7;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import utils.prime.Prime;
+
+import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,7 +35,8 @@ public class NthPrimeTest {
             "22, 79",
             "23, 83",
             "24, 89"})
-    void test(int n, int prime) {
-        assertEquals(prime, NthPrime.prime(n));
+    void test(int n, int i) {
+        Prime big = Prime.of(BigInteger.valueOf(i)).orElseThrow();
+        assertEquals(big, NthPrime.prime(n));
     }
 }

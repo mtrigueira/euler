@@ -3,6 +3,8 @@ package problem.no1to10.problem2;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.math.BigInteger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EvenFibonacciSumTest {
@@ -22,6 +24,7 @@ class EvenFibonacciSumTest {
             "4613732, 3524578"
     })
     void assertSumForLimit(int expected, int limit) {
-        assertEquals(expected, EvenFibonacciSum.sum(limit));
+        BigInteger b = BigInteger.valueOf(expected);
+        assertEquals(b, EvenFibonacciSum.sum(limit));
     }
 }
