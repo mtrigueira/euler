@@ -11,4 +11,8 @@ public class Prime extends BigInteger {
     public static Optional<Prime> of(BigInteger i) {
         return PrimeChecker.isPrime(i)?Optional.of(new Prime(i.toByteArray())):Optional.empty();
     }
+
+    public Prime max(Prime val) {
+        return (Prime) super.max(val);
+    }
 }
