@@ -4,12 +4,16 @@ import utils.property.ProperDivisors;
 
 import java.util.Set;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem21 {
     public static final int LIMIT = 10000;
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=21
-        System.out.println(below(LIMIT));
+        problem("Amicable numbers");
+        solution(below(LIMIT));
     }
 
     static int below(int limit) {

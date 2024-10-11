@@ -1,25 +1,28 @@
 package problem.no1to10;
 
+import utils.prime.Prime;
+import utils.sequence.LimitedSequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 import java.math.BigInteger;
 
 import static java.math.BigInteger.ZERO;
+import static problem.Solution.problem;
+import static problem.Solution.solution;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Problem10 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
-        System.out.println(below(2000000));
+        problem("Sum of primes below 2,000,000");
+
+        solution(sumOfPrimesBelow(2_000_000));
     }
 
-    static long below(int limit) {
-        PrimeSequence seq = PrimeSequence.fromFirst();
-        BigInteger sum = ZERO;
-
-        for (BigInteger prime = seq.next(); lessThan(prime,limit); prime = seq.next())
-            sum = sum.add(prime);
-
-        return sum.longValueExact();
+    static BigInteger sumOfPrimesBelow(int i) {
+        return LimitedSequence.excluding(PrimeSequence.fromFirst(),
+                        a -> !lessThan(a, i)).stream()
+                .map(Prime::bigInteger)
+                .reduce(ZERO, BigInteger::add);
     }
 }

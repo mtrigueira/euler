@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem33 {
     public static void main(String[] args) {
+        // https://projecteuler.net/problem=33
+        problem("Digit cancelling fractions");
         ArrayList<SimpleFraction> simpleFractions = new ArrayList<>();
         for (int i = 10; i <= 98; i++)
             for (int j = i + 1; j <= 99; j++)
@@ -16,7 +21,7 @@ public class Problem33 {
 
         Optional<Integer> productDenominator = getProductDenominator(simpleFractions);
 
-        System.out.println(productDenominator.map(Objects::toString).orElse("Not found"));
+        solution(productDenominator.map(Objects::toString).orElse("Not found"));
     }
 
     private static Optional<Integer> getProductDenominator(ArrayList<SimpleFraction> simpleFractions) {

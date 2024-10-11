@@ -1,21 +1,24 @@
 package problem.no31to40;
 
 import utils.prime.CircularPrimeChecker;
-import utils.prime.Prime;
+import utils.sequence.LimitedSequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 import java.math.BigInteger;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem35 {
     public static void main(String[] args) {
-        int count = 0;
-        PrimeSequence primeSequence = PrimeSequence.fromFirst();
+        // https://projecteuler.net/problem=35
+        problem("Circular primes");
+
         BigInteger limit = BigInteger.valueOf(1_000_000);
 
-        for (Prime prime = primeSequence.next(); prime.compareTo(limit) < 0; prime = primeSequence.next())
-            if (CircularPrimeChecker.isCircularPrime(prime))
-                count++;
-
-        System.out.println(count);
+        solution(LimitedSequence.excluding(PrimeSequence.fromFirst(),
+                        a->a.compareTo(limit) < 0).stream()
+                .filter(prime1 -> !CircularPrimeChecker.isCircularPrime(prime1))
+                .count());
     }
 }

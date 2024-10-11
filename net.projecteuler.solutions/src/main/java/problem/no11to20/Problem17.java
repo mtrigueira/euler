@@ -4,10 +4,14 @@ import utils.data.NumberWord;
 
 import java.util.stream.IntStream;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem17 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=17
-        System.out.println(forNumbersTo(1000));
+        problem("Number letter counts");
+        solution(forNumbersTo(1000));
     }
 
     private static final String NOT_ALPHABETIC = "[^a-z]";

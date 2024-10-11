@@ -5,10 +5,14 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem19 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=19
-        System.out.println(between(1901, 2000));
+        problem("Counting Sundays");
+        solution(between(1901, 2000));
     }
 
     static int between(int startYear, int endYear) {

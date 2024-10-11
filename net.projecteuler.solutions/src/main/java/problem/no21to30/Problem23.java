@@ -1,20 +1,21 @@
 package problem.no21to30;
 
-import utils.Stopwatch;
-import utils.sequence.arithmetic.AbundantSequence;
 import utils.sequence.CachedSequence;
+import utils.sequence.arithmetic.AbundantSequence;
 
 import java.math.BigInteger;
 
 import static java.math.BigInteger.TWO;
+import static problem.Solution.problem;
+import static problem.Solution.solution;
 import static utils.operator.Aliquot.isAbundant;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem23 {
     public static void main(String[] args) {
-        Stopwatch t = Stopwatch.start();
-        System.out.println(sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
-        t.println();
+        // https://projecteuler.net/problem=23
+        problem("Non-abundant sums");
+        solution(sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
     }
 
     static final int NON_ABUNDANT_SUM_CEILING = 28123;

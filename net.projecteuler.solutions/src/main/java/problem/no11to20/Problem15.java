@@ -1,9 +1,13 @@
 package problem.no11to20;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem15 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=15
-        System.out.println(count(20));
+        problem("Lattice paths");
+        solution(count(20));
     }
 
     public static long count(int i) {

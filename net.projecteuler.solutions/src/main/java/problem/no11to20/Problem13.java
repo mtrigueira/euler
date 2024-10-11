@@ -4,11 +4,16 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem13 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=13
-        System.out.println(sum(NUMBERS).substring(0,10));
+        problem("Large sum");
+        solution(sum(NUMBERS).substring(0,10));
     }
+
     static final String[] NUMBERS = {
             "37107287533902102798797998220837590246510135740250",
             "46376937677490009712648124896970078050417018260538",

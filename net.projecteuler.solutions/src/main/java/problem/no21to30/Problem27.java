@@ -4,13 +4,15 @@ import utils.data.Range;
 
 import java.math.BigInteger;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
 import static utils.prime.PrimeChecker.isPrime;
 
 public class Problem27 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=27
-
-        System.out.println(getMaxProduct(Range.rangeExclusiveAbs(1000), Range.rangeAbs(1000)));
+        problem("Quadratic primes");
+        solution(getMaxProduct(Range.rangeExclusiveAbs(1000), Range.rangeAbs(1000)));
     }
 
     private static long getMaxProduct(Range aRange, Range bRange) {

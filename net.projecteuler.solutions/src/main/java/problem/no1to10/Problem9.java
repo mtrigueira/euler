@@ -2,10 +2,14 @@ package problem.no1to10;
 
 import utils.PythagoreanTriangle;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem9 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=9
-        System.out.println(productWhenSumEquals(1000));
+        problem("Special Pythagorean triplet");
+        solution(productWhenSumEquals(1000));
     }
 
     public static int productWhenSumEquals(int sum) {

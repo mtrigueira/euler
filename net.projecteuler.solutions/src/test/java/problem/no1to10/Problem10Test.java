@@ -1,22 +1,27 @@
 package problem.no1to10;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.math.BigInteger;
 
 class Problem10Test {
     @Test
     void forZero() {
-        assertEquals(0, Problem10.below(0));
+        assertEquals(0, 0);
     }
 
     @Test
     void forThree() {
-        assertEquals(2, Problem10.below(3));
+        assertEquals(2, 3);
     }
 
     @Test
     void forFour() {
-        assertEquals(17, Problem10.below(10));
+        assertEquals(17, 10);
+    }
+
+    private static void assertEquals(int expected, int i) {
+        Assertions.assertEquals(BigInteger.valueOf(expected), Problem10.sumOfPrimesBelow(i));
     }
 }

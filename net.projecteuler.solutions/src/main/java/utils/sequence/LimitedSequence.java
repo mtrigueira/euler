@@ -1,44 +1,69 @@
 package utils.sequence;
 
 import java.util.NoSuchElementException;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class LimitedSequence<T> extends Sequence<T> {
-    private int current = 0;
+    private final Sequence<T> sequence;
+    private final boolean inclusive;
+    final Function<T, Boolean> limit;
+    private T peek;
 
-    public static <T> LimitedSequence<T> of(Sequence<T> sequence, int maxNumberOfElements) {
-        return new LimitedSequence<>(sequence,maxNumberOfElements);
+    public LimitedSequence(Sequence<T> sequence, Function<T, Boolean> limit, boolean inclusive) {
+        this.sequence = sequence;
+        this.limit = limit;
+        this.inclusive = inclusive;
+
+        peek = sequence.hasNext() ? sequence.next() : null;
+        applyLimit(peek);
     }
 
-    private final Sequence<T> wrappedSequence;
-    private final int maxNumberOfElements;
+    public static <T> LimitedSequence<T> including(Sequence<T> sequence, Function<T, Boolean> limit) {
+        return of(sequence, limit, true);
+    }
 
-    private LimitedSequence(Sequence<T> wrappedSequence, int maxNumberOfElements) {
-        this.wrappedSequence = wrappedSequence;
-        this.maxNumberOfElements = maxNumberOfElements;
+    public static <T> LimitedSequence<T> excluding(Sequence<T> sequence, Function<T, Boolean> limit) {
+        return of(sequence, limit, false);
+    }
+
+    private static <T> LimitedSequence<T> of(Sequence<T> sequence, Function<T, Boolean> limit, boolean inclusive) {
+        return new LimitedSequence<>(sequence, limit, inclusive);
+    }
+
+    public static <T> T last(Stream<T> s) {
+        return s.reduce((_, b) -> b).orElse(null);
     }
 
     @Override
     public T next() {
-        current++;
-        if (current > maxNumberOfElements) {
-            throw new NoSuchElementException("Reached maximum number of elements: " + maxNumberOfElements);
-        }
+        if (!hasNext())
+            throw new NoSuchElementException("Limit reached");
 
-        return wrappedSequence.next();
+        T next = peek;
+        peek = sequence.hasNext() ? sequence.next() : null;
+        applyLimit(next);
+
+        return next;
     }
+
+    private void applyLimit(T next) {
+        if (inclusive) {
+            if (limit.apply(next))
+                peek = null;
+        } else {
+            if (limit.apply(peek))
+                peek = null;
+        }
+    }
+
 
     @Override
     public boolean hasNext() {
-        if(current >= maxNumberOfElements)
-            return false;
-        return wrappedSequence.hasNext();
+        return (peek != null);
     }
 
     public T last() {
-        T last = null;
-        while (hasNext()) {
-            last = next();
-        }
-        return last;
+        return last(stream());
     }
 }

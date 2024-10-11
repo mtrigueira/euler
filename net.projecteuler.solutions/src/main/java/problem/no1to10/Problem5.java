@@ -2,10 +2,14 @@ package problem.no1to10;
 
 import utils.operator.Factorial;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem5 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=5
-        System.out.println(of(20));
+        problem("Smallest multiple");
+        solution(of(20));
     }
 
     public static long of(int n) {

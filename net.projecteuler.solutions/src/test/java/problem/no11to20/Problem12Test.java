@@ -10,19 +10,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem12Test {
     @ParameterizedTest
-    @CsvSource({"0,0","1,1", "3,2", "6,4", "10,4", "15,4", "21,4", "28,6", "36,9"})
+    @CsvSource({"0,0", "1,1", "3,2", "6,4", "10,4", "15,4", "21,4", "28,6", "36,9"})
     void countFactors0(int operand, int count) {
-        BigInteger candidate = BigInteger.valueOf(operand);
-        assertEquals(count, Problem12.countFactors(candidate));
+        assertEqualsCount(count, operand);
     }
 
     @Test
     void withOver5() {
-        assertEquals(28, Problem12.withOver(5));
+        assertEqualsTriangularNumber(28, 5);
     }
 
     @Test
     void withOver6() {
-        assertEquals(28, Problem12.withOver(6));
+        assertEqualsTriangularNumber(28, 6);
+    }
+
+    private static void assertEqualsTriangularNumber(int count, int numberOfDivisors) {
+        BigInteger b = BigInteger.valueOf(count);
+        assertEquals(b, new Problem12(numberOfDivisors).triangularNumber());
+    }
+
+    private static void assertEqualsCount(int count, int candidate) {
+        BigInteger b = BigInteger.valueOf(candidate);
+        assertEquals(count, Problem12.countFactors(b));
     }
 }

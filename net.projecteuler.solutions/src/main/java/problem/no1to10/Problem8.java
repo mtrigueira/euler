@@ -1,11 +1,16 @@
 package problem.no1to10;
 
-import utils.sequence.given.WideNumberSequence;
+import utils.sequence.given.WideNumberProductSequence;
+
+import static problem.Solution.problem;
+import static problem.Solution.solution;
 
 public class Problem8 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=8
-        System.out.println(ofWidth(BIG_NUMBER, 13));
+        problem("Largest product in a series");
+        solution(new WideNumberProductSequence(BIG_NUMBER, 13).stream()
+                .reduce(0L, Long::max));
     }
     
     public static final String BIG_NUMBER =
@@ -29,18 +34,4 @@ public class Problem8 {
         "84580156166097919133875499200524063689912560717606"+
         "05886116467109405077541002256983155200055935729725"+
         "71636269561882670428252483600823257530420752963450";
-    
-    public static long ofWidth(String number, int width) {
-        return ofWidth(new WideNumberSequence(number, width));
-    }
-
-    private static long ofWidth(WideNumberSequence number) {
-        long max = 0;
-
-        for(;number.hasNext();number.next())
-            if(number.product() > max)
-                max = number.product();
-
-        return max;
-    }
 }

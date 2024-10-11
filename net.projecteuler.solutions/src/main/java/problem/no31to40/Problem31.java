@@ -1,8 +1,13 @@
 package problem.no31to40;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem31 {
     public static void main(String[] args) {
-        System.out.println(countWaysToMakeUsingAnyNumberOfCoins(200));
+        // https://projecteuler.net/problem=31
+        problem("Coin sums");
+        solution(countWaysToMakeUsingAnyNumberOfCoins(200));
     }
 
     private static final short[] COINS = {1, 2, 5, 10, 20, 50, 100, 200};

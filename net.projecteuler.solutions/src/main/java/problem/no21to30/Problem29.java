@@ -6,12 +6,15 @@ import java.util.Set;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
+import static problem.Solution.problem;
+import static problem.Solution.solution;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem29 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=29
-        System.out.println(numberOfDistinctTerms(100, 100));
+        problem("Distinct powers");
+        solution(numberOfDistinctTerms(100, 100));
     }
 
     static int numberOfDistinctTerms(int aLimit, int bLimit) {

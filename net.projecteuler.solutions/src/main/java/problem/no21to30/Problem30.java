@@ -2,10 +2,14 @@ package problem.no21to30;
 
 import utils.DigitPower;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem30 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=30
-        System.out.println(sumWhereDigitPowersSumEqualsNumberFor(5));
+        problem("Digit fifth powers");
+        solution(sumWhereDigitPowersSumEqualsNumberFor(5));
     }
 
     static long sumWhereDigitPowersSumEqualsNumberFor(int exponent) {

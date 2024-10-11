@@ -1,6 +1,5 @@
 package problem.no41to50;
 
-import utils.Arrays;
 import utils.prime.Prime;
 import utils.sequence.arithmetic.PrimeSequence;
 import utils.sequence.given.CombinationSequence;
@@ -8,24 +7,26 @@ import utils.sequence.given.CombinationSequence;
 import java.math.BigInteger;
 import java.util.List;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem43 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=41
-        System.out.println(findDivisiblePanDigitals());
+        problem("Pandigital primes");
+
+        solution(findDivisiblePanDigitals());
     }
 
     private static final List<String> DIGITS = List.of("0123456789".split(""));
-    private static final Prime[] primes = Arrays.makeArray(PrimeSequence.fromFirst(), 8);
-
-    private static BigInteger findDivisiblePanDigitals() {
-        CombinationSequence<String> combiner = new CombinationSequence<>(DIGITS, (a, b) -> a + b);
-        BigInteger sum = BigInteger.ZERO;
-
-        for (String digits = combiner.next(); combiner.hasNext(); digits = combiner.next())
-            if (areAllSubstringsDivisible(digits))
-                sum = sum.add(new BigInteger(digits));
-
-        return sum;
+    private static final Prime[] primes = PrimeSequence.fromFirst().nextArray(8);
+    private static String findDivisiblePanDigitals() {
+        return new CombinationSequence<>(DIGITS, (a, b) -> a + b).stream()
+                .filter(Problem43::areAllSubstringsDivisible)
+                .map(BigInteger::new)
+                .reduce(BigInteger::add)
+                .map(BigInteger::toString)
+                .orElse("No divisible pandigitals found");
     }
 
     static boolean areAllSubstringsDivisible(String digits) {

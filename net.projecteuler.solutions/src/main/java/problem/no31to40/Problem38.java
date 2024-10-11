@@ -1,9 +1,15 @@
 package problem.no31to40;
 
+import utils.Pandigital;
+
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem38 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=38
-        System.out.println(largestPandigitalMultiple());
+        problem("Largest pandigital multiple");
+        solution(largestPandigitalMultiple());
     }
 
     private static long largestPandigitalMultiple() {
@@ -22,20 +28,8 @@ public class Problem38 {
     private static long concatenatedProductsIfPandigitalOrZero(int k, int n) {
         long s = concatenatedProducts(k, n);
 
-        if (!isPandigital(s)) return 0;
+        if (!Pandigital.isPandigital(s)) return 0;
         return s;
-    }
-
-    private static final String[] DIGITS = "123456789".split("");
-
-    private static boolean isPandigital(long i) {
-        if (lengthOfDigits(i) != 9) return false;
-        String s = String.valueOf(i);
-
-        for (String c : DIGITS)
-            if (!s.contains(c)) return false;
-
-        return true;
     }
 
     private static long concatenatedProducts(int k, int n) {

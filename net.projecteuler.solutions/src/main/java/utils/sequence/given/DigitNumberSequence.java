@@ -1,19 +1,21 @@
 package utils.sequence.given;
 
 import utils.data.DigitNumber;
+import utils.sequence.Sequence;
 
-public class DigitNumberSequence extends DigitNumber {
-    public static DigitNumberSequence of(String number) {
-        return new DigitNumberSequence(toByteArray(number));
-    }
-
+public class DigitNumberSequence extends Sequence<Long> {
     int index = 0;
+    final byte[] digits;
 
-    protected DigitNumberSequence(byte[] digits) {
-        super(digits);
+    protected DigitNumberSequence(String number) {
+        this.digits = DigitNumber.of(number).digits();
     }
 
-    public long next()  {
+    public static DigitNumberSequence of(String number) {
+        return new DigitNumberSequence(number);
+    }
+
+    public Long next() {
         long value = digits[index];
         index++;
 
@@ -21,6 +23,6 @@ public class DigitNumberSequence extends DigitNumber {
     }
 
     public boolean hasNext() {
-        return index<digits.length;
+        return index < digits.length;
     }
 }

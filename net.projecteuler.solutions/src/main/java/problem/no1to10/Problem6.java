@@ -1,9 +1,13 @@
 package problem.no1to10;
 
+import static problem.Solution.problem;
+import static problem.Solution.solution;
+
 public class Problem6 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=6
-        System.out.println(of(100));
+        problem("Sum square difference");
+        solution(of(100));
     }
 
     static long of(int i) {

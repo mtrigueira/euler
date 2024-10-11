@@ -4,11 +4,14 @@ import utils.data.DigitNumber;
 import utils.operator.Factorial;
 
 import static java.lang.Math.toIntExact;
+import static problem.Solution.problem;
+import static problem.Solution.solution;
 
 public class Problem34 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=34
-        System.out.println(sumOfNumbersWhereTheSumOfItsDigitsEqualsItself());
+        problem("Digit factorials");
+        solution(sumOfNumbersWhereTheSumOfItsDigitsEqualsItself());
     }
 
     private static int sumOfNumbersWhereTheSumOfItsDigitsEqualsItself() {
