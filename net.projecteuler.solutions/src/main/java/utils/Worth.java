@@ -1,7 +1,7 @@
-package problem.no21to30.library22;
+package utils;
 
 public class Worth {
-    static long nameWorth(String name) {
+    public static long wordWorth(String name) {
         return name.chars().map(Worth::charWorth).sum();
     }
 

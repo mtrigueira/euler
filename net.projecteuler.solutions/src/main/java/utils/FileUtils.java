@@ -1,4 +1,4 @@
-package problem.no21to30.library22;
+package utils;
 
 import problem.no21to30.Problem22;
 

@@ -1,6 +1,6 @@
 package problem.no21to30;
 
-import problem.no21to30.library22.FileUtils;
+import utils.FileUtils;
 import problem.no21to30.library22.Score;
 
 public class Problem22 {

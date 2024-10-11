@@ -1,7 +1,6 @@
-package problem.no21to30.library22;
+package problem.no21to30;
 
 import org.junit.jupiter.api.Test;
-import problem.no21to30.Problem22;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

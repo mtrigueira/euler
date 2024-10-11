@@ -1,4 +1,4 @@
-package problem.no21to30.library22;
+package utils;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,8 +13,8 @@ class WorthTest {
             "ANN,29",
             "COLIN,53"
     })
-    void nameWorth(String name, int worth) {
-        assertEquals(worth, Worth.nameWorth(name));
+    void wordWorth(String name, int worth) {
+        assertEquals(worth, Worth.wordWorth(name));
     }
 
     @ParameterizedTest
