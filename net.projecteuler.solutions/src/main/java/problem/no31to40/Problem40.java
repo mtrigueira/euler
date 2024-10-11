@@ -1,6 +1,6 @@
 package problem.no31to40;
 
-import utils.sequence.ChampernowneSequence;
+import utils.sequence.arithmetic.ChampernowneSequence;
 
 public class Problem40 {
     public static void main(String[] args) {

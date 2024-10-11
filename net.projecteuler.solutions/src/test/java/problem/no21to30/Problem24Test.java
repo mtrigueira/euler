@@ -3,6 +3,8 @@ package problem.no21to30;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem24Test {
@@ -19,13 +21,13 @@ class Problem24Test {
     @ParameterizedTest
     @ValueSource(strings = {"10", "021", "0132", "01243"})
     void permutation2(String permutation) {
-        assertEquals(permutation, Problem24.permutation(2, permutation));
+        assertEquals(permutation, Problem24.permutation(2, sorted(permutation)));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"102", "0213", "01324"})
     void permutation3(String permutation) {
-        assertEquals(permutation, Problem24.permutation(3, permutation));
+        assertEquals(permutation, Problem24.permutation(3, sorted(permutation)));
     }
 
     @ParameterizedTest
@@ -44,5 +46,9 @@ class Problem24Test {
     @ValueSource(strings = {"0123", "0132", "0213", "0231", "0312", "0321","1023"})
     void permutation0123(String permutation) {
         assertEquals(permutation, Problem24.permutation(k++, "0123"));
+    }
+
+    private static String sorted(String permutation) {
+        return Arrays.stream(permutation.split("")).sorted().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
     }
 }

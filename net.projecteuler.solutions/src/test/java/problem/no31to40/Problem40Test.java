@@ -2,7 +2,7 @@ package problem.no31to40;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import utils.sequence.ChampernowneSequence;
+import utils.sequence.arithmetic.ChampernowneSequence;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -2,15 +2,12 @@ package problem.no31to40;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem32Test {
-
     @Test
     void squish() {
-        List<Integer> combination = List.of(1, 2, 3, 4);
+        String combination = "1234";
         assertEquals(1, Problem32.squish(combination,0,0));
         assertEquals(2, Problem32.squish(combination,1,1));
         assertEquals(3, Problem32.squish(combination,2,2));

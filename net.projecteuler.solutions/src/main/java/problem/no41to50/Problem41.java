@@ -1,58 +1,48 @@
 package problem.no41to50;
 
-import utils.Combiner;
 import utils.prime.Prime;
+import utils.sequence.given.CombinationSequence;
 
 import java.math.BigInteger;
-import java.util.*;
-
-import static java.math.BigInteger.TEN;
-import static java.math.BigInteger.ZERO;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Problem41 {
-    private static final Set<Integer> DIGITS = Set.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    private static final List<Prime> primes = new ArrayList<>();
+    private static final List<String> DIGITS = List.of("123456789".split(""));
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=41
-        findPanDigitalPrimes();
-
         System.out.println(
-                maximumPrime()
+                findPanDigitalPrimes()
                         .map(Prime::toString)
                         .orElse("No pandigital primes found")
         );
     }
 
-    private static void findPanDigitalPrimes() {
-        SortedSet<Integer> digits = new TreeSet<>(DIGITS);
+    private static Optional<Prime> findPanDigitalPrimes() {
+        ArrayList<String> digits = new ArrayList<>(DIGITS);
+        Optional<Prime> maybeMaxPrime = Optional.empty();
 
-        while (!digits.isEmpty() && primes.isEmpty()) {
-            findPanDigitalPrimes(digits);
-            digits.remove(digits.last());
+        while (!digits.isEmpty() && maybeMaxPrime.isEmpty()) {
+            maybeMaxPrime = findMaxPanDigitalPrime(digits);
+            digits.removeLast();
         }
+
+        return maybeMaxPrime;
     }
 
-    private static void findPanDigitalPrimes(SortedSet<Integer> digits) {
-        Combiner<Integer> combiner = Combiner.of(digits);
-        combiner.combine(Problem41::accumulateIfIsPrime);
-    }
+    private static Optional<Prime> findMaxPanDigitalPrime(List<String> digits) {
+        CombinationSequence<String> combiner = new CombinationSequence<>(digits, (a, b) -> a + b);
 
-    private static Optional<Prime> maximumPrime() {
-        return primes.stream()
-                .reduce(Prime::max);
-    }
-
-    private static void accumulateIfIsPrime(List<Integer> digits) {
-        Prime.of(squish(digits)).ifPresent(primes::add);
-    }
-
-    static BigInteger squish(List<Integer> digits) {
-        BigInteger value = ZERO;
-
-        for (Integer digit : digits)
-            value = value.multiply(TEN).add(BigInteger.valueOf(digit));
-
-        return value;
+        Optional<Prime> max = Optional.empty();
+        while (combiner.hasNext()) {
+            String i = combiner.next();
+            Optional<Prime> optionalPrime = Prime.of(new BigInteger(i));
+            if (optionalPrime.isPresent())
+                if (max.isEmpty() || max.get().compareTo(optionalPrime.get()) < 0)
+                    max = optionalPrime;
+        }
+        return max;
     }
 }

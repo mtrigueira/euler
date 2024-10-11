@@ -1,6 +1,7 @@
 package utils.sequence;
 
 import org.junit.jupiter.api.Test;
+import utils.sequence.arithmetic.IntegerSequence;
 
 import static org.junit.jupiter.api.Assertions.*;
 

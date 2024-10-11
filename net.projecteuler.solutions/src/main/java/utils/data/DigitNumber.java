@@ -33,8 +33,8 @@ public class DigitNumber {
         int count = countDigits(number);
         byte[] digits = new byte[count];
 
-        for (int i = count-1; i >=0; i--)
-            digits[i] = (byte) ((number/Math.pow(10,i)) % 10);
+        for (int i = 0; i < count; i++)
+            digits[count-i-1] = (byte) ((number/Math.pow(10,i)) % 10);
 
         return digits;
     }

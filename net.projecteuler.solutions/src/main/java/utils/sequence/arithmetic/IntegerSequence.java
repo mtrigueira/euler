@@ -1,4 +1,6 @@
-package utils.sequence;
+package utils.sequence.arithmetic;
+
+import utils.sequence.Sequence;
 
 public class IntegerSequence extends Sequence<Integer> {
     private int i = 0;

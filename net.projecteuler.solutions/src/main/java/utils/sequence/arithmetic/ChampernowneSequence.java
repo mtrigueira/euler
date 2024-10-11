@@ -1,6 +1,4 @@
-package utils.sequence;
-
-import utils.sequence.arithmetic.ArithmeticNumberSequence;
+package utils.sequence.arithmetic;
 
 public class ChampernowneSequence extends ArithmeticNumberSequence<Byte> {
     private final IntegerSequence integerSequence = new IntegerSequence();
