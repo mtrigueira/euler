@@ -32,7 +32,7 @@ public class LimitedSequence<T> extends Sequence<T> {
     }
 
     public static <T> T last(Stream<T> s) {
-        return s.reduce((_, b) -> b).orElse(null);
+        return s.reduce((a, b) -> b).orElse(null);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Problem40 {
         solution(
                 new ChampernowneSequence().stream()
                         .limit(1_000_000)
-                        .filter(_ -> isIndexOfInterest(i.incrementAndGet()))
+                        .filter(a -> isIndexOfInterest(i.incrementAndGet()))
                         .mapToInt(Integer::valueOf)
                         .reduce(1, (a, b) -> a * b)
         );
