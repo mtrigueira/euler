@@ -27,7 +27,7 @@ public abstract class Sequence<T> implements Iterator<T> {
             Type typeT = g.getActualTypeArguments()[0];
             String nameOfT = typeT.getTypeName();
             return Class.forName(nameOfT);
-        } catch (ClassNotFoundException|ClassCastException a) {
+        } catch (ClassNotFoundException|ClassCastException ignored) {
         }
         return null;
     }
