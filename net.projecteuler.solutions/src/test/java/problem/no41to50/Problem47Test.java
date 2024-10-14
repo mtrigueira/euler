@@ -8,12 +8,12 @@ class Problem47Test {
 
     @Test
     void first2ConsecutiveIntegersToHaveFourDistinctPrimes() {
-        assertEquals(14, Problem47.firstNConsecutiveIntegersToHaveFourDistinctPrimes(2).orElseThrow().intValueExact());
+        assertEquals(14, Problem47.firstNConsecutiveIntegersToHaveNDistinctPrimes(2).intValueExact());
     }
 
 
     @Test
     void first3ConsecutiveIntegersToHaveFourDistinctPrimes() {
-        assertEquals(644, Problem47.firstNConsecutiveIntegersToHaveFourDistinctPrimes(3).orElseThrow().intValueExact());
+        assertEquals(644, Problem47.firstNConsecutiveIntegersToHaveNDistinctPrimes(3).intValueExact());
     }
 }

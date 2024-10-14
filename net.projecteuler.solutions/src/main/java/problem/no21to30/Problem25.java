@@ -1,6 +1,5 @@
 package problem.no21to30;
 
-import utils.sequence.LimitedSequence;
 import utils.sequence.arithmetic.FibonnacciSequence;
 
 import static problem.Solution.problem;
@@ -14,7 +13,8 @@ public class Problem25 {
     }
 
     static long indexOfFirstFibonacciNumberWithLengthAtLeast(int i) {
-        return LimitedSequence.including(FibonnacciSequence.of(),
-                a -> a.toString().length() >= i).stream().count();
+        return FibonnacciSequence.of().stream()
+                .takeWhile(a -> a.toString().length() < i)
+                .count() + 1;
     }
 }

@@ -19,16 +19,8 @@ public class LimitedSequence<T> extends Sequence<T> {
         applyLimit(peek);
     }
 
-    public static <T> LimitedSequence<T> including(Sequence<T> sequence, Function<T, Boolean> limit) {
-        return of(sequence, limit, true);
-    }
-
     public static <T> LimitedSequence<T> excluding(Sequence<T> sequence, Function<T, Boolean> limit) {
-        return of(sequence, limit, false);
-    }
-
-    private static <T> LimitedSequence<T> of(Sequence<T> sequence, Function<T, Boolean> limit, boolean inclusive) {
-        return new LimitedSequence<>(sequence, limit, inclusive);
+        return new LimitedSequence<>(sequence, limit, false);
     }
 
     public static <T> T last(Stream<T> s) {
@@ -57,13 +49,8 @@ public class LimitedSequence<T> extends Sequence<T> {
         }
     }
 
-
     @Override
     public boolean hasNext() {
         return (peek != null);
-    }
-
-    public T last() {
-        return last(stream());
     }
 }

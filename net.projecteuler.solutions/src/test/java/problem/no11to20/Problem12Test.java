@@ -25,9 +25,14 @@ class Problem12Test {
         assertEqualsTriangularNumber(28, 6);
     }
 
+    @Test
+    void withOver7() {
+        assertEqualsTriangularNumber(36, 7);
+    }
+
     private static void assertEqualsTriangularNumber(int count, int numberOfDivisors) {
         BigInteger b = BigInteger.valueOf(count);
-        assertEquals(b, new Problem12(numberOfDivisors).triangularNumber());
+        assertEquals(b, Problem12.triangularNumber(numberOfDivisors));
     }
 
     private static void assertEqualsCount(int count, int candidate) {
