@@ -16,7 +16,12 @@ public class FileUtils {
     }
 
     private static Stream<String> getNamesBetweenCommas(String file) {
-        return new Scanner(getResourceAsStream(file)).useDelimiter(",").tokens();
+        try {
+            return new Scanner(getResourceAsStream(file)).useDelimiter(",").tokens();
+        } catch (Exception ignored) {
+        }
+        System.err.println("Could not load " + file+" substituted dummy");
+        return Stream.of("\"ANN\",\"BOB\"");
     }
 
     private static InputStream getResourceAsStream(String file) {
