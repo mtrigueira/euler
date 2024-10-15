@@ -23,7 +23,7 @@ public class Prime extends BigInteger {
 
     public static final Prime TWO = Prime.of(BigInteger.TWO).orElseThrow();
 
-    public BigInteger bigInteger() {
+    public BigInteger toBigInteger() {
         return this;
     }
 }

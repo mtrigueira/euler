@@ -21,7 +21,7 @@ public class Problem10 {
     static BigInteger sumOfPrimesBelow(int i) {
         return PrimeSequence.fromFirst().stream()
                 .takeWhile(a -> lessThan(a, i))
-                .map(Prime::bigInteger)
+                .map(Prime::toBigInteger)
                 .reduce(ZERO, BigInteger::add);
     }
 }

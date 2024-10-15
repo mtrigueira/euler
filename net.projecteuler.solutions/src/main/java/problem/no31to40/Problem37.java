@@ -17,7 +17,7 @@ public class Problem37 {
         solution(PrimeSequence.from(11).stream()
                 .filter(TruncatablePrimeChecker::isTruncatablePrimeBothDirections)
                 .limit(11)
-                .map(Prime::bigInteger)
+                .map(Prime::toBigInteger)
                 .reduce(ZERO, BigInteger::add));
     }
 }
