@@ -12,16 +12,6 @@ class BigComparisonOperatorTest {
     private static final BigInteger LONG_MAX_VALUE = BigInteger.valueOf(Long.MAX_VALUE);
     private static final BigInteger LONG_MIN_VALUE = BigInteger.valueOf(Long.MIN_VALUE);
 
-    @ParameterizedTest
-    @ValueSource(ints = {-1, 0, 1, 2, 3, 4, 5, 6, 7})
-    void test(int i) {
-        BigInteger value = BigInteger.valueOf(i);
-
-        assertValueComparedWithItself(value);
-        assertValueComparedWithABiggerValue(value);
-        assertValueComparedWithASmallerValue(value);
-    }
-
     private static void assertValueComparedWithItself(BigInteger a) {
         // a == b
         assertFalse(lessThan(a, a));
@@ -43,10 +33,6 @@ class BigComparisonOperatorTest {
         assertFalse(greaterThan(a, b));
         assertFalse(greaterThanOrEqual(a, b));
         assertShortcuts(a, b);
-
-        // b < i
-        int i = a.intValueExact();
-        assertFalse(lessThan(b, i));
     }
 
     private static void assertValueComparedWithASmallerValue(BigInteger a) {
@@ -59,10 +45,6 @@ class BigComparisonOperatorTest {
         assertTrue(greaterThan(a, b));
         assertTrue(greaterThanOrEqual(a, b));
         assertShortcuts(a, b);
-
-        // b > i
-        int i = a.intValueExact();
-        assertTrue(lessThan(b, i));
     }
 
     private static void assertShortcuts(BigInteger a, BigInteger b) {
@@ -72,5 +54,19 @@ class BigComparisonOperatorTest {
         assertEquals(notEqual(a, b), neq(a, b));
         assertEquals(greaterThan(a, b), gt(a, b));
         assertEquals(greaterThanOrEqual(a, b), gte(a, b));
+
+        int i = a.equals(b)?b.intValueExact():b.signum()*Integer.MAX_VALUE;
+        assertEquals(lessThan(a, b), lessThan(a, i));
+        assertEquals(lessThanOrEqual(a, b), lessThanOrEqual(a, i));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0, 1, 2, 3, 4, 5, 6, 7})
+    void test(int i) {
+        BigInteger value = BigInteger.valueOf(i);
+
+        assertValueComparedWithItself(value);
+        assertValueComparedWithABiggerValue(value);
+        assertValueComparedWithASmallerValue(value);
     }
 }

@@ -1,10 +1,12 @@
 package problem.no31to40;
 
 import utils.prime.CircularPrimeChecker;
-import utils.sequence.LimitedSequence;
+import utils.prime.Prime;
+import utils.sequence.Sequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 import java.math.BigInteger;
+import java.util.function.Function;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -16,8 +18,8 @@ public class Problem35 {
 
         BigInteger limit = BigInteger.valueOf(1_000_000);
 
-        solution(LimitedSequence.excluding(PrimeSequence.fromFirst(),
-                        a->a.compareTo(limit) < 0).stream()
+        solution(PrimeSequence.fromFirst().stream()
+                .takeWhile(a1 -> !(a1.compareTo(limit) < 0))
                 .filter(prime1 -> !CircularPrimeChecker.isCircularPrime(prime1))
                 .count());
     }

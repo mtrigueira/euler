@@ -1,7 +1,6 @@
 package problem.no1to10;
 
 import utils.prime.Prime;
-import utils.sequence.LimitedSequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 import java.math.BigInteger;
@@ -20,8 +19,8 @@ public class Problem10 {
     }
 
     static BigInteger sumOfPrimesBelow(int i) {
-        return LimitedSequence.excluding(PrimeSequence.fromFirst(),
-                        a -> !lessThan(a, i)).stream()
+        return PrimeSequence.fromFirst().stream()
+                .takeWhile(a -> lessThan(a, i))
                 .map(Prime::bigInteger)
                 .reduce(ZERO, BigInteger::add);
     }

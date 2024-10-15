@@ -11,13 +11,21 @@ public class FileUtils {
         return getNamesWithoutQuotes(file).sorted();
     }
 
-    private static Stream<String> getNamesWithoutQuotes(String file) {
-        return getNamesBetweenCommas(file).map(FileUtils::removeQuotes);
+    public static Stream<String> getStrings(String file) {
+        return getStringsBetweenSeparator(file,"\\R");
     }
 
-    private static Stream<String> getNamesBetweenCommas(String file) {
+    private static Stream<String> getNamesWithoutQuotes(String file) {
+        return getStringsBetweenCommas(file).map(FileUtils::removeQuotes);
+    }
+
+    private static Stream<String> getStringsBetweenCommas(String file) {
+        return getStringsBetweenSeparator(file, ",");
+    }
+
+    private static Stream<String> getStringsBetweenSeparator(String file, String seperator) {
         try {
-            return new Scanner(getResourceAsStream(file)).useDelimiter(",").tokens();
+            return new Scanner(getResourceAsStream(file)).useDelimiter(seperator).tokens();
         } catch (Exception ignored) {
         }
         System.err.println("Could not load " + file+" substituted dummy");

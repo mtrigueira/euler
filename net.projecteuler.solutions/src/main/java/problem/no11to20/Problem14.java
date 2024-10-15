@@ -1,9 +1,10 @@
 package problem.no11to20;
 
-import utils.sequence.LimitedSequence;
+import utils.sequence.Sequence;
 import utils.sequence.arithmetic.CollatzSequence;
 
 import java.math.BigInteger;
+import java.util.function.Function;
 
 import static java.math.BigInteger.ONE;
 import static problem.Solution.problem;
@@ -34,8 +35,8 @@ public class Problem14 {
     }
 
     static long chainLength(int i) {
-        LimitedSequence<BigInteger> seq = LimitedSequence.excluding(CollatzSequence.of(i), ONE::equals);
-
-        return seq.stream().count();
+        return CollatzSequence.of(i).stream()
+                .takeWhile(a -> !ONE.equals(a))
+                .count();
     }
 }

@@ -19,10 +19,9 @@ public class Problem12 {
     }
 
     static BigInteger triangularNumber(int numberOfDivisors) {
-        if (numberOfDivisors < 1) return ZERO;
-
         return new TriangleNumberSequence().stream()
-                .dropWhile(i-> countFactors(i) < numberOfDivisors).findFirst().orElseThrow();
+                .dropWhile(i-> countFactors(i) < numberOfDivisors)
+                .findFirst().orElse(ZERO);
     }
 
     static int countFactors(BigInteger candidate) {

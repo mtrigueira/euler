@@ -4,6 +4,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import utils.prime.Prime;
+import utils.property.Factors;
 
 import java.math.BigInteger;
 import java.util.Optional;
@@ -36,7 +37,10 @@ class Problem3Test {
             "13195, 29"
     })
     void testLargestPrimeFactor(int i, int expected) {
-        assertEquals(optionalPrime(expected), Problem3.largestPrimeFactor(i));
+        assertEquals(optionalPrime(expected), Factors.of(i).stream().map(BigInteger::valueOf)
+                .map(Prime::of)
+                .filter(Optional::isPresent).map(Optional::get)
+                .max(BigInteger::compareTo));
     }
 
     private static Optional<Prime> optionalPrime(int expected) {
@@ -46,6 +50,9 @@ class Problem3Test {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 1})
     void testNoLargestPrimeFactor(int i) {
-        assertEquals(Optional.empty(), Problem3.largestPrimeFactor(i));
+        assertEquals(Optional.empty(), Factors.of(i).stream().map(BigInteger::valueOf)
+                .map(Prime::of)
+                .filter(Optional::isPresent).map(Optional::get)
+                .max(BigInteger::compareTo));
     }
 }

@@ -5,7 +5,6 @@ import utils.sequence.arithmetic.PrimeSequence;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
-import static utils.sequence.LimitedSequence.last;
 
 public class Problem7 {
     public static void main(String[] args) {
@@ -15,6 +14,6 @@ public class Problem7 {
     }
 
     public static Prime prime(int n) {
-        return last(PrimeSequence.fromFirst().stream().limit(n));
+        return PrimeSequence.fromFirst().stream().limit(n).reduce((a, b) -> b).orElse(null);
     }
 }
