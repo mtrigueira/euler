@@ -14,6 +14,6 @@ public class Problem8 {
                 .reduce(0L, Long::max));
     }
     
-    public static final String BIG_NUMBER = FileUtils.getStrings("/0008_numbers.txt")
+    public static final String BIG_NUMBER = FileUtils.getStrings("0008_numbers.txt")
             .reduce("", String::concat);
 }
