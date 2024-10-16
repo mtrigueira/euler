@@ -2,6 +2,8 @@ package problem.no1to10;
 
 import utils.operator.Factorial;
 
+import java.util.stream.LongStream;
+
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
@@ -13,21 +15,14 @@ public class Problem5 {
     }
 
     public static long of(int n) {
-        long maxCandidate = Factorial.of(n);
-
-        for (long candidate = 1; candidate <= maxCandidate; candidate++)
-            if (isDivisibleByNaturalNumbersTo(candidate, n))
-                return candidate;
-
-        return -1;
+        return LongStream.rangeClosed(1, Factorial.of(n))
+                .filter(candidate -> isDivisibleByNaturalNumbersTo(candidate, n))
+                .findFirst().orElse(-1L);
     }
 
     static boolean isDivisibleByNaturalNumbersTo(long multiple, long n) {
-        for (long i = 1; i <= n; i++)
-            if (!isAFactor(multiple, i))
-                return false;
-
-        return true;
+        return LongStream.rangeClosed(1, n)
+                .allMatch(i -> isAFactor(multiple, i));
     }
 
     private static boolean isAFactor(long i, long candidate) {

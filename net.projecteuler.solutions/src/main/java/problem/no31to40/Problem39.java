@@ -1,10 +1,8 @@
 package problem.no31to40;
 
 import utils.PythagoreanTriangle;
-import utils.Triplet;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -17,29 +15,19 @@ public class Problem39 {
     }
 
     private static int maximumRightTriangleSolutionsForPerimiterLessThanOrEqualTo(int limit) {
-        int max = 0;
-        int maxP = 0;
-        for (int p = 1; p <= limit ; p++) {
-            int size = calculateSolutionsFor(p).size();
-            if(size > max) {
-                max = size;
-                maxP = p;
-            }
-        }
-        return maxP;
+        return IntStream.rangeClosed(1, limit)
+                .mapToObj(p -> new Ugly(p, countSolutionsFor(p)))
+                .reduce((a, b) -> a.count > b.count ? a : b)
+                .map(u -> u.perimeter).orElse(0);
     }
 
-    static Set<Triplet> calculateSolutionsFor(int perimiter) {
-        int limit = perimiter - 1;
-        HashSet<Triplet> triplets = new HashSet<>();
-
-        for (int a = 1; a < limit - 2; a++)
-            for (int b = a + 1; b < limit - 1; b++) {
-                int c = PythagoreanTriangle.calculateC(a, b, perimiter);
-                if (PythagoreanTriangle.isPythagoreanTriplet(a, b, c))
-                    triplets.add(Triplet.of(a, b, c));
-            }
-
-        return triplets;
+    static long countSolutionsFor(int perimiter) {
+        return IntStream.range(1, perimiter).boxed().flatMap(a ->
+                IntStream.range(a, perimiter).mapToObj(b ->
+                        PythagoreanTriangle.isPythagoreanTriplet(a, b, PythagoreanTriangle.calculateC(a, b, perimiter))
+                ).filter(t -> t)
+        ).count();
     }
+
+    record Ugly(int perimeter,long count) {}
 }

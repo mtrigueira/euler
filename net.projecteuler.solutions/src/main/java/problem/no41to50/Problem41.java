@@ -39,11 +39,10 @@ public class Problem41 {
     }
 
     private static Optional<Prime> findMaxPanDigitalPrime(List<String> digits) {
-        CombinationSequence<String> combiner = new CombinationSequence<>(digits, (a, b) -> a + b);
-
-        return combiner.stream()
+        return new CombinationSequence<>(digits, (a, b) -> a + b).stream()
                 .map(BigInteger::new)
                 .filter(PrimeChecker::isPrime)
-                .max(BigInteger::compareTo).flatMap(Prime::of);
+                .max(BigInteger::compareTo)
+                .flatMap(Prime::of);
     }
 }

@@ -1,10 +1,9 @@
 package problem.no11to20;
 
-import utils.sequence.Sequence;
 import utils.sequence.arithmetic.CollatzSequence;
 
-import java.math.BigInteger;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ONE;
 import static problem.Solution.problem;
@@ -20,18 +19,17 @@ public class Problem14 {
     }
 
     static long getMaxChainLengthNumberForNaturalNumbersBelow(int limit) {
-        long maxChainLength = 0;
-        long maxChainLengthNumber = 0;
+        AtomicLong maxChainLength = new AtomicLong();
+        AtomicLong maxChainLengthNumber = new AtomicLong(0);
 
-        for (int i = 1; i < limit; i++) {
-            long length = chainLength(i);
-            if(length > maxChainLength) {
-                maxChainLength = length;
-                maxChainLengthNumber = i;
+        IntStream.range(1, limit).forEach(i -> {
+            if(chainLength(i) > maxChainLength.get()) {
+                maxChainLength.set(chainLength(i));
+                maxChainLengthNumber.set(i);
             }
-        }
+        });
 
-        return maxChainLengthNumber;
+        return maxChainLengthNumber.get();
     }
 
     static long chainLength(int i) {

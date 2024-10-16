@@ -4,6 +4,8 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -15,27 +17,21 @@ public class Problem19 {
         solution(between(1901, 2000));
     }
 
-    static int between(int startYear, int endYear) {
+    static long between(int startYear, int endYear) {
         return between(Year.of(startYear), Year.of(endYear));
     }
 
-    static int between(Year startYear, Year endYear) {
-        int sundays = 0;
-
-        for (Year year = startYear; year.getValue()<=endYear.getValue(); year = year.plusYears(1))
-            sundays += numberOfSundaysInAYear(year);
-
-        return sundays;
+    static long between(Year startYear, Year endYear) {
+        return Stream.iterate(startYear,
+                        year -> year.getValue() <= endYear.getValue(),
+                        year -> year.plusYears(1))
+                .mapToLong(Problem19::numberOfSundaysInAYear).sum();
     }
 
-    static int numberOfSundaysInAYear(Year year) {
-        int sundays = 0;
-
-        for (Month month : Month.values())
-            if (firstDayOfWeekIsASunday(year, month))
-                sundays += 1;
-
-        return sundays;
+    static long numberOfSundaysInAYear(Year year) {
+        return Arrays.stream(Month.values())
+                .filter(month -> firstDayOfWeekIsASunday(year, month))
+                .count();
     }
 
     static boolean firstDayOfWeekIsASunday(Year year, Month month) {

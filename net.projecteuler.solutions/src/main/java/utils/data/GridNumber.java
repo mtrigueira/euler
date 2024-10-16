@@ -3,10 +3,14 @@ package utils.data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class GridNumber {
-    public static short[][] toShortGrid(String number) {
-        List<List<Short>> grid = makeGrid(number);
+
+    public static final Pattern SPACE = Pattern.compile(" ");
+
+    public static short[][] toShortGrid(Stream<String> lines) {
+        List<List<Short>> grid = makeGrid(lines);
         int rows = grid.size();
         int cols = getCols(grid);
         short[][] a = new short[rows][cols];
@@ -28,12 +32,12 @@ public class GridNumber {
         return grid.stream().map(List::size).max(Integer::compare).orElse(0);
     }
 
-    private static List<List<Short>> makeGrid(String number) {
+    private static List<List<Short>> makeGrid(Stream<String> lines) {
         List<List<Short>> grid = new ArrayList<>();
 
-        number.lines().forEach(line->{
+        lines.forEach(line->{
             List<Short> row = new ArrayList<>();
-            Pattern.compile(" ").splitAsStream(line).forEach(token->row.add(Short.parseShort(token)));
+            SPACE.splitAsStream(line).forEach(token->row.add(Short.parseShort(token)));
             grid.add(row);
         });
 

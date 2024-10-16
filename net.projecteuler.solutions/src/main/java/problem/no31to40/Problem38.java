@@ -2,6 +2,8 @@ package problem.no31to40;
 
 import utils.Pandigital;
 
+import java.util.stream.LongStream;
+
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
@@ -13,30 +15,25 @@ public class Problem38 {
     }
 
     private static long largestPandigitalMultiple() {
-        long max = 0;
-
-        for (int i = 1; i < 10_000; i++)
-            for (int j = 2; j <= 9; j++) {
-                long s = concatenatedProductsIfPandigitalOrZero(i, j);
-                if (max < s)
-                    max = s;
-            }
-
-        return max;
+        return LongStream.range(1, 10_000).flatMap(i ->
+                        LongStream.range(2, 9)
+                                .map(j -> concatenatedProductsIfPandigitalOrZero(i, j))
+                ).max()
+                .orElse(0);
     }
 
-    private static long concatenatedProductsIfPandigitalOrZero(int k, int n) {
+    private static long concatenatedProductsIfPandigitalOrZero(long k, long n) {
         long s = concatenatedProducts(k, n);
 
         if (!Pandigital.isPandigital(s)) return 0;
         return s;
     }
 
-    private static long concatenatedProducts(int k, int n) {
+    private static long concatenatedProducts(long k, long n) {
         long s = 0;
 
         for (int i = 1; i <= n; i++) {
-            int product = i * k;
+            long product = i * k;
             s = shiftDigitPlaces(s, product) + product;
             if (lengthOfDigits(s) > 9) return 0;
         }
@@ -44,7 +41,7 @@ public class Problem38 {
         return s;
     }
 
-    private static long shiftDigitPlaces(long s, int product) {
+    private static long shiftDigitPlaces(long s, long product) {
         return (long) (s * Math.pow(10, lengthOfDigits(product)));
     }
 

@@ -1,8 +1,10 @@
 package problem.no21to30;
 
 import utils.data.Range;
+import utils.prime.PrimeChecker;
 
 import java.math.BigInteger;
+import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -16,20 +18,13 @@ public class Problem27 {
     }
 
     private static long getMaxProduct(Range aRange, Range bRange) {
-        long maxProduct = 0;
-        int max = 0;
-        for (int b = bRange.start; b <= bRange.end; b++) {
-            if (isPrime(b)) {
-                for (int a = aRange.start; a <= aRange.end; a++) {
-                    int n = getN(a, b);
-                    if (n > max) {
-                        max = n;
-                        maxProduct = (long) a * b;
-                    }
-                }
-            }
-        }
-        return maxProduct;
+        return IntStream.rangeClosed(bRange.start, bRange.end)
+                        .filter(PrimeChecker::isPrime)
+                        .boxed()
+                        .flatMap(b -> IntStream.range(aRange.start, aRange.end)
+                                .mapToObj(a -> new Ugly(a*b, getN(a, b)))
+                        ).reduce((L, R) -> (L.n > R.n) ? L : R
+                        ).map(L -> L.product).orElse(0);
     }
 
     private static int getN(long a, long b) {
@@ -44,4 +39,6 @@ public class Problem27 {
                 return n - 1;
         }
     }
+
+    record Ugly(int product, int n){}
 }

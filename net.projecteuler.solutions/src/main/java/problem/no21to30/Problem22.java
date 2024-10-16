@@ -1,7 +1,7 @@
 package problem.no21to30;
 
 import utils.FileUtils;
-import problem.no21to30.library22.Score;
+import utils.Score;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;

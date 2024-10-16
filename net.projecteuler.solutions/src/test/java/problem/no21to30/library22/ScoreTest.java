@@ -3,6 +3,7 @@ package problem.no21to30.library22;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import utils.Score;
 
 import java.util.Scanner;
 

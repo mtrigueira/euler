@@ -7,6 +7,7 @@ import utils.sequence.arithmetic.PrimeSequence;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
@@ -23,25 +24,20 @@ public class Problem50 {
                 .takeWhile(a -> a.longValueExact() < i)
                 .toList();
 
-        int max = 0;
-        Optional<Prime> maxPrime = Optional.empty();
-        for (int j = 0; j < primes.size(); j++) {
-            BigInteger sum = ZERO;
-            for (int k = j; k < primes.size(); k++) {
-                Prime p = primes.get(k);
-                sum = sum.add(p.toBigInteger());
-                if (sum.longValueExact() > i)
-                    break;
+        return IntStream.range(0, primes.size()).boxed().flatMap(j -> {
+            final BigInteger[] sum = {ZERO};
+            return IntStream.range(j, primes.size())
+                    .mapToObj(k -> {
+                        Prime p = primes.get(k);
+                        sum[0] = sum[0].add(p);
+                        return new Ugly(k - j, p, sum[0]);
+                    })
+                    .takeWhile(u -> !(u.sum.longValueExact() > i))
+                    .filter(u -> PrimeChecker.isPrime(u.sum));
+        }).reduce((L, R) -> L.delta > R.delta ? L : R)
+                    .flatMap(a->Prime.of(a.sum));
+    }
 
-                if (PrimeChecker.isPrime(sum))
-                    if (k - j > max) {
-                        max = k - j;
-                        maxPrime = Prime.of(sum);
-                    }
-
-            }
-        }
-
-        return maxPrime;
+    record Ugly(int delta, Prime p, BigInteger sum) {
     }
 }

@@ -18,8 +18,8 @@ public class Problem47 {
     static BigInteger firstNConsecutiveIntegersToHaveNDistinctPrimes(int n) {
         int consecutiveCount = 0;
 
-        for (long i = 2;true;i++)
-            if (Factors.of(i).stream().filter(PrimeChecker::isPrime).distinct().count() == n) {
+        for (long i = 2; ; i++)
+            if (Factors.of(i).stream().filter(PrimeChecker::isPrime).count() == n) {
                 if (++consecutiveCount == n)
                     return BigInteger.valueOf(i - n + 1);
             } else

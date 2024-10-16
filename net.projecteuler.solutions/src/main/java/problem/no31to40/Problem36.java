@@ -1,5 +1,9 @@
 package problem.no31to40;
 
+import utils.Palindrome;
+
+import java.util.stream.IntStream;
+
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 import static utils.Palindrome.BASE_TWO;
@@ -9,12 +13,11 @@ public class Problem36 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=36
         problem("Double-base palindromes");
-
-        int sum = 0;
-        for (int i = 1; i < 1000000; i++)
-            if (isPalindrome(i) && isPalindrome(i, BASE_TWO))
-                sum += i;
-
-        solution(sum);
+        solution(
+                IntStream.rangeClosed(1, 1000000)
+                        .filter(Palindrome::isPalindrome)
+                        .filter(i -> isPalindrome(i, BASE_TWO))
+                        .sum()
+        );
     }
 }

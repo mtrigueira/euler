@@ -3,9 +3,9 @@ package problem.no31to40;
 import utils.Fraction;
 import utils.SimpleFraction;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -14,19 +14,16 @@ public class Problem33 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=33
         problem("Digit cancelling fractions");
-        ArrayList<SimpleFraction> simpleFractions = new ArrayList<>();
-        for (int i = 10; i <= 98; i++)
-            for (int j = i + 1; j <= 99; j++)
-                cancellingDigits(i, j).ifPresent(simpleFractions::add);
 
-        Optional<Integer> productDenominator = getProductDenominator(simpleFractions);
-
-        solution(productDenominator.map(Objects::toString).orElse("Not found"));
+        solution(getProductDenominator().map(Objects::toString).orElse("Not found"));
     }
 
-    private static Optional<Integer> getProductDenominator(ArrayList<SimpleFraction> simpleFractions) {
-        return simpleFractions.stream()
-                .map(SimpleFraction::simplify)
+    private static Optional<Integer> getProductDenominator() {
+        return IntStream.rangeClosed(10, 99).boxed().flatMap(i ->
+                        IntStream.rangeClosed(i + 1, 99).mapToObj(j ->
+                                cancellingDigits(i, j)
+                        ).flatMap(Optional::stream)
+                ).map(SimpleFraction::simplify)
                 .reduce(SimpleFraction::multiply)
                 .map(SimpleFraction::simplify)
                 .map(Fraction::denominator);

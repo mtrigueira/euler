@@ -2,6 +2,7 @@ package problem.no11to20;
 
 import utils.data.NumberWord;
 
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
@@ -14,18 +15,16 @@ public class Problem17 {
         solution(forNumbersTo(1000));
     }
 
-    private static final String NOT_ALPHABETIC = "[^a-z]";
+    private static final Pattern NOT_ALPHABETIC = Pattern.compile("[^a-z]");
     static int forNumbersTo(int n) {
         return IntStream.rangeClosed(1, n)
-                .map(Problem17::lengthOfWordsExcludingNonAlphabeticCharacters)
-                .sum();
+                .mapToObj(NumberWord::of)
+                .map(Problem17::removeAllNonLetters)
+                .map(String::length)
+                .reduce(0, Integer::sum);
     }
 
-    private static int lengthOfWordsExcludingNonAlphabeticCharacters(int number) {
-        return wordsExcludingNonAlphabeticCharacters(number).length();
-    }
-
-    private static String wordsExcludingNonAlphabeticCharacters(int number) {
-        return NumberWord.of(number).replaceAll(NOT_ALPHABETIC, "");
+    private static String removeAllNonLetters(String number) {
+        return NOT_ALPHABETIC.matcher(number).replaceAll("");
     }
 }

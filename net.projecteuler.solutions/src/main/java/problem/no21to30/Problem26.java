@@ -1,6 +1,9 @@
 package problem.no21to30;
 
 import utils.Decimal;
+import utils.Fraction;
+
+import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -13,17 +16,16 @@ public class Problem26 {
     }
 
     private static int indexOfLargestReciprocalCycle() {
-        int max = 0;
-        int maxIndex = 0;
-        for (int i = 2; i < 1000; i++) {
-            Decimal fraction = Decimal.of(1, i);
-            if (fraction.isReciprocalCycle())
-                if (fraction.reciprocalLength() > max) {
-                    max = fraction.reciprocalLength();
-                    maxIndex = i;
-                }
-        }
-        return maxIndex;
+        return IntStream.range(2, 1000)
+                .mapToObj(d -> Decimal.of(1, d))
+                .filter(Decimal::isReciprocalCycle)
+                .reduce(Problem26::largestReciprocalCycle)
+                .map(Fraction::denominator)
+                .orElse(0);
+    }
+
+    private static Decimal largestReciprocalCycle(Decimal a, Decimal b) {
+        return a.reciprocalLength() > b.reciprocalLength() ? a : b;
     }
 }
 

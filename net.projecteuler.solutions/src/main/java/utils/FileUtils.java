@@ -4,6 +4,7 @@ import problem.no21to30.Problem22;
 
 import java.io.InputStream;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileUtils {
@@ -13,6 +14,10 @@ public class FileUtils {
 
     public static Stream<String> getStrings(String file) {
         return getStringsBetweenSeparator(file,"\\R");
+    }
+
+    public static String getString(String file) {
+        return getStrings(file).collect(Collectors.joining("\n"));
     }
 
     private static Stream<String> getNamesWithoutQuotes(String file) {
@@ -25,11 +30,15 @@ public class FileUtils {
 
     private static Stream<String> getStringsBetweenSeparator(String file, String seperator) {
         try {
-            return new Scanner(getResourceAsStream(file)).useDelimiter(seperator).tokens();
+            return new Scanner(getStream(file)).useDelimiter(seperator).tokens();
         } catch (Exception ignored) {
         }
         System.err.println("Could not load " + file+" substituted dummy");
         return Stream.of("\"ANN\",\"BOB\"");
+    }
+
+    private static InputStream getStream(String file) {
+        return getResourceAsStream(file);
     }
 
     private static InputStream getResourceAsStream(String file) {
@@ -39,4 +48,6 @@ public class FileUtils {
     private static String removeQuotes(String s) {
         return s.replace("\"", "");
     }
+
+
 }

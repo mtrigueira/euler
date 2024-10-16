@@ -2,10 +2,8 @@ package problem.no31to40;
 
 import utils.sequence.given.CombinationSequence;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -18,18 +16,18 @@ public class Problem32 {
         problem("Pandigital products");
         CombinationSequence<String> combiner = new CombinationSequence<>(DIGITS, (a, b) -> a + b);
 
-        solution(combiner.stream().flatMap(Problem32::accumulateWhereIdentityMatches)
-                .distinct().mapToInt(x -> x).sum());
+        solution(getSum(combiner));
     }
 
-    private static Stream<Integer> accumulateWhereIdentityMatches(String combination) {
-        Set<Integer> products = new HashSet<>();
-
-        for (int i = 0; i < combination.length() - 3; i++)
-            for (int j = i + 1; j < combination.length() - 2; j++)
-                products.add(productIfIdentityOrZero(combination, i, j));
-
-        return products.stream().filter(a -> a != 0);
+    private static int getSum(CombinationSequence<String> combiner) {
+        return combiner.stream().flatMapToInt(combination ->
+                        IntStream.range(1, combination.length() - 2).flatMap(i ->
+                        IntStream.range(i + 1, combination.length() - 1).map(j ->
+                                productIfIdentityOrZero(combination, i, j)
+                        ).filter(a -> a != 0)
+                ))
+                .distinct()
+                .sum();
     }
 
     private static int productIfIdentityOrZero(String combination, int i, int j) {

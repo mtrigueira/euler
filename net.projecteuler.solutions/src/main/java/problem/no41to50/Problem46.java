@@ -18,16 +18,16 @@ public class Problem46 {
 
     private static Optional<BigInteger> goldbachsOtherConjecture() {
         return new CompositeSequence().stream()
-                .filter(x->x.testBit(0))
-                .filter(x->!canBeWrittenAsSumOfPrimesAnd2TimesSquare(x))
-                .limit(1).findAny();
-
+                .filter(x -> x.testBit(0))
+                .filter(x -> !canBeWrittenAsSumOfPrimesAnd2TimesSquare(x))
+                .limit(1)
+                .findAny();
     }
 
     private static boolean canBeWrittenAsSumOfPrimesAnd2TimesSquare(BigInteger x) {
         return PrimeSequence.fromFirst().stream()
-                .takeWhile(p->p.compareTo(x)<0)
-                .anyMatch(p->
+                .takeWhile(p -> x.compareTo(p) > 0)
+                .anyMatch(p ->
                         x.subtract(p)
                                 .divide(TWO)
                                 .sqrt()

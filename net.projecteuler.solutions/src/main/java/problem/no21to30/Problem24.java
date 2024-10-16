@@ -18,11 +18,10 @@ public class Problem24 {
 
     static String permutation(int n, String s) {
         List<String> permutation =  List.of(s.split(""));
-        CombinationSequence<String> combiner = new CombinationSequence<>(permutation, (a, b) -> a + b);
 
-        for(int i = 1; i < n; i++)
-            combiner.next();
-
-        return combiner.next();
+        return new CombinationSequence<>(permutation, (a, b) -> a + b).stream()
+                .skip(n - 1)
+                .findFirst()
+                .orElse("Not found");
     }
 }

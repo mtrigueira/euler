@@ -3,8 +3,6 @@ package problem.no11to20;
 import utils.data.DigitNumber;
 import utils.operator.Factorial;
 
-import java.math.BigInteger;
-
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
@@ -20,6 +18,6 @@ public class Problem20 {
     }
 
     private static DigitNumber factorialOf(int i) {
-        return DigitNumber.of(Factorial.ofBig(BigInteger.valueOf(i)).toString());
+        return DigitNumber.of(Factorial.of(i));
     }
 }

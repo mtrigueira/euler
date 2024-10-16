@@ -2,6 +2,8 @@ package problem.no21to30;
 
 import utils.DigitPower;
 
+import java.util.stream.IntStream;
+
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
@@ -14,14 +16,9 @@ public class Problem30 {
 
     static long sumWhereDigitPowersSumEqualsNumberFor(int exponent) {
         DigitPower digitPower = DigitPower.forExponent(exponent);
-        long allSum = 0;
-
-        long n = digitPower.getMaxPossibleSum();
-        for (int i = 2; i <= n; i++)
-            if (digitPower.sumOfDigitPowersFor(i) == i)
-                allSum += i;
-
-        return allSum;
+        return IntStream.rangeClosed(2, (int) digitPower.getMaxPossibleSum())
+                .filter(i -> i == digitPower.sumOfDigitPowersFor(i))
+                .sum();
     }
 }
 

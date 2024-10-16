@@ -4,6 +4,7 @@ import utils.data.Layer;
 
 import java.math.BigInteger;
 import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
@@ -21,12 +22,10 @@ public class Problem28 {
     }
 
     private static BigInteger sumOfDiagonalsInAGridOfNLayers(int layers) {
-        BigInteger sum = ZERO;
-
-        for (int i = 1; i <= layers; i++)
-            sum = sum.add(Layer.of(i).sumOfCorners());
-
-        return sum;
+        return IntStream.rangeClosed(1, layers).boxed()
+                .map(Layer::of)
+                .map(Layer::sumOfCorners)
+                .reduce(ZERO,BigInteger::add);
     }
 
     static OptionalInt layersInGridOfSizeNxN(int n) {

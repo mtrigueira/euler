@@ -13,6 +13,10 @@ import static problem.Solution.problem;
 import static problem.Solution.solution;
 
 public class Problem45 {
+    private static final MathContext MATH_CONTEXT = new MathContext(35, RoundingMode.CEILING);
+    private static final BigDecimal EIGHT = BigDecimal.valueOf(8);
+    private static final BigDecimal FOUR = BigDecimal.valueOf(4);
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=45
         problem("Triangular, pentagonal, and hexagonal");
@@ -23,17 +27,17 @@ public class Problem45 {
         return new TriangleNumberSequence().stream()
                 .filter(PentagonalSequence::isPentagonal)
                 .filter(Problem45::isHexagonal)
-                .filter(x->x.compareTo(BigInteger.valueOf(40755))>0)
+                .filter(x -> x.compareTo(BigInteger.valueOf(40755)) > 0)
                 .findFirst();
     }
 
     static boolean isHexagonal(BigInteger n) {
-        // x = (1 + √(1 + 8y)) / 4
         return new BigDecimal(n)
-                .multiply(BigDecimal.valueOf(8))
+                .multiply(EIGHT)
                 .add(BigDecimal.ONE)
-                .sqrt(new MathContext(35, RoundingMode.CEILING))
+                .sqrt(MATH_CONTEXT)
                 .add(BigDecimal.ONE)
-                .remainder(BigDecimal.valueOf(4)).equals(BigDecimal.ZERO);
+                .remainder(FOUR)
+                .signum() == 0;
     }
 }

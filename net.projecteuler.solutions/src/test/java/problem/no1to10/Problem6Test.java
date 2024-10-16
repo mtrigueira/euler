@@ -29,7 +29,7 @@ public class Problem6Test {
     })
 
     void squareOfSumsIs(int i, int expected) {
-        assertEquals(expected, Problem6.SquareOfSums.of(i));
+        assertEquals(expected, Problem6.squareOfSums(i));
     }
 
     @ParameterizedTest
@@ -42,6 +42,6 @@ public class Problem6Test {
             "100, 338350"
     })
     void sumOfSquaresIs(int i, int expected) {
-        assertEquals(expected, Problem6.SumOfSquares.of(i));
+        assertEquals(expected, Problem6.sumOfSquares(i));
     }
 }

@@ -8,7 +8,7 @@ public class Triangle {
     }
 
     public static Triangle of(String triangle) {
-        return new Triangle(GridNumber.toShortGrid(triangle));
+        return new Triangle(GridNumber.toShortGrid(triangle.lines()));
     }
 
     public int maxPathSum() {

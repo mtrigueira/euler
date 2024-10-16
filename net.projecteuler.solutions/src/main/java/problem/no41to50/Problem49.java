@@ -5,8 +5,7 @@ import utils.sequence.arithmetic.PrimeSequence;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -19,18 +18,21 @@ public class Problem49 {
     }
 
     private static String primePermutations() {
-        List<Prime> primes = withAtLeast3permutations(listOf4DigitPrimesExcluding1487());
+        List<Prime> primes = withAtLeast3permutations(primesWith4DigitsExcluding1487());
         List<Prime> aList = primes.subList(0, primes.size() - 2);
         List<Prime> bList = primes.subList(1, primes.size() - 1);
 
         for (Prime a : aList) {
             for (Prime b : bList)
                 if (arePermutations(a, b)) {
-                    List<Prime> cList = primes.subList(primes.size() - bList.size() - 1, primes.size());
-                    for (Prime c : cList)
-                        if (arePermutations(b, c))
-                            if (areEquidistant(a, b, c))
-                                return ("" + a + b + c);
+                    Optional<String> optionalS =
+                            primes.subList(primes.size() - bList.size() - 1, primes.size()).stream()
+                                    .filter(c -> arePermutations(b, c))
+                                    .filter(c -> areEquidistant(a, b, c))
+                                    .findFirst()
+                                    .map(c -> "" + a + b + c);
+                    if (optionalS.isPresent())
+                        return optionalS.get();
                 }
             bList = bList.subList(1, bList.size() - 1);
         }
@@ -53,15 +55,12 @@ public class Problem49 {
     private static List<Prime> withAtLeast3permutations(List<Prime> primes) {
         List<String> sortedStrings = primes.stream().map(Problem49::sortDigits).toList();
 
-        Set<String> atLeast3permutations = sortedStrings.stream()
-                .filter(a -> Collections.frequency(sortedStrings, a) > 2)
-                .collect(Collectors.toSet());
         return primes.stream()
-                .filter(a -> atLeast3permutations.contains(sortDigits(a)))
+                .filter(a ->  Collections.frequency(sortedStrings, sortDigits(a)) > 2)
                 .toList();
     }
 
-    private static List<Prime> listOf4DigitPrimesExcluding1487() {
+    private static List<Prime> primesWith4DigitsExcluding1487() {
         return PrimeSequence.fromFirst().stream()
                 .dropWhile(a -> a.intValue() < 1000)
                 .takeWhile(a -> a.intValue() < 10000)

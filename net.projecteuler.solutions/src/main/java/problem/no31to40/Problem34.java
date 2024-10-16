@@ -3,6 +3,8 @@ package problem.no31to40;
 import utils.data.DigitNumber;
 import utils.operator.Factorial;
 
+import java.util.stream.IntStream;
+
 import static java.lang.Math.toIntExact;
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -15,23 +17,13 @@ public class Problem34 {
     }
 
     private static int sumOfNumbersWhereTheSumOfItsDigitsEqualsItself() {
-        int sum = 0;
-        int max = guessMax();
-
-        for (int i = 10; i <= max; i++)
-            if (doesSumOfFactorialsOfDigitsEqualsItself(i))
-                sum += i;
-
-        return sum;
+        return IntStream.rangeClosed(10, guessMax())
+                .filter(Problem34::doesSumOfFactorialsOfDigitsEqualsItself)
+                .sum();
     }
 
     private static int guessMax() {
-        int j = 1;
-
-        while(Math.pow(10,j)<(double)FACTORIALS[9]*j)
-            j++;
-
-        return FACTORIALS[9]*j;
+        return (int)(FACTORIALS[9] *  Math.ceil(Math.log10(FACTORIALS[9])) + 1);
     }
 
     static boolean doesSumOfFactorialsOfDigitsEqualsItself(int i) {

@@ -1,6 +1,4 @@
-package problem.no21to30.library22;
-
-import utils.Worth;
+package utils;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
@@ -8,7 +6,7 @@ import java.util.stream.Stream;
 public class Score {
     private final AtomicInteger index = new AtomicInteger(1);
 
-    static long nameScore(int index, String name) {
+    public static long nameScore(int index, String name) {
         return index * Worth.wordWorth(name);
     }
 
