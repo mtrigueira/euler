@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
-public class Promlem51 {
+public class Problem51 {
     static int minPrime = Integer.MAX_VALUE;
 
     public static void main(String[] args) {

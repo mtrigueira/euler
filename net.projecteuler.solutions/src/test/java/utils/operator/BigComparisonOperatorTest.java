@@ -58,6 +58,7 @@ class BigComparisonOperatorTest {
         int i = a.equals(b)?b.intValueExact():b.signum()*Integer.MAX_VALUE;
         assertEquals(lessThan(a, b), lessThan(a, i));
         assertEquals(lessThanOrEqual(a, b), lessThanOrEqual(a, i));
+        assertEquals(greaterThan(a, b), greaterThan(a, i));
     }
 
     @ParameterizedTest

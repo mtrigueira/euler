@@ -51,11 +51,15 @@ public class BigComparisonOperator {
         return notEqual(a, b);
     }
 
-    public static boolean lessThan(BigInteger prime, long i) {
-        return lessThan(prime, BigInteger.valueOf(i));
+    public static boolean lessThan(BigInteger a, long i) {
+        return lessThan(a, BigInteger.valueOf(i));
     }
 
-    public static boolean lessThanOrEqual(BigInteger prime, long i) {
-        return lessThanOrEqual(prime, BigInteger.valueOf(i));
+    public static boolean lessThanOrEqual(BigInteger a, long i) {
+        return lessThanOrEqual(a, BigInteger.valueOf(i));
+    }
+
+    public static boolean greaterThan(BigInteger a, long i) {
+        return greaterThan(a, BigInteger.valueOf(i));
     }
 }

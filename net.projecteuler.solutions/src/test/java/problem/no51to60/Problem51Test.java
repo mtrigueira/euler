@@ -4,15 +4,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Promlem51Test {
+class Problem51Test {
 
     @Test
     void replacementPrimeCountX3() {
-        assertEquals(6, Promlem51.replacementPrimeCount("*3"));
+        assertEquals(6, Problem51.replacementPrimeCount("*3"));
     }
 
     @Test
     void replacementPrimeCount56XX3() {
-        assertEquals(7, Promlem51.replacementPrimeCount("56**3"));
+        assertEquals(7, Problem51.replacementPrimeCount("56**3"));
     }
 }
