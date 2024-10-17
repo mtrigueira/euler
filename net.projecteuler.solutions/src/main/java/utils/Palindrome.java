@@ -1,23 +1,24 @@
 package utils;
 
+import java.math.BigInteger;
+
+import static utils.operator.BigComparisonOperator.lessThan;
+
 public class Palindrome {
 
     public static final int BASE_TEN = 10;
     public static final int BASE_TWO = 2;
 
-    public static boolean isPalindrome(long i) {
-        if (i < 0) return false;
-        if (i < 10) return true;
-
+    public static boolean isPalindrome(BigInteger i) {
         return isPalindrome(i, BASE_TEN);
     }
 
-    public static boolean isPalindrome(long i, int base) {
+    public static boolean isPalindrome(BigInteger i, int base) {
         if (base < 2) throw new IllegalArgumentException("Base must be at least 2");
-        if (i < 0) return false;
-        if (i == 0) return true;
+        if (lessThan(i,0)) return false;
+        if (lessThan(i,10)) return true;
 
-        return isPalindrome(Long.toString(i,base));
+        return isPalindrome(i.toString(base));
     }
 
     private static boolean isPalindrome(String s) {
@@ -28,5 +29,13 @@ public class Palindrome {
             if (digits[leftDigit] != digits[lastDigit - leftDigit]) return false;
 
         return true;
+    }
+
+    public static boolean isPalindrome(long i) {
+        return isPalindrome(i, BASE_TEN);
+    }
+
+    public static boolean isPalindrome(long i, int base) {
+        return isPalindrome(BigInteger.valueOf(i), base);
     }
 }
