@@ -3,6 +3,7 @@ package problem.no31to40;
 import utils.Fraction;
 import utils.SimpleFraction;
 
+import java.math.BigInteger;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -18,7 +19,7 @@ public class Problem33 {
         solution(getProductDenominator().map(Objects::toString).orElse("Not found"));
     }
 
-    private static Optional<Integer> getProductDenominator() {
+    private static Optional<Long> getProductDenominator() {
         return IntStream.rangeClosed(10, 99).boxed().flatMap(i ->
                         IntStream.rangeClosed(i + 1, 99).mapToObj(j ->
                                 cancellingDigits(i, j)
@@ -26,7 +27,8 @@ public class Problem33 {
                 ).map(SimpleFraction::simplify)
                 .reduce(SimpleFraction::multiply)
                 .map(SimpleFraction::simplify)
-                .map(Fraction::denominator);
+                .map(Fraction::denominator)
+                .map(BigInteger::longValueExact);
     }
 
     private static Optional<SimpleFraction> cancellingDigits(int n, int d) {

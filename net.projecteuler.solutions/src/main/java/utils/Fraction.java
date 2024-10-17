@@ -1,18 +1,17 @@
 package utils;
 
+import java.math.BigInteger;
 import java.util.Objects;
 
 public abstract class Fraction {
-    final int d;
-    final int n;
+    final BigInteger d;
+    final BigInteger n;
     final String stringRepresentation;
-    private final double quotient;
 
-    public Fraction(int n, int d, String stringRepresentation) {
+    public Fraction(BigInteger n, BigInteger d, String stringRepresentation) {
         this.n = n;
         this.d = d;
         this.stringRepresentation = stringRepresentation;
-        quotient = (double) n / d;
     }
 
     @Override
@@ -20,7 +19,7 @@ public abstract class Fraction {
         if (obj == this) return true;
         if (obj == null || obj.getClass() != this.getClass()) return false;
         var that = (Fraction) obj;
-        return this.quotient == that.quotient;
+        return this.stringRepresentation.equals(that.stringRepresentation);
     }
 
     @Override
@@ -28,8 +27,12 @@ public abstract class Fraction {
         return Objects.hash(n, d);
     }
 
-    public int denominator() {
+    public BigInteger denominator() {
         return d;
+    }
+
+    public BigInteger numerator() {
+        return n;
     }
 
     @Override

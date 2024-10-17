@@ -18,7 +18,7 @@ public class LongDivision {
         this.denominator = denominator;
     }
 
-    public static LongDivision of(int numerator, int denominator) {
+    public static LongDivision of(long numerator, long denominator) {
         return new LongDivision(BigInteger.valueOf(numerator), BigInteger.valueOf(denominator));
     }
 

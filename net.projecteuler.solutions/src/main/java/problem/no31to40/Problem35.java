@@ -1,12 +1,9 @@
 package problem.no31to40;
 
 import utils.prime.CircularPrimeChecker;
-import utils.prime.Prime;
-import utils.sequence.Sequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
 import java.math.BigInteger;
-import java.util.function.Function;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;

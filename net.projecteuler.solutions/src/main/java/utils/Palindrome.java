@@ -18,7 +18,6 @@ public class Palindrome {
         if (lessThan(i, 0)) return false;
         if (lessThan(i, base)) return true;
 
-        System.out.println(i.toString(base));
         return isPalindrome(i.toString(base));
     }
 
