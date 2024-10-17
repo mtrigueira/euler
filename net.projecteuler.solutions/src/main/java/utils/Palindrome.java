@@ -15,9 +15,10 @@ public class Palindrome {
 
     public static boolean isPalindrome(BigInteger i, int base) {
         if (base < 2) throw new IllegalArgumentException("Base must be at least 2");
-        if (lessThan(i,0)) return false;
-        if (lessThan(i,10)) return true;
+        if (lessThan(i, 0)) return false;
+        if (lessThan(i, base)) return true;
 
+        System.out.println(i.toString(base));
         return isPalindrome(i.toString(base));
     }
 
