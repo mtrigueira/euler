@@ -22,8 +22,8 @@ public class Problem28 {
     }
 
     private static BigInteger sumOfDiagonalsInAGridOfNLayers(int layers) {
-        return IntStream.rangeClosed(1, layers).boxed()
-                .map(Layer::of)
+        return IntStream.rangeClosed(1, layers)
+                .mapToObj(Layer::of)
                 .map(Layer::sumOfCorners)
                 .reduce(ZERO,BigInteger::add);
     }
@@ -31,7 +31,9 @@ public class Problem28 {
     static OptionalInt layersInGridOfSizeNxN(int n) {
         int layers = (n + 1) / 2;
 
-        if (layers * 2 - 1 != n) return OptionalInt.empty();
+        if (layers * 2 - 1 != n)
+            return OptionalInt.empty();
+
         return OptionalInt.of(layers);
     }
 }

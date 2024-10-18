@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -18,24 +18,18 @@ public class Problem19 {
     }
 
     static long between(int startYear, int endYear) {
-        return between(Year.of(startYear), Year.of(endYear));
-    }
-
-    static long between(Year startYear, Year endYear) {
-        return Stream.iterate(startYear,
-                        year -> year.getValue() <= endYear.getValue(),
-                        year -> year.plusYears(1))
+        return IntStream.rangeClosed(startYear, endYear)
                 .mapToLong(Problem19::numberOfSundaysInAYear).sum();
     }
 
-    static long numberOfSundaysInAYear(Year year) {
+    static long numberOfSundaysInAYear(int year) {
         return Arrays.stream(Month.values())
                 .filter(month -> firstDayOfWeekIsASunday(year, month))
                 .count();
     }
 
-    static boolean firstDayOfWeekIsASunday(Year year, Month month) {
-        LocalDate date = year.atMonth(month).atDay(1);
+    static boolean firstDayOfWeekIsASunday(int year, Month month) {
+        LocalDate date = Year.of(year).atMonth(month).atDay(1);
         return (DayOfWeek.from(date).equals(DayOfWeek.SUNDAY));
     }
 }

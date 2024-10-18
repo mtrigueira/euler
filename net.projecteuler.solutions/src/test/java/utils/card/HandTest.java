@@ -3,7 +3,7 @@ package utils.card;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static utils.card.Hand.*;
+import static utils.card.Game.beats;
 
 class HandTest {
     static final Card NINE = new Card("9H");
@@ -24,13 +24,13 @@ class HandTest {
     static final Hand FULL_HOUSE_TWOS_FOURS = new Hand("2H 2D 2H 4H 4D");
     static final Hand FOUR_OF_A_KIND_TWOS_3_HIGH = new Hand("2H 2D 2C 2S 3H");
     static final Hand STRAIGHT_FLUSH_6_HIGH = new Hand("2H 3H 4H 5H 6H");
-    public static final String PLAYER_2 = "Player 2";
-    private static final String PLAYER_1 = "Player 1";
+    public static final Result PLAYER_2 = Result.RIGHT;
+    private static final Result PLAYER_1 = Result.LEFT;
 
     @Test
     void testHand() {
-        assertTrue(WORST_BUT_1.beats(WORST));
-        assertFalse(WORST.beats(WORST_BUT_1));
+        assertTrue(beats(WORST_BUT_1,WORST));
+        assertFalse(beats(WORST,WORST_BUT_1));
     }
 
     @Test
@@ -132,12 +132,12 @@ class HandTest {
         assertWinner(PLAYER_1, "2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
     }
 
-    private static void assertWinner(String expected, String p1, String p2) {
+    private static void assertWinner(Result expected, String p1, String p2) {
         assertEquals(expected, new Game(p1, p2).result());
     }
 
     void assertBeats(Hand hand1, Hand hand2) {
-        assertTrue(hand1.beats(hand2));
-        assertFalse(hand2.beats(hand1));
+        assertTrue(beats(hand1,hand2));
+        assertFalse(beats(hand2,hand1));
     }
 }

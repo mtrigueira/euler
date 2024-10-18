@@ -2,6 +2,7 @@ package problem.no51to60;
 
 import utils.FileUtils;
 import utils.card.Game;
+import utils.card.Result;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
@@ -17,7 +18,7 @@ public class Problem54 {
         return FileUtils.getStrings("/0054_poker.txt")
                 .map(Game::new)
                 .map(Game::result)
-                .filter(result -> result.equals("Player 1"))
+                .filter(Result::isLeft)
                 .count();
     }
 }

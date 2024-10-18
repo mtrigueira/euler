@@ -1,35 +1,44 @@
 package utils.property;
 
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.math.BigInteger.ONE;
+import static java.math.BigInteger.TWO;
+import static utils.operator.BigComparisonOperator.lessThanOrEqual;
+
 public class ProperDivisors {
-    private final long n;
-    private ProperDivisors(long n) {
+    private final BigInteger n;
+    private ProperDivisors(BigInteger n) {
             this.n = n;
         }
 
-    public static Set<Long> of(long i) {
+    public static Set<BigInteger> of(BigInteger i) {
         return new ProperDivisors(i).of();
     }
 
-    public Set<Long> of() {
-        if (n < 1) return Collections.emptySet();
-        Set<Long> s = new HashSet<>();
-        if (n == 1) return s;
-        s.add(1L);
+    public static Set<BigInteger> of(long n) {
+        return of(BigInteger.valueOf(n));
+    }
 
-        for (long i = 2; i <= Math.sqrt(n); i++)
+    public Set<BigInteger> of() {
+        if (n.signum() < 1) return Collections.emptySet();
+        Set<BigInteger> s = new HashSet<>();
+        if (ONE.equals(n)) return s;
+        s.add(ONE);
+
+        for (BigInteger i = TWO; lessThanOrEqual(i,n.sqrt()); i = i.add(ONE))
             if (isFactor(i)) {
                 s.add(i);
-                s.add(n / i);
+                s.add(n.divide(i));
             }
 
         return s;
     }
 
-    private boolean isFactor(long i) {
-        return n % i == 0;
+    private boolean isFactor(BigInteger i) {
+        return n.mod(i).signum() == 0;
     }
 }

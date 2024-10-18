@@ -2,6 +2,8 @@ package problem.no21to30;
 
 import utils.sequence.arithmetic.FibonnacciSequence;
 
+import java.math.BigInteger;
+
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
@@ -14,7 +16,9 @@ public class Problem25 {
 
     static long indexOfFirstFibonacciNumberWithLengthAtLeast(int i) {
         return FibonnacciSequence.of().stream()
-                .takeWhile(a -> a.toString().length() < i)
+                .map(BigInteger::toString)
+                .map(String::length)
+                .takeWhile(a -> a < i)
                 .count() + 1;
     }
 }

@@ -19,10 +19,13 @@ public class Problem51 {
     }
 
     private static Prime smallestPrime() {
-        PrimeSequence.fromFirst().stream()
+        return PrimeSequence.fromFirst().stream()
                 .dropWhile(i -> replacementPrimeCount(i) == 0)
-                .findFirst();
-        return Prime.of(Integer.toString(minPrime)).orElseThrow();
+                .findFirst()
+                .map(Problem51::replacementPrimeCount)
+                .map(Object::toString)
+                .flatMap(Prime::of)
+                .orElseThrow();
     }
 
     private static int replacementPrimeCount(Prime p) {

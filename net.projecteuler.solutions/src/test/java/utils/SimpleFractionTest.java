@@ -35,13 +35,13 @@ class SimpleFractionTest {
         assertEquals(TWO, ONE.add(ONE));
         assertEquals(THREE, TWO.add(ONE));
         assertEquals(THREE, ONE.add(TWO));
-        assertEquals(ONE, HALF.add(HALF).simplify());
-        assertEquals(TWO, HALF.add(HALF).add(HALF).add(HALF).simplify());
+        assertEquals(ONE, HALF.add(HALF));
+        assertEquals(TWO, HALF.add(HALF).add(HALF).add(HALF));
     }
 
     @Test
     void divide() {
-        assertEquals(ONE, TWO.divide(TWO).simplify());
+        assertEquals(ONE, TWO.divide(TWO));
         assertEquals(HALF, ONE.divide(TWO));
     }
 }

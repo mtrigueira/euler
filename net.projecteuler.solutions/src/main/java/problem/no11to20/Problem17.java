@@ -20,8 +20,8 @@ public class Problem17 {
         return IntStream.rangeClosed(1, n)
                 .mapToObj(NumberWord::of)
                 .map(Problem17::removeAllNonLetters)
-                .map(String::length)
-                .reduce(0, Integer::sum);
+                .mapToInt(String::length)
+                .sum();
     }
 
     private static String removeAllNonLetters(String number) {

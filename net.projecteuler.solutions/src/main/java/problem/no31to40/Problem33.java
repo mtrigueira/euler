@@ -24,9 +24,8 @@ public class Problem33 {
                         IntStream.rangeClosed(i + 1, 99).mapToObj(j ->
                                 cancellingDigits(i, j)
                         ).flatMap(Optional::stream)
-                ).map(SimpleFraction::simplify)
+                )
                 .reduce(SimpleFraction::multiply)
-                .map(SimpleFraction::simplify)
                 .map(Fraction::denominator)
                 .map(BigInteger::longValueExact);
     }

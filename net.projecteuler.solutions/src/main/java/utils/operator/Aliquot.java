@@ -32,7 +32,6 @@ public class Aliquot {
 
     private static BigInteger sumOfDivisors(BigInteger i) {
         return ProperDivisors.of(i.longValueExact()).stream()
-                .map(BigInteger::valueOf)
                 .reduce(BigInteger::add)
                 .orElse(ZERO);
     }

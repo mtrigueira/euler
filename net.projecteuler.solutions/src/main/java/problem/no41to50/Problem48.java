@@ -15,11 +15,15 @@ public class Problem48 {
     }
 
     private static String last10digits() {
-        String s = IntStream.rangeClosed(1, 1000)
-                .mapToObj(i->BigInteger.valueOf(i).pow(i))
-                .reduce(ZERO,BigInteger::add)
+        String s = sumOfSelfPowers()
                 .toString();
         
         return s.substring(s.length()-10);
+    }
+
+    private static BigInteger sumOfSelfPowers() {
+        return IntStream.rangeClosed(1, 1000)
+                .mapToObj(i -> BigInteger.valueOf(i).pow(i))
+                .reduce(ZERO, BigInteger::add);
     }
 }

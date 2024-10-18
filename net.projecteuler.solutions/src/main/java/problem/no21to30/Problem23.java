@@ -1,5 +1,6 @@
 package problem.no21to30;
 
+import utils.operator.Aliquot;
 import utils.sequence.CachedSequence;
 import utils.sequence.arithmetic.AbundantSequence;
 
@@ -8,7 +9,6 @@ import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
-import static utils.operator.Aliquot.isAbundant;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem23 {
@@ -35,6 +35,7 @@ public class Problem23 {
         long max = n / 2;
         return seq.stream()
                 .takeWhile(i -> lessThanOrEqual(i, max))
-                .anyMatch(i -> isAbundant(b.subtract(i)));
+                .map(b::subtract)
+                .anyMatch(Aliquot::isAbundant);
     }
 }

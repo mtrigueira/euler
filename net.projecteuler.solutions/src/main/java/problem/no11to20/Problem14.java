@@ -2,7 +2,6 @@ package problem.no11to20;
 
 import utils.sequence.arithmetic.CollatzSequence;
 
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ONE;
@@ -19,17 +18,11 @@ public class Problem14 {
     }
 
     static long getMaxChainLengthNumberForNaturalNumbersBelow(int limit) {
-        AtomicLong maxChainLength = new AtomicLong();
-        AtomicLong maxChainLengthNumber = new AtomicLong(0);
-
-        IntStream.range(1, limit).forEach(i -> {
-            if(chainLength(i) > maxChainLength.get()) {
-                maxChainLength.set(chainLength(i));
-                maxChainLengthNumber.set(i);
-            }
-        });
-
-        return maxChainLengthNumber.get();
+        return IntStream.range(1, limit)
+                .mapToObj(i -> new Ugly(i, chainLength(i)))
+                .max((a, b) -> Math.toIntExact(a.chainLength - b.chainLength))
+                .map(u -> u.i)
+                .orElseThrow();
     }
 
     static long chainLength(int i) {
@@ -37,4 +30,6 @@ public class Problem14 {
                 .takeWhile(a -> !ONE.equals(a))
                 .count();
     }
+
+    private record Ugly(int i, long chainLength) {}
 }

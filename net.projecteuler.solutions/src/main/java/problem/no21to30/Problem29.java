@@ -15,8 +15,8 @@ public class Problem29 {
     static long numberOfDistinctTerms(int aLimit, int bLimit) {
         return IntStream.rangeClosed(2, aLimit).boxed()
                 .flatMap(a ->
-                        IntStream.rangeClosed(2, bLimit).boxed()
-                                .map(b -> Math.pow(a, b))
+                        IntStream.rangeClosed(2, bLimit)
+                                .mapToObj(b -> Math.pow(a, b))
                 ).distinct()
                 .count();
     }

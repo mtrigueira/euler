@@ -15,13 +15,13 @@ public class Problem3 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=3
         problem("Largest prime factor of " + TARGET);
-        solution(largestPrimeFactorOrNotFound(TARGET));
+        solution(largestPrimeFactorOrNotFound());
     }
 
-    private static String largestPrimeFactorOrNotFound(long operand) {
-        return Factors.of(operand).stream().map(BigInteger::valueOf)
+    private static String largestPrimeFactorOrNotFound() {
+        return Factors.of(Problem3.TARGET).stream()
                 .map(Prime::of)
-                .filter(Optional::isPresent).map(Optional::get)
+                .flatMap(Optional::stream)
                 .max(BigInteger::compareTo)
                 .map(BigInteger::toString).orElse("No prime factor found");
     }

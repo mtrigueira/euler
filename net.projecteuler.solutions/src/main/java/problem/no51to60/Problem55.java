@@ -16,7 +16,8 @@ public class Problem55 {
     }
 
     private static long countLychrelNumbers() {
-        return IntStream.range(1, 10_000).filter(isLycrhelCandidate())
+        return IntStream.range(1, 10_000)
+                .filter(isLycrhelCandidate())
                 .count();
     }
 

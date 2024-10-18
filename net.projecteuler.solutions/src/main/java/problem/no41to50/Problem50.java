@@ -16,7 +16,11 @@ import static problem.Solution.solution;
 public class Problem50 {
     public static void main(String[] args) {
         problem("Consecutive prime sum");
-        solution(largestConsecutivePrimeSumBelow(1_000_000).map(Prime::toString).orElse("Not found"));
+        solution(
+                largestConsecutivePrimeSumBelow(1_000_000)
+                        .map(Prime::toString)
+                        .orElse("Not found")
+        );
     }
 
     static Optional<Prime> largestConsecutivePrimeSumBelow(int i) {

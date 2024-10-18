@@ -3,18 +3,21 @@ package utils;
 import java.math.BigInteger;
 
 public class SimpleFraction extends Fraction {
-    public static final SimpleFraction ZERO = SimpleFraction.of(0);
-    public static final SimpleFraction ONE = SimpleFraction.of( 1);
-    public static final SimpleFraction TWO = SimpleFraction.of(2);
+    public static final SimpleFraction ZERO = SimpleFraction.factory(BigInteger.ZERO, BigInteger.ONE);
+    public static final SimpleFraction ONE = SimpleFraction.factory( BigInteger.ONE, BigInteger.ONE);
+    public static final SimpleFraction TWO = SimpleFraction.factory(BigInteger.TWO, BigInteger.ONE);
 
     public static SimpleFraction of(BigInteger numerator, BigInteger denominator) {
-        return new SimpleFraction(numerator, denominator);
+        return factory(numerator, denominator).simplify();
     }
 
     public static SimpleFraction of(int i) {
-        return new SimpleFraction(BigInteger.valueOf(i),BigInteger.ONE);
+        return of(BigInteger.valueOf(i),BigInteger.ONE);
     }
 
+    private static SimpleFraction factory(BigInteger numerator, BigInteger denominator) {
+        return new SimpleFraction(numerator, denominator);
+    }
     private SimpleFraction(BigInteger numerator, BigInteger denominator) {
         super(numerator, denominator, numerator + "/" + denominator);
     }
@@ -23,7 +26,7 @@ public class SimpleFraction extends Fraction {
         return of(BigInteger.valueOf(nRight), BigInteger.valueOf(dRight));
     }
 
-    public SimpleFraction simplify() {
+    private SimpleFraction simplify() {
         if (n.equals(d)) return ONE;
         BigInteger gcd = gcd(n, d);
         if (BigInteger.ONE.equals(gcd)) return this;

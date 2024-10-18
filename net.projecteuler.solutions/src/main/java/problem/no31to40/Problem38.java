@@ -25,8 +25,7 @@ public class Problem38 {
     private static long concatenatedProductsIfPandigitalOrZero(long k, long n) {
         long s = concatenatedProducts(k, n);
 
-        if (!Pandigital.isPandigital(s)) return 0;
-        return s;
+        return !Pandigital.isPandigital(s) ? 0 : s;
     }
 
     private static long concatenatedProducts(long k, long n) {

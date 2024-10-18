@@ -19,12 +19,14 @@ public class Problem27 {
 
     private static long getMaxProduct(Range aRange, Range bRange) {
         return IntStream.rangeClosed(bRange.start, bRange.end)
-                        .filter(PrimeChecker::isPrime)
-                        .boxed()
-                        .flatMap(b -> IntStream.range(aRange.start, aRange.end)
-                                .mapToObj(a -> new Ugly(a*b, getN(a, b)))
-                        ).reduce((L, R) -> (L.n > R.n) ? L : R
-                        ).map(L -> L.product).orElse(0);
+                .filter(PrimeChecker::isPrime)
+                .boxed()
+                .flatMap(b -> IntStream.range(aRange.start, aRange.end)
+                        .mapToObj(a -> new Ugly(a * b, getN(a, b)))
+                )
+                .reduce((L, R) -> (L.n > R.n) ? L : R)
+                .map(u -> u.product)
+                .orElse(0);
     }
 
     private static int getN(long a, long b) {
@@ -40,5 +42,6 @@ public class Problem27 {
         }
     }
 
-    record Ugly(int product, int n){}
+    record Ugly(int product, int n) {
+    }
 }

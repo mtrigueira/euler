@@ -5,14 +5,14 @@ import java.util.Collections;
 import java.util.Set;
 
 public class Factors {
-    public static Set<Long> of(BigInteger n) {
-        return of(n.longValueExact());
+    public static Set<BigInteger> of(long n) {
+        return of(BigInteger.valueOf(n));
     }
 
-    public static Set<Long> of(long n) {
-        if (n < 1) return Collections.emptySet();
+    public static Set<BigInteger> of(BigInteger n) {
+        if (n.signum() < 1) return Collections.emptySet();
 
-        Set<Long> s = ProperDivisors.of(n);
+        Set<BigInteger> s = ProperDivisors.of(n);
         s.add(n);
 
         return s;

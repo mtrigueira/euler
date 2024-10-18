@@ -20,12 +20,16 @@ public class Problem32 {
     }
 
     private static int getSum(CombinationSequence<String> combiner) {
-        return combiner.stream().flatMapToInt(combination ->
-                        IntStream.range(1, combination.length() - 2).flatMap(i ->
-                        IntStream.range(i + 1, combination.length() - 1).map(j ->
-                                productIfIdentityOrZero(combination, i, j)
-                        ).filter(a -> a != 0)
-                ))
+        return combiner.stream()
+                .flatMapToInt(combination ->
+                        IntStream.range(1, combination.length() - 2)
+                                .flatMap(i ->
+                                        IntStream.range(i + 1, combination.length() - 1)
+                                                .map(j ->
+                                                        productIfIdentityOrZero(combination, i, j)
+                                                )
+                                                .filter(a -> a != 0)
+                                ))
                 .distinct()
                 .sum();
     }

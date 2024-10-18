@@ -37,9 +37,9 @@ class Problem3Test {
             "13195, 29"
     })
     void testLargestPrimeFactor(int i, int expected) {
-        assertEquals(optionalPrime(expected), Factors.of(i).stream().map(BigInteger::valueOf)
+        assertEquals(optionalPrime(expected), Factors.of(i).stream()
                 .map(Prime::of)
-                .filter(Optional::isPresent).map(Optional::get)
+                .flatMap(Optional::stream)
                 .max(BigInteger::compareTo));
     }
 
@@ -50,9 +50,9 @@ class Problem3Test {
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 1})
     void testNoLargestPrimeFactor(int i) {
-        assertEquals(Optional.empty(), Factors.of(i).stream().map(BigInteger::valueOf)
+        assertEquals(Optional.empty(), Factors.of(i).stream()
                 .map(Prime::of)
-                .filter(Optional::isPresent).map(Optional::get)
+                .flatMap(Optional::stream)
                 .max(BigInteger::compareTo));
     }
 }

@@ -1,5 +1,7 @@
 package problem.no31to40;
 
+import java.util.stream.IntStream;
+
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 
@@ -21,10 +23,10 @@ public class Problem31 {
     private static long getCount(int coin, int target) {
         if (coin < 0) return 0;
         int coinAmount = COINS[coin];
-        long count = 0L;
 
-        for (int sum = 0; sum < target; sum += coinAmount)
-            count += getCount(coin - 1, target - sum);
+        long count = IntStream.iterate(0, sum -> sum < target, sum -> sum + coinAmount)
+                .mapToLong(sum -> getCount(coin - 1, target - sum))
+                .sum();
 
         if (target % coinAmount == 0)
             count++;

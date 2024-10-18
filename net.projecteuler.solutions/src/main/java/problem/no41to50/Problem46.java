@@ -1,5 +1,6 @@
 package problem.no41to50;
 
+import utils.prime.Prime;
 import utils.sequence.arithmetic.CompositeSequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
@@ -28,12 +29,20 @@ public class Problem46 {
         return PrimeSequence.fromFirst().stream()
                 .takeWhile(p -> x.compareTo(p) > 0)
                 .anyMatch(p ->
-                        x.subtract(p)
-                                .divide(TWO)
-                                .sqrt()
-                                .pow(2)
-                                .multiply(TWO)
-                                .add(p)
+                        goldbachOtherConjecture(x, p)
                                 .equals(x));
+    }
+
+    private static BigInteger goldbachOtherConjecture(BigInteger x, Prime p) {
+        return caculateNumberToBeSquared(x, p)
+                .pow(2)
+                .multiply(TWO)
+                .add(p);
+    }
+
+    private static BigInteger caculateNumberToBeSquared(BigInteger x, Prime p) {
+        return x.subtract(p)
+                .divide(TWO)
+                .sqrt();
     }
 }

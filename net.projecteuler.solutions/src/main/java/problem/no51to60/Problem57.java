@@ -17,9 +17,9 @@ public class Problem57 {
         SimpleFraction previous = ZERO;
         int  count = 0;
         for (int i = 1; i <= 1000; i++) {
-            SimpleFraction f = ONE.divide(TWO.add(previous)).simplify();
+            SimpleFraction f = ONE.divide(TWO.add(previous));
             previous = f;
-            SimpleFraction rootTwoEstimate = ONE.add(f).simplify();
+            SimpleFraction rootTwoEstimate = ONE.add(f);
             if (rootTwoEstimate.numerator().toString().length()>rootTwoEstimate.denominator().toString().length())
                 count++;
         }
