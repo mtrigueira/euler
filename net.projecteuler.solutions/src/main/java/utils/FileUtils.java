@@ -28,9 +28,9 @@ public class FileUtils {
         return getStringsBetweenSeparator(file, ",");
     }
 
-    private static Stream<String> getStringsBetweenSeparator(String file, String seperator) {
+    public static Stream<String> getStringsBetweenSeparator(String file, String separator) {
         try {
-            return new Scanner(getStream(file)).useDelimiter(seperator).tokens();
+            return new Scanner(getStream(file)).useDelimiter(separator).tokens();
         } catch (Exception ignored) {
         }
         System.err.println("Could not load " + file+" substituted dummy");
