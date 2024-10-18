@@ -3,7 +3,7 @@ package problem.no21to30;
 import utils.data.Layer;
 
 import java.math.BigInteger;
-import java.util.OptionalInt;
+import java.util.Collection;
 import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
@@ -18,23 +18,15 @@ public class Problem28 {
     }
 
     static BigInteger sumOfDiagonalsInAGridOfSizeNxN(int n) {
-        return sumOfDiagonalsInAGridOfNLayers(layersInGridOfSizeNxN(n).orElseThrow());
+        return sumOfDiagonalsInAGridOfNLayers(Layer.layersInGridOfSizeNxN(n).orElseThrow());
     }
 
     private static BigInteger sumOfDiagonalsInAGridOfNLayers(int layers) {
         return IntStream.rangeClosed(1, layers)
                 .mapToObj(Layer::of)
-                .map(Layer::sumOfCorners)
+                .map(Layer::corners)
+                .flatMap(Collection::stream)
                 .reduce(ZERO,BigInteger::add);
-    }
-
-    static OptionalInt layersInGridOfSizeNxN(int n) {
-        int layers = (n + 1) / 2;
-
-        if (layers * 2 - 1 != n)
-            return OptionalInt.empty();
-
-        return OptionalInt.of(layers);
     }
 }
 
