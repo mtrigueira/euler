@@ -9,6 +9,7 @@ import java.util.Iterator;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
+import static utils.polyagonal.Polygonal.PENTAGONAL;
 
 public class Problem44 {
 
@@ -32,9 +33,9 @@ public class Problem44 {
                 BigInteger k = kIt.next();
                 BigInteger j = sum.subtract(k);
 
-                if (PentagonalSequence.isPentagonal(j)) {
+                if (PENTAGONAL.is(j)) {
                     BigInteger D = k.subtract(j).abs();
-                    if (PentagonalSequence.isPentagonal(D))
+                    if (PENTAGONAL.is(D))
                         return D;
                 }
             }
