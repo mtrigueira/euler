@@ -1,4 +1,4 @@
-package problem.no41to50;
+package utils.polyagonal;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -6,12 +6,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static utils.polyagonal.Polygonal.OCTAGONAL;
 
-class Problem45Test {
+class OctagonalTest {
     @ParameterizedTest
-    @ValueSource(ints = {1, 6, 15, 28, 45})
-    void isPentagonalTest(int i) {
+    @ValueSource(ints = {1, 8, 21, 40, 65})
+    void isHexagonalTest(int i) {
         BigInteger b = BigInteger.valueOf(i);
-        assertTrue(Problem45.isHexagonal(b));
+        assertTrue(OCTAGONAL.is(b));
     }
 }

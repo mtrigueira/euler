@@ -2,10 +2,12 @@ package problem.no41to50;
 
 import utils.FileUtils;
 import utils.Worth;
-import utils.property.Triangular;
+
+import java.math.BigInteger;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
+import static utils.polyagonal.Polygonal.TRIANGULAR;
 
 public class Problem42 {
     public static void main(String[] args) {
@@ -17,7 +19,8 @@ public class Problem42 {
     public static long forFile(String file) {
         return FileUtils.getNames(file)
                 .map(Worth::wordWorth)
-                .filter(Triangular::isTriangular)
+                .map(BigInteger::valueOf)
+                .filter(TRIANGULAR::is)
                 .count();
     }
 }
