@@ -1,6 +1,7 @@
 package utils.polyagonal;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import static utils.BigIntegerConstants.*;
 
@@ -11,6 +12,7 @@ public class Polygonal {
     public static final Polygonal HEXAGONAL = new Polygonal(BigInteger.valueOf(6));
     public static final Polygonal HEPTAGONAL = new Polygonal(BigInteger.valueOf(7));
     public static final Polygonal OCTAGONAL = new Polygonal(BigInteger.valueOf(8));
+    public static final List<Polygonal> POLYGONALS = List.of(TRIANGULAR, SQUARE, PENTAGONAL, HEXAGONAL, HEPTAGONAL, OCTAGONAL);
 
     private final BigInteger sides;
     private final BigInteger sMinus2;
@@ -39,5 +41,12 @@ public class Polygonal {
         BigInteger a = sMinus2.multiply(nSquared);
         BigInteger b = sMinus4.multiply(n);
         return a.subtract(b).divide(TWO);
+    }
+
+    @Override
+    public String toString() {
+        return "Polygonal{" +
+                "sides=" + sides+
+                '}';
     }
 }
