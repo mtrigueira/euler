@@ -18,9 +18,8 @@ public class Problem59 {
         Byte[] encryptedBytes = FileUtils.getStringsBetweenSeparator("/0059_cipher.txt", ",").map(Byte::valueOf).toArray(Byte[]::new);
 
         byte[] encrypted = new byte[encryptedBytes.length];
-        for (int i = 0; i < encryptedBytes.length; i++) {
+        for (int i = 0; i < encryptedBytes.length; i++)
             encrypted[i] = encryptedBytes[i];
-        }
 
         for (char i = 'a'; i <= 'z'; i++)
             for (char j = 'a'; j <= 'z'; j++)
