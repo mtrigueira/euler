@@ -14,11 +14,11 @@ public class Problem26 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=26
         problem("Reciprocal cycles");
-        solution(indexOfLargestReciprocalCycle());
+        solution(indexOfLargestReciprocalCycle(1000));
     }
 
-    private static BigInteger indexOfLargestReciprocalCycle() {
-        return IntStream.range(2, 1000)
+    static BigInteger indexOfLargestReciprocalCycle(int endExclusive) {
+        return IntStream.range(2, endExclusive)
                 .mapToObj(d -> Decimal.of(1, d))
                 .filter(Decimal::isReciprocalCycle)
                 .reduce(Problem26::largestReciprocalCycle)

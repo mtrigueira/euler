@@ -11,20 +11,20 @@ public class Problem39 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=39
         problem("Integer right triangles");
-        solution(maximumRightTriangleSolutionsForPerimiterLessThanOrEqualTo(1000));
+        solution(maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(1000));
     }
 
-    private static int maximumRightTriangleSolutionsForPerimiterLessThanOrEqualTo(int limit) {
+    static int maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(int limit) {
         return IntStream.rangeClosed(1, limit)
                 .mapToObj(p -> new Ugly(p, countSolutionsFor(p)))
                 .reduce((a, b) -> a.count > b.count ? a : b)
                 .map(u -> u.perimeter).orElse(0);
     }
 
-    static long countSolutionsFor(int perimiter) {
-        return IntStream.range(1, perimiter).boxed().flatMap(a ->
-                IntStream.range(a, perimiter).mapToObj(b ->
-                        PythagoreanTriangle.isPythagoreanTriplet(a, b, PythagoreanTriangle.calculateC(a, b, perimiter))
+    static long countSolutionsFor(int perimeter) {
+        return IntStream.range(1, perimeter).boxed().flatMap(a ->
+                IntStream.range(a, perimeter).mapToObj(b ->
+                        PythagoreanTriangle.isPythagoreanTriplet(a, b, PythagoreanTriangle.calculateC(a, b, perimeter))
                 ).filter(t -> t)
         ).count();
     }

@@ -28,14 +28,14 @@ public record Game(Hand player1, Hand player2) {
         boolean rightFlush = right.suits().length() == 1;
         byte i = left.highestCardInStraight();
         byte a = right.highestCardInStraight();
-        boolean isleftStraightFlush = leftFlush && i != 0;
-        boolean isrightStraightFlush = rightFlush && a != 0;
+        boolean isLeftStraightFlush = leftFlush && i != 0;
+        boolean isRightStraightFlush = rightFlush && a != 0;
 
-        if (isleftStraightFlush == isrightStraightFlush) {
+        if (isLeftStraightFlush == isRightStraightFlush) {
             return TIE;
         }
 
-        return isleftStraightFlush ? LEFT : RIGHT;
+        return isLeftStraightFlush ? LEFT : RIGHT;
     }
 
     private static Result fourOfAKindBeats(Hand left, Hand right) {
@@ -50,13 +50,13 @@ public record Game(Hand player1, Hand player2) {
         byte rightThreeOfAKind = right.highestThreeOfAKind();
         byte leftPair = left.highestPair();
         byte rightPair = right.highestPair();
-        boolean isleftFullHouse = leftThreeOfAKind != 0 && leftPair != 0;
-        boolean isrightFullHouse = rightThreeOfAKind != 0 && rightPair != 0;
-        if (isrightFullHouse == isleftFullHouse) {
+        boolean isLeftFullHouse = leftThreeOfAKind != 0 && leftPair != 0;
+        boolean isRightFullHouse = rightThreeOfAKind != 0 && rightPair != 0;
+        if (isRightFullHouse == isLeftFullHouse) {
             return TIE;
         }
 
-        return isleftFullHouse ? LEFT : RIGHT;
+        return isLeftFullHouse ? LEFT : RIGHT;
     }
 
     private static Result flushBeats(Hand left, Hand right) {

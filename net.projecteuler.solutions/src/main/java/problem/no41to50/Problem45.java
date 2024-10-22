@@ -1,27 +1,26 @@
 package problem.no41to50;
 
-import utils.sequence.arithmetic.TriangleNumberSequence;
+import utils.polyagonal.Polygonal;
+import utils.sequence.arithmetic.PolygonalSequence;
 
 import java.math.BigInteger;
 import java.util.Optional;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
-import static utils.polyagonal.Polygonal.HEXAGONAL;
-import static utils.polyagonal.Polygonal.PENTAGONAL;
 
 public class Problem45 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=45
         problem("Triangular, pentagonal, and hexagonal");
-        solution(triangularPentagonalAndHexagonal().map(BigInteger::toString).orElse("Not found"));
+        solution(triangularPentagonalAndHexagonalAfter(40755).map(BigInteger::toString).orElse("Not found"));
     }
 
-    private static Optional<BigInteger> triangularPentagonalAndHexagonal() {
-        return new TriangleNumberSequence().stream()
-                .filter(PENTAGONAL::is)
-                .filter(HEXAGONAL::is)
-                .filter(x -> x.compareTo(BigInteger.valueOf(40755)) > 0)
+    static Optional<BigInteger> triangularPentagonalAndHexagonalAfter(int after) {
+        return new PolygonalSequence(Polygonal.HEXAGONAL).stream()
+                .filter(Polygonal.PENTAGONAL::is)
+                .filter(Polygonal.TRIANGULAR::is)
+                .dropWhile(n -> n.compareTo(BigInteger.valueOf(after)) < 0)
                 .findFirst();
     }
 }

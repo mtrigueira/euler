@@ -22,6 +22,9 @@ public class GridNumber {
                 a[row][col] = s;
                 col++;
             }
+            for (int i = col; i < a[row].length; i++)
+                a[row][col] = 0;
+
             row++;
         }
 

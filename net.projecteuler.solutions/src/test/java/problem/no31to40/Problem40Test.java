@@ -1,17 +1,12 @@
 package problem.no31to40;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import utils.sequence.arithmetic.ChampernowneSequence;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class Problem40Test {
-    static final ChampernowneSequence champernowneSequence = new ChampernowneSequence();
-
-    @ParameterizedTest
-    @ValueSource(bytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 0, 1, 1, 1, 2})
-    void test(byte i) {
-        assertEquals(i, champernowneSequence.next());
+    @Test
+    void productOfChampernownesDigetsAtPositionsMod10Below() {
+        assertEquals(5, Problem40.productOfChampernownesDigetsAtPositionsMod10Below(100));
     }
 }

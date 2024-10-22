@@ -17,12 +17,6 @@ public class Prime extends BigInteger {
         return PrimeChecker.isPrime(i)?Optional.of(new Prime(i.toByteArray())):Optional.empty();
     }
 
-    public Prime max(Prime val) {
-        return (Prime) super.max(val);
-    }
-
-    public static final Prime TWO = Prime.of(BigInteger.TWO).orElseThrow();
-
     public BigInteger toBigInteger() {
         return this;
     }

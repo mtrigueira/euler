@@ -14,13 +14,14 @@ import static problem.Solution.solution;
 public class Problem46 {
     public static void main(String[] args) {
         problem("Goldbach's other conjecture");
-        solution(goldbachsOtherConjecture().map(BigInteger::toString).orElse("Not found"));
+        solution(goldbachsOtherConjecture(1).map(BigInteger::toString).orElse("Not found"));
     }
 
-    private static Optional<BigInteger> goldbachsOtherConjecture() {
+    static Optional<BigInteger> goldbachsOtherConjecture(int failure) {
         return new CompositeSequence().stream()
                 .filter(x -> x.testBit(0))
                 .filter(x -> !canBeWrittenAsSumOfPrimesAnd2TimesSquare(x))
+                .skip(failure - 1)
                 .limit(1)
                 .findAny();
     }
@@ -34,13 +35,13 @@ public class Problem46 {
     }
 
     private static BigInteger goldbachOtherConjecture(BigInteger x, Prime p) {
-        return caculateNumberToBeSquared(x, p)
+        return calculateNumberToBeSquared(x, p)
                 .pow(2)
                 .multiply(TWO)
                 .add(p);
     }
 
-    private static BigInteger caculateNumberToBeSquared(BigInteger x, Prime p) {
+    private static BigInteger calculateNumberToBeSquared(BigInteger x, Prime p) {
         return x.subtract(p)
                 .divide(TWO)
                 .sqrt();

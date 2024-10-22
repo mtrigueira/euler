@@ -10,10 +10,14 @@ public class Problem8 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=8
         problem("Largest product in a series");
-        solution(new WideNumberProductSequence(BIG_NUMBER, 13).stream()
-                .reduce(0L, Long::max));
+        solution(greatestProductOfAdjacentDigits(13));
     }
-    
-    public static final String BIG_NUMBER = FileUtils.getStrings("0008_numbers.txt")
+
+    static Long greatestProductOfAdjacentDigits(int numberOfAdjacentDigits) {
+        return new WideNumberProductSequence(BIG_NUMBER, numberOfAdjacentDigits).stream()
+                .reduce(0L, Long::max);
+    }
+
+    public static final String BIG_NUMBER = FileUtils.getStrings("/0008_numbers.txt")
             .reduce("", String::concat);
 }

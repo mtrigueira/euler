@@ -11,10 +11,6 @@ public class SimpleFraction extends Fraction {
         return factory(numerator, denominator).simplify();
     }
 
-    public static SimpleFraction of(int i) {
-        return of(BigInteger.valueOf(i),BigInteger.ONE);
-    }
-
     private static SimpleFraction factory(BigInteger numerator, BigInteger denominator) {
         return new SimpleFraction(numerator, denominator);
     }

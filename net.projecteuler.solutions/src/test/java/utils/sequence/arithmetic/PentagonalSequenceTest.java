@@ -3,15 +3,16 @@ package utils.sequence.arithmetic;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import utils.polyagonal.Polygonal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PentagonalSequenceTest {
-    private static PentagonalSequence f;
+    private static PolygonalSequence f;
 
     @BeforeAll
     static void setUp() {
-        f = new PentagonalSequence();
+        f = new PolygonalSequence(Polygonal.PENTAGONAL);
     }
 
     @ParameterizedTest

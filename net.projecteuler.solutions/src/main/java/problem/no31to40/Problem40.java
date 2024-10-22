@@ -11,15 +11,17 @@ public class Problem40 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=40
         problem("Champernowne's constant");
-        AtomicInteger i = new AtomicInteger(0);
 
-        solution(
-                new ChampernowneSequence().stream()
-                        .limit(1_000_000)
-                        .filter(a -> isIndexOfInterest(i.incrementAndGet()))
-                        .mapToInt(Integer::valueOf)
-                        .reduce(1, (a, b) -> a * b)
-        );
+        solution(productOfChampernownesDigetsAtPositionsMod10Below(1_000_000));
+    }
+
+    static int productOfChampernownesDigetsAtPositionsMod10Below(int limit) {
+        AtomicInteger i = new AtomicInteger(0);
+        return new ChampernowneSequence().stream()
+                .limit(limit)
+                .filter(a -> isIndexOfInterest(i.incrementAndGet()))
+                .mapToInt(Integer::valueOf)
+                .reduce(1, (a, b) -> a * b);
     }
 
     private static boolean isIndexOfInterest(int i) {

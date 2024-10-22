@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FibonacciSequenceTest {
-    private static FibonnacciSequence f;
+    private static FibonacciSequence f;
     @BeforeAll
     static void setUp() {
-        f = new FibonnacciSequence();
+        f = new FibonacciSequence();
     }
 
     @ParameterizedTest

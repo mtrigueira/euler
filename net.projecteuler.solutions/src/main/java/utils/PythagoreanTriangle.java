@@ -2,8 +2,8 @@ package utils;
 
 public class PythagoreanTriangle {
 
-    public static int calculateC(int a, int b, int perimiter) {
-        return perimiter - a - b;
+    public static int calculateC(int a, int b, int perimeter) {
+        return perimeter - a - b;
     }
 
     public static boolean isPythagoreanTriplet(int a, int b, int c) {

@@ -11,11 +11,11 @@ public class Problem38 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=38
         problem("Largest pandigital multiple");
-        solution(largestPandigitalMultiple());
+        solution(largestPandigitalMultiple(10_000));
     }
 
-    private static long largestPandigitalMultiple() {
-        return LongStream.range(1, 10_000).flatMap(i ->
+    static long largestPandigitalMultiple(int endExclusive) {
+        return LongStream.range(1, endExclusive).flatMap(i ->
                         LongStream.range(2, 9)
                                 .map(j -> concatenatedProductsIfPandigitalOrZero(i, j))
                 ).max()

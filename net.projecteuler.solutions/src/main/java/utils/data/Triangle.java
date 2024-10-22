@@ -12,23 +12,38 @@ public class Triangle {
     }
 
     public int maxPathSum() {
-        for (int row = triangle.length - 2; row >= 0; row--)
-            calculateMaximumSumForRowUsingRowBelow(row);
+        short[][] accumulator = new short[triangle.length][triangle[0].length];
+        System.arraycopy(triangle, 0, accumulator, 0, triangle.length);
 
-        return triangle[0][0];
+        for (int row = accumulator.length - 2; row >= 0; row--)
+            calculateMaximumSumForRowUsingRowBelow(row, accumulator);
+
+        return accumulator[0][0];
     }
 
-    private void calculateMaximumSumForRowUsingRowBelow(int row) {
+    private static void calculateMaximumSumForRowUsingRowBelow(int row, short[][] triangle) {
         for (int column = 0; column <= row; column++) {
-            short max = highestValueFromTwoAdjacentValuesOnRowBelow(row, column);
+            short max = highestValueFromTwoAdjacentValuesOnRowBelow(row, column, triangle);
             if ((int)triangle[row][column] + max > Short.MAX_VALUE) throw new ArithmeticException("Overflow");
             triangle[row][column] += max;
         }
     }
 
-    private short highestValueFromTwoAdjacentValuesOnRowBelow(int row, int column) {
+    private static short highestValueFromTwoAdjacentValuesOnRowBelow(int row, int column, short[][] triangle) {
         short a = triangle[row + 1][column];
         short b = triangle[row + 1][column + 1];
         return a > b ? a : b;
+    }
+
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < triangle.length; i++) {
+            for (int j = 0; j <= i; j++) {
+                s=s+triangle[i][j]+" ";
+            }
+            s=s.stripTrailing()+"\n";
+        }
+        s=s.stripTrailing();
+        return s;
     }
 }

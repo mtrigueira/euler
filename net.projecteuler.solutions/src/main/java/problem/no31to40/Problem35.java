@@ -13,11 +13,14 @@ public class Problem35 {
         // https://projecteuler.net/problem=35
         problem("Circular primes");
 
-        BigInteger limit = BigInteger.valueOf(1_000_000);
+        solution(countCircularPrimesBelow(1_000_000));
+    }
 
-        solution(PrimeSequence.fromFirst().stream()
-                .takeWhile(a1 -> !(a1.compareTo(limit) < 0))
-                .filter(prime1 -> !CircularPrimeChecker.isCircularPrime(prime1))
-                .count());
+    static long countCircularPrimesBelow(int limit) {
+        BigInteger b = BigInteger.valueOf(limit);
+        return PrimeSequence.fromFirst().stream()
+                .takeWhile(a -> a.compareTo(b) < 0)
+                .filter(CircularPrimeChecker::isCircularPrime)
+                .count();
     }
 }

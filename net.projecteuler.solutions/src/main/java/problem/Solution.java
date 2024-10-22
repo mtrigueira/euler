@@ -7,6 +7,9 @@ import java.math.BigInteger;
 public class Solution {
     private static Stopwatch stopwatch;
 
+    private Solution() {
+    }
+
     public static void problem(String problem) {
         stopwatch = Stopwatch.start();
         System.out.println(problem);

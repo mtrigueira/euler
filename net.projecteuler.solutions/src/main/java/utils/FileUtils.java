@@ -1,7 +1,5 @@
 package utils;
 
-import problem.no21to30.Problem22;
-
 import java.io.InputStream;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -42,7 +40,7 @@ public class FileUtils {
     }
 
     private static InputStream getResourceAsStream(String file) {
-        return Problem22.class.getResourceAsStream(file);
+        return FileUtils.class.getResourceAsStream(file);
     }
 
     private static String removeQuotes(String s) {
