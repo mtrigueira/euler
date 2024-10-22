@@ -16,10 +16,10 @@ public class Problem33 {
         // https://projecteuler.net/problem=33
         problem("Digit cancelling fractions");
 
-        solution(getProductDenominator().map(Objects::toString).orElse("Not found"));
+        solution(productOfDenominatorsOfDigitCancellingFractions().map(Objects::toString).orElse("Not found"));
     }
 
-    private static Optional<Long> getProductDenominator() {
+    static Optional<Long> productOfDenominatorsOfDigitCancellingFractions() {
         return IntStream.rangeClosed(10, 99).boxed().flatMap(i ->
                         IntStream.rangeClosed(i + 1, 99).mapToObj(j ->
                                 cancellingDigits(i, j)

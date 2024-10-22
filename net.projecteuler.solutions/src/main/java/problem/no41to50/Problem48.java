@@ -11,14 +11,14 @@ public class Problem48 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=48
         problem("Self powers");
-        solution(last10digits());
+        solution(lastDigits(10));
     }
 
-    private static String last10digits() {
+    static String lastDigits(int i) {
         String s = sumOfSelfPowers()
                 .toString();
         
-        return s.substring(s.length()-10);
+        return s.substring(s.length()- i);
     }
 
     private static BigInteger sumOfSelfPowers() {

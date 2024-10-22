@@ -1,46 +1,41 @@
 package problem.no41to50;
 
-import utils.sequence.arithmetic.PentagonalSequence;
+import utils.polyagonal.Polygonal;
+import utils.sequence.arithmetic.PolygonalSequence;
 
 import java.math.BigInteger;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 import static problem.Solution.problem;
 import static problem.Solution.solution;
 import static utils.polyagonal.Polygonal.PENTAGONAL;
 
 public class Problem44 {
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=44
         problem("Pentagonal numbers");
-        solution(minimumDifferenceforPentagonalPairs());
+        solution(minimumDifferenceForPolygonalPairs(PENTAGONAL));
     }
 
-    private static BigInteger minimumDifferenceforPentagonalPairs() {
-        PentagonalSequence seq = new PentagonalSequence();
-        Deque<BigInteger> pentagonals = new ArrayDeque<>();
-
-        pentagonals.add(seq.next());
-        pentagonals.add(seq.next());
+    static BigInteger minimumDifferenceForPolygonalPairs(Polygonal polygonal) {
+        PolygonalSequence seq = new PolygonalSequence(polygonal);
+        List<BigInteger> polygonals = new ArrayList<>();
 
         while (true) {
-            BigInteger sum = seq.next();
+            BigInteger next = seq.next();
 
-            for (Iterator<BigInteger> kIt = pentagonals.descendingIterator(); kIt.hasNext(); ) {
-                BigInteger k = kIt.next();
-                BigInteger j = sum.subtract(k);
+            for (BigInteger k : polygonals) {
+                BigInteger difference = next.subtract(k);
 
-                if (PENTAGONAL.is(j)) {
-                    BigInteger D = k.subtract(j).abs();
-                    if (PENTAGONAL.is(D))
-                        return D;
+                if (polygonal.is(difference)) {
+                    BigInteger sum = k.add(next);
+                    if (polygonal.is(sum))
+                        return difference;
                 }
             }
 
-            pentagonals.add(sum);
+            polygonals.add(next);
         }
     }
 }

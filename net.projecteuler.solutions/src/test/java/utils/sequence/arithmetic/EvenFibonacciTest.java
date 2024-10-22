@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EvenFibonacciTest {
-    private static EvenFibonnacciSequence f;
+    private static EvenFibonacciSequence f;
     @BeforeAll
     static void setUp() {
-        f = new EvenFibonnacciSequence();
+        f = new EvenFibonacciSequence();
     }
 
     @ParameterizedTest

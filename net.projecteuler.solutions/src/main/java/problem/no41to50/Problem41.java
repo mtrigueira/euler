@@ -19,21 +19,21 @@ public class Problem41 {
         // https://projecteuler.net/problem=41
         problem("Pandigital prime");
         solution(
-                findPanDigitalPrimes()
+                findPanDigitalPrimes(10)
                         .map(Prime::toString)
                         .orElse("No pandigital primes found")
         );
     }
 
-    private static Optional<Prime> findPanDigitalPrimes() {
-        ArrayList<String> digits = new ArrayList<>(DIGITS);
+    static Optional<Prime> findPanDigitalPrimes(int digitCount) {
+        ArrayList<String> digits = new ArrayList<>(DIGITS.subList(0, digitCount-1));
         Optional<Prime> maybeMaxPrime;
 
-        do {
+        while (!digits.isEmpty()) {
             maybeMaxPrime = findMaxPanDigitalPrime(digits);
-            if(maybeMaxPrime.isPresent()) return maybeMaxPrime;
-            digits.remove(digits.size()-1);
-        } while (!digits.isEmpty());
+            if (maybeMaxPrime.isPresent()) return maybeMaxPrime;
+            digits.remove(digits.size() - 1);
+        }
 
         return Optional.empty();
     }

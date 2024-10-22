@@ -1,6 +1,7 @@
 package utils.card;
 
 record Card(byte value, Suit suit) {
+    @SuppressWarnings("SpellCheckingInspection")
     private static final String valueRank = "23456789TJQKA";
 
     Card(String string) {

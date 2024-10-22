@@ -1,6 +1,6 @@
 package problem.no21to30;
 
-import utils.sequence.arithmetic.FibonnacciSequence;
+import utils.sequence.arithmetic.FibonacciSequence;
 
 import java.math.BigInteger;
 
@@ -15,7 +15,7 @@ public class Problem25 {
     }
 
     static long indexOfFirstFibonacciNumberWithLengthAtLeast(int i) {
-        return FibonnacciSequence.of().stream()
+        return FibonacciSequence.of().stream()
                 .map(BigInteger::toString)
                 .map(String::length)
                 .takeWhile(a -> a < i)

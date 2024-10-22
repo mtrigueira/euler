@@ -1,6 +1,6 @@
 package problem.no1to10;
 
-import utils.sequence.arithmetic.EvenFibonnacciSequence;
+import utils.sequence.arithmetic.EvenFibonacciSequence;
 
 import java.math.BigInteger;
 
@@ -17,7 +17,7 @@ public class Problem2 {
     }
 
     public static BigInteger sum(int limit) {
-        return new EvenFibonnacciSequence().stream()
+        return new EvenFibonacciSequence().stream()
                 .takeWhile(a -> lessThanOrEqual(a, limit))
                 .reduce(ZERO, BigInteger::add);
     }

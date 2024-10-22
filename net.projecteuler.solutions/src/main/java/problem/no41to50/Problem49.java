@@ -11,33 +11,34 @@ import static problem.Solution.problem;
 import static problem.Solution.solution;
 
 public class Problem49 {
+
+    public static final List<Prime> EXCLUDE = Prime.of("1487").stream().toList();
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=49
         problem("Prime permutations");
-        solution(primePermutations());
+        solution(primePermutations(EXCLUDE));
     }
 
-    private static String primePermutations() {
-        List<Prime> primes = withAtLeast3permutations(primesWith4DigitsExcluding1487());
+    static String primePermutations(List<Prime> exclude) {
+        List<Prime> primes = without(withAtLeast3permutations(primesWith4Digits()), exclude);
         List<Prime> aList = primes.subList(0, primes.size() - 2);
         List<Prime> bList = primes.subList(1, primes.size() - 1);
 
         for (Prime a : aList) {
             for (Prime b : bList)
                 if (arePermutations(a, b)) {
-                    Optional<String> optionalS =
-                            primes.subList(primes.size() - bList.size() - 1, primes.size()).stream()
-                                    .filter(c -> arePermutations(b, c))
-                                    .filter(c -> areEquidistant(a, b, c))
-                                    .findFirst()
-                                    .map(c -> "" + a + b + c);
-                    if (optionalS.isPresent())
-                        return optionalS.get();
+                    Optional<String> optionalS = primes.subList(primes.size() - bList.size() - 1, primes.size()).stream().filter(c -> arePermutations(b, c)).filter(c -> areEquidistant(a, b, c)).findFirst().map(c -> "" + a + b + c);
+                    if (optionalS.isPresent()) return optionalS.get();
                 }
             bList = bList.subList(1, bList.size() - 1);
         }
 
         return "Not found";
+    }
+
+    private static List<Prime> without(List<Prime> primes, List<Prime> exclude) {
+        return primes.stream().filter(a -> !exclude.contains(a)).toList();
     }
 
     private static boolean areEquidistant(Prime a, Prime b, Prime c) {
@@ -55,23 +56,14 @@ public class Problem49 {
     private static List<Prime> withAtLeast3permutations(List<Prime> primes) {
         List<String> sortedStrings = primes.stream().map(Problem49::sortDigits).toList();
 
-        return primes.stream()
-                .filter(a ->  Collections.frequency(sortedStrings, sortDigits(a)) > 2)
-                .toList();
+        return primes.stream().filter(a -> Collections.frequency(sortedStrings, sortDigits(a)) > 2).toList();
     }
 
-    private static List<Prime> primesWith4DigitsExcluding1487() {
-        return PrimeSequence.fromFirst().stream()
-                .dropWhile(a -> a.intValue() < 1000)
-                .takeWhile(a -> a.intValue() < 10000)
-                .filter(a -> a.intValue() != 1487)
-                .toList();
+    private static List<Prime> primesWith4Digits() {
+        return PrimeSequence.fromFirst().stream().dropWhile(a -> a.intValue() < 1000).takeWhile(a -> a.intValue() < 10000).toList();
     }
 
     private static String sortDigits(Prime a) {
-        return a.toString().chars()
-                .sorted()
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
+        return a.toString().chars().sorted().collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
     }
 }

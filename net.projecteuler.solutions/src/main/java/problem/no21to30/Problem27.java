@@ -14,7 +14,11 @@ public class Problem27 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=27
         problem("Quadratic primes");
-        solution(getMaxProduct(Range.rangeExclusiveAbs(1000), Range.rangeAbs(1000)));
+        solution(productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(1000, 1000));
+    }
+
+    static long productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(int a, int b) {
+        return getMaxProduct(Range.rangeExclusiveAbs(a), Range.rangeAbs(b));
     }
 
     private static long getMaxProduct(Range aRange, Range bRange) {

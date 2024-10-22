@@ -14,10 +14,14 @@ public class Problem36 {
         // https://projecteuler.net/problem=36
         problem("Double-base palindromes");
         solution(
-                IntStream.rangeClosed(1, 1000000)
-                        .filter(Palindrome::isPalindrome)
-                        .filter(i -> isPalindrome(i, BASE_TWO))
-                        .sum()
+                sumOfDoubleBasePalindromesBelow(1000000)
         );
+    }
+
+    static int sumOfDoubleBasePalindromesBelow(int endInclusive) {
+        return IntStream.rangeClosed(1, endInclusive)
+                .filter(Palindrome::isPalindrome)
+                .filter(i -> isPalindrome(i, BASE_TWO))
+                .sum();
     }
 }

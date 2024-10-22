@@ -34,7 +34,7 @@ class HandTest {
     }
 
     @Test
-    void testHigest() {
+    void testHighest() {
         assertEquals(new Card("7C"), WORST.highest());
     }
 
@@ -99,6 +99,7 @@ class HandTest {
     @Test
     void testSuits() {
         assertEquals("H", FLUSH_7_HIGH.suits());
+        //noinspection SpellCheckingInspection
         assertEquals("HDCS", WORST.suits());
     }
 
