@@ -43,8 +43,4 @@ public class PrimeSequence extends ArithmeticSequence<Prime> {
         return last;
     }
 
-    @Override
-    public boolean hasNext() {
-        return true;
-    }
 }

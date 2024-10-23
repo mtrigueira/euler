@@ -6,19 +6,21 @@ import java.util.List;
 import static utils.BigIntegerConstants.*;
 
 public class Polygonal {
-    public static final Polygonal TRIANGULAR = new Polygonal(BigInteger.valueOf(3));
-    public static final Polygonal SQUARE = new Polygonal(BigInteger.valueOf(4));
-    public static final Polygonal PENTAGONAL = new Polygonal(BigInteger.valueOf(5));
-    public static final Polygonal HEXAGONAL = new Polygonal(BigInteger.valueOf(6));
-    public static final Polygonal HEPTAGONAL = new Polygonal(BigInteger.valueOf(7));
-    public static final Polygonal OCTAGONAL = new Polygonal(BigInteger.valueOf(8));
+    public static final Polygonal TRIANGULAR = new Polygonal(BigInteger.valueOf(3), "Triangular");
+    public static final Polygonal SQUARE = new Polygonal(BigInteger.valueOf(4), "Square");
+    public static final Polygonal PENTAGONAL = new Polygonal(BigInteger.valueOf(5), "Pentagonal");
+    public static final Polygonal HEXAGONAL = new Polygonal(BigInteger.valueOf(6), "Hexagonal");
+    public static final Polygonal HEPTAGONAL = new Polygonal(BigInteger.valueOf(7), "Heptagonal");
+    public static final Polygonal OCTAGONAL = new Polygonal(BigInteger.valueOf(8), "Octagonal");
     public static final List<Polygonal> POLYGONALS = List.of(TRIANGULAR, SQUARE, PENTAGONAL, HEXAGONAL, HEPTAGONAL, OCTAGONAL);
 
     private final BigInteger sides;
     private final BigInteger sMinus2;
     private final BigInteger sMinus4;
+    private final String name;
 
-    private Polygonal(BigInteger sides) {
+    private Polygonal(BigInteger sides, String name) {
+        this.name = name;
         if(sides==null) throw new IllegalArgumentException("sides cannot be null");
         this.sides = sides;
         this.sMinus2 = this.sides.subtract(TWO);
@@ -45,8 +47,8 @@ public class Polygonal {
 
     @Override
     public String toString() {
-        return "Polygonal{" +
-                "sides=" + sides+
-                '}';
+        return name.isEmpty() ? "Polygonal{" +
+                "sides=" + sides +
+                '}' : name;
     }
 }
