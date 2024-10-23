@@ -12,16 +12,14 @@ import static problem.Solution.solution;
 import static utils.polyagonal.Polygonal.POLYGONALS;
 
 public class Problem61 {
-
-    public static final List<Polygonal> POLYGONAL_LIST = POLYGONALS.subList(0, 6);
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=61
         problem("Cyclical figurate numbers");
-        solution(cyclicNumbersWithSixUniqueNagonals());
+        solution(cyclicNumbersWithUniqueNagonals(6));
     }
 
-    private static int cyclicNumbersWithSixUniqueNagonals() {
+    static int cyclicNumbersWithUniqueNagonals(int count) {
+     List<Polygonal> POLYGONAL_LIST = POLYGONALS.subList(0, count);
         List<Integer> numbers = new ArrayList<>();
         for (int i = 1000; i <= 9999; i++)
             numbers.add(i);
@@ -32,18 +30,21 @@ public class Problem61 {
             for (int j = 0; j < numbers.size(); j++) {
                 if(i==j) continue;
                 Integer n = numbers.get(j);
-                if (areCyclic(m, n) && areDifferentPolygonals(m, n)) {
+                if (areCyclic(m, n) && areDifferentPolygonals(POLYGONAL_LIST, m, n)) {
                     pairs.add(new ArrayList<>(List.of(m, n)));
                 }
             }
         }
         pairs = pairs.stream().distinct().toList();
 
-        List<List<Integer>> bigCycle = upcycle(pairs, pairs);
-        bigCycle = upcycle(bigCycle, pairs);
-        bigCycle = upcycle(bigCycle, pairs);
-        bigCycle = upcycle(bigCycle, pairs);
-        bigCycle = bigCycle.stream().filter(a -> areCyclic(a.get(5), a.get(0))).toList();
+        List<List<Integer>> bigCycle = upcycle(pairs, pairs, POLYGONAL_LIST);
+        if(count>=4)
+            bigCycle = upcycle(bigCycle, pairs, POLYGONAL_LIST);
+        if(count>=5)
+            bigCycle = upcycle(bigCycle, pairs, POLYGONAL_LIST);
+        if(count>=6)
+            bigCycle = upcycle(bigCycle, pairs, POLYGONAL_LIST);
+        bigCycle = bigCycle.stream().filter(a -> areCyclic(a.get(count-1), a.get(0))).toList();
 
         bigCycle = bigCycle.stream().filter(a -> a.stream().sorted().findFirst().orElse(-1).equals(a.get(0))).toList();
 
@@ -53,10 +54,6 @@ public class Problem61 {
                 .forEach(System.out::println);
 
         return bigCycle.stream().findFirst().stream().flatMap(Collection::stream).mapToInt(Integer::intValue).sum();
-    }
-
-    private static boolean areDifferentPolygonals(Integer... m) {
-        return areDifferentPolygonals(POLYGONAL_LIST, m);
     }
 
     private static boolean areDifferentPolygonals(List<Polygonal> polygonals, Integer... m) {
@@ -100,7 +97,7 @@ public class Problem61 {
         return m % 100 == n / 100;
     }
 
-    static List<List<Integer>> upcycle(List<List<Integer>> cycles, List<List<Integer>> pairs) {
+    static List<List<Integer>> upcycle(List<List<Integer>> cycles, List<List<Integer>> pairs, List<Polygonal> polygonals) {
         List<List<Integer>> out = new ArrayList<>();
         for (List<Integer> cycle : cycles) {
             List<Integer> integers = new ArrayList<>(cycle);
@@ -111,7 +108,7 @@ public class Problem61 {
                     List<Integer> m = new ArrayList<>(integers);
                     Integer p = pair.get(1);
                     m.add(p);
-                    if (areDifferentPolygonals(m.toArray(Integer[]::new))) {
+                    if (areDifferentPolygonals(polygonals, m.toArray(Integer[]::new))) {
                         out.add(m);
                     }
                 }

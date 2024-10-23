@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.*;
 
-public class TriangleNumberSequence extends ArithmeticNumberSequence<BigInteger> {
+public class TriangleNumberSequence extends ArithmeticSequence<BigInteger> {
     private BigInteger current = ZERO;
     private BigInteger count = ONE;
 

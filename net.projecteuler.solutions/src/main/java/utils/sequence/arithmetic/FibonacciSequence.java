@@ -2,7 +2,7 @@ package utils.sequence.arithmetic;
 
 import java.math.BigInteger;
 
-public class FibonacciSequence extends ArithmeticNumberSequence<BigInteger> {
+public class FibonacciSequence extends ArithmeticSequence<BigInteger> {
     private BigInteger previous = BigInteger.ZERO;
     private BigInteger current = BigInteger.ONE;
 

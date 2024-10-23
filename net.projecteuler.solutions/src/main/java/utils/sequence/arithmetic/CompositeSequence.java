@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.ONE;
 
-public class CompositeSequence extends ArithmeticNumberSequence<BigInteger> {
+public class CompositeSequence extends ArithmeticSequence<BigInteger> {
     private final PrimeSequence p = PrimeSequence.from(5);
     private Prime lastPrime = p.next();
     private BigInteger i = BigInteger.valueOf(4);

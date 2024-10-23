@@ -12,11 +12,11 @@ public class Problem55 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=55
         problem("Lychrel numbers");
-        solution(countLychrelNumbers());
+        solution(countLychrelNumbers(10_000));
     }
 
-    private static long countLychrelNumbers() {
-        return IntStream.range(1, 10_000)
+    static long countLychrelNumbers(int endExclusive) {
+        return IntStream.range(1, endExclusive)
                 .filter(isLycrhelCandidate())
                 .count();
     }
