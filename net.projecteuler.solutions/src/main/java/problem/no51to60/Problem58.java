@@ -13,10 +13,10 @@ public class Problem58 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=58
         problem("Spiral primes");
-        solution(countOfPrimeDiagonalsInAGridOfNLayers());
+        solution(countOfPrimeDiagonalsInAGridOfNLayers(10));
     }
 
-    private static long countOfPrimeDiagonalsInAGridOfNLayers() {
+    static long countOfPrimeDiagonalsInAGridOfNLayers(int percent) {
         long primeCount = 0L;
         long cornerCount = 1L;
         for (int i = 2; ; i++) {
@@ -27,7 +27,7 @@ public class Problem58 {
             primeCount += corners.stream().filter(PrimeChecker::isPrime).count();
             long ratio = primeCount * 100 / cornerCount;
 
-            if(ratio < 10) return layer.lengthOfSide().longValueExact();
+            if(ratio < percent) return layer.lengthOfSide().longValueExact();
         }
     }
 }

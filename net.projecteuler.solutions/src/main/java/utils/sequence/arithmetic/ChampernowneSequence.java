@@ -1,6 +1,6 @@
 package utils.sequence.arithmetic;
 
-public class ChampernowneSequence extends ArithmeticNumberSequence<Byte> {
+public class ChampernowneSequence extends ArithmeticSequence<Byte> {
     private final IntegerSequence integerSequence = new IntegerSequence();
     private String remainingDigits = "";
     @Override

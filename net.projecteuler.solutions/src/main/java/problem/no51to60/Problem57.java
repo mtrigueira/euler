@@ -10,13 +10,13 @@ public class Problem57 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=57
         problem("Square root convergents");
-        solution(countFractions());
+        solution(countFractions(1000));
     }
 
-    private static int countFractions() {
+    static int countFractions(int until) {
         SimpleFraction previous = ZERO;
         int  count = 0;
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= until; i++) {
             SimpleFraction f = ONE.divide(TWO.add(previous));
             previous = f;
             SimpleFraction rootTwoEstimate = ONE.add(f);

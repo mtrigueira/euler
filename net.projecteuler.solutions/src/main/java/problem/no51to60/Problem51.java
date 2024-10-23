@@ -15,30 +15,30 @@ public class Problem51 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=51
         problem("Prime digit replacements");
-        solution(smallestPrime());
+        solution(smallestPrime(8));
     }
 
-    private static Prime smallestPrime() {
+    static Prime smallestPrime(int familySize) {
         return PrimeSequence.fromFirst().stream()
-                .dropWhile(i -> replacementPrimeCount(i) == 0)
+                .dropWhile(i -> replacementPrimeCount(i, familySize) == 0)
                 .findFirst()
-                .map(Problem51::replacementPrimeCount)
+                .map(p -> replacementPrimeCount(p, familySize))
                 .map(Object::toString)
                 .flatMap(Prime::of)
                 .orElseThrow();
     }
 
-    private static int replacementPrimeCount(Prime p) {
-        return replacementPrimeCount(p.toString(), 1);
+    private static int replacementPrimeCount(Prime p, int familySize) {
+        return replacementPrimeCount(p.toString(), 1, familySize);
     }
 
-    private static int replacementPrimeCount(String in, int stars) {
+    private static int replacementPrimeCount(String in, int stars, int familySize) {
         for (int i = 0; i < in.length(); i++) {
             if (in.charAt(i) == '*') continue;
             String s = in.substring(0, i) + "*" + in.substring(i + 1);
-            if (replacementPrimeCount(s) == 8)
+            if (replacementPrimeCount(s, familySize) == familySize)
                 return minPrime;
-            int primeOrZero = replacementPrimeCount(s, stars + 1);
+            int primeOrZero = replacementPrimeCount(s, stars + 1, familySize);
             if (primeOrZero != 0)
                 return primeOrZero;
         }
@@ -46,7 +46,7 @@ public class Problem51 {
         return 0;
     }
 
-    static int replacementPrimeCount(String in) {
+    static int replacementPrimeCount(String in, int familySize) {
         int count = 0;
         int localMin = Integer.MAX_VALUE;
 
@@ -58,7 +58,7 @@ public class Problem51 {
                 count++;
             }
 
-        if (count >= 8)
+        if (count >= familySize)
             if (localMin < minPrime)
                 minPrime = localMin;
         return count;

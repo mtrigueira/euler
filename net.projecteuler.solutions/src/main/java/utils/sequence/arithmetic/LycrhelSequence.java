@@ -4,7 +4,7 @@ import utils.Palindrome;
 
 import java.math.BigInteger;
 
-public class LycrhelSequence extends ArithmeticNumberSequence<BigInteger> {
+public class LycrhelSequence extends ArithmeticSequence<BigInteger> {
     private int i = 0;
     private BigInteger current;
 

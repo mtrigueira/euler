@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.ONE;
 
-public class PolygonalSequence extends ArithmeticNumberSequence<BigInteger> {
+public class PolygonalSequence extends ArithmeticSequence<BigInteger> {
     private BigInteger index = ONE;
     private final Polygonal polygonal;
 

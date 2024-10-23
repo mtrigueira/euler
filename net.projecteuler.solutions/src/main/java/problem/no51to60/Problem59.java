@@ -11,16 +11,10 @@ public class Problem59 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=59
         problem("XOR decryption");
-        solution(decrypt());
+        solution(decrypt(MESSAGE));
     }
 
-    private static int decrypt() {
-        Byte[] encryptedBytes = FileUtils.getStringsBetweenSeparator("/0059_cipher.txt", ",").map(Byte::valueOf).toArray(Byte[]::new);
-
-        byte[] encrypted = new byte[encryptedBytes.length];
-        for (int i = 0; i < encryptedBytes.length; i++)
-            encrypted[i] = encryptedBytes[i];
-
+    static int decrypt(byte[] encrypted) {
         for (char i = 'a'; i <= 'z'; i++)
             for (char j = 'a'; j <= 'z'; j++)
                 for (char k = 'a'; k <= 'z'; k++) {
@@ -53,11 +47,11 @@ public class Problem59 {
         return false;
     }
 
-    private static byte[] decrypt(byte[] encrypted, char a, char b, char c) {
+    static byte[] decrypt(byte[] encrypted, char a, char b, char c) {
         byte[] decrypted = new byte[encrypted.length];
         byte[] key = new byte[]{(byte) a, (byte) b, (byte) c};
 
-        for (int i = 0; i < encrypted.length-2; i++)
+        for (int i = 0; i < encrypted.length; i++)
             decrypted[i] = (byte) (encrypted[i] ^ key[i % 3]);
 
         return decrypted;
@@ -69,4 +63,6 @@ public class Problem59 {
 
         System.out.println();
     }
+
+    private static final byte[] MESSAGE = FileUtils.getString("/0059_cipher.txt").getBytes(StandardCharsets.UTF_8);
 }

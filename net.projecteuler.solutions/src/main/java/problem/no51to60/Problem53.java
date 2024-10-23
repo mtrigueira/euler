@@ -12,12 +12,12 @@ public class Problem53 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=53
         problem("Combinatoric selections");
-        solution(combinatoricSelections());
+        solution(combinatoricSelections(100));
     }
 
-    private static int combinatoricSelections() {
+    static int combinatoricSelections(int until) {
         int count = 0;
-        for (int n = 1; n <= 100; n++) {
+        for (int n = 1; n <= until; n++) {
             for (int r = 1; r <= n; r++) {
                 if (greaterThan(combinatoricSelection(n, r),1_000_000))
                     count++;
