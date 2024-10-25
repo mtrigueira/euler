@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utils.SetMaker.set;
+import static utils.Maker.set;
 
 class ProperDivisorsTest {
     @Test

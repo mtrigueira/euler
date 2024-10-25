@@ -11,15 +11,26 @@ public class SimpleFraction extends Fraction {
         return factory(numerator, denominator).simplify();
     }
 
+    public static SimpleFraction of(int nRight) {
+        return of(BigInteger.valueOf(nRight));
+    }
+    public static SimpleFraction of(int nRight, int dRight) {
+        return of(BigInteger.valueOf(nRight), BigInteger.valueOf(dRight));
+    }
+    public static SimpleFraction of(BigInteger aSubN) {
+        return of(aSubN, BigInteger.ONE);
+    }
+
     private static SimpleFraction factory(BigInteger numerator, BigInteger denominator) {
         return new SimpleFraction(numerator, denominator);
     }
-    private SimpleFraction(BigInteger numerator, BigInteger denominator) {
-        super(numerator, denominator, numerator + "/" + denominator);
+
+    public static SimpleFraction of(int i, BigInteger cheat) {
+        return of(BigInteger.valueOf(i),cheat);
     }
 
-    public static SimpleFraction of(int nRight, int dRight) {
-        return of(BigInteger.valueOf(nRight), BigInteger.valueOf(dRight));
+    private SimpleFraction(BigInteger numerator, BigInteger denominator) {
+        super(numerator, denominator, numerator + "/" + denominator);
     }
 
     private SimpleFraction simplify() {
@@ -51,5 +62,13 @@ public class SimpleFraction extends Fraction {
     public SimpleFraction divide(SimpleFraction that) {
         return SimpleFraction.of( this.numerator().multiply(that.denominator()),
                 this.denominator().multiply(that.numerator()));
+    }
+
+    public SimpleFraction subtract(SimpleFraction that) {
+        return add(that.multiply(SimpleFraction.of(-1)));
+    }
+
+    public SimpleFraction reciprocal() {
+        return SimpleFraction.of(d, n);
     }
 }
