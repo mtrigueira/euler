@@ -5,13 +5,12 @@ import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem48 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=48
-        problem("Self powers");
-        solution(lastDigits(10));
+        problem("Self powers",
+        () -> lastDigits(10));
     }
 
     static String lastDigits(int i) {

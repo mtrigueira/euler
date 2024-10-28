@@ -12,4 +12,6 @@ class Problem46Test {
     void goldbachsOtherConjecture() {
         assertEquals(Optional.of(big(5993)), Problem46.goldbachsOtherConjecture(2));
     }
+
+
 }

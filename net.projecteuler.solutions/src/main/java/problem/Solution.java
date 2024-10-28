@@ -2,33 +2,21 @@ package problem;
 
 import utils.Stopwatch;
 
-import java.math.BigInteger;
+import java.util.concurrent.Callable;
 
 public class Solution {
-    private static Stopwatch stopwatch;
-
     private Solution() {
     }
 
-    public static void problem(String problem) {
+    public static void problem(String problem, Callable<Object> solution) {
+        Stopwatch stopwatch;
         stopwatch = Stopwatch.start();
         System.out.println(problem);
-    }
-
-    public static void solution(int i) {
-        solution(Integer.toString(i));
-    }
-
-    public static void solution(long i) {
-        solution(Long.toString(i));
-    }
-
-    public static void solution(BigInteger i) {
-        solution(i.toString());
-    }
-
-    public static void solution(String s) {
-        System.out.println(s);
+        try {
+            System.out.println(solution.call().toString());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         stopwatch.println();
     }
 }

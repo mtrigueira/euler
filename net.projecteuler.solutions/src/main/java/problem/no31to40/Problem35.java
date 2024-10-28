@@ -6,14 +6,12 @@ import utils.sequence.arithmetic.PrimeSequence;
 import java.math.BigInteger;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem35 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=35
-        problem("Circular primes");
-
-        solution(countCircularPrimesBelow(1_000_000));
+        problem("Circular primes",
+        () -> countCircularPrimesBelow(1_000_000));
     }
 
     static long countCircularPrimesBelow(int limit) {

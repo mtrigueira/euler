@@ -5,13 +5,12 @@ import utils.DigitPower;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem30 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=30
-        problem("Digit fifth powers");
-        solution(sumWhereDigitPowersSumEqualsNumberFor(5));
+        problem("Digit fifth powers",
+        () -> sumWhereDigitPowersSumEqualsNumberFor(5));
     }
 
     static long sumWhereDigitPowersSumEqualsNumberFor(int exponent) {

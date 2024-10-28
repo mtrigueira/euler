@@ -17,4 +17,6 @@ class Problem41Test {
     void findPanDigitalPrimes5() {
         assertEquals(Prime.of("4231"), Problem41.findPanDigitalPrimes(5));
     }
+
+
 }

@@ -9,9 +9,12 @@ public class Factorial {
     private Factorial() {
     }
 
-    public static long of(long n) {
-        BigInteger f = ofBig(BigInteger.valueOf(n));
-        return f.longValueExact();
+    public static long of(int n) {
+        return ofBig(n).longValueExact();
+    }
+
+    public static BigInteger ofBig(long n) {
+        return ofBig(BigInteger.valueOf(n));
     }
 
     public static BigInteger ofBig(BigInteger n) {

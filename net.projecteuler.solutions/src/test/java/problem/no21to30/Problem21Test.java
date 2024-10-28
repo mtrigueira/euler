@@ -41,4 +41,6 @@ class Problem21Test {
     void sumBelow220() {
         assertEquals(0, Problem21.below(220));
     }
+
+
 }

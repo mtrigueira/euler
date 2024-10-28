@@ -42,4 +42,6 @@ class Problem9Test {
         var t = Triplet.of(a, b, c);
         return t.product()== Problem9.productWhenSumEquals(t.sum());
     }
+
+
 }

@@ -10,4 +10,6 @@ class Problem59Test {
     void decrypt() {
         assertEquals(4189, Problem59.decrypt(ENCRYPTED));
     }
+
+
 }

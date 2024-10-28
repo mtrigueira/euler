@@ -7,15 +7,14 @@ import java.math.BigInteger;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Problem10 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
-        problem("Sum of primes below 2,000,000");
-
-        solution(sumOfPrimesBelow(2_000_000));
+        problem("Sum of primes below 2,000,000",
+                () ->
+                        sumOfPrimesBelow(2_000_000));
     }
 
     static BigInteger sumOfPrimesBelow(int i) {

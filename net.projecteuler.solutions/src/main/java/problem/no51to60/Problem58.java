@@ -7,13 +7,12 @@ import java.math.BigInteger;
 import java.util.List;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem58 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=58
-        problem("Spiral primes");
-        solution(countOfPrimeDiagonalsInAGridOfNLayers(10));
+        problem("Spiral primes",
+        () -> countOfPrimeDiagonalsInAGridOfNLayers(10));
     }
 
     static long countOfPrimeDiagonalsInAGridOfNLayers(int percent) {

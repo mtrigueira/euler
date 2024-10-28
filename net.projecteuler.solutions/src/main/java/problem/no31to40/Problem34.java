@@ -7,13 +7,12 @@ import java.util.stream.IntStream;
 
 import static java.lang.Math.toIntExact;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem34 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=34
-        problem("Digit factorials");
-        solution(sumOfNumbersWhereTheSumOfItsDigitsEqualsItself());
+        problem("Digit factorials",
+                Problem34::sumOfNumbersWhereTheSumOfItsDigitsEqualsItself);
     }
 
     private static int sumOfNumbersWhereTheSumOfItsDigitsEqualsItself() {

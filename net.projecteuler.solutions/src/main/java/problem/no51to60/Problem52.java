@@ -1,13 +1,12 @@
 package problem.no51to60;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem52 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=52
-        problem("Permuted multiples");
-        solution(permutedMultiples(6));
+        problem("Permuted multiples",
+        () -> permutedMultiples(6));
     }
 
     static int permutedMultiples(int maxMultiplier) {

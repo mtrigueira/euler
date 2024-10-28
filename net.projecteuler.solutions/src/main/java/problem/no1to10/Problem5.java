@@ -5,17 +5,17 @@ import utils.operator.Factorial;
 import java.util.stream.LongStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem5 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=5
-        problem("Smallest multiple");
-        solution(of(20));
+        problem("Smallest multiple",
+                ()->
+                        smallestEvenlyDivisibleByAllNaturalNumbersBelow(20));
     }
 
-    public static long of(int n) {
-        return LongStream.rangeClosed(1, Factorial.of(n))
+    public static long smallestEvenlyDivisibleByAllNaturalNumbersBelow(int n) {
+        return LongStream.rangeClosed(n, Factorial.of(n))
                 .filter(candidate -> isDivisibleByNaturalNumbersTo(candidate, n))
                 .findFirst().orElse(-1L);
     }

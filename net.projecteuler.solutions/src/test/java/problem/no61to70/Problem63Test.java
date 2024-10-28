@@ -9,4 +9,6 @@ class Problem63Test {
     void powerfulDigitCounts2exp2() {
         assertEquals(1, Problem63.powerfulDigitCounts(2,2));
     }
+
+
 }

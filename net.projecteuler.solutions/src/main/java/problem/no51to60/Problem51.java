@@ -7,15 +7,14 @@ import utils.sequence.arithmetic.PrimeSequence;
 import java.math.BigInteger;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem51 {
     static int minPrime = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=51
-        problem("Prime digit replacements");
-        solution(smallestPrime(8));
+        problem("Prime digit replacements",
+        () -> smallestPrime(8));
     }
 
     static Prime smallestPrime(int familySize) {

@@ -39,4 +39,6 @@ class Problem12Test {
         BigInteger b = BigInteger.valueOf(candidate);
         assertEquals(count, Problem12.countFactors(b));
     }
+
+
 }

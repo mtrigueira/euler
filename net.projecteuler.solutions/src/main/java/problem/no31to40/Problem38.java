@@ -5,13 +5,12 @@ import utils.Pandigital;
 import java.util.stream.LongStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem38 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=38
-        problem("Largest pandigital multiple");
-        solution(largestPandigitalMultiple(10_000));
+        problem("Largest pandigital multiple",
+        () -> largestPandigitalMultiple(10_000));
     }
 
     static long largestPandigitalMultiple(int endExclusive) {

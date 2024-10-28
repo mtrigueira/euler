@@ -9,4 +9,6 @@ class Problem8Test {
     void greatestProductOfAdjacentDigits() {
         assertEquals(5832, Problem8.greatestProductOfAdjacentDigits(4));
     }
+
+
 }

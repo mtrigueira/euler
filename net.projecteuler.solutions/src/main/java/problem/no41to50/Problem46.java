@@ -9,12 +9,11 @@ import java.util.Optional;
 
 import static java.math.BigInteger.TWO;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem46 {
     public static void main(String[] args) {
-        problem("Goldbach's other conjecture");
-        solution(goldbachsOtherConjecture(1).map(BigInteger::toString).orElse("Not found"));
+        problem("Goldbach's other conjecture",
+        () -> goldbachsOtherConjecture(1).map(BigInteger::toString).orElse("Not found"));
     }
 
     static Optional<BigInteger> goldbachsOtherConjecture(int failure) {

@@ -7,17 +7,16 @@ import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.polyagonal.Polygonal.TRIANGULAR;
 
 public class Problem42 {
 
-    public static final Stream<String> WORDS = FileUtils.getNames("/0042_words.txt");
+    public static final String WORDS_TXT = "/0042_words.txt";
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=42
-        problem("Coded triangle numbers");
-        solution(countTriangularWords(WORDS));
+        problem("Coded triangle numbers",
+        () -> countTriangularWords(FileUtils.getNames(WORDS_TXT)));
     }
 
     static long countTriangularWords(Stream<String> words) {
@@ -27,4 +26,5 @@ public class Problem42 {
                 .filter(TRIANGULAR::is)
                 .count();
     }
+
 }

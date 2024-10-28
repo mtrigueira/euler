@@ -9,4 +9,6 @@ class Problem58Test {
     void countOfPrimeDiagonalsInAGridOfNLayers() {
         assertEquals(5, Problem58.countOfPrimeDiagonalsInAGridOfNLayers(60));
     }
+
+
 }

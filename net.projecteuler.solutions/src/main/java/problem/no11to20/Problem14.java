@@ -6,15 +6,14 @@ import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ONE;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem14 {
     public static final int LIMIT = 1000000;
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=14
-        problem("Longest Collatz sequence");
-        solution(getMaxChainLengthNumberForNaturalNumbersBelow(LIMIT));
+        problem("Longest Collatz sequence",
+        () -> getMaxChainLengthNumberForNaturalNumbersBelow(LIMIT));
     }
 
     static long getMaxChainLengthNumberForNaturalNumbersBelow(int limit) {

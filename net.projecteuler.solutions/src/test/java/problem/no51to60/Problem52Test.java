@@ -9,4 +9,6 @@ class Problem52Test {
     void permutedMultiples() {
         assertEquals(125874, Problem52.permutedMultiples(2));
     }
+
+
 }

@@ -15,4 +15,6 @@ class Problem43Test {
     void findDivisiblePanDigitals() {
         assertEquals("22212", Problem43.findDivisiblePanDigitals(4));
     }
+
+
 }

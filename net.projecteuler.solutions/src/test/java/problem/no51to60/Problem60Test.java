@@ -19,4 +19,7 @@ class Problem60Test {
     void test4() {
         assertEquals(792, Problem60.sumOfPrimePairSets(4));
     }
+
+
+
 }

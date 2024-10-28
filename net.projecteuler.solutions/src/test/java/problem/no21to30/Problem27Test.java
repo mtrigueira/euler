@@ -9,4 +9,6 @@ class Problem27Test {
     void productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime() {
         assertEquals(-41, Problem27.productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(2, 42));
     }
+
+
 }

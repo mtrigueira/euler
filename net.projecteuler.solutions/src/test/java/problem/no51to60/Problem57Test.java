@@ -9,4 +9,6 @@ class Problem57Test {
     void countFractions() {
         assertEquals(15, Problem57.countFractions(100));
     }
+
+
 }

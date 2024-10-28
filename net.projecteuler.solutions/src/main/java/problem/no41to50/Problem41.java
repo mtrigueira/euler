@@ -10,15 +10,14 @@ import java.util.List;
 import java.util.Optional;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem41 {
     private static final List<String> DIGITS = List.of("123456789".split(""));
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=41
-        problem("Pandigital prime");
-        solution(
+        problem("Pandigital prime",
+        () -> 
                 findPanDigitalPrimes(10)
                         .map(Prime::toString)
                         .orElse("No pandigital primes found")

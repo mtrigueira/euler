@@ -7,13 +7,12 @@ import java.math.BigInteger;
 import java.util.Optional;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem45 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=45
-        problem("Triangular, pentagonal, and hexagonal");
-        solution(triangularPentagonalAndHexagonalAfter(40755).map(BigInteger::toString).orElse("Not found"));
+        problem("Triangular, pentagonal, and hexagonal",
+        () -> triangularPentagonalAndHexagonalAfter(40755).map(BigInteger::toString).orElse("Not found"));
     }
 
     static Optional<BigInteger> triangularPentagonalAndHexagonalAfter(int after) {

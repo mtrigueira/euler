@@ -9,14 +9,12 @@ import java.util.Optional;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem33 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=33
-        problem("Digit cancelling fractions");
-
-        solution(productOfDenominatorsOfDigitCancellingFractions().map(Objects::toString).orElse("Not found"));
+        problem("Digit cancelling fractions",
+        () -> productOfDenominatorsOfDigitCancellingFractions().map(Objects::toString).orElse("Not found"));
     }
 
     static Optional<Long> productOfDenominatorsOfDigitCancellingFractions() {

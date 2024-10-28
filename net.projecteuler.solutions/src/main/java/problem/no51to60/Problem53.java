@@ -5,14 +5,13 @@ import utils.operator.Factorial;
 import java.math.BigInteger;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.operator.BigComparisonOperator.greaterThan;
 
 public class Problem53 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=53
-        problem("Combinatoric selections");
-        solution(combinatoricSelections(100));
+        problem("Combinatoric selections",
+        () -> combinatoricSelections(100));
     }
 
     static int combinatoricSelections(int until) {

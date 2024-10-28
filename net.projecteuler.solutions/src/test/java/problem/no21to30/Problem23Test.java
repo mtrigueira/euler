@@ -30,4 +30,6 @@ class Problem23Test {
     void sumOfNonAbundantSums(int n, long sum) {
         assertEquals(sum, Problem23.sumOfNonAbundantSums(n));
     }
+
+
 }

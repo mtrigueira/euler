@@ -9,4 +9,6 @@ class Problem64Test {
     void countOddPeriodSquareRoots() {
         assertEquals(4, Problem64.countOddPeriodSquareRoots(13));
     }
+
+
 }

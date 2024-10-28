@@ -6,7 +6,6 @@ import utils.prime.Prime;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Problem51Test {
-
     @Test
     void replacementPrimeCountX3() {
         assertEquals(6, Problem51.replacementPrimeCount("*3", 8));
@@ -21,4 +20,6 @@ class Problem51Test {
     void smallestPrime() {
         assertEquals(Prime.of("13").orElseThrow(), Problem51.smallestPrime(6));
     }
+
+
 }

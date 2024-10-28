@@ -17,4 +17,6 @@ class Problem34Test {
         Problem34.doesSumOfFactorialsOfDigitsEqualsItself(120);
         assertFalse(Problem34.doesSumOfFactorialsOfDigitsEqualsItself(123));
     }
+
+
 }

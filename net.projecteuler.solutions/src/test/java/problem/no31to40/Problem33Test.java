@@ -11,4 +11,6 @@ class Problem33Test {
     void productOfDenominatorsOfDigitCancellingFractions() {
         assertEquals(Optional.of(100L), Problem33.productOfDenominatorsOfDigitCancellingFractions());
     }
+
+
 }

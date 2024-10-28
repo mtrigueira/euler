@@ -40,4 +40,6 @@ class Problem31Test {
     public void testSolution7() {
         assertEquals(6, countWaysToMakeUsingAnyNumberOfCoins(7));
     }
+
+
 }

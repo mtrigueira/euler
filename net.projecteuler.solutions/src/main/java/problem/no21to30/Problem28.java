@@ -8,13 +8,12 @@ import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem28 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=28
-        problem("Number spiral diagonals");
-        solution(sumOfDiagonalsInAGridOfSizeNxN(1001));
+        problem("Number spiral diagonals",
+        () -> sumOfDiagonalsInAGridOfSizeNxN(1001));
     }
 
     static BigInteger sumOfDiagonalsInAGridOfSizeNxN(int n) {

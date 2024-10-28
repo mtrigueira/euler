@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.polyagonal.Polygonal.PENTAGONAL;
 
 public class Problem44 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=44
-        problem("Pentagonal numbers");
-        solution(minimumDifferenceForPolygonalPairs(PENTAGONAL));
+        problem("Pentagonal numbers",
+        () -> minimumDifferenceForPolygonalPairs(PENTAGONAL));
     }
 
     static BigInteger minimumDifferenceForPolygonalPairs(Polygonal polygonal) {

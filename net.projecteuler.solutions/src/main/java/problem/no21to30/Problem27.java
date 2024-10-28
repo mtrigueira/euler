@@ -7,14 +7,13 @@ import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.prime.PrimeChecker.isPrime;
 
 public class Problem27 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=27
-        problem("Quadratic primes");
-        solution(productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(1000, 1000));
+        problem("Quadratic primes",
+        () -> productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(1000, 1000));
     }
 
     static long productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(int a, int b) {

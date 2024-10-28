@@ -10,4 +10,6 @@ class Problem26Test {
     void indexOfLargestReciprocalCycle() {
         assertEquals(big(7),Problem26.indexOfLargestReciprocalCycle(11));
     }
+
+
 }
