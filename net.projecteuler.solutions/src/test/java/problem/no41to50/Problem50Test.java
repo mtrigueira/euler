@@ -14,4 +14,6 @@ class Problem50Test {
     void test1000() {
         assertEquals(953, Problem50.largestConsecutivePrimeSumBelow(1000).orElseThrow().intValueExact());
     }
+
+
 }

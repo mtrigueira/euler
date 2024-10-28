@@ -8,13 +8,12 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem19 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=19
-        problem("Counting Sundays");
-        solution(between(1901, 2000));
+        problem("Counting Sundays",
+        () -> between(1901, 2000));
     }
 
     static long between(int startYear, int endYear) {

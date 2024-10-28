@@ -3,14 +3,13 @@ package problem.no51to60;
 import utils.SimpleFraction;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.SimpleFraction.*;
 
 public class Problem57 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=57
-        problem("Square root convergents");
-        solution(countFractions(1000));
+        problem("Square root convergents",
+        () -> countFractions(1000));
     }
 
     static int countFractions(int until) {

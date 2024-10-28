@@ -39,4 +39,6 @@ public class Problem7Test {
         Prime big = Prime.of(BigInteger.valueOf(i)).orElseThrow();
         assertEquals(big, Problem7.prime(n));
     }
+
+
 }

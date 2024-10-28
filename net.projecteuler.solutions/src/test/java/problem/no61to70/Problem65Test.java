@@ -14,4 +14,6 @@ class Problem65Test {
     void convergentsOfE9() {
         assertEquals(13, Problem65.convergentsOfE(9));
     }
+
+
 }

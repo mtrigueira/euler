@@ -9,4 +9,6 @@ class Problem56Test {
     void powerfulDigitSum() {
         assertEquals(45L, Problem56.powerfulDigitSum(10));
     }
+
+
 }

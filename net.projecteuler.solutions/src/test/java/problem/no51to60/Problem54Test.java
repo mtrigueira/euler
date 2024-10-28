@@ -2,6 +2,8 @@ package problem.no51to60;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class Problem54Test {
@@ -14,21 +16,25 @@ class Problem54Test {
             """.trim();
     @Test
     void countPlayer1Wins3of5() {
-        assertEquals(3, Problem54.countPlayer1Wins(GAMES.lines()));
+        assertEquals(3, Problem54.countPlayer1Wins(skipGames(0)));
     }
 
     @Test
     void countPlayer1Wins3of4() {
-        assertEquals(3, Problem54.countPlayer1Wins(GAMES.lines().skip(1)));
+        assertEquals(3, Problem54.countPlayer1Wins(skipGames(1)));
     }
 
     @Test
     void countPlayer1Wins2of3() {
-        assertEquals(2, Problem54.countPlayer1Wins(GAMES.lines().skip(2)));
+        assertEquals(2, Problem54.countPlayer1Wins(skipGames(2)));
     }
 
     @Test
     void countPlayer1Wins2of2() {
-        assertEquals(2, Problem54.countPlayer1Wins(GAMES.lines().skip(3)));
+        assertEquals(2, Problem54.countPlayer1Wins(skipGames(3)));
+    }
+
+    private Stream<String> skipGames(int n) {
+        return GAMES.lines().skip(n);
     }
 }

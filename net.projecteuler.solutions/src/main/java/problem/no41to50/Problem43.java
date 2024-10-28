@@ -8,18 +8,17 @@ import java.math.BigInteger;
 import java.util.List;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem43 {
-    public static void main(String[] args) {
-        // https://projecteuler.net/problem=41
-        problem("Pandigital primes");
-
-        solution(findDivisiblePanDigitals(10));
-    }
-
     private static final List<String> DIGITS = List.of("0123456789".split(""));
     private static final Prime[] primes = PrimeSequence.fromFirst().nextArray(8);
+
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=41
+        problem("Pandigital primes",
+                () -> findDivisiblePanDigitals(10));
+    }
+
     static String findDivisiblePanDigitals(int limit) {
         return new CombinationSequence<>(DIGITS.subList(0, limit), (a, b) -> a + b).stream()
                 .filter(Problem43::areAllSubstringsDivisible)
@@ -30,7 +29,7 @@ public class Problem43 {
     }
 
     static boolean areAllSubstringsDivisible(String digits) {
-        for (int j = 1; j < digits.length()-2; j++)
+        for (int j = 1; j < digits.length() - 2; j++)
             if (!isSubstringDivisible(digits, j)) return false;
 
         return true;

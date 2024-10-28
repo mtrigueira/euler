@@ -9,13 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem60 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=
-        problem("Prime pair sets");
-        solution(sumOfPrimePairSets(5));
+        problem("Prime pair sets",
+        () -> sumOfPrimePairSets(5));
     }
 
     static int sumOfPrimePairSets(int i) {

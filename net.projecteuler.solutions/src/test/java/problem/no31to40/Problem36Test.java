@@ -9,4 +9,6 @@ class Problem36Test {
     void sumOfDoubleBasePalindromesBelow() {
         assertEquals(25, Problem36.sumOfDoubleBasePalindromesBelow(10));
     }
+
+
 }

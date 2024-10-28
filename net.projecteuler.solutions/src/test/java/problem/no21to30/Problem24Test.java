@@ -51,4 +51,6 @@ class Problem24Test {
     private static String sorted(String permutation) {
         return Arrays.stream(permutation.split("")).sorted().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
     }
+
+
 }

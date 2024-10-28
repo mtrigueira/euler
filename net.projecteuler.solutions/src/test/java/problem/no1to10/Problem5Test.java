@@ -23,7 +23,7 @@ class Problem5Test {
             "360360, 13"
     })
     void assertMultipleOf(int expected, int i) {
-        assertEquals(expected, Problem5.of(i));
+        assertEquals(expected, Problem5.smallestEvenlyDivisibleByAllNaturalNumbersBelow(i));
     }
 
     @ParameterizedTest(name = "{1}! should be {0}")
@@ -37,7 +37,7 @@ class Problem5Test {
             "39916800, 11",
             "2432902008176640000, 20"
     })
-    void factorial(long expected, long i) {
+    void factorial(long expected, int i) {
         assertEquals(expected, Factorial.of(i));
     }
 }

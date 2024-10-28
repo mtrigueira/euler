@@ -6,14 +6,13 @@ import java.math.BigInteger;
 import java.util.*;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.polyagonal.Polygonal.POLYGONALS;
 
 public class Problem61 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=61
-        problem("Cyclical figurate numbers");
-        solution(cyclicNumbersWithUniquePolygonals(6));
+        problem("Cyclical figurate numbers",
+        () -> cyclicNumbersWithUniquePolygonals(6));
     }
 
     static int cyclicNumbersWithUniquePolygonals(int count) {

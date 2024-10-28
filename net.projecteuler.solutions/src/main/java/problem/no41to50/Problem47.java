@@ -6,13 +6,12 @@ import utils.property.Factors;
 import java.math.BigInteger;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem47 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=47
-        problem("Distinct primes factors");
-        solution(firstNConsecutiveIntegersToHaveNDistinctPrimes(4));
+        problem("Distinct primes factors",
+        () -> firstNConsecutiveIntegersToHaveNDistinctPrimes(4));
     }
 
     static BigInteger firstNConsecutiveIntegersToHaveNDistinctPrimes(int n) {

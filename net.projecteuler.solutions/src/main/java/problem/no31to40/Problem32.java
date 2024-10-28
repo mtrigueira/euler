@@ -6,20 +6,17 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem32 {
     private static final List<String> DIGITS = List.of("123456789".split(""));
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=32
-        problem("Pandigital products");
-        CombinationSequence<String> combiner = new CombinationSequence<>(DIGITS, (a, b) -> a + b);
-
-        solution(getSum(combiner));
+        problem("Pandigital products",
+                () -> getSum(new CombinationSequence<>(DIGITS, (a, b) -> a + b)));
     }
 
-    private static int getSum(CombinationSequence<String> combiner) {
+    static int getSum(CombinationSequence<String> combiner) {
         return combiner.stream()
                 .flatMapToInt(combination ->
                         IntStream.range(1, combination.length() - 2)

@@ -19,4 +19,6 @@ class Problem42Test {
     void countTriangularWords2() {
         assertEquals(2, Problem42.countTriangularWords("A\nBANANA\nSKY".lines()));
     }
+
+
 }

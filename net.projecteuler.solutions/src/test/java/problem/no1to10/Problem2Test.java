@@ -27,4 +27,6 @@ class Problem2Test {
         BigInteger b = BigInteger.valueOf(expected);
         assertEquals(b, Problem2.sum(limit));
     }
+
+
 }

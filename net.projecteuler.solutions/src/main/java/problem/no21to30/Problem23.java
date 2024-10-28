@@ -8,7 +8,6 @@ import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem23 {
@@ -17,8 +16,8 @@ public class Problem23 {
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=23
-        problem("Non-abundant sums");
-        solution(sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
+        problem("Non-abundant sums",
+        () -> sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
     }
 
     static long sumOfNonAbundantSums(int n) {

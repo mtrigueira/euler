@@ -29,4 +29,6 @@ class Problem20Test {
     void Ten() {
         assertEquals(27, Problem20.sumOfFactorial(10));
     }
+
+
 }

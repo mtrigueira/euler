@@ -9,4 +9,6 @@ class Problem22Test {
     void forFile() {
         assertEquals(28, Problem22.forFile("InVaLiD_FiLeName.txt"));
     }
+
+
 }

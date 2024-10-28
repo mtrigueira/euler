@@ -9,4 +9,6 @@ class Problem30Test {
     void sumForExponentDigitPowers() {
         assertEquals(19316, Problem30.sumWhereDigitPowersSumEqualsNumberFor(4));
     }
+
+
 }

@@ -15,4 +15,6 @@ class Problem18Test {
     void maxPathSum() {
         assertEquals(14, TRIANGLE);
     }
+
+
 }

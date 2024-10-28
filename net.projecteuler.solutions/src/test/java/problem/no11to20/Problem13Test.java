@@ -3,9 +3,6 @@ package problem.no11to20;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem13Test {
@@ -22,8 +19,8 @@ class Problem13Test {
     void sum(String testRow) {
         String[] temp = testRow.split(":");
         String expected = temp[0];
-        Stream<String> numbers = Arrays.stream(temp[1].split(","));
+        String numbers = temp[1].replace(',','\n');
 
-        assertEquals(expected, Problem13.sum(numbers));
+        assertEquals(expected, Problem13.sum(numbers.lines()));
     }
 }

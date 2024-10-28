@@ -11,4 +11,6 @@ class Problem49Test {
     void primePermutations() {
         assertEquals("148748178147", Problem49.primePermutations(List.of()));
     }
+
+
 }

@@ -7,16 +7,15 @@ import utils.card.Result;
 import java.util.stream.Stream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem54 {
 
-    public static final Stream<String> GAMES = FileUtils.getStrings("/0054_poker.txt");
+    public static final String POKER_TXT = "/0054_poker.txt";
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=54
-        problem("Poker hands");
-        solution(countPlayer1Wins(GAMES));
+        problem("Poker hands",
+        () -> countPlayer1Wins(FileUtils.getNames(POKER_TXT)));
     }
 
     static long countPlayer1Wins(Stream<String> games) {
@@ -26,5 +25,6 @@ public class Problem54 {
                 .filter(Result::isLeft)
                 .count();
     }
+
 }
 

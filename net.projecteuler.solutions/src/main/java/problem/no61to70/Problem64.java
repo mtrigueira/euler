@@ -3,14 +3,13 @@ package problem.no61to70;
 import utils.SqrtContinuedFraction;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 import static utils.SqrtContinuedFraction.isPerfectSquare;
 
 public class Problem64 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=64
-        problem("Odd period square roots");
-        solution(countOddPeriodSquareRoots(10_000));
+        problem("Odd period square roots",
+        () -> countOddPeriodSquareRoots(10_000));
     }
 
     static int countOddPeriodSquareRoots(int limitInclusive) {

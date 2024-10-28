@@ -5,14 +5,12 @@ import utils.sequence.arithmetic.ChampernowneSequence;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem40 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=40
-        problem("Champernowne's constant");
-
-        solution(productOfChampernownesDigetsAtPositionsMod10Below(1_000_000));
+        problem("Champernowne's constant",
+        () -> productOfChampernownesDigetsAtPositionsMod10Below(1_000_000));
     }
 
     static int productOfChampernownesDigetsAtPositionsMod10Below(int limit) {

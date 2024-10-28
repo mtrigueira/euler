@@ -4,13 +4,12 @@ import utils.ContinuedFraction;
 import utils.SimpleFraction;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem65 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=65
-        problem("Convergents of e");
-        solution(convergentsOfE(100));
+        problem("Convergents of e",
+        () -> convergentsOfE(100));
     }
 
     static int convergentsOfE(int n) {

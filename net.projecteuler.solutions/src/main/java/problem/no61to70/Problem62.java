@@ -6,13 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem62 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=62
-        problem("Cubic Permutations");
-        solution(lowestValueWithCubicPermutations(5));
+        problem("Cubic Permutations",
+        () -> lowestValueWithCubicPermutations(5));
     }
 
     static BigInteger lowestValueWithCubicPermutations(int targetNumberOfPermutations) {

@@ -4,13 +4,12 @@ import java.math.BigInteger;
 import java.util.stream.LongStream;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem56 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=56
-        problem("Powerful digit sum");
-        solution(powerfulDigitSum(100));
+        problem("Powerful digit sum",
+        () -> powerfulDigitSum(100));
     }
 
     static long powerfulDigitSum(int endInclusive) {

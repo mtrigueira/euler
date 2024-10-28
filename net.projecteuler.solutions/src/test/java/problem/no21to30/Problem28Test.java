@@ -8,8 +8,6 @@ import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem28Test {
-
-
     @ParameterizedTest
     @CsvSource({
             "1, 1",
@@ -20,4 +18,6 @@ class Problem28Test {
     void sumOfDiagonalsInAGridOfSize1x1(int expected, int gridSize) {
         assertEquals(BigInteger.valueOf(expected), Problem28.sumOfDiagonalsInAGridOfSizeNxN(gridSize));
     }
+
+
 }

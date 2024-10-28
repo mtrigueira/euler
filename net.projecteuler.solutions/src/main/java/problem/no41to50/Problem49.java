@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem49 {
 
@@ -16,8 +15,8 @@ public class Problem49 {
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=49
-        problem("Prime permutations");
-        solution(primePermutations(EXCLUDE));
+        problem("Prime permutations",
+        () -> primePermutations(EXCLUDE));
     }
 
     static String primePermutations(List<Prime> exclude) {

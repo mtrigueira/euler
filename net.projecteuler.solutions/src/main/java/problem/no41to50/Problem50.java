@@ -11,12 +11,11 @@ import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem50 {
     public static void main(String[] args) {
-        problem("Consecutive prime sum");
-        solution(
+        problem("Consecutive prime sum",
+        () -> 
                 largestConsecutivePrimeSumBelow(1_000_000)
                         .map(Prime::toString)
                         .orElse("Not found")

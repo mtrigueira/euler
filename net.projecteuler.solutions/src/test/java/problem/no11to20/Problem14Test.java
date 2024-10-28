@@ -19,4 +19,6 @@ class Problem14Test {
     void getMaxChainLengthNumberForNaturalNumbersBelow() {
         assertEquals(9, Problem14.getMaxChainLengthNumberForNaturalNumbersBelow(14));
     }
+
+
 }

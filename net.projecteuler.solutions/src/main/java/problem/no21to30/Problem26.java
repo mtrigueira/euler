@@ -8,13 +8,12 @@ import java.util.stream.IntStream;
 
 import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem26 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=26
-        problem("Reciprocal cycles");
-        solution(indexOfLargestReciprocalCycle(1000));
+        problem("Reciprocal cycles",
+        () -> indexOfLargestReciprocalCycle(1000));
     }
 
     static BigInteger indexOfLargestReciprocalCycle(int endExclusive) {

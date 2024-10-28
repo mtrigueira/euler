@@ -10,4 +10,6 @@ class Problem25Test {
     void fibonacci() {
         assertEquals(12, Problem25.indexOfFirstFibonacciNumberWithLengthAtLeast(3));
     }
+
+
 }

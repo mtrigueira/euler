@@ -14,7 +14,6 @@ public class Problem6Test {
             "4, 70",
             "10, 2640"
     })
-
     void problem6(int i, int expected) {
         assertEquals(expected, Problem6.of(i));
     }
@@ -27,7 +26,6 @@ public class Problem6Test {
             "4, 100",
             "10, 3025"
     })
-
     void squareOfSumsIs(int i, int expected) {
         assertEquals(expected, Problem6.squareOfSums(i));
     }
@@ -44,4 +42,6 @@ public class Problem6Test {
     void sumOfSquaresIs(int i, int expected) {
         assertEquals(expected, Problem6.sumOfSquares(i));
     }
+
+
 }

@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static utils.polyagonal.Polygonal.POLYGONALS;
 
 class Problem61Test {
-
     public static final Problem61.Node EG3 = new Problem61.Node(3, List.of(Polygonal.TRIANGULAR), List.of());
     public static final Problem61.Node EG4 = new Problem61.Node(4, List.of(Polygonal.SQUARE), List.of());
 
@@ -36,4 +35,6 @@ class Problem61Test {
         var b = BigInteger.valueOf(i);
         return POLYGONALS.stream().filter(p -> p.is(b)).toList();
     }
+
+
 }

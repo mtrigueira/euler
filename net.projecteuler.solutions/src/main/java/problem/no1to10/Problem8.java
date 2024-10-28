@@ -4,13 +4,12 @@ import utils.FileUtils;
 import utils.sequence.given.WideNumberProductSequence;
 
 import static problem.Solution.problem;
-import static problem.Solution.solution;
 
 public class Problem8 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=8
-        problem("Largest product in a series");
-        solution(greatestProductOfAdjacentDigits(13));
+        problem("Largest product in a series",
+        () -> greatestProductOfAdjacentDigits(13));
     }
 
     static Long greatestProductOfAdjacentDigits(int numberOfAdjacentDigits) {
