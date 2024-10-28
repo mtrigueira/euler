@@ -11,6 +11,8 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem60 {
+     private Problem60() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=
         problem("Prime pair sets",

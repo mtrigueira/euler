@@ -6,6 +6,8 @@ import utils.operator.Factorial;
 import static problem.Solution.problem;
 
 public class Problem20 {
+     private Problem20() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=20
         problem("Factorial digit sum",

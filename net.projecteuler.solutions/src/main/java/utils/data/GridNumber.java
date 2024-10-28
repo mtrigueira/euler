@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class GridNumber {
+    private GridNumber() {
+    }
 
     public static final Pattern SPACE = Pattern.compile(" ");
 

@@ -19,7 +19,7 @@ public class Polygonal {
     private final BigInteger sMinus4;
     private final String name;
 
-    private Polygonal(BigInteger sides, String name) {
+    Polygonal(BigInteger sides, String name) {
         this.name = name;
         if(sides==null) throw new IllegalArgumentException("sides cannot be null");
         this.sides = sides;

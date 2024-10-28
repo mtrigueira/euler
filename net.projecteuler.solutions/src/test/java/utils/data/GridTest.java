@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GridTest {
+    @Test
+    void findMaxProduct0x0w0() {
+        assertEquals(0, Grid.of(new short[][]{}).findMaxProduct( 0));
+    }
 
     @Test
     void findMaxProduct0x0w1() {

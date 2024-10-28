@@ -7,6 +7,8 @@ import java.nio.charset.StandardCharsets;
 import static problem.Solution.problem;
 
 public class Problem59 {
+     private Problem59() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=59
         problem("XOR decryption",

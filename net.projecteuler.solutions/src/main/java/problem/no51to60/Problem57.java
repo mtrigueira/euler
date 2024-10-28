@@ -6,6 +6,8 @@ import static problem.Solution.problem;
 import static utils.SimpleFraction.*;
 
 public class Problem57 {
+     private Problem57() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=57
         problem("Square root convergents",

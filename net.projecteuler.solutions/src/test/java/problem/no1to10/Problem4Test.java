@@ -40,6 +40,4 @@ public class Problem4Test {
     void forZeroDigit() {
         assertThrows(RuntimeException.class, ()->Problem4.productOfDigits(0));
     }
-
-
 }

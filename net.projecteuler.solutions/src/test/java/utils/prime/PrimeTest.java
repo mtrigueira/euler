@@ -3,7 +3,10 @@ package utils.prime;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.BigIntegerConstants.big;
 
 class PrimeTest {
     @ParameterizedTest
@@ -16,6 +19,8 @@ class PrimeTest {
         boolean isPrime = PrimeChecker.isPrime(notPrime);
         assertPrimeImplementations(notPrime, isPrime);
         assertFalse(isPrime);
+        assertFalse(CachedPrimeChecker.isPrime(big(notPrime)));
+        assertEquals(Optional.empty(), Prime.of(Integer.toString(notPrime)));
     }
 
     @ParameterizedTest
@@ -27,7 +32,16 @@ class PrimeTest {
     }
 
     private static void assertPrimeImplementations(int candidate, boolean isPrime) {
-        assertEquals(isPrime, BruteForcePrimeChecker.isPrime(candidate));
-        assertEquals(isPrime, CachedPrimeChecker.isPrime(candidate));
+        if(isPrime) {
+            Prime p = Prime.of(Integer.toString(candidate)).orElseThrow();
+            CachedPrimeChecker.primes.remove(p);
+            assertFalse(CachedPrimeChecker.primes.contains(p));
+        }
+        assertEquals(isPrime, BruteForcePrimeChecker.isPrime(big(candidate)));
+        if(isPrime) {
+            Prime p = Prime.of(Integer.toString(candidate)).orElseThrow();
+            assertTrue(CachedPrimeChecker.primes.contains(p));
+        }
+        assertEquals(isPrime, CachedPrimeChecker.isPrime(big(candidate)));
     }
 }

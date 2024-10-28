@@ -1,6 +1,5 @@
 package problem.no21to30;
 
-import utils.data.Range;
 import utils.prime.PrimeChecker;
 
 import java.math.BigInteger;
@@ -10,21 +9,19 @@ import static problem.Solution.problem;
 import static utils.prime.PrimeChecker.isPrime;
 
 public class Problem27 {
+     private Problem27() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=27
         problem("Quadratic primes",
         () -> productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(1000, 1000));
     }
 
-    static long productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(int a, int b) {
-        return getMaxProduct(Range.rangeExclusiveAbs(a), Range.rangeAbs(b));
-    }
-
-    private static long getMaxProduct(Range aRange, Range bRange) {
-        return IntStream.rangeClosed(bRange.start, bRange.end)
+    static long productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(int aExclusive, int bInclusive) {
+        return IntStream.rangeClosed(-bInclusive, bInclusive)
                 .filter(PrimeChecker::isPrime)
                 .boxed()
-                .flatMap(b -> IntStream.range(aRange.start, aRange.end)
+                .flatMap(b -> IntStream.range(-aExclusive+1, aExclusive)
                         .mapToObj(a -> new Ugly(a * b, getN(a, b)))
                 )
                 .reduce((L, R) -> (L.n > R.n) ? L : R)

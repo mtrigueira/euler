@@ -3,6 +3,9 @@ package utils.prime;
 import java.math.BigInteger;
 
 public class CircularPrimeChecker {
+    private CircularPrimeChecker() {
+    }
+    
     public static boolean isCircularPrime(Prime prime) {
         String digits = prime.toString();
         int size = digits.length() - 1;

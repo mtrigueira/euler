@@ -1,5 +1,6 @@
 package utils;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -43,5 +44,10 @@ class TripletTest {
     })
     void productTest(int a, int b, int c, int product) {
         assertEquals(product, Triplet.of(a, b, c).product());
+    }
+
+    @Test
+    void toStringTest() {
+        assertEquals("{1, 2, 3}", Triplet.of(1, 2, 3).toString());
     }
 }

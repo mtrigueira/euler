@@ -1,10 +1,10 @@
 package utils;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static utils.Palindrome.BASE_TWO;
 
 class PalindromeTest {
@@ -30,5 +30,15 @@ class PalindromeTest {
     @ValueSource(ints = {0b10,0b110,0b11101111})
     void assertIsNotPalindromeBinary(int i) {
         assertFalse(Palindrome.isPalindrome(i, BASE_TWO));
+    }
+
+    @Test
+    void validBaseTest() {
+        assertThrows(IllegalArgumentException.class, () -> Palindrome.isPalindrome(0, 1));
+    }
+
+    @Test
+    void negativeNumberTest() {
+        assertFalse(Palindrome.isPalindrome(-1));
     }
 }

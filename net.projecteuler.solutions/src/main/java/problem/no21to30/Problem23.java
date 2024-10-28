@@ -11,6 +11,8 @@ import static problem.Solution.problem;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem23 {
+     private Problem23() {
+     }
     static final int NON_ABUNDANT_SUM_CEILING = 28123;
     static final CachedSequence<BigInteger> seq = CachedSequence.of(new AbundantSequence());
 

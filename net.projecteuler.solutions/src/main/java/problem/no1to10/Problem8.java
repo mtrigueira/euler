@@ -6,6 +6,8 @@ import utils.sequence.given.WideNumberProductSequence;
 import static problem.Solution.problem;
 
 public class Problem8 {
+     private Problem8() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=8
         problem("Largest product in a series",

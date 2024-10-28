@@ -10,6 +10,8 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem43 {
+     private Problem43() {
+     }
     private static final List<String> DIGITS = List.of("0123456789".split(""));
     private static final Prime[] primes = PrimeSequence.fromFirst().nextArray(8);
 

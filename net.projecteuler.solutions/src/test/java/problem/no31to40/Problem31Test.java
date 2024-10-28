@@ -7,6 +7,11 @@ import static problem.no31to40.Problem31.countWaysToMakeUsingAnyNumberOfCoins;
 
 class Problem31Test {
     @Test
+    public void testSolution0() {
+        assertEquals(0, countWaysToMakeUsingAnyNumberOfCoins(0));
+    }
+
+    @Test
     public void testSolution1() {
         assertEquals(1, countWaysToMakeUsingAnyNumberOfCoins(1));
     }

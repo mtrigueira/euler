@@ -7,6 +7,8 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem24 {
+     private Problem24() {
+     }
     public static final String DIGITS = "0123456789";
 
     public static void main(String[] args) {

@@ -1,6 +1,7 @@
 package problem.no41to50;
 
 import org.junit.jupiter.api.Test;
+import utils.prime.Prime;
 
 import java.util.List;
 
@@ -12,5 +13,10 @@ class Problem49Test {
         assertEquals("148748178147", Problem49.primePermutations(List.of()));
     }
 
-
+    @Test
+    void primePermutationsNotFound() {
+        assertEquals("Not found", Problem49.primePermutations(
+                List.of(Prime.of("1487").orElseThrow(),
+                        Prime.of("2969").orElseThrow())));
+    }
 }

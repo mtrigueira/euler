@@ -8,6 +8,9 @@ import static java.math.BigInteger.ZERO;
 import static utils.operator.BigComparisonOperator.*;
 
 public class Aliquot {
+    private Aliquot() {
+    }
+
     public static boolean isAbundant(long i) {
         return isAbundant(BigInteger.valueOf(i));
     }

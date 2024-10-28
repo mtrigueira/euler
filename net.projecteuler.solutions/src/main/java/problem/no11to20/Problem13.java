@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 import static problem.Solution.problem;
 
 public class Problem13 {
+     private Problem13() {
+     }
 
     public static final String NUMBERS_TXT = "/0013_numbers.txt";
 

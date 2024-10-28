@@ -1,5 +1,6 @@
 package utils;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -21,5 +22,10 @@ class NaturalNumberTest {
     })
     void checkSumToIs(int n, int expected) {
         assertEquals(expected, NaturalNumber.sumTo(n));
+    }
+
+    @Test
+    void ZeroTest() {
+        assertThrows(IllegalArgumentException.class, () -> NaturalNumber.of(0));
     }
 }

@@ -13,6 +13,8 @@ import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
 
 public class Problem50 {
+     private Problem50() {
+     }
     public static void main(String[] args) {
         problem("Consecutive prime sum",
         () -> 

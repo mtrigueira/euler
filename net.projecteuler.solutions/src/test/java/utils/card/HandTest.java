@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static utils.card.Game.beats;
 
 class HandTest {
+    public static final Result PLAYER_2 = Result.RIGHT;
     static final Card NINE = new Card("9H");
     static final Card TEN = new Card("TH");
     static final Card JACK = new Card("JH");
@@ -24,25 +25,27 @@ class HandTest {
     static final Hand FULL_HOUSE_TWOS_FOURS = new Hand("2H 2D 2H 4H 4D");
     static final Hand FOUR_OF_A_KIND_TWOS_3_HIGH = new Hand("2H 2D 2C 2S 3H");
     static final Hand STRAIGHT_FLUSH_6_HIGH = new Hand("2H 3H 4H 5H 6H");
-    public static final Result PLAYER_2 = Result.RIGHT;
     private static final Result PLAYER_1 = Result.LEFT;
 
-    @Test
-    void testHand() {
-        assertTrue(beats(WORST_BUT_1,WORST));
-        assertFalse(beats(WORST,WORST_BUT_1));
+    private static void assertWinner(Result expected, String p1, String p2) {
+        assertEquals(expected, new Game(p1, p2).result());
     }
 
     @Test
-    void testHighest() {
-        assertEquals(new Card("7C"), WORST.highest());
+    void testHand() {
+        assertTrue(beats(WORST_BUT_1, WORST));
+        assertFalse(beats(WORST, WORST_BUT_1));
+    }
+
+    @Test
+    void testNoCards() {
+        assertEquals("Hand[]", new Hand(" ").toString());
     }
 
     @Test
     void testCardValue() {
         assertEquals(7, new Card("7H").value());
     }
-
 
     @Test
     void testCardGreaterThan() {
@@ -58,9 +61,13 @@ class HandTest {
     }
 
     @Test
-    void testHighCardBeats() {
+    void testHighCardBeats5() {
         assertBeats(HIGH_JACK, HIGH_TEN);
         assertBeats(new Hand("3H 5D 6H 7H 8H"), new Hand("2H 5D 6H 7H 8H"));
+        assertBeats(new Hand("2H 5D 6H 7H 8H"), new Hand("2H 4D 6H 7H 8H"));
+        assertBeats(new Hand("2H 3D 6H 7H 8H"), new Hand("2H 3D 5H 7H 8H"));
+        assertBeats(new Hand("2H 3D 4H 7H 8H"), new Hand("2H 3D 4H 6H 8H"));
+        assertFalse(beats(new Hand("2H 3D 4H 5H 6H"), new Hand("2H 3D 4H 5H 6H")));
     }
 
     @Test
@@ -133,12 +140,13 @@ class HandTest {
         assertWinner(PLAYER_1, "2H 2D 4C 4D 4S", "3C 3D 3S 9S 9D");
     }
 
-    private static void assertWinner(Result expected, String p1, String p2) {
-        assertEquals(expected, new Game(p1, p2).result());
+    void assertBeats(Hand hand1, Hand hand2) {
+        assertTrue(beats(hand1, hand2));
+        assertFalse(beats(hand2, hand1));
     }
 
-    void assertBeats(Hand hand1, Hand hand2) {
-        assertTrue(beats(hand1,hand2));
-        assertFalse(beats(hand2,hand1));
+    @Test
+    void testToString() {
+        assertEquals("Hand[2H, 3H, 4D, 5S, 7C]", WORST.toString());
     }
 }

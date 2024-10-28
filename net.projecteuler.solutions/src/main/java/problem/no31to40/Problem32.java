@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem32 {
+     private Problem32() {
+     }
     private static final List<String> DIGITS = List.of("123456789".split(""));
 
     public static void main(String[] args) {

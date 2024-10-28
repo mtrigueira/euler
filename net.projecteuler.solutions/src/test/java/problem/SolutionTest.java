@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.math.BigInteger;
 
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SolutionTest {
     private final OutputStream captured = new ByteArrayOutputStream();
@@ -46,5 +47,12 @@ class SolutionTest {
     void problemBigInteger() {
         Solution.problem("This is a test.", () -> BigInteger.valueOf(12345));
         assertLinesMatch("This is a test.\n12345\nTime taken: [1-9]*[0-9] ms\n".lines(), captured.toString().lines());
+    }
+
+    @Test
+    void problemThrows() {
+        assertThrows(RuntimeException.class, () -> Solution.problem("This is a test.", () -> {
+            throw new Exception("Hello world!");
+        }));
     }
 }

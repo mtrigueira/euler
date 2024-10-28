@@ -1,4 +1,4 @@
-package utils;
+package utils.continuedFraction;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,5 +15,6 @@ class ContinuedFractionTest {
         assertEquals(big(1), e.at(3));
         assertEquals(big(1), e.at(4));
         assertEquals(big(4), e.at(5));
+        assertEquals("[2; 1, 2, 1, 1, 4, ..., 1, 2k, 1, ...]", e.toString());
     }
 }

@@ -3,6 +3,7 @@ package utils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.BigIntegerConstants.big;
 
 class LongDivisionTest {
 
@@ -38,5 +39,16 @@ class LongDivisionTest {
         assertEquals(0, longDivision.nextDigit());
         assertEquals(9, longDivision.nextDigit());
         assertEquals(9, longDivision.nextDigit());
+    }
+
+    @Test
+    void bigPairNeq() {
+        LongDivision.BigPair a = LongDivision.BigPair.of(big(1), big(2));
+        LongDivision.BigPair b = LongDivision.BigPair.of(big(1), big(3));
+
+        assertNotEquals(a, b);
+
+        // noinspection SimplifiableAssertion,EqualsBetweenInconvertibleTypes
+        assertFalse(b.equals("dummy"));
     }
 }

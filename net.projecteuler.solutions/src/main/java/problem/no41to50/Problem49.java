@@ -10,6 +10,8 @@ import java.util.Optional;
 import static problem.Solution.problem;
 
 public class Problem49 {
+     private Problem49() {
+     }
 
     public static final List<Prime> EXCLUDE = Prime.of("1487").stream().toList();
 
@@ -30,7 +32,9 @@ public class Problem49 {
                     Optional<String> optionalS = primes.subList(primes.size() - bList.size() - 1, primes.size()).stream().filter(c -> arePermutations(b, c)).filter(c -> areEquidistant(a, b, c)).findFirst().map(c -> "" + a + b + c);
                     if (optionalS.isPresent()) return optionalS.get();
                 }
-            bList = bList.subList(1, bList.size() - 1);
+
+            if(!bList.isEmpty())
+                bList = bList.subList(1, bList.size() - 1);
         }
 
         return "Not found";

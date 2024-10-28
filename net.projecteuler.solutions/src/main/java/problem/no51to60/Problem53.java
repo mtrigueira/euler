@@ -8,6 +8,8 @@ import static problem.Solution.problem;
 import static utils.operator.BigComparisonOperator.greaterThan;
 
 public class Problem53 {
+     private Problem53() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=53
         problem("Combinatoric selections",

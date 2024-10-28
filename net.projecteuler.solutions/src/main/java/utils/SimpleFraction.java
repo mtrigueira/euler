@@ -35,13 +35,8 @@ public class SimpleFraction extends Fraction {
 
     private SimpleFraction simplify() {
         if (n.equals(d)) return ONE;
-        BigInteger gcd = gcd(n, d);
-        if (BigInteger.ONE.equals(gcd)) return this;
-        return SimpleFraction.of(n.divide(gcd), d.divide(gcd));
-    }
-
-    private static BigInteger gcd(BigInteger a, BigInteger b) {
-        return BigInteger.ZERO.equals(b) ? a : gcd(b, a.mod(b));
+        if (BigInteger.ONE.equals(n.gcd(d))) return this;
+        return SimpleFraction.of(n.divide(n.gcd(d)), d.divide(n.gcd(d)));
     }
 
     public SimpleFraction multiply(SimpleFraction by) {

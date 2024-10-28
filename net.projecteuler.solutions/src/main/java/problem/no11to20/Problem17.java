@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem17 {
+     private Problem17() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=17
         problem("Number letter counts",

@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static utils.BigIntegerConstants.big;
 import static utils.SimpleFraction.ONE;
 import static utils.SimpleFraction.TWO;
 
@@ -28,7 +29,16 @@ class SimpleFractionTest {
     }
 
     public static final SimpleFraction HALF = SimpleFraction.of(1, 2);
-    public static final SimpleFraction THREE = SimpleFraction.of(3, 1);
+    public static final SimpleFraction THREE = SimpleFraction.of(3, big(1));
+
+    @Test
+    void notEqualsTest() {
+        assertNotEquals(ONE, TWO);
+        assertNotEquals(ONE, HALF);
+        assertNotEquals(TWO, HALF);
+        //noinspection AssertBetweenInconvertibleTypes
+        assertNotEquals("Dummy", ONE);
+    }
 
     @Test
     void add() {
@@ -43,5 +53,11 @@ class SimpleFractionTest {
     void divide() {
         assertEquals(ONE, TWO.divide(TWO));
         assertEquals(HALF, ONE.divide(TWO));
+    }
+
+    @Test
+    void subtract() {
+        assertEquals(ONE, TWO.subtract(ONE));
+        assertEquals(ONE, THREE.subtract(TWO));
     }
 }

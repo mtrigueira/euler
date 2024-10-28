@@ -9,6 +9,8 @@ import static problem.Solution.problem;
 import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem2 {
+     private Problem2() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=2
         problem("Even Fibonacci numbers",

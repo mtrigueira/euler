@@ -9,6 +9,8 @@ import static problem.Solution.problem;
 import static utils.polyagonal.Polygonal.POLYGONALS;
 
 public class Problem61 {
+     private Problem61() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=61
         problem("Cyclical figurate numbers",
@@ -118,12 +120,7 @@ public class Problem61 {
     static boolean areDifferentPolygonals(Node... m) {
         List<List<Polygonal>> polygonals = Arrays.stream(m).toList().stream().map(n -> n.polygonal).toList();
         List<List<Polygonal>> distinctPolygonals = polygonals.stream().distinct().toList();
-        if(distinctPolygonals.size()<m.length) return false;
-
-        for (List<Polygonal> polygonal : distinctPolygonals)
-            if (Collections.frequency(polygonals, polygonal) > 1) return false;
-
-        return true;
+        return distinctPolygonals.size() >= m.length;
     }
 
     private static boolean areChained(Integer m, Integer n) {

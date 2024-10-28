@@ -7,6 +7,8 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem25 {
+     private Problem25() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=25
         problem("1000-digit Fibonacci number",

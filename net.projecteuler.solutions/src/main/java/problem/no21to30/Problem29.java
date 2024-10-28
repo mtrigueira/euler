@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem29 {
+     private Problem29() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=29
         problem("Distinct powers",

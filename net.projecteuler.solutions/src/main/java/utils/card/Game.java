@@ -110,5 +110,4 @@ public record Game(Hand player1, Hand player2) {
     public Result result() {
         return beats(player1, player2) ? LEFT : RIGHT;
     }
-
 }

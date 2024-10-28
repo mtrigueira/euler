@@ -5,6 +5,8 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem63 {
+     private Problem63() {
+     }
     public static final int EXPONENT_LIMIT_FOUND_EMPIRICALLY = 22;
     public static final int BASE_LIMIT_FOUND_EMPIRICALLY = 10;
 

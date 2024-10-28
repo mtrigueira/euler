@@ -5,6 +5,8 @@ import utils.data.Lattice;
 import static problem.Solution.problem;
 
 public class Problem15 {
+     private Problem15() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=15
         problem("Lattice paths",

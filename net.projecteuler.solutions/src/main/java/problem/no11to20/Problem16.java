@@ -6,6 +6,8 @@ import static java.math.BigInteger.TWO;
 import static problem.Solution.problem;
 
 public class Problem16 {
+     private Problem16() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=16
         problem("Power digit sum",
