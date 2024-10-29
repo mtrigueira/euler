@@ -12,6 +12,8 @@ import java.util.Optional;
 import static problem.Solution.problem;
 
 public class Problem41 {
+     private Problem41() {
+     }
     private static final List<String> DIGITS = List.of("123456789".split(""));
 
     public static void main(String[] args) {

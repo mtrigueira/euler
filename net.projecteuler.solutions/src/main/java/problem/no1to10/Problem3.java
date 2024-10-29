@@ -9,6 +9,8 @@ import java.util.Optional;
 import static problem.Solution.problem;
 
 public class Problem3 {
+     private Problem3() {
+     }
     public static final long TARGET = 600851475143L;
 
     public static void main(String[] args) {

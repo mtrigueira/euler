@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static problem.Solution.problem;
 
 public class Problem40 {
+     private Problem40() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=40
         problem("Champernowne's constant",

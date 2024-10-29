@@ -9,6 +9,8 @@ import static java.lang.Math.toIntExact;
 import static problem.Solution.problem;
 
 public class Problem34 {
+     private Problem34() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=34
         problem("Digit factorials",

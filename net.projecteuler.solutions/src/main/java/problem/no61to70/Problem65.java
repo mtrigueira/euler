@@ -1,11 +1,13 @@
 package problem.no61to70;
 
-import utils.ContinuedFraction;
+import utils.continuedFraction.ContinuedFraction;
 import utils.SimpleFraction;
 
 import static problem.Solution.problem;
 
 public class Problem65 {
+     private Problem65() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=65
         problem("Convergents of e",

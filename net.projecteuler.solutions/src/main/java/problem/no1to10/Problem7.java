@@ -6,6 +6,8 @@ import utils.sequence.arithmetic.PrimeSequence;
 import static problem.Solution.problem;
 
 public class Problem7 {
+     private Problem7() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=7
         problem("10001st prime",

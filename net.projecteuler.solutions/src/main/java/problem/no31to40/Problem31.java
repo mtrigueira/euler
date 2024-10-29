@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem31 {
+     private Problem31() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=31
         problem("Coin sums",

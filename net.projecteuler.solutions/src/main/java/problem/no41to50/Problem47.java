@@ -8,6 +8,8 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem47 {
+     private Problem47() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=47
         problem("Distinct primes factors",

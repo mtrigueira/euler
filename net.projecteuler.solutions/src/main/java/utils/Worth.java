@@ -1,6 +1,9 @@
 package utils;
 
 public class Worth {
+    private Worth() {
+    }
+
     public static long wordWorth(String name) {
         return name.chars().map(Worth::charWorth).sum();
     }

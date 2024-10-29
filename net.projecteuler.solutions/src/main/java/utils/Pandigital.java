@@ -1,6 +1,8 @@
 package utils;
 
 public class Pandigital {
+    private Pandigital() {}
+
     private static final String[] DIGITS = "123456789".split("");
 
     public static boolean isPandigital(long i) {

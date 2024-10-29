@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.Set;
 
 public class Factors {
+    private Factors() {
+    }
+
     public static Set<BigInteger> of(long n) {
         return of(BigInteger.valueOf(n));
     }

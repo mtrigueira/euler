@@ -10,10 +10,9 @@ public abstract class Sequence<T> implements Iterator<T> {
     private final Class<?> T_getClass = workOutClassOfTUsingReflection();
     public T[] nextArray(int sizeOfArray) {
         List<T> list = new ArrayList<>();
-        long limit = sizeOfArray;
-        for (T i = next(); hasNext(); i = next()) {
-            if (limit-- == 0) break;
-            list.add(i);
+        for(int i = 0; i < sizeOfArray; i++) {
+            if (!hasNext()) break;
+            list.add(next());
         }
 
         @SuppressWarnings("unchecked") // These objects are type T since list is <T>

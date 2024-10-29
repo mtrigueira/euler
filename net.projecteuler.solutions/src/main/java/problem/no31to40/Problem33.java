@@ -11,6 +11,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem33 {
+     private Problem33() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=33
         problem("Digit cancelling fractions",
@@ -28,7 +30,7 @@ public class Problem33 {
                 .map(BigInteger::longValueExact);
     }
 
-    private static Optional<SimpleFraction> cancellingDigits(int n, int d) {
+    static Optional<SimpleFraction> cancellingDigits(int n, int d) {
         int nLeft = n / 10;
         int nRight = n % 10;
         int dLeft = d / 10;
@@ -39,19 +41,9 @@ public class Problem33 {
     }
 
     private static Optional<SimpleFraction> pairIfAccidentallyCorrect(int nLeft, int dLeft, int nRight, int dRight, double originalQuotient) {
-        if (isAccidentallyCorrect(nLeft, dLeft, nRight, dRight, originalQuotient))
-            return optionalSimpleFraction(nRight, dRight);
-
-        if (isAccidentallyCorrect(nLeft, dRight, nRight, dLeft, originalQuotient))
-            return optionalSimpleFraction(nRight, dLeft);
-
-        if (!isTrivial(nRight)) {
+        if (!isTrivial(nRight))
             if (isAccidentallyCorrect(nRight, dLeft, nLeft, dRight, originalQuotient))
                 return optionalSimpleFraction(nLeft, dRight);
-
-            if (isAccidentallyCorrect(nRight, dRight, nLeft, dLeft, originalQuotient))
-                return optionalSimpleFraction(nLeft, dLeft);
-        }
 
         return Optional.empty();
     }

@@ -7,6 +7,8 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem38 {
+     private Problem38() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=38
         problem("Largest pandigital multiple",

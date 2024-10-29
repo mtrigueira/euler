@@ -9,6 +9,8 @@ import java.util.Optional;
 import static problem.Solution.problem;
 
 public class Problem45 {
+     private Problem45() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=45
         problem("Triangular, pentagonal, and hexagonal",

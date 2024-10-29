@@ -7,6 +7,8 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem5 {
+     private Problem5() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=5
         problem("Smallest multiple",

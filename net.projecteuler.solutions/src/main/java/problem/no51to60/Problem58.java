@@ -9,6 +9,8 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem58 {
+     private Problem58() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=58
         problem("Spiral primes",

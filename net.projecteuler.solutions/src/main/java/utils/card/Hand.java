@@ -17,11 +17,6 @@ public class Hand {
                 .toArray(Card[]::new);
     }
 
-    Card highest() {
-        Stream<Card> cards1 = Arrays.stream(cards);
-        return cards1.reduce((a, b) -> a.greaterThan(b) ? a : b).orElseThrow();
-    }
-
     byte highestCardInStraight() {
         return Arrays.stream(cards)
                 .map(Card::value)

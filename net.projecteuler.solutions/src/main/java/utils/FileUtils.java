@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileUtils {
+    private FileUtils() {
+    }
+
     public static Stream<String> getNames(String file) {
         return getNamesWithoutQuotes(file).sorted();
     }

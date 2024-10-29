@@ -6,6 +6,8 @@ import static java.math.BigInteger.TWO;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public abstract class PrimeChecker {
+    private PrimeChecker() {}
+
     public static boolean isPrime(long candidate) {
         return isPrime(BigInteger.valueOf(candidate));
     }

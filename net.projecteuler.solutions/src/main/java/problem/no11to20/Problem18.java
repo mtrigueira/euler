@@ -6,6 +6,8 @@ import utils.data.Triangle;
 import static problem.Solution.problem;
 
 public class Problem18 {
+     private Problem18() {
+     }
 
     public static final String TRIANGLE = FileUtils.getString("/0018_triangle.txt");
 

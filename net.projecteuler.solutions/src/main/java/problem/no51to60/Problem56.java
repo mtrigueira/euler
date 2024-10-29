@@ -6,6 +6,8 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem56 {
+     private Problem56() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=56
         problem("Powerful digit sum",

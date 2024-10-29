@@ -34,8 +34,4 @@ public class Amicable {
 
         return sums[(int) sum] == i;
     }
-
-    public boolean areAmicable(int a, int b) {
-        return a != b && (sums[a] == b) && (sums[b] == a);
-    }
 }

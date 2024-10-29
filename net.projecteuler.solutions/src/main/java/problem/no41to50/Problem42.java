@@ -10,6 +10,8 @@ import static problem.Solution.problem;
 import static utils.polyagonal.Polygonal.TRIANGULAR;
 
 public class Problem42 {
+     private Problem42() {
+     }
 
     public static final String WORDS_TXT = "/0042_words.txt";
 

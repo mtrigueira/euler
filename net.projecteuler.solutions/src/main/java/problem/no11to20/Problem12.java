@@ -9,6 +9,8 @@ import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
 
 public class Problem12 {
+     private Problem12() {
+     }
     public static final int NUMBER_OF_DIVISORS = 500;
 
     public static void main(String[] args) {

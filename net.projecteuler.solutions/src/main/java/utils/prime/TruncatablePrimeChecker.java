@@ -3,6 +3,9 @@ package utils.prime;
 import static utils.prime.PrimeChecker.isPrime;
 
 public class TruncatablePrimeChecker {
+    private TruncatablePrimeChecker() {
+    }
+
     private static boolean isTruncatablePrime(long i, boolean leftToRight) {
         if (i < 10) return isPrime(i);
 

@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Palindrome {
+    private Palindrome() {}
 
     public static final int BASE_TEN = 10;
     public static final int BASE_TWO = 2;

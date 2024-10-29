@@ -8,6 +8,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem55 {
+     private Problem55() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=55
         problem("Lychrel numbers",

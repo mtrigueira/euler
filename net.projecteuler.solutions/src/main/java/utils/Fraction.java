@@ -1,7 +1,6 @@
 package utils;
 
 import java.math.BigInteger;
-import java.util.Objects;
 
 public abstract class Fraction {
     final BigInteger d;
@@ -17,14 +16,8 @@ public abstract class Fraction {
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Fraction) obj;
+        if (!(obj instanceof Fraction that)) return false;
         return this.stringRepresentation.equals(that.stringRepresentation);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(n, d);
     }
 
     public BigInteger denominator() {

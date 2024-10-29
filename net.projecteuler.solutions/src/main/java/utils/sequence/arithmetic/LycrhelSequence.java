@@ -3,6 +3,7 @@ package utils.sequence.arithmetic;
 import utils.Palindrome;
 
 import java.math.BigInteger;
+import java.util.NoSuchElementException;
 
 public class LycrhelSequence extends ArithmeticSequence<BigInteger> {
     private int i = 0;
@@ -14,6 +15,7 @@ public class LycrhelSequence extends ArithmeticSequence<BigInteger> {
 
     @Override
     public BigInteger next() {
+        if (!hasNext()) throw new NoSuchElementException("No next element in Lycrhel Sequence");
         BigInteger temp = current;
         current = nextLycrhel(current);
         i++;

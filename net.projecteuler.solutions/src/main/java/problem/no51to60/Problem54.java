@@ -9,6 +9,8 @@ import java.util.stream.Stream;
 import static problem.Solution.problem;
 
 public class Problem54 {
+     private Problem54() {
+     }
 
     public static final String POKER_TXT = "/0054_poker.txt";
 

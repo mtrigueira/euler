@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class RunProblems {
+    private RunProblems() {
+    }
+
     public static final String[] O = {};
     public static final Integer[] SKIP_SLOW = {5, 10, 12, 14, 23, 24, 32, 39, 41, 43, 47, 51, 58, 60};
     public static final Integer[] DO_NOT_SKIP_ANY = {};
 
     public static void main(String[] args) {
-        runProblems(SKIP_SLOW);
+        runProblems(DO_NOT_SKIP_ANY);
     }
 
     public static void runProblems(Integer[] skip) {
@@ -36,10 +39,7 @@ public class RunProblems {
             Class<?> clazz = Class.forName(s);
             System.out.print(i + " ");
             clazz.getMethod("main", String[].class).invoke(null, (Object) O);
-        } catch (ClassNotFoundException ignored) {
-        } catch (Exception e) {
-            System.err.println(s);
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
 

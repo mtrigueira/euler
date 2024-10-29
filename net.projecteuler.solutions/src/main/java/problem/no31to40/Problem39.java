@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem39 {
+     private Problem39() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=39
         problem("Integer right triangles",

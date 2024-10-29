@@ -7,6 +7,8 @@ import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
 
 public class Problem48 {
+     private Problem48() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=48
         problem("Self powers",

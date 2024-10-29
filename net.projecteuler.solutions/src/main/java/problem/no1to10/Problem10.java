@@ -10,6 +10,8 @@ import static problem.Solution.problem;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Problem10 {
+     private Problem10() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
         problem("Sum of primes below 2,000,000",

@@ -23,7 +23,7 @@ public class DigitPower {
     }
 
     private long toLongExact(double d) {
-        if (d<Long.MIN_VALUE || d>Long.MAX_VALUE) throw new ArithmeticException("long overflow");
+        if ((long)d != d) throw new ArithmeticException("long overflow");
         return (long) d;
     }
 

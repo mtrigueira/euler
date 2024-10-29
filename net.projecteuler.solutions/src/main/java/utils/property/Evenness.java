@@ -6,6 +6,9 @@ import static java.math.BigInteger.ZERO;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Evenness {
+    private Evenness() {
+    }
+
     public static boolean isEven(long i) {
         return i % 2 == 0;
     }

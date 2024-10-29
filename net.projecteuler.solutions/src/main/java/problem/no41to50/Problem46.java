@@ -11,6 +11,8 @@ import static java.math.BigInteger.TWO;
 import static problem.Solution.problem;
 
 public class Problem46 {
+     private Problem46() {
+     }
     public static void main(String[] args) {
         problem("Goldbach's other conjecture",
         () -> goldbachsOtherConjecture(1).map(BigInteger::toString).orElse("Not found"));

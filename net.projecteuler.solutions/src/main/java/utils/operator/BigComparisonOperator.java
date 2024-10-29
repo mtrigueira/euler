@@ -3,6 +3,9 @@ package utils.operator;
 import java.math.BigInteger;
 
 public class BigComparisonOperator {
+    private BigComparisonOperator() {
+    }
+
     public static boolean lessThan(BigInteger a, BigInteger b) {
         return a.compareTo(b) < 0;
     }

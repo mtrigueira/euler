@@ -5,6 +5,8 @@ import utils.PythagoreanTriangle;
 import static problem.Solution.problem;
 
 public class Problem9 {
+     private Problem9() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=9
         problem("Special Pythagorean triplet",

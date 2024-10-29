@@ -8,6 +8,8 @@ import static java.math.BigInteger.ONE;
 import static problem.Solution.problem;
 
 public class Problem14 {
+     private Problem14() {
+     }
     public static final int LIMIT = 1000000;
 
     public static void main(String[] args) {

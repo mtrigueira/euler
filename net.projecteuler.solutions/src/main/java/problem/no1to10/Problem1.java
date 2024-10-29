@@ -5,6 +5,9 @@ import utils.NaturalNumber;
 import static problem.Solution.problem;
 
 public class Problem1 {
+     private Problem1() {
+     }
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=1
         problem("Multiples of 3 or 5",

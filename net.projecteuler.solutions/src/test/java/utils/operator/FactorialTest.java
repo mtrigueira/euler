@@ -24,4 +24,14 @@ class FactorialTest {
     void Four() {
         assertEquals(24, Factorial.of(4));
     }
+
+    @Test
+    void Zero() {
+        assertEquals(1, Factorial.of(0));
+    }
+
+    @Test
+    void Negative() {
+        assertThrows(IllegalArgumentException.class, () -> Factorial.of(-1));
+    }
 }

@@ -6,6 +6,8 @@ import utils.Score;
 import static problem.Solution.problem;
 
 public class Problem22 {
+     private Problem22() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=22
         problem("Names scores",

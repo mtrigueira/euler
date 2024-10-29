@@ -8,6 +8,8 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem62 {
+     private Problem62() {
+     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=62
         problem("Cubic Permutations",

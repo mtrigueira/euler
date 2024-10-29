@@ -1,6 +1,8 @@
 package utils;
 
 public class DecimalStringMaker {
+    private DecimalStringMaker() {}
+
     public static String toString(LongDivision ld) {
         String s = ld.nextDigit() + "." + decimalsUntilTerminationOrRecursion(ld);
 
