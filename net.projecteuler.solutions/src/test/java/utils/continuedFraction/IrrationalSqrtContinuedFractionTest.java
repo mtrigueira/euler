@@ -9,7 +9,7 @@ import static utils.BigIntegerConstants.big;
 import static utils.continuedFraction.SqrtContinuedFraction.sqrt;
 
 class IrrationalSqrtContinuedFractionTest {
-    private static void assertIrrationalFraction(SqrtContinuedFraction f, int... a) {
+    private static void assertIrrationalFraction(ContinuedFraction f, int... a) {
         assertInstanceOf(IrrationalSqrtContinuedFraction.class, f);
         IrrationalSqrtContinuedFraction irrational = (IrrationalSqrtContinuedFraction) f;
         Assertions.assertEquals(Maker.list(a), irrational.atList());
@@ -23,7 +23,7 @@ class IrrationalSqrtContinuedFractionTest {
             assertEquals(big(a[i]), irrational.at(i+a.length-1));
     }
 
-    private static void assertIrrationalFraction(SqrtContinuedFraction f, String s, int... a) {
+    private static void assertIrrationalFraction(ContinuedFraction f, String s, int... a) {
         assertIrrationalFraction(f, a);
         assertEquals(s, f.toString());
     }

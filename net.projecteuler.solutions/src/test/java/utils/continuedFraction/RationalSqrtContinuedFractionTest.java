@@ -18,7 +18,7 @@ class RationalSqrtContinuedFractionTest {
         assertRationalFraction(sqrt(4),"[2]", 2);
     }
 
-    private static void assertRationalFraction(SqrtContinuedFraction f, String s, int a) {
+    private static void assertRationalFraction(ContinuedFraction f, String s, int a) {
         assertInstanceOf(RationalSqrtContinuedFraction.class, f);
         assertEquals(s, f.toString());
         assertEquals(big(a), f.at(0));
