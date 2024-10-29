@@ -1,7 +1,7 @@
 package problem.no61to70;
 
+import utils.continuedFraction.ContinuedFraction;
 import utils.continuedFraction.IrrationalSqrtContinuedFraction;
-import utils.continuedFraction.SqrtContinuedFraction;
 
 import static problem.Solution.problem;
 import static utils.continuedFraction.SqrtContinuedFraction.isPerfectSquare;
@@ -27,9 +27,9 @@ public class Problem64 {
     }
 
     static boolean isPeriodOdd(int i) {
-        SqrtContinuedFraction continuedFraction = SqrtContinuedFraction.sqrt(i);
-        if(continuedFraction instanceof IrrationalSqrtContinuedFraction)
-            return ((IrrationalSqrtContinuedFraction) continuedFraction).period() % 2 == 1;
+        ContinuedFraction cf = ContinuedFraction.sqrt(i);
+        if(cf instanceof IrrationalSqrtContinuedFraction)
+            return ((IrrationalSqrtContinuedFraction) cf).period() % 2 == 1;
         else
             return false;
     }

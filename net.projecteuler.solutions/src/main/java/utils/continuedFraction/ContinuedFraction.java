@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 public abstract class ContinuedFraction {
     private static final ContinuedFraction e = new eContinuedFraction();
+
     public static ContinuedFraction e() {
         return e;
     }
@@ -23,5 +24,11 @@ public abstract class ContinuedFraction {
             return "[2; 1, 2, 1, 1, 4, ..., 1, 2k, 1, ...]";
         }
     }
-}
 
+    public static ContinuedFraction sqrt(int radicand) {
+        if (IrrationalSqrtContinuedFraction.isPerfectSquare(radicand))
+            return IrrationalSqrtContinuedFraction.perfectSquare(radicand);
+
+        return new IrrationalSqrtContinuedFraction(radicand);
+    }
+}
