@@ -1,11 +1,11 @@
-package problem.no11to20;
+package problem.no61to70;
 
 import org.junit.jupiter.api.Test;
 import utils.data.Triangle;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-class Problem18Test {
+class Problem67Test {
     public static final Triangle TRIANGLE = Triangle.of("""
             3
             7 4
