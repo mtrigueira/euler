@@ -1,8 +1,15 @@
 package utils.property;
 
+import utils.prime.PrimeChecker;
+
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.math.BigInteger.ONE;
 
 public class Factors {
     private Factors() {
@@ -23,5 +30,32 @@ public class Factors {
 
     public static boolean isFactor(BigInteger i, BigInteger candidate) {
         return i.mod(candidate).signum() == 0;
+    }
+
+    public static List<Integer> findRelativePrimes(int i) {
+        BigInteger n = BigInteger.valueOf(i);
+        List<Integer> primes = new ArrayList<>();
+
+        for (int j = 1; j < i; j++)
+            if (ONE.equals(n.gcd(BigInteger.valueOf(j))))
+                primes.add(j);
+
+        return primes;
+    }
+
+
+    public static int countRelativePrimes(int i) {
+        BigInteger n = BigInteger.valueOf(i);
+        int primes = 0;
+
+        for (int j = 1; j < i; j++)
+            if (ONE.equals(n.gcd(BigInteger.valueOf(j))))
+                primes++;
+
+        return primes;
+    }
+
+    public static Set<BigInteger> primeFactors(int n) {
+        return ProperDivisors.of(n).stream().dropWhile(ONE::equals).filter(PrimeChecker::isPrime).collect(Collectors.toSet());
     }
 }
