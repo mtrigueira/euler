@@ -2,11 +2,17 @@ package utils.property;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import utils.Maker;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static utils.property.Factors.countRelativePrimes;
+import static utils.property.Factors.findRelativePrimes;
 
 class FactorsTest {
     @Test
@@ -32,5 +38,19 @@ class FactorsTest {
     @Test
     void factors28() {
         assertEquals(Maker.set(1, 2, 4, 7, 14, 28), Factors.of(28));
+    }
+
+
+    @ParameterizedTest
+    @CsvSource({"2,1", "3,1;2", "4,1;3", "5,1;2;3;4", "6,1;5", "7,1;2;3;4;5;6", "8,1;3;5;7", "9,1;2;4;5;7;8", "10,1;3;7;9"})
+    void findRelativePrimesTest(int n, String relativePrimes) {
+        List<Integer> expected = Arrays.stream(relativePrimes.split(";")).mapToInt(Integer::parseInt).boxed().toList();
+        assertEquals(expected, findRelativePrimes(n));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"2,1","3,2","4,2","5,4","6,2","7,6","8,4","9,6","10,4"})
+    void countRelativePrimesTest(int n, int phi) {
+        assertEquals(phi, countRelativePrimes(n));
     }
 }
