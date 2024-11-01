@@ -3,8 +3,6 @@ package problem.no21to30;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem24Test {
@@ -49,8 +47,6 @@ class Problem24Test {
     }
 
     private static String sorted(String permutation) {
-        return Arrays.stream(permutation.split("")).sorted().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
+        return permutation.chars().sorted().mapToObj(c->(char)c+"").reduce("", (a, b)->a+b);
     }
-
-
 }

@@ -66,4 +66,9 @@ public class SimpleFraction extends Fraction {
     public SimpleFraction reciprocal() {
         return SimpleFraction.of(d, n);
     }
+
+    public BigInteger toBigIntegerExact() {
+        if(BigInteger.ONE.equals(denominator())) return numerator();
+        throw new ArithmeticException("Fraction is not an integer: " + this);
+    }
 }
