@@ -22,6 +22,6 @@ class Problem10Test {
     }
 
     private static void assertEquals(int expected, int i) {
-        Assertions.assertEquals(BigInteger.valueOf(expected), Problem10.sumOfPrimesBelow(i));
+        Assertions.assertEquals(expected, Problem10.sumOfPrimesBelow(i));
     }
 }
