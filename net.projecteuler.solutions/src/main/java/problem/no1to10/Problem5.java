@@ -1,25 +1,35 @@
 package problem.no1to10;
 
-import utils.operator.Factorial;
-
 import java.util.stream.LongStream;
 
 import static problem.Solution.problem;
+import static utils.prime.PrimeChecker.isPrime;
 
 public class Problem5 {
-     private Problem5() {
-     }
+    private Problem5() {}
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=5
         problem("Smallest multiple",
-                ()->
+                () ->
                         smallestEvenlyDivisibleByAllNaturalNumbersBelow(20));
     }
 
     public static long smallestEvenlyDivisibleByAllNaturalNumbersBelow(int n) {
-        return LongStream.rangeClosed(n, Factorial.of(n))
-                .filter(candidate -> isDivisibleByNaturalNumbersTo(candidate, n))
-                .findFirst().orElse(-1L);
+        int i = n;
+        long primeProduct = 1;
+        while (i >= 2) {
+            if (isPrime(i))
+                primeProduct = primeProduct * i;
+            i--;
+        }
+
+        i = 2;
+        long c = primeProduct;
+        while (!isDivisibleByNaturalNumbersTo(c, n))
+            c = primeProduct * i++;
+
+        return c;
     }
 
     static boolean isDivisibleByNaturalNumbersTo(long multiple, long n) {
