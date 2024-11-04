@@ -1,17 +1,15 @@
 package problem.no1to10;
 
-import utils.prime.Prime;
-import utils.sequence.arithmetic.PrimeSequence;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import java.math.BigInteger;
-
-import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
-import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Problem10 {
-     private Problem10() {
-     }
+    private Problem10() {
+    }
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=10
         problem("Sum of primes below 2,000,000",
@@ -19,10 +17,31 @@ public class Problem10 {
                         sumOfPrimesBelow(2_000_000));
     }
 
-    static BigInteger sumOfPrimesBelow(int i) {
-        return PrimeSequence.fromFirst().stream()
-                .takeWhile(a -> lessThan(a, i))
-                .map(Prime::toBigInteger)
-                .reduce(ZERO, BigInteger::add);
+    static long sumOfPrimesBelow(int i) {
+        return eratosthenesSieve(i).stream()
+                .takeWhile(a -> a < i)
+                .mapToLong(a -> a)
+                .sum();
+    }
+
+    private static List<Integer> eratosthenesSieve(int n) {
+        boolean[] sieve = new boolean[n];
+        Arrays.fill(sieve, true);
+
+        int i = 2;
+        while (i < n) {
+            if (sieve[i]) {
+                for (int j = i*2; j < n; j += i)
+                    sieve[j] = false;
+            }
+            i++;
+        }
+
+        List<Integer> primes = new ArrayList<>();
+        for (int j = 2; j < n; j++)
+            if (sieve[j])
+                primes.add(j);
+
+        return primes;
     }
 }
