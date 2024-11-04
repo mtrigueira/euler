@@ -1,7 +1,7 @@
 package problem.no1to10;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import utils.operator.Factorial;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,18 +26,8 @@ class Problem5Test {
         assertEquals(expected, Problem5.smallestEvenlyDivisibleByAllNaturalNumbersBelow(i));
     }
 
-    @ParameterizedTest(name = "{1}! should be {0}")
-    @org.junit.jupiter.params.provider.CsvSource({
-            "1, 1",
-            "2, 2",
-            "6, 3",
-            "24, 4",
-            "120, 5",
-            "3628800, 10",
-            "39916800, 11",
-            "2432902008176640000, 20"
-    })
-    void factorial(long expected, int i) {
-        assertEquals(expected, Factorial.of(i));
+    @Test
+    void assertMultipleOf10() {
+        assertEquals(2520, Problem5.smallestEvenlyDivisibleByAllNaturalNumbersBelow(10));
     }
 }
