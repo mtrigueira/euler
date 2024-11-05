@@ -71,4 +71,28 @@ class CombinationSequenceTest {
         assertFalse(cs.hasNext());
         assertThrows(NoSuchElementException.class, cs::next);
     }
+
+    @Test
+    void comboABskip1() {
+        CombinationSequence<String> cs = new CombinationSequence<>(List.of("A", "B"), (a, b) -> a + b);
+        cs.skip(1);
+        assertTrue(cs.hasNext());
+        assertEquals("BA", cs.next());
+        assertFalse(cs.hasNext());
+        assertThrows(NoSuchElementException.class, cs::next);
+    }
+
+    @Test
+    void combo012skip2() {
+        CombinationSequence<String> cs = new CombinationSequence<>(List.of("0", "1", "2"), (a, b) -> a + b);
+        cs.skip(3);
+        assertTrue(cs.hasNext());
+        assertEquals("120", cs.next());
+        assertTrue(cs.hasNext());
+        assertEquals("201", cs.next());
+        assertTrue(cs.hasNext());
+        assertEquals("210", cs.next());
+        assertFalse(cs.hasNext());
+        assertThrows(NoSuchElementException.class, cs::next);
+    }
 }
