@@ -1,5 +1,6 @@
 package utils.sequence.given;
 
+import utils.operator.Factorial;
 import utils.sequence.Sequence;
 
 import java.util.ArrayList;
@@ -25,30 +26,46 @@ public class CombinationSequence<T> extends Sequence<T> {
         this.reducer = reducer;
         this.limit = limit;
         current = null;
+        if (limit > 1)
+            nextRemainderOrCurrent();
     }
 
     @Override
     public T next() {
-        if (current == null || !remainderSequence.hasNext()) {
-            current = iterator.next();
-            if (limit > 1) {
-                ArrayList<T> remainder = new ArrayList<>(values);
-                remainder.remove(current);
-                remainderSequence = new CombinationSequence<>(remainder, reducer, limit - 1);
-            }
-        }
+        if (limit == 1)
+            return iterator.next();
 
-        if (limit == 1) {
-            T result = current;
-            current = null;
-            return result;
-        }
+        if (!remainderSequence.hasNext())
+            nextRemainderOrCurrent();
+
 
         return reducer.apply(current, remainderSequence.next());
+    }
+
+    private void nextRemainderOrCurrent() {
+        current = iterator.next();
+
+        ArrayList<T> remainder = new ArrayList<>(values);
+        remainder.remove(current);
+        remainderSequence = new CombinationSequence<>(remainder, reducer, limit - 1);
     }
 
     @Override
     public boolean hasNext() {
         return iterator.hasNext() || (remainderSequence != null && remainderSequence.hasNext());
+    }
+
+    public CombinationSequence<T> skip(int i) {
+        int combinations = Factorial.ofBig(values.size()-1).intValueExact();
+
+        while (i >= combinations) {
+            i -= combinations;
+            nextRemainderOrCurrent();
+        }
+
+        if(i>0&&limit>1)
+            remainderSequence = remainderSequence.skip(i);
+
+        return this;
     }
 }
