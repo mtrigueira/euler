@@ -16,7 +16,7 @@ public abstract class Sequence<T> implements Iterator<T> {
         }
 
         @SuppressWarnings("unchecked") // These objects are type T since list is <T>
-        T[] array = list.toArray((T[]) Array.newInstance(T_getClass, sizeOfArray));
+        T[] array = list.toArray((T[]) Array.newInstance(T_getClass, list.size()));
         return array;
     }
 

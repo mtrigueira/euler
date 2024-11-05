@@ -28,11 +28,6 @@ public class Problem61 {
 
         cycles=cycles.stream().filter(c ->c.size()==count).toList();
 
-        cycles.stream().map(c ->
-                c.stream().map(n -> n.i + " "+n.polygonal.toString()).toList()+" "+
-                        c.stream().mapToInt(n -> n.i).sum()
-        ).forEach(System.out::println);
-
         return cycles.get(0).stream().mapToInt(n -> n.i).sum();
     }
 

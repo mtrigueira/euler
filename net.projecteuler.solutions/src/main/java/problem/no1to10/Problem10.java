@@ -1,8 +1,6 @@
 package problem.no1to10;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import utils.prime.Prime;
 
 import static problem.Solution.problem;
 
@@ -18,30 +16,9 @@ public class Problem10 {
     }
 
     static long sumOfPrimesBelow(int i) {
-        return eratosthenesSieve(i).stream()
+        return Prime.eratosthenesSieve(i).stream()
                 .takeWhile(a -> a < i)
                 .mapToLong(a -> a)
                 .sum();
-    }
-
-    private static List<Integer> eratosthenesSieve(int n) {
-        boolean[] sieve = new boolean[n];
-        Arrays.fill(sieve, true);
-
-        int i = 2;
-        while (i < n) {
-            if (sieve[i]) {
-                for (int j = i*2; j < n; j += i)
-                    sieve[j] = false;
-            }
-            i++;
-        }
-
-        List<Integer> primes = new ArrayList<>();
-        for (int j = 2; j < n; j++)
-            if (sieve[j])
-                primes.add(j);
-
-        return primes;
     }
 }
