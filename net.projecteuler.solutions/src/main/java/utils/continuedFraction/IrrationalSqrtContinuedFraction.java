@@ -57,9 +57,7 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
             }
         }
         if (integerParts.size() == infiniteLoopProtection) {
-            System.err.println(n);
-            System.err.println(integerParts);
-            throw new RuntimeException("Too many iterations. Fix bug, or increase.");
+            throw new RuntimeException("sqrt("+n+"): Too many iterations "+integerParts.size()+". Fix bug, or increase. Terminated sequence "+integerParts);
         }
 
         return integerParts;

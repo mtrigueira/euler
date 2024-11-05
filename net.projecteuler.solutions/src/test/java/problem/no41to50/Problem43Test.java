@@ -7,14 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Problem43Test {
     @Test
-    void areAllSubstringsDivisible() {
-        assertTrue(Problem43.areAllSubstringsDivisible("1406357289"));
+    void findNoDivisiblePanDigitals() {
+        assertEquals("No divisible pandigital found", Problem43.findDivisiblePanDigitals(0));
     }
 
     @Test
-    void findDivisiblePanDigitals() {
-        assertEquals("22212", Problem43.findDivisiblePanDigitals(4));
+    void findDivisiblePanDigital() {
+        assertEquals("4106357289", Problem43.findDivisiblePanDigitals(1));
     }
-
-
 }
