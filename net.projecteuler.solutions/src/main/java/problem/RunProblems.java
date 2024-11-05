@@ -11,7 +11,7 @@ public class RunProblems {
     }
 
     public static final String[] O = {};
-    public static final int[] SLOW = {12, 14, 23, 24, 32, 39, 41, 43, 47, 51, 58, 60, 68};
+    public static final int[] SLOW = {12, 14, 23, 24, 32, 39, 41, 47, 51, 58, 60, 68};
     public static final int[] NOT_SLOW = IntStream.range(1, 100)
             .filter(i-> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();

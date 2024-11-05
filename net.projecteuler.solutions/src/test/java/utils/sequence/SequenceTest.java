@@ -45,6 +45,6 @@ class SequenceTest {
             }
         };
         String[] primes = sequence.nextArray(10);
-        System.out.println(Arrays.toString(primes));
+        assertEquals("[]", Arrays.toString(primes));
     }
 }
