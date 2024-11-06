@@ -9,14 +9,14 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem51 {
-     private Problem51() {
-     }
     static int minPrime = Integer.MAX_VALUE;
+
+    private Problem51() {}
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=51
         problem("Prime digit replacements",
-        () -> smallestPrime(8));
+                () -> smallestPrime(8));
     }
 
     static Prime smallestPrime(int familySize) {
@@ -35,16 +35,25 @@ public class Problem51 {
 
     private static int replacementPrimeCount(String in, int stars, int familySize) {
         for (int i = 0; i < in.length(); i++) {
-            if (in.charAt(i) == '*') continue;
-            String s = in.substring(0, i) + "*" + in.substring(i + 1);
-            if (replacementPrimeCount(s, familySize) == familySize)
+            if (alreadyStarOrCannotBeMinima(in, i)) continue;
+            String mask = in.substring(0, i) + "*" + in.substring(i + 1);
+            if (isNotDivisibleByThreeSoMayBePrime(stars))
+                if (replacementPrimeCount(mask, familySize) == familySize)
+                    return minPrime;
+
+            if (replacementPrimeCount(mask, stars + 1, familySize) != 0)
                 return minPrime;
-            int primeOrZero = replacementPrimeCount(s, stars + 1, familySize);
-            if (primeOrZero != 0)
-                return primeOrZero;
         }
 
         return 0;
+    }
+
+    private static boolean isNotDivisibleByThreeSoMayBePrime(int stars) {
+        return stars % 3 == 0;
+    }
+
+    private static boolean alreadyStarOrCannotBeMinima(String in, int i) {
+        return "*3456789".indexOf(in.charAt(i)) != -1;
     }
 
     static int replacementPrimeCount(String in, int familySize) {
