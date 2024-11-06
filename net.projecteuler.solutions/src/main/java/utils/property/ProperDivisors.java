@@ -7,13 +7,13 @@ import java.util.Set;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
-import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class ProperDivisors {
     private final BigInteger n;
+
     private ProperDivisors(BigInteger n) {
-            this.n = n;
-        }
+        this.n = n;
+    }
 
     public static Set<BigInteger> of(BigInteger i) {
         return new ProperDivisors(i).of();
@@ -29,7 +29,9 @@ public class ProperDivisors {
         if (ONE.equals(n)) return s;
         s.add(ONE);
 
-        for (BigInteger i = TWO; lessThanOrEqual(i,n.sqrt()); i = i.add(ONE))
+
+        BigInteger sqrt = n.sqrt().add(ONE);
+        for (BigInteger i = TWO; sqrt.compareTo(i) > 0; i = i.add(ONE))
             if (isFactor(i)) {
                 s.add(i);
                 s.add(n.divide(i));
