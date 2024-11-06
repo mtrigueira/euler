@@ -18,8 +18,6 @@ class Problem51Test {
 
     @Test
     void smallestPrime() {
-        assertEquals(Prime.of("13").orElseThrow(), Problem51.smallestPrime(6));
+        assertEquals(Prime.of("10007").orElseThrow(), Problem51.smallestPrime(6));
     }
-
-
 }
