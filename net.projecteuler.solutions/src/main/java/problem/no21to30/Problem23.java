@@ -1,28 +1,35 @@
 package problem.no21to30;
 
-import utils.operator.Aliquot;
 import utils.sequence.CachedSequence;
 import utils.sequence.arithmetic.AbundantSequence;
 
 import java.math.BigInteger;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
-import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 
 public class Problem23 {
-     private Problem23() {
-     }
     static final int NON_ABUNDANT_SUM_CEILING = 28123;
-    static final CachedSequence<BigInteger> seq = CachedSequence.of(new AbundantSequence());
+    static Set<BigInteger> abundants;
+    static Set<BigInteger> abundantsInOrder;
+    private Problem23() {}
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=23
         problem("Non-abundant sums",
-        () -> sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
+                () -> sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
     }
 
     static long sumOfNonAbundantSums(int n) {
+        abundants = CachedSequence.of(new AbundantSequence())
+                .stream()
+                .takeWhile(i -> i.longValueExact() <= n)
+                .collect(Collectors.toSet());
+
+        abundantsInOrder = new TreeSet<>(abundants);
         return IntStream.rangeClosed(1, n)
                 .filter(i -> !hasAbundantSum(i))
                 .asLongStream().sum();
@@ -32,11 +39,9 @@ public class Problem23 {
         if (n > NON_ABUNDANT_SUM_CEILING) return true;
         BigInteger b = BigInteger.valueOf(n);
 
-        seq.reset();
-        long max = n / 2;
-        return seq.stream()
-                .takeWhile(i -> lessThanOrEqual(i, max))
+        return abundantsInOrder.stream()
                 .map(b::subtract)
-                .anyMatch(Aliquot::isAbundant);
+                .takeWhile(i -> i.signum() > 0)
+                .anyMatch(a->abundants.contains(a));
     }
 }
