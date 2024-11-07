@@ -1,10 +1,7 @@
 package utils.prime;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Prime extends BigInteger {
     private Prime(byte[] val) {
@@ -24,17 +21,20 @@ public class Prime extends BigInteger {
         boolean[] sieve = new boolean[n];
         Arrays.fill(sieve, true);
 
-        int i = 2;
+        int i = 3;
+        int count = 0;
         while (i < n) {
             if (sieve[i]) {
-                for (int j = i*2; j < n; j += i)
+                for (int j = i * 2; j < n; j += i)
                     sieve[j] = false;
+                count++;
             }
-            i++;
+            i+=2;
         }
 
-        List<Integer> primes = new ArrayList<>();
-        for (int j = 2; j < n; j++)
+        List<Integer> primes = new ArrayList<>(count);
+        primes.add(2);
+        for (int j = 3; j < n; j+=2)
             if (sieve[j])
                 primes.add(j);
 
