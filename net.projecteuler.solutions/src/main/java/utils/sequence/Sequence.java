@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public abstract class Sequence<T> implements Iterator<T> {
-    private final Class<?> T_getClass = workOutClassOfTUsingReflection();
+    private Class<?> T_getClass = null;
     public T[] nextArray(int sizeOfArray) {
         List<T> list = new ArrayList<>();
         for(int i = 0; i < sizeOfArray; i++) {
@@ -15,6 +15,7 @@ public abstract class Sequence<T> implements Iterator<T> {
             list.add(next());
         }
 
+        if (T_getClass==null) T_getClass = workOutClassOfTUsingReflection();
         @SuppressWarnings("unchecked") // These objects are type T since list is <T>
         T[] array = list.toArray((T[]) Array.newInstance(T_getClass, list.size()));
         return array;
