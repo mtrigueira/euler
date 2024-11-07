@@ -4,7 +4,6 @@ import utils.sequence.arithmetic.CollatzSequence;
 
 import java.util.stream.IntStream;
 
-import static java.math.BigInteger.ONE;
 import static problem.Solution.problem;
 
 public class Problem14 {
@@ -26,9 +25,8 @@ public class Problem14 {
                 .orElseThrow();
     }
 
-    static long chainLength(int i) {
-        return CollatzSequence.of(i).stream()
-                .takeWhile(a -> !ONE.equals(a))
+    private static long chainLength(int i) {
+        return CollatzSequence.of(i)
                 .count();
     }
 
