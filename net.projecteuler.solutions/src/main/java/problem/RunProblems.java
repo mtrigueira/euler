@@ -48,6 +48,8 @@ public class RunProblems {
             failed = false;
         } catch (Exception ignored) {
         }
+        if(stopwatch1.elapsed() > 1000)
+            System.err.println("Problem " + i + " took " + stopwatch1.elapsed() + " ms");
         return (i + "," + stopwatch1.elapsed() + "," + (failed ? "FAILED" : ""));
     }
 

@@ -1,69 +1,74 @@
 package problem.no51to60;
 
 import utils.prime.Prime;
-import utils.prime.PrimeChecker;
-import utils.sequence.arithmetic.PrimeSequence;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static problem.Solution.problem;
 
 public class Problem60 {
-     private Problem60() {
-     }
+    static List<Integer> primesInOrder;
+    static Set<Integer> primes;
+
+    private Problem60() {
+    }
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=
         problem("Prime pair sets",
-        () -> sumOfPrimePairSets(5));
+                () -> sumOfPrimePairSets(5));
     }
 
     static int sumOfPrimePairSets(int i) {
-        PrimeSequence seq = PrimeSequence.fromFirst();
+        if (primesInOrder == null) {
+            primesInOrder = Prime.eratosthenesSieve(99999999);
+            primes = new HashSet<>(primesInOrder);
+        }
+        Iterator<Integer> s = primesInOrder.iterator();
         Node root = new Node();
 
-        while (root.depthPath().size() < i)
-            root.add(new Node(seq.next()));
+        while (root.depth() <= i)
+            root.add(new Node(s.next()));
 
-        List<Node> nodes = root.depthPath();
+        Set<Node> nodes = root.depthPath();
 
-        return nodes.stream().mapToInt(node -> node.p.intValueExact()).sum();
+        return nodes.stream().mapToInt(node -> node.p).sum();
     }
 
     static class Node {
-        final Prime p;
-        private final ArrayList<Node> children;
+        private static final int ROOT = 0;
+        final int p;
+        final String pS;
+        private final Set<Node> children;
 
-        public Node(Prime p) {
-            this(p, new ArrayList<>());
+        public Node(int p) {
+            this(p, new HashSet<>());
         }
 
         public Node() {
-            this((Prime) null);
+            this(ROOT, new HashSet<>());
         }
 
-        private Node(Prime p, ArrayList<Node> children) {
+        private Node(int p, Set<Node> children) {
             this.p = p;
             this.children = children;
+            pS = p != ROOT ? Integer.toString(p) : "root";
         }
 
         public Node(Node old) {
-            this(old.p, new ArrayList<>(old.children));
+            this(old.p, new HashSet<>(old.children));
         }
 
-        static boolean bothConcatenationsArePrime(Prime a, Prime b) {
-            String aS = a.toString();
-            String bS = b.toString();
-
-            BigInteger aConcatB = new BigInteger(aS.concat(bS));
-            BigInteger bConcatA = new BigInteger(bS.concat(aS));
-
-            return PrimeChecker.isPrime(bConcatA) && PrimeChecker.isPrime(aConcatB);
+        boolean bothConcatenationsArePrime(int b) {
+            String bS = Integer.toString(b);
+            Integer aConcatB = Integer.parseInt(pS.concat(bS));
+            if (!primes.contains(aConcatB)) return false;
+            Integer bConcatA = Integer.parseInt(bS.concat(pS));
+            return primes.contains(bConcatA);
         }
 
         public void add(Node newest) {
-            if (p != null && !bothConcatenationsArePrime(p, newest.p)) return;
+            if (p != ROOT && !bothConcatenationsArePrime(newest.p)) return;
 
             for (Node child : children)
                 child.add(newest);
@@ -83,13 +88,13 @@ public class Problem60 {
             return depth + 1;
         }
 
-        public List<Node> depthPath() {
-            List<Node> path = new ArrayList<>();
+        public Set<Node> depthPath() {
+            Set<Node> path = new HashSet<>();
             depthPath(path);
             return path;
         }
 
-        private void depthPath(List<Node> path) {
+        private void depthPath(Set<Node> path) {
             int depth = 0;
             Node deepestChild = null;
             for (Node child : children) {

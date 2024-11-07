@@ -1,10 +1,8 @@
 package problem.no51to60;
 
 import org.junit.jupiter.api.Test;
-import utils.prime.Prime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utils.BigIntegerConstants.big;
 
 class Problem60Test {
     @Test
@@ -24,8 +22,9 @@ class Problem60Test {
 
     @Test
     void node() {
-        Problem60.Node n3 = new Problem60.Node(Prime.of(big(3)).orElseThrow());
-        Problem60.Node n7 = new Problem60.Node(Prime.of(big(7)).orElseThrow());
+        Problem60.sumOfPrimePairSets(0);
+        Problem60.Node n3 = new Problem60.Node(3);
+        Problem60.Node n7 = new Problem60.Node(7);
         assertEquals("3",n3.toString());
         n3.add(n3);
         assertEquals("3",n3.toString());
