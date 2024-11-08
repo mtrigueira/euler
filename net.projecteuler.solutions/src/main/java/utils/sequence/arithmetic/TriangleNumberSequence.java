@@ -1,17 +1,13 @@
 package utils.sequence.arithmetic;
 
-import java.math.BigInteger;
-
-import static java.math.BigInteger.*;
-
-public class TriangleNumberSequence extends ArithmeticSequence<BigInteger> {
-    private BigInteger current = ZERO;
-    private BigInteger count = ONE;
+public class TriangleNumberSequence extends ArithmeticSequence<Long> {
+    private long current = 0L;
+    private long count = 1L;
 
     @Override
-    public BigInteger next() {
-        current = current.add(count);
-        count = count.add(ONE);
+    public Long next() {
+        current += count;
+        count++;
         return current;
     }
 }

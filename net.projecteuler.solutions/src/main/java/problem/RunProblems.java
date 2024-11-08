@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class RunProblems {
     public static final String[] O = {};
-    public static final int[] SLOW = {12, 35, 39, 50, 60, 68};
+    public static final int[] SLOW = {39, 60, 68};
     public static final int[] NOT_SLOW = IntStream.range(1, 100)
             .filter(i -> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();

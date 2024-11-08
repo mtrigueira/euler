@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.math.BigInteger;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem12Test {
@@ -31,14 +29,10 @@ class Problem12Test {
     }
 
     private static void assertEqualsTriangularNumber(int count, int numberOfDivisors) {
-        BigInteger b = BigInteger.valueOf(count);
-        assertEquals(b, Problem12.triangularNumber(numberOfDivisors));
+        assertEquals(count, Problem12.triangularNumber(numberOfDivisors));
     }
 
     private static void assertEqualsCount(int count, int candidate) {
-        BigInteger b = BigInteger.valueOf(candidate);
-        assertEquals(count, Problem12.countFactors(b));
+        assertEquals(count, Problem12.countFactors(candidate));
     }
-
-
 }
