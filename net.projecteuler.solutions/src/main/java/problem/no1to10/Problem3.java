@@ -21,6 +21,7 @@ public class Problem3 {
 
     static String largestPrimeFactorOrNotFound(long target) {
         return Factors.of(target).stream()
+                .map(BigInteger::valueOf)
                 .map(Prime::of)
                 .flatMap(Optional::stream)
                 .max(BigInteger::compareTo)

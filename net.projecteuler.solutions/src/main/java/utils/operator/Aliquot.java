@@ -34,7 +34,7 @@ public class Aliquot {
     }
 
     private static BigInteger sumOfDivisors(BigInteger i) {
-        return ProperDivisors.of(i.longValueExact()).stream()
+        return ProperDivisors.of(i).stream()
                 .reduce(BigInteger::add)
                 .orElse(ZERO);
     }

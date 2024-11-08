@@ -9,7 +9,7 @@ public abstract class PrimeChecker {
     private PrimeChecker() {}
 
     public static boolean isPrime(long candidate) {
-        return isPrime(BigInteger.valueOf(candidate));
+        return BruteForcePrimeChecker.isPrime(candidate);
     }
 
     public static boolean isPrime(BigInteger candidate) {

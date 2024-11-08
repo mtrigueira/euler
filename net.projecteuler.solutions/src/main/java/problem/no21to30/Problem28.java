@@ -2,11 +2,9 @@ package problem.no21to30;
 
 import utils.data.Layer;
 
-import java.math.BigInteger;
-import java.util.Collection;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
-import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
 
 public class Problem28 {
@@ -18,16 +16,17 @@ public class Problem28 {
         () -> sumOfDiagonalsInAGridOfSizeNxN(1001));
     }
 
-    static BigInteger sumOfDiagonalsInAGridOfSizeNxN(int n) {
+    static long sumOfDiagonalsInAGridOfSizeNxN(int n) {
         return sumOfDiagonalsInAGridOfNLayers(Layer.layersInGridOfSizeNxN(n).orElseThrow());
     }
 
-    private static BigInteger sumOfDiagonalsInAGridOfNLayers(int layers) {
+    private static long sumOfDiagonalsInAGridOfNLayers(int layers) {
         return IntStream.rangeClosed(1, layers)
                 .mapToObj(Layer::of)
                 .map(Layer::corners)
-                .flatMap(Collection::stream)
-                .reduce(ZERO,BigInteger::add);
+                .map(LongStream::of)
+                .flatMapToLong(a->a)
+                .reduce(0L, Long::sum);
     }
 }
 

@@ -2,7 +2,6 @@ package utils;
 
 import utils.property.ProperDivisors;
 
-import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 public class Amicable {
@@ -17,8 +16,7 @@ public class Amicable {
     private static long sumOfProperDivisors(long i) {
         return ProperDivisors.of(i)
                 .stream()
-                .reduce(BigInteger.ZERO, BigInteger::add)
-                .longValueExact();
+                .reduce(0L, Long::sum);
     }
 
     public int sum() {
