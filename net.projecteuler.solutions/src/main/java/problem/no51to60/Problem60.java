@@ -1,6 +1,7 @@
 package problem.no51to60;
 
 import utils.prime.Prime;
+import utils.prime.PrimeChecker;
 
 import java.util.*;
 
@@ -8,7 +9,6 @@ import static problem.Solution.problem;
 
 public class Problem60 {
     static List<Integer> primesInOrder;
-    static Set<Integer> primes;
 
     private Problem60() {
     }
@@ -20,10 +20,9 @@ public class Problem60 {
     }
 
     static int sumOfPrimePairSets(int i) {
-        if (primesInOrder == null) {
-            primesInOrder = Prime.eratosthenesSieve(99999999);
-            primes = new HashSet<>(primesInOrder);
-        }
+        if (primesInOrder == null)
+            primesInOrder = Prime.eratosthenesSieve(9999);
+
         Iterator<Integer> s = primesInOrder.iterator();
         Node root = new Node();
 
@@ -61,10 +60,10 @@ public class Problem60 {
 
         boolean bothConcatenationsArePrime(int b) {
             String bS = Integer.toString(b);
-            Integer aConcatB = Integer.parseInt(pS.concat(bS));
-            if (!primes.contains(aConcatB)) return false;
-            Integer bConcatA = Integer.parseInt(bS.concat(pS));
-            return primes.contains(bConcatA);
+            int aConcatB = Integer.parseInt(pS.concat(bS));
+            if (!PrimeChecker.isPrime(aConcatB)) return false;
+            int bConcatA = Integer.parseInt(bS.concat(pS));
+            return PrimeChecker.isPrime(bConcatA);
         }
 
         public void add(Node newest) {

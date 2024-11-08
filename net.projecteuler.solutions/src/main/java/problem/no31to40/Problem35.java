@@ -1,9 +1,9 @@
 package problem.no31to40;
 
 import utils.prime.CircularPrimeChecker;
-import utils.sequence.arithmetic.PrimeSequence;
+import utils.prime.Prime;
 
-import java.math.BigInteger;
+import java.util.List;
 
 import static problem.Solution.problem;
 
@@ -17,9 +17,8 @@ public class Problem35 {
     }
 
     static long countCircularPrimesBelow(int limit) {
-        BigInteger b = BigInteger.valueOf(limit);
-        return PrimeSequence.fromFirst().stream()
-                .takeWhile(a -> a.compareTo(b) < 0)
+        List<Integer> primes = Prime.eratosthenesSieve(limit);
+        return primes.stream()
                 .filter(CircularPrimeChecker::isCircularPrime)
                 .count();
     }

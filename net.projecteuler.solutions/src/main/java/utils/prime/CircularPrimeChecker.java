@@ -1,18 +1,16 @@
 package utils.prime;
 
-import java.math.BigInteger;
-
 public class CircularPrimeChecker {
     private CircularPrimeChecker() {
     }
     
-    public static boolean isCircularPrime(Prime prime) {
-        String digits = prime.toString();
+    public static boolean isCircularPrime(long prime) {
+        String digits = Long.toString(prime);
         int size = digits.length() - 1;
 
         for (int i = 0; i < size; i++) {
             digits = rotate(digits);
-            if (!PrimeChecker.isPrime(new BigInteger(digits)))
+            if (!PrimeChecker.isPrime(Long.parseLong(digits)))
                 return false;
         }
 
