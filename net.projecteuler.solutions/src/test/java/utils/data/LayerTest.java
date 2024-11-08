@@ -25,6 +25,6 @@ class LayerTest {
     }
 
     private static int lengthOfSideAsInt(int layer) {
-        return Layer.of(layer).lengthOfSide().intValueExact();
+        return Math.toIntExact(Layer.of(layer).lengthOfSide());
     }
 }

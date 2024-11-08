@@ -1,22 +1,16 @@
 package utils.data;
 
-import java.math.BigInteger;
-import java.util.List;
 import java.util.OptionalInt;
 
-import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.TWO;
-import static utils.operator.BigComparisonOperator.equal;
-
 public class Layer {
-    public static Layer of(long layer) {
-        return new Layer(layer);
-    }
-
-    private final BigInteger layer;
+    private final long layer;
 
     private Layer(long layer) {
-        this.layer = BigInteger.valueOf(layer);
+        this.layer = layer;
+    }
+
+    public static Layer of(long layer) {
+        return new Layer(layer);
     }
 
     public static OptionalInt layersInGridOfSizeNxN(int n) {
@@ -28,19 +22,20 @@ public class Layer {
         return OptionalInt.of(layers);
     }
 
-    public BigInteger lengthOfSide() {
-        return TWO.multiply(layer.subtract(ONE)).add(ONE);
+    public long lengthOfSide() {
+        return 2 * (layer - 1) + 1;
     }
 
-    public List<BigInteger> corners() {
-        if (equal(ONE,layer)) return List.of(ONE);
-        BigInteger offset = lengthOfSide().subtract(ONE);
+    public long[] corners() {
+        if (layer == 1) return new long[]{1L};
+        long offset = lengthOfSide() - 1;
 
-        BigInteger NE_corner = TWO.multiply(layer).subtract(ONE).pow(2);
-        BigInteger NW_corner = NE_corner.subtract(offset);
-        BigInteger SW_corner = NW_corner.subtract(offset);
-        BigInteger SE_corner = SW_corner.subtract(offset);
+        long NE_corner = (2*layer - 1);
+        NE_corner *= NE_corner;
+        long NW_corner = NE_corner - offset;
+        long SW_corner = NW_corner - offset;
+        long SE_corner = SW_corner - offset;
 
-        return List.of(NE_corner, NW_corner, SW_corner, SE_corner);
+        return new long[]{NE_corner, NW_corner, SW_corner, SE_corner};
     }
 }

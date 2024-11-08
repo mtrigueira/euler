@@ -15,8 +15,13 @@ public class Factors {
     private Factors() {
     }
 
-    public static Set<BigInteger> of(long n) {
-        return of(BigInteger.valueOf(n));
+    public static Set<Long> of(long n) {
+        if (n < 1) return Collections.emptySet();
+
+        Set<Long> s = ProperDivisors.of(n);
+        s.add(n);
+
+        return s;
     }
 
     public static Set<BigInteger> of(BigInteger n) {
@@ -30,6 +35,10 @@ public class Factors {
 
     public static boolean isFactor(BigInteger i, BigInteger candidate) {
         return i.mod(candidate).signum() == 0;
+    }
+
+    public static boolean isFactor(long i, long candidate) {
+        return i % candidate == 0;
     }
 
     public static List<Integer> findRelativePrimes(int i) {
@@ -56,6 +65,6 @@ public class Factors {
     }
 
     public static Set<BigInteger> primeFactors(int n) {
-        return ProperDivisors.of(n).stream().dropWhile(ONE::equals).filter(PrimeChecker::isPrime).collect(Collectors.toSet());
+        return ProperDivisors.of(n).stream().map(BigInteger::valueOf).dropWhile(ONE::equals).filter(PrimeChecker::isPrime).collect(Collectors.toSet());
     }
 }

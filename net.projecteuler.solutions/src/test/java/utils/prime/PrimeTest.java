@@ -3,6 +3,7 @@ package utils.prime;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigInteger;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,16 +33,19 @@ class PrimeTest {
     }
 
     private static void assertPrimeImplementations(int candidate, boolean isPrime) {
+        BigInteger i = big(candidate);
+
         if(isPrime) {
             Prime p = Prime.of(Integer.toString(candidate)).orElseThrow();
             CachedPrimeChecker.primes.remove(p);
             assertFalse(CachedPrimeChecker.primes.contains(p));
         }
-        assertEquals(isPrime, BruteForcePrimeChecker.isPrime(big(candidate)));
+        assertEquals(isPrime, BruteForcePrimeChecker.isPrime(i));
         if(isPrime) {
             Prime p = Prime.of(Integer.toString(candidate)).orElseThrow();
             assertTrue(CachedPrimeChecker.primes.contains(p));
         }
-        assertEquals(isPrime, CachedPrimeChecker.isPrime(big(candidate)));
+        assertEquals(isPrime, CachedPrimeChecker.isPrime(i));
+        assertEquals(isPrime, BruteForcePrimeChecker.isPrime(candidate));
     }
 }

@@ -19,8 +19,20 @@ public class ProperDivisors {
         return new ProperDivisors(i).of();
     }
 
-    public static Set<BigInteger> of(long n) {
-        return of(BigInteger.valueOf(n));
+    public static Set<Long> of(long n) {
+        if (n < 1) return Collections.emptySet();
+        Set<Long> s = new HashSet<>();
+        if (n == 1) return s;
+        s.add(1L);
+
+        long sqrt = (long)Math.sqrt(n);
+        for (long i = 2; i <=sqrt; i++)
+            if (Factors.isFactor(n,i)) {
+                s.add(i);
+                s.add(n / i);
+            }
+
+        return s;
     }
 
     public Set<BigInteger> of() {

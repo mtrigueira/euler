@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 public class PrimeSequence extends ArithmeticSequence<Prime> {
     private static final Prime TWO = Prime.of(BigInteger.TWO).orElseThrow();
-    private static final Prime THREE = Prime.of(BigInteger.valueOf(3)).orElseThrow();
+    public static final Prime THREE = Prime.of(BigInteger.valueOf(3)).orElseThrow();
     private static final Prime FIRST_PRIME = TWO;
     private Prime current;
 

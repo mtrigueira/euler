@@ -3,9 +3,6 @@ package problem.no51to60;
 import utils.data.Layer;
 import utils.prime.PrimeChecker;
 
-import java.math.BigInteger;
-import java.util.List;
-
 import static problem.Solution.problem;
 
 public class Problem58 {
@@ -19,16 +16,19 @@ public class Problem58 {
 
     static long countOfPrimeDiagonalsInAGridOfNLayers(int percent) {
         long primeCount = 0L;
-        long cornerCount = 1L;
+        long cornerCount = Layer.of(1).corners().length;
         for (int i = 2; ; i++) {
             Layer layer = Layer.of(i);
-            List<BigInteger> corners = layer.corners();
+            long[] corners = layer.corners();
 
-            cornerCount += corners.size();
-            primeCount += corners.stream().filter(PrimeChecker::isPrime).count();
+            cornerCount += 4;
+            if(PrimeChecker.isPrime(corners[0])) primeCount++;
+            if(PrimeChecker.isPrime(corners[1])) primeCount++;
+            if(PrimeChecker.isPrime(corners[2])) primeCount++;
+            if(PrimeChecker.isPrime(corners[3])) primeCount++;
             long ratio = primeCount * 100 / cornerCount;
 
-            if(ratio < percent) return layer.lengthOfSide().longValueExact();
+            if(ratio < percent) return layer.lengthOfSide();
         }
     }
 }

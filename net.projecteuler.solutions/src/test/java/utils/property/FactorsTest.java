@@ -22,22 +22,22 @@ class FactorsTest {
 
     @Test
     void factors1() {
-        Assertions.assertEquals(Maker.set(1), Factors.of(1));
+        Assertions.assertEquals(Maker.setL(1), Factors.of(1));
     }
 
     @Test
     void factors3() {
-        assertEquals(Maker.set(1, 3), Factors.of(3));
+        assertEquals(Maker.setL(1, 3), Factors.of(3));
     }
 
     @Test
     void factors6() {
-        assertEquals(Maker.set(1, 2, 3, 6), Factors.of(6));
+        assertEquals(Maker.setL(1, 2, 3, 6), Factors.of(6));
     }
 
     @Test
     void factors28() {
-        assertEquals(Maker.set(1, 2, 4, 7, 14, 28), Factors.of(28));
+        assertEquals(Maker.setL(1, 2, 4, 7, 14, 28), Factors.of(28));
     }
 
 
