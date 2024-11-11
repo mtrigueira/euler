@@ -16,6 +16,6 @@ public class Problem7 {
     }
 
     public static Prime prime(int n) {
-        return PrimeSequence.fromFirst().stream().limit(n).reduce((a, b) -> b).orElse(null);
+        return PrimeSequence.fromFirst().stream().skip(n-1).findFirst().orElse(null);
     }
 }
