@@ -2,6 +2,7 @@ package utils.prime;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.util.Collections;
 
 public class Prime extends BigInteger {
     private Prime(byte[] val) {
@@ -18,6 +19,7 @@ public class Prime extends BigInteger {
     }
 
     public static List<Integer> eratosthenesSieve(int n) {
+        if(n < 2) return Collections.emptyList();
         boolean[] sieve = new boolean[n];
         Arrays.fill(sieve, true);
 
@@ -39,9 +41,5 @@ public class Prime extends BigInteger {
                 primes.add(j);
 
         return primes;
-    }
-
-    public BigInteger toBigInteger() {
-        return this;
     }
 }

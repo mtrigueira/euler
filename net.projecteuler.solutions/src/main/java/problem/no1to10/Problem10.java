@@ -17,7 +17,6 @@ public class Problem10 {
 
     static long sumOfPrimesBelow(int i) {
         return Prime.eratosthenesSieve(i).stream()
-                .takeWhile(a -> a < i)
                 .mapToLong(a -> a)
                 .sum();
     }

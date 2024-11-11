@@ -2,7 +2,6 @@ package problem.no21to30;
 
 import utils.prime.PrimeChecker;
 
-import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 import static problem.Solution.problem;
@@ -29,14 +28,11 @@ public class Problem27 {
                 .orElse(0);
     }
 
-    private static int getN(long a, long b) {
-        BigInteger candidate;
-        BigInteger bigA = BigInteger.valueOf(a);
-        BigInteger bigB = BigInteger.valueOf(b);
+    private static int getN(int a, int b) {
+        long candidate;
 
         for (int n = 1; ; n++) {
-            BigInteger bigN = BigInteger.valueOf(n);
-            candidate = bigN.pow(2).add(bigA.multiply(bigN)).add(bigB);
+            candidate = (long)n * n+ (long)a * n + b;
             if (!isPrime(candidate))
                 return n - 1;
         }

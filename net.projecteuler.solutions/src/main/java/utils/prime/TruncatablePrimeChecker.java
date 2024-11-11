@@ -6,30 +6,28 @@ public class TruncatablePrimeChecker {
     private TruncatablePrimeChecker() {
     }
 
-    private static boolean isTruncatablePrime(long i, boolean leftToRight) {
+    static boolean isTruncatablePrimeL(long i) {
         if (i < 10) return isPrime(i);
-
         if (!isPrime(i)) return false;
-        long truncated = leftToRight ? truncate(i) : truncateR(i);
-
-        return isTruncatablePrime(truncated, leftToRight);
+        return isTruncatablePrimeL(truncateL(i));
     }
 
-    private static long truncate(long i) {
-        int length = String.valueOf(i).length();
-        return i % (long) Math.pow(10, length - 1);
+    static boolean isTruncatablePrimeR(long i) {
+        if (i < 10) return isPrime(i);
+        if (!isPrime(i)) return false;
+        return isTruncatablePrimeR(truncateR(i));
+    }
+
+    private static long truncateL(long i) {
+        int length = (int)Math.log10(i);
+        return i % (long) Math.pow(10, length);
     }
 
     private static long truncateR(long i) {
         return i / 10;
     }
 
-    public static boolean isTruncatablePrime(long i) {
-        return isTruncatablePrime(i, true);
-    }
-
-    public static boolean isTruncatablePrimeBothDirections(Prime prime) {
-        long i = prime.longValueExact();
-        return isTruncatablePrime(i, true) && isTruncatablePrime(i, false);
+    public static boolean isTruncatablePrimeBothDirections(long prime) {
+        return isTruncatablePrimeL(truncateL(prime)) && isTruncatablePrimeR(truncateR(prime));
     }
 }

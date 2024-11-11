@@ -2,13 +2,12 @@ package utils.prime;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TruncatablePrimeCheckerTest {
-    public static final Prime NOT_TRUNCATABLE = toPrime(3803);
-    public static final Prime TRUNCATABLE_IN_BOTH_DIRECTIONS = toPrime(3797);
+    public static final long NOT_TRUNCATABLE = 3803;
+    public static final long TRUNCATABLE_IN_BOTH_DIRECTIONS = 3797;
 
     @Test
     void isTruncatablePrimeBothDirections() {
@@ -18,11 +17,9 @@ class TruncatablePrimeCheckerTest {
 
     @Test
     void isTruncatablePrime() {
-        assertTrue(TruncatablePrimeChecker.isTruncatablePrime(3797));
-        assertFalse(TruncatablePrimeChecker.isTruncatablePrime(3798));
-    }
-
-    private static Prime toPrime(int i) {
-        return Prime.of(BigInteger.valueOf(i)).orElseThrow();
+        assertTrue(TruncatablePrimeChecker.isTruncatablePrimeL(TRUNCATABLE_IN_BOTH_DIRECTIONS));
+        assertFalse(TruncatablePrimeChecker.isTruncatablePrimeL(3798));
+        assertTrue(TruncatablePrimeChecker.isTruncatablePrimeR(TRUNCATABLE_IN_BOTH_DIRECTIONS));
+        assertFalse(TruncatablePrimeChecker.isTruncatablePrimeR(3798));
     }
 }
