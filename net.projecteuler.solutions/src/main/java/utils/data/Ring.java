@@ -8,16 +8,22 @@ import java.util.stream.Collectors;
 public record Ring(Group[] groups) {
     public static final Ring EMPTY = new Ring();
 
-    public Ring(String a) {
-        this(groupArrayFromString(a));
-    }
-
     public Ring(int... a) {
         this(groupsFromArrayOfInt(a));
     }
 
-    private static Group[] groupArrayFromString(String a) {
-        return Arrays.stream(a.split(";")).map(Group::new).toArray(Group[]::new);
+    public Ring(Group g) {
+        this(new Group[]{g});
+    }
+
+    public Ring(Ring ring, Group g) {
+        this(getGroups(ring, g));
+    }
+
+    private static Group[] getGroups(Ring ring, Group g) {
+        Group[] newGroups = Arrays.copyOf(ring.groups, ring.groups.length + 1);
+        newGroups[newGroups.length - 1] = g;
+        return newGroups;
     }
 
     private static Group[] groupsFromArrayOfInt(int[] a) {
@@ -91,18 +97,30 @@ public record Ring(Group[] groups) {
 
     public boolean isChain() {
         int n = groups.length;
-        Set<Integer> elements = new HashSet<>(groups[0].set());
+        if (n == 1) return true;
+        Set<Integer> elements = new HashSet<>(n*2);
+        Group g0 = groups[0];
+        elements.add(g0.a());
+        elements.add(g0.b());
+        elements.add(g0.c());
 
-        for (int i = 1; i < n; i++)
-            if (groups[i - 1].isNextInRing(groups[i]))
-                elements.addAll(groups[i].set());
-            else
+        Group gOld = g0;
+        for (int i = 1; i < n - 1; i++) {
+            Group gI = groups[i];
+            if (!gOld.isNextInRing(gI)) {
                 return false;
+            } else {
+                if (!elements.add(gI.a())) return false;
+                // .b() is equal to the previous group .c()
+                if (!elements.add(gI.c())) return false;
+            }
+            gOld = gI;
+        }
 
-        return elements.size() >= n * 2;
+        return gOld.isNextInRing(groups[n - 1]) && elements.add(groups[n - 1].a());
     }
 
-    public Ring append(String s) {
-        return groups.length == 0 ? new Ring(s) : new Ring(this + ";" + s);
+    public Ring append(Group g) {
+        return groups.length == 0 ? new Ring(g) : new Ring(this, g);
     }
 }
