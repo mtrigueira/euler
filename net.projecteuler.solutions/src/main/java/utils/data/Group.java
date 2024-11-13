@@ -1,6 +1,5 @@
 package utils.data;
 
-import java.util.Arrays;
 import java.util.Set;
 
 public record Group(int a, int b, int c, int sum) {
@@ -8,28 +7,20 @@ public record Group(int a, int b, int c, int sum) {
         this(a, b, c, a + b + c);
     }
 
-    public Group(String s) {
-        this(Arrays.stream(s.split(",")).mapToInt(Integer::parseInt).toArray());
-    }
-
-    private Group(int[] array) {
-        this(array[0], array[1], array[2]);
+    public static Group from(String s) {
+        int aI = s.indexOf(',');
+        int bI = s.indexOf(',', aI + 1);
+        return new Group(Integer.parseInt(s.substring(0, aI)),
+                Integer.parseInt(s.substring(aI + 1, bI)),
+                Integer.parseInt(s.substring(bI + 1)));
     }
 
     public int compareGroups(Group that) {
-        int[] elements = this.toArray();
-        int[] minElements = that.toArray();
-        for (int i = 0; i < elements.length; i++) {
-            int leftE = elements[i];
-            int rightE = minElements[i];
-            if (leftE != rightE)
-                return leftE - rightE;
-        }
-        return 0;
-    }
-
-    public int[] toArray() {
-        return new int[]{a, b, c};
+        int t = this.a - that.a;
+        if (t != 0) return t;
+        t = this.b - that.b;
+        if (t != 0) return t;
+        return this.c - that.c;
     }
 
     boolean isNextInRing(Group next) {
@@ -46,6 +37,18 @@ public record Group(int a, int b, int c, int sum) {
     }
 
     public String toCompactString() {
-        return "" + a + b + c;
+        return Integer.toString(a) + b + c;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Group group)) return false;
+        return a == group.a && b == group.b && c == group.c && sum == group.sum;
+    }
+
+    @Override
+    public int hashCode() {
+        return sum;
     }
 }

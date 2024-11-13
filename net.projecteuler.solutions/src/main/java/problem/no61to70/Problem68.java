@@ -44,7 +44,7 @@ public class Problem68 {
     private static Stream<Group> groups(List<String> elements) {
         return new CombinationSequence<>(elements, (a, b) -> a + "," + b, 3)
                 .stream()
-                .map(Group::new);
+                .map(Group::from);
     }
 
     private static Stream<Ring> ringStream(int n, List<Group> e) {
@@ -56,11 +56,11 @@ public class Problem68 {
 
     private static Stream<Ring> ringStream(int n, List<Group> e, Ring r) {
         if (n == 0) return Stream.of(r).filter(Ring::isChain).filter(Ring::isRing);
-        List<Group> f = new ArrayList<>(e);
-        f.removeAll(Arrays.stream(r.groups()).toList());
-        return f.stream().map(Group::toString)
+
+        return e.stream()
+                .filter(a-> !Arrays.asList(r.groups()).contains(a))
                 .map(r::append)
                 .filter(Ring::isChain)
-                .flatMap(ring -> ringStream(n - 1, f, ring));
+                .flatMap(ring -> ringStream(n - 1, e, ring));
     }
 }
