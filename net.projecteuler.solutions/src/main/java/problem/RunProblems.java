@@ -8,10 +8,13 @@ import java.util.stream.IntStream;
 
 public class RunProblems {
     public static final String[] O = {};
-    public static final int[] SLOW = {39, 60};
+    public static final int[] SLOW = {60};
     public static final int[] NOT_SLOW = IntStream.range(1, 100)
             .filter(i -> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();
+    public static final int TOO_SLOW_THRESHOLD_MS = 1000;
+    public static boolean tooSlow = false;
+
     private RunProblems() {
     }
 
@@ -19,7 +22,8 @@ public class RunProblems {
         runProblems(SLOW);
     }
 
-    public static void runProblems(int[] problems) {
+    public static boolean runProblems(int[] problems) {
+        tooSlow = false;
         Stopwatch stopwatch = Stopwatch.start();
 
         String results = Arrays.stream(problems)
@@ -30,6 +34,8 @@ public class RunProblems {
         System.out.println("Problem,ms,Failed");
         System.out.println(results);
         System.out.println("Total time: " + stopwatch.elapsed() + " ms");
+
+        return tooSlow;
     }
 
     private static String groupName(int i) {
@@ -48,8 +54,10 @@ public class RunProblems {
             failed = false;
         } catch (Exception ignored) {
         }
-        if(stopwatch1.elapsed() > 1000)
+        if(stopwatch1.elapsed() > TOO_SLOW_THRESHOLD_MS) {
             System.err.println("Problem " + i + " took " + stopwatch1.elapsed() + " ms");
+            tooSlow = true;
+        }
         return (i + "," + stopwatch1.elapsed() + "," + (failed ? "FAILED" : ""));
     }
 

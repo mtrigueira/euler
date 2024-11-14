@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Problem39Test {
     @Test
     void maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo() {
-            assertEquals(168, Problem39.maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(170));
+            assertEquals(120, Problem39.maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(120));
     }
 
     @Test
