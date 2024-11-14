@@ -1,34 +1,41 @@
 package problem.no31to40;
 
-import utils.PythagoreanTriangle;
-
-import java.util.stream.IntStream;
-
 import static problem.Solution.problem;
 
 public class Problem39 {
-     private Problem39() {
-     }
+    private Problem39() {}
+
     public static void main(String[] args) {
         // https://projecteuler.net/problem=39
         problem("Integer right triangles",
-        () -> maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(1000));
+                () -> maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(1000));
     }
 
     static int maximumRightTriangleSolutionsForPerimeterLessThanOrEqualTo(int limit) {
-        return IntStream.rangeClosed(1, limit)
-                .mapToObj(p -> new Ugly(p, countSolutionsFor(p)))
-                .reduce((a, b) -> a.count > b.count ? a : b)
-                .map(u -> u.perimeter).orElse(0);
+        int accPerimiter = 0;
+        long accCount = 0;
+
+        for (int p = 1; p <= limit; p++)
+            if (accCount < countSolutionsFor(p)) {
+                accPerimiter = p;
+                accCount = countSolutionsFor(p);
+            }
+
+        return accPerimiter;
     }
 
     static long countSolutionsFor(int perimeter) {
-        return IntStream.range(1, perimeter).boxed().flatMap(a ->
-                IntStream.range(a, perimeter).mapToObj(b ->
-                        PythagoreanTriangle.isPythagoreanTriplet(a, b, PythagoreanTriangle.calculateC(a, b, perimeter))
-                ).filter(t -> t)
-        ).count();
-    }
+        long count = 0L;
 
-    record Ugly(int perimeter,long count) {}
+        for (long a = 1; a < perimeter; a++) {
+            long a2 = a * a;
+            for (long b = a; b < perimeter - a; b++) {
+                long c = perimeter - a - b;
+                if (a2 + b * b == c * c)
+                    count++;
+            }
+        }
+
+        return count;
+    }
 }
