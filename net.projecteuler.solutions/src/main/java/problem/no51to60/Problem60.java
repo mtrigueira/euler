@@ -8,8 +8,6 @@ import java.util.*;
 import static problem.Solution.problem;
 
 public class Problem60 {
-    static List<Integer> primesInOrder;
-
     private Problem60() {
     }
 
@@ -19,58 +17,33 @@ public class Problem60 {
                 () -> sumOfPrimePairSets(5));
     }
 
-    static int sumOfPrimePairSets(int i) {
-        if (primesInOrder == null)
-            primesInOrder = Prime.eratosthenesSieve(9999);
+    static long sumOfPrimePairSets(int i) {
+        Iterator<Integer> s= Prime.primes.iterator();
 
-        Iterator<Integer> s = primesInOrder.iterator();
-        Node root = new Node();
+        Root root = new Root();
 
         while (root.depth() <= i)
-            root.add(new Node(s.next()));
+            root.add(s.next());
 
-        Set<Node> nodes = root.depthPath();
+        List<Node> nodes = root.depthPath();
 
-        return nodes.stream().mapToInt(node -> node.p).sum();
+        return nodes.stream().mapToLong(node -> node.p).sum();
     }
 
-    static class Node {
-        private static final int ROOT = 0;
-        final int p;
-        final String pS;
-        private final Set<Node> children;
+    static long concat(long a, long b) {
+        return (long) (a * Math.pow(10, (b == 0 ? 0 : (int) Math.log10(b)) + 1)) + b;
+    }
 
-        public Node(int p) {
-            this(p, new HashSet<>());
-        }
+    static class Root {
+        Set<Node> children;
 
-        public Node() {
-            this(ROOT, new HashSet<>());
-        }
-
-        private Node(int p, Set<Node> children) {
-            this.p = p;
-            this.children = children;
-            pS = p != ROOT ? Integer.toString(p) : "root";
-        }
-
-        public Node(Node old) {
-            this(old.p, new HashSet<>(old.children));
-        }
-
-        boolean bothConcatenationsArePrime(int b) {
-            String bS = Integer.toString(b);
-            int aConcatB = Integer.parseInt(pS.concat(bS));
-            if (!PrimeChecker.isPrime(aConcatB)) return false;
-            int bConcatA = Integer.parseInt(bS.concat(pS));
-            return PrimeChecker.isPrime(bConcatA);
-        }
-
-        public void add(Node newest) {
-            if (p != ROOT && !bothConcatenationsArePrime(newest.p)) return;
-
-            for (Node child : children)
-                child.add(newest);
+        public void add(long newest) {
+            if (children != null)
+                for (Node child : children)
+                    child.add(newest);
+            else {
+                children = new HashSet<>(1);
+            }
 
             children.add(new Node(newest));
         }
@@ -78,48 +51,72 @@ public class Problem60 {
         public int depth() {
             int depth = 0;
 
-            for (Node child : children) {
-                int childDepth = child.depth();
-                if (childDepth > depth)
-                    depth = childDepth;
-            }
+            if (children != null)
+                for (Node child : children) {
+                    int childDepth = child.depth();
+                    if (childDepth > depth)
+                        depth = childDepth;
+                }
 
             return depth + 1;
         }
 
-        public Set<Node> depthPath() {
-            Set<Node> path = new HashSet<>();
-            depthPath(path);
-            return path;
-        }
-
-        private void depthPath(Set<Node> path) {
+        void depthPath(List<Node> path) {
             int depth = 0;
             Node deepestChild = null;
-            for (Node child : children) {
-                int childDepth = child.depth();
-                if (childDepth > depth) {
-                    depth = childDepth;
-                    deepestChild = child;
+            if (children != null)
+                for (Node child : children) {
+                    int childDepth = child.depth();
+                    if (childDepth > depth) {
+                        depth = childDepth;
+                        deepestChild = child;
+                    }
                 }
-            }
             if (deepestChild != null) {
                 path.add(deepestChild);
                 deepestChild.depthPath(path);
             }
         }
 
-        private String toString(String prefix) {
-            String s = "";
+        public List<Node> depthPath() {
+            List<Node> path = new ArrayList<>(8);
+            depthPath(path);
+            return path;
+        }
+    }
 
-            for (Node child : children)
-                s += prefix + child.toString(prefix + " ");
+    static class Node extends Root {
+        final long p;
 
-            return p + s;
+        public Node(long p) {
+            this(p, null);
         }
 
-        public String toString() {
-            return toString("\n ");
+        private Node(long p, Set<Node> children) {
+            this.p = p;
+            this.children = children;
+        }
+
+        boolean bothConcatenationsArePrime(long b) {
+            if (!PrimeChecker.isPrime(concat(p, b))) return false;
+            return PrimeChecker.isPrime(concat(b, p));
+        }
+
+        public void add(long newest) {
+            if (!bothConcatenationsArePrime(newest)) return;
+            super.add(newest);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Node node)) return false;
+            return p == node.p;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hashCode(p);
         }
     }
 }

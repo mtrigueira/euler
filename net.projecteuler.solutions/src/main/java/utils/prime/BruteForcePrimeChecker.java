@@ -3,6 +3,7 @@ package utils.prime;
 import utils.property.Factors;
 
 import java.math.BigInteger;
+import java.util.Iterator;
 
 import static java.math.BigInteger.ONE;
 import static java.math.BigInteger.TWO;
@@ -38,15 +39,20 @@ class BruteForcePrimeChecker {
     }
 
     static boolean isPrimeByTrialDivision(long candidate) {
-        return hasNoFactorGreaterThanOrEqualTo2(candidate);
+        return hasNoFactorGreaterThanOrEqualTo2withPrimes(candidate);
     }
 
-    private static boolean hasNoFactorGreaterThanOrEqualTo2(long candidate) {
+    private static boolean hasNoFactorGreaterThanOrEqualTo2withPrimes(long candidate) {
         if (candidate <= 1) return false;
         if (Factors.isFactor(candidate, 2)) return candidate == 2;
         long maxPotentialFactor = (long)Math.sqrt(candidate);
+        Iterator<Integer> it = Prime.primes.iterator();
 
-        for (long i = 3; i <= maxPotentialFactor; i+=2)
+        long i;
+        for (i = it.next();i<=maxPotentialFactor;i = it.next())
+            if(Factors.isFactor(candidate, i)) return false;
+
+        for (i += 2; i <= maxPotentialFactor; i+=2)
             if (Factors.isFactor(candidate, i))
                 return false;
 

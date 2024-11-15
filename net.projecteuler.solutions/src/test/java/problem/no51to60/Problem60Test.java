@@ -2,7 +2,9 @@ package problem.no51to60;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class Problem60Test {
     @Test
@@ -25,10 +27,18 @@ class Problem60Test {
         Problem60.sumOfPrimePairSets(0);
         Problem60.Node n3 = new Problem60.Node(3);
         Problem60.Node n7 = new Problem60.Node(7);
-        assertEquals("3",n3.toString());
-        n3.add(n3);
-        assertEquals("3",n3.toString());
-        n3.add(n7);
-        assertEquals("3\n 7",n3.toString());
+        assertNull(n3.children);
+        n3.add(n3.p);
+        assertNull(n3.children);
+        n3.add(n7.p);
+        assertArrayEquals(Set.of(n7).toArray(),n3.children.toArray());
+    }
+
+    @Test
+    void concat() {
+        assertEquals(10,Problem60.concat(1L,0L));
+        assertEquals(1,Problem60.concat(0L,1L));
+        assertEquals(23,Problem60.concat(2L,3L));
+        assertEquals(345,Problem60.concat(3L,45L));
     }
 }
