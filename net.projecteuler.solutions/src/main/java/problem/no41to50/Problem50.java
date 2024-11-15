@@ -22,7 +22,7 @@ public class Problem50 {
     }
 
     static Optional<Long> largestConsecutivePrimeSumBelow(int i) {
-        List<Integer> primes = Prime.eratosthenesSieve(i);
+        List<Integer> primes = Prime.eratosthenesSieve(i).stream().toList();
 
         return IntStream.range(0, primes.size()).boxed().flatMap(j -> {
             final long[] sum = {0};
