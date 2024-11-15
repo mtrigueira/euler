@@ -12,7 +12,8 @@ import java.util.Set;
 import static problem.Solution.problem;
 
 public class Problem70 {
-    private Problem70() {}
+    private Problem70() {
+    }
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=70
@@ -42,7 +43,7 @@ public class Problem70 {
                 if (product.longValueExact() > lessThan) continue;
                 int n = product.intValueExact();
 
-                int phi = EulersPhiSequence.forGivenFactors(n, Set.of(i, j));
+                int phi = (int)EulersPhiSequence.forGivenFactors(n, Set.of(i.intValueExact(), j.intValueExact()));
                 if (isPermutation(n, phi))
                     if (lessThan(n, phi, foundN, foundPhi)) {
                         foundPhi = phi;
@@ -57,7 +58,7 @@ public class Problem70 {
         return BigInteger.valueOf(n).multiply(BigInteger.valueOf(foundPhi)).compareTo(BigInteger.valueOf(foundN).multiply(BigInteger.valueOf(phi))) < 0;
     }
 
-    private static boolean isPermutation(int i, int phi) {
+    private static boolean isPermutation(long i, long phi) {
         return sorted(String.valueOf(i)).equals(sorted(String.valueOf(phi)));
     }
 

@@ -14,6 +14,4 @@ class Problem39Test {
     void countSolutionsFor() {
         assertEquals(3, Problem39.countSolutionsFor(120));
     }
-
-
 }

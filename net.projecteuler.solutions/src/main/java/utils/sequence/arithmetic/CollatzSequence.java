@@ -1,42 +1,38 @@
 package utils.sequence.arithmetic;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.math.BigInteger.ONE;
-import static java.math.BigInteger.TWO;
 import static utils.property.Evenness.isEven;
 
-public class CollatzSequence extends ArithmeticSequence<BigInteger> {
+public class CollatzSequence extends ArithmeticSequence<Long> {
     public static CollatzSequence of(long i) {
-        return new CollatzSequence(BigInteger.valueOf(i));
+        return new CollatzSequence(i);
     }
 
-    private static final BigInteger THREE = BigInteger.valueOf(3);
-    private BigInteger n;
-    private static final Map<BigInteger,Integer> cache = new HashMap<>();
+    private long n;
+    private static final Map<Long,Integer> cache = new HashMap<>();
 
-    private CollatzSequence(BigInteger start) {
+    private CollatzSequence(long start) {
         n = start;
     }
 
     @Override
-    public BigInteger next() {
-        BigInteger old = n;
+    public Long next() {
+        long old = n;
 
         if (isEven(n))
-            n = n.divide(TWO);
+            n = n / 2;
         else
-            n = n.multiply(THREE).add(ONE);
+            n = n * 3 + 1;
 
         return old;
     }
 
     public int count() {
-        BigInteger old = n;
+        long old = n;
         int count = 0;
-        while (n.compareTo(ONE) > 0) {
+        while (n > 1) {
             if(cache.containsKey(n)) {
                 count += cache.get(n);
                 break;

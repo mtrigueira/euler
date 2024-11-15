@@ -2,33 +2,35 @@ package problem.no11to20;
 
 import utils.sequence.arithmetic.CollatzSequence;
 
-import java.util.stream.IntStream;
-
 import static problem.Solution.problem;
 
 public class Problem14 {
-     private Problem14() {
-     }
     public static final int LIMIT = 1000000;
+
+    private Problem14() {}
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=14
         problem("Longest Collatz sequence",
-        () -> getMaxChainLengthNumberForNaturalNumbersBelow(LIMIT));
+                () -> getMaxChainLengthNumberForNaturalNumbersBelow(LIMIT));
     }
 
     static long getMaxChainLengthNumberForNaturalNumbersBelow(int limit) {
-        return IntStream.range(1, limit)
-                .mapToObj(i -> new Ugly(i, chainLength(i)))
-                .max((a, b) -> Math.toIntExact(a.chainLength - b.chainLength))
-                .map(u -> u.i)
-                .orElseThrow();
+        long bestI = 0;
+        long bestChainLength = 0;
+
+        for (int i = 1; i < limit; i++) {
+            long chainLength = chainLength(i);
+            if (chainLength - bestChainLength > 0) {
+                bestI = i;
+                bestChainLength = chainLength;
+            }
+        }
+
+        return bestI;
     }
 
     private static long chainLength(int i) {
-        return CollatzSequence.of(i)
-                .count();
+        return CollatzSequence.of(i).count();
     }
-
-    private record Ugly(int i, long chainLength) {}
 }

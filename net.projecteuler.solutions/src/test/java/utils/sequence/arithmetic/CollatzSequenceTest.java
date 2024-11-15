@@ -11,7 +11,7 @@ class CollatzSequenceTest {
     @ParameterizedTest
     @ValueSource(ints = {13,40,20,10,5,16,8,4,2})
     void shouldReturnCorrectCollatzSequence(int number) {
-        assertEquals(number, collatzSequence.next().longValueExact());
+        assertEquals(number, collatzSequence.next());
     }
 
     static int valueIndexIsChainLength = 0;

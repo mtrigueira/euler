@@ -20,14 +20,14 @@ class SequenceTest {
     @Test
     void primeNextArray() {
         Sequence<Prime> sequence = PrimeSequence.fromFirst();
-        Prime[] primes = sequence.nextArray(10);
+        Prime[] primes = (Prime[]) sequence.nextArray(10);
         assertEquals("[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]",Arrays.toString(primes));
     }
 
     @Test
     void primeNextArray0() {
         Sequence<Prime> sequence = PrimeSequence.fromFirst();
-        Prime[] primes = sequence.nextArray(0);
+        Prime[] primes = (Prime[]) sequence.nextArray(0);
         assertEquals("[]", Arrays.toString(primes));
     }
 
@@ -44,7 +44,7 @@ class SequenceTest {
                 return false;
             }
         };
-        String[] primes = sequence.nextArray(10);
+        String[] primes = (String[]) sequence.nextArray(10);
         assertEquals("[]", Arrays.toString(primes));
     }
 }

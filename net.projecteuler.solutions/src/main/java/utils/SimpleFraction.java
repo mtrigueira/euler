@@ -4,19 +4,26 @@ import java.math.BigInteger;
 
 public class SimpleFraction extends Fraction {
     public static final SimpleFraction ZERO = SimpleFraction.factory(BigInteger.ZERO, BigInteger.ONE);
-    public static final SimpleFraction ONE = SimpleFraction.factory( BigInteger.ONE, BigInteger.ONE);
+    public static final SimpleFraction ONE = SimpleFraction.factory(BigInteger.ONE, BigInteger.ONE);
     public static final SimpleFraction TWO = SimpleFraction.factory(BigInteger.TWO, BigInteger.ONE);
 
+    private SimpleFraction(BigInteger numerator, BigInteger denominator) {
+        super(numerator, denominator);
+    }
+
     public static SimpleFraction of(BigInteger numerator, BigInteger denominator) {
-        return factory(numerator, denominator).simplify();
+        BigInteger gcd = numerator.gcd(denominator);
+        return factory(numerator.divide(gcd), denominator.divide(gcd));
     }
 
     public static SimpleFraction of(int nRight) {
         return of(BigInteger.valueOf(nRight));
     }
+
     public static SimpleFraction of(int nRight, int dRight) {
         return of(BigInteger.valueOf(nRight), BigInteger.valueOf(dRight));
     }
+
     public static SimpleFraction of(BigInteger aSubN) {
         return of(aSubN, BigInteger.ONE);
     }
@@ -26,17 +33,17 @@ public class SimpleFraction extends Fraction {
     }
 
     public static SimpleFraction of(int i, BigInteger cheat) {
-        return of(BigInteger.valueOf(i),cheat);
+        return of(BigInteger.valueOf(i), cheat);
     }
 
-    private SimpleFraction(BigInteger numerator, BigInteger denominator) {
-        super(numerator, denominator, numerator + "/" + denominator);
-    }
-
-    private SimpleFraction simplify() {
-        if (n.equals(d)) return ONE;
-        if (BigInteger.ONE.equals(n.gcd(d))) return this;
-        return SimpleFraction.of(n.divide(n.gcd(d)), d.divide(n.gcd(d)));
+    private static long gcd(long a, long b) {
+        long r;
+        while (b != 0) {
+            r = a % b;
+            a = b;
+            b = r;
+        }
+        return a;
     }
 
     public SimpleFraction multiply(SimpleFraction by) {
@@ -46,16 +53,18 @@ public class SimpleFraction extends Fraction {
     }
 
     public SimpleFraction add(SimpleFraction that) {
-        BigInteger cm = this.denominator() .multiply( that.denominator());
+        BigInteger cm = this.denominator().multiply(that.denominator());
 
         BigInteger newNumerator = (this.numerator().multiply(cm).divide(this.denominator())
                 .add(that.numerator().multiply(cm).divide(that.denominator())));
 
-        return SimpleFraction.of(newNumerator, cm);
+        BigInteger gcd = cm.gcd(newNumerator);
+
+        return SimpleFraction.of(newNumerator.divide(gcd), cm.divide(gcd));
     }
 
     public SimpleFraction divide(SimpleFraction that) {
-        return SimpleFraction.of( this.numerator().multiply(that.denominator()),
+        return SimpleFraction.of(this.numerator().multiply(that.denominator()),
                 this.denominator().multiply(that.numerator()));
     }
 
@@ -68,7 +77,12 @@ public class SimpleFraction extends Fraction {
     }
 
     public BigInteger toBigIntegerExact() {
-        if(BigInteger.ONE.equals(denominator())) return numerator();
+        if (BigInteger.ONE.equals(denominator())) return numerator();
         throw new ArithmeticException("Fraction is not an integer: " + this);
+    }
+
+    @Override
+    public String toString() {
+        return n + "/" + d;
     }
 }

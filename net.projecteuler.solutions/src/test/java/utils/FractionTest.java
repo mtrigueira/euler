@@ -8,7 +8,11 @@ import static utils.BigIntegerConstants.big;
 class FractionTest {
     @Test
     void notEqualsTest() {
-        Fraction f1 = new Fraction(big(1), big(1), "1/1") {
+        Fraction f1 = new Fraction(big(1), big(1)) {
+            @Override
+            public String toString() {
+                return "1/1";
+            }
         };
         // noinspection SimplifiableAssertion,EqualsBetweenInconvertibleTypes
         assertFalse(f1.equals("Dummy"));
