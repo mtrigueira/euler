@@ -36,16 +36,6 @@ public class SimpleFraction extends Fraction {
         return of(BigInteger.valueOf(i), cheat);
     }
 
-    private static long gcd(long a, long b) {
-        long r;
-        while (b != 0) {
-            r = a % b;
-            a = b;
-            b = r;
-        }
-        return a;
-    }
-
     public SimpleFraction multiply(SimpleFraction by) {
         BigInteger newN = this.n.multiply(by.n);
         BigInteger newD = this.d.multiply(by.d);

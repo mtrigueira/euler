@@ -3,8 +3,6 @@ package utils.sequence.given;
 import utils.operator.Factorial;
 import utils.sequence.Sequence;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.BiFunction;

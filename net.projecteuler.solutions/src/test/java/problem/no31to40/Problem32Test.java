@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class Problem32Test {
     @Test
     void squish() {
-        String combination = "1234";
         assertEquals(1L, Problem32.squishTill(1234L, 0));
         assertEquals(12L, Problem32.squishTill(1234L, 1));
         assertEquals(234L, Problem32.squishFrom(1234L, 1));
