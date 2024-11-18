@@ -10,8 +10,13 @@ public class Decimal extends Fraction {
     private final int reciprocalLength;
 
     private Decimal(BigInteger numerator, BigInteger denominator) {
-        super(numerator, denominator, makeString(numerator.longValueExact(), denominator.longValueExact()));
+        super(numerator, denominator);
         reciprocalLength = calculateReciprocalLength();
+    }
+
+    @Override
+    public String toString() {
+        return makeString(n.longValueExact(), d.longValueExact());
     }
 
     public static Decimal of(int i, int d) {
@@ -19,7 +24,8 @@ public class Decimal extends Fraction {
     }
 
     private int calculateReciprocalLength() {
-        return stringRepresentation.contains("(") ? stringRepresentation.indexOf(")") - stringRepresentation.indexOf("(") : 0;
+        String s = toString();
+        return s.contains("(") ? s.indexOf(")") - s.indexOf("(") : 0;
     }
 
     private static String makeString(long numerator, long denominator) {
@@ -33,7 +39,5 @@ public class Decimal extends Fraction {
     public int reciprocalLength() {
         return reciprocalLength;
     }
-
-
 }
 

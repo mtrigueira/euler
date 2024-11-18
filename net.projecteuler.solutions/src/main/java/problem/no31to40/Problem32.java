@@ -3,45 +3,58 @@ package problem.no31to40;
 import utils.sequence.given.CombinationSequence;
 
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static problem.Solution.problem;
 
 public class Problem32 {
-     private Problem32() {
-     }
-    private static final List<String> DIGITS = List.of("123456789".split(""));
+    private static final List<Long> DIGITS = Stream.of("123456789".split("")).map(Long::parseLong).toList();
+
+    private Problem32() {
+    }
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=32
         problem("Pandigital products",
-                () -> getSum(new CombinationSequence<>(DIGITS, (a, b) -> a + b)));
+                () -> getSum(new CombinationSequence<>(DIGITS, Problem32::concat)));
     }
 
-    static int getSum(CombinationSequence<String> combiner) {
+    static long concat(long a, long b) {
+        return a * (long) Math.pow(10, (long) Math.log10(b) + 1) + b;
+    }
+
+    static long getSum(CombinationSequence<Long> combiner) {
         return combiner.stream()
-                .flatMapToInt(combination ->
-                        IntStream.range(1, combination.length() - 2)
-                                .flatMap(i ->
-                                        IntStream.range(i + 1, combination.length() - 1)
-                                                .map(j ->
-                                                        productIfIdentityOrZero(combination, i, j)
-                                                )
-                                                .filter(a -> a != 0)
-                                ))
+                .mapToLong(c -> {
+                    for (int i = 2; i <= digitLength(c)/3; i++) {
+                        long multiplicand = squishTill(c, i);
+                        long leftovers = squishFrom(c, i + 1);
+                        for (int j = 0; j < 2; j++) {
+                            long pow10 = (long) Math.pow(10, (long) Math.log10(leftovers) - j);
+                            long product = leftovers % pow10;
+                            long delta = multiplicand * (leftovers / pow10) - product;
+
+                            if (delta == 0)
+                                return product;
+                            if (delta > 0)
+                                break;
+                        }
+                    }
+                    return 0;
+                })
                 .distinct()
                 .sum();
     }
 
-    private static int productIfIdentityOrZero(String combination, int i, int j) {
-        int multiplicand = squish(combination, 0, i);
-        int multiplier = squish(combination, i + 1, j);
-        int product = squish(combination, j + 1, combination.length() - 1);
-
-        return multiplicand * multiplier == product ? product : 0;
+    static long squishTill(long a, int end) {
+        return (long) (a / Math.pow(10, digitLength(a) - end));
     }
 
-    static int squish(String combination, int start, int end) {
-        return Integer.parseInt(combination.substring(start, end + 1));
+    private static int digitLength(long a) {
+        return (int) Math.log10(a);
+    }
+
+    static long squishFrom(long a, int start) {
+        return (long) (a % Math.pow(10, digitLength(a) + 1 - start));
     }
 }
