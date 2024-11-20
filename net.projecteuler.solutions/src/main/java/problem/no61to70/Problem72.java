@@ -12,17 +12,16 @@ public class Problem72 {
                 orderedFractionToLeftOfWhere(1_000_000));
     }
 
-    static int orderedFractionToLeftOfWhere(int lim) {
-        int sum = 0;
-        int[] count = new int[lim + 1];
+    static long orderedFractionToLeftOfWhere(int lim) {
+        long sum = 0;
+        int[] duplicates = new int[lim + 1];
         for (int d = 2; d <= lim; d++) {
-            count[d] = d - 1;
+            int differentNumerators = d - 1;
+            int uniqueFractions = differentNumerators - duplicates[d];
+            sum += uniqueFractions;
             for (int i = d * 2; i <= lim; i += d)
-                count[i]++;
+                duplicates[i] += uniqueFractions;
         }
-
-        for (int i = 2; i <= lim; i++)
-            sum+=count[i];
 
         return sum;
     }
