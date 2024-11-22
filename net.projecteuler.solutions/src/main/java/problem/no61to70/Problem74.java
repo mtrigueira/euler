@@ -9,6 +9,19 @@ import static problem.Solution.problem;
 
 public class Problem74 {
     private static final int[] digitFactorials = calculateDigitFactorials();
+    final int[] chainLength;
+    private final int limit;
+    private final int[] sumOfDigitFactorials;
+
+    Problem74(int limit) {
+        this.limit = limit;
+        sumOfDigitFactorials = new int[limit + 1];
+        for (int i = 0; i <= limit; i++)
+            sumOfDigitFactorials[i] = sumOfFactorialsOfDigits(i);
+
+        chainLength = new int[limit + 1];
+        calculateChainLengths();
+    }
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=74
@@ -16,43 +29,14 @@ public class Problem74 {
     }
 
     private static int solution() {
-        int[] chainLength = calculateChainLengths(1_000_000);
+        Problem74 problem74 = new Problem74(1_000_000);
         int count = 0;
 
-        for (int k : chainLength)
+        for (int k : problem74.chainLength)
             if (k == 60)
                 count++;
 
         return count;
-    }
-
-    static int[] calculateChainLengths(int limit) {
-        int[] sumOfDigitFactorials = new int[limit + 1];
-        for (int i = 0; i <= limit; i++)
-            sumOfDigitFactorials[i] = sumOfFactorialsOfDigits(i);
-
-        List<Integer> chain = new ArrayList<>(60);
-        int[] chainLength = new int[limit + 1];
-        int i = -1;
-        while (i < limit) {
-            i++;
-            if (chainLength[i] == 0) {
-                chain.clear();
-                int next = i;
-
-                while (!chain.contains(next)) {
-                    chain.add(next);
-                    if (next <= limit)
-                        next = sumOfDigitFactorials[next];
-                    else
-                        next = sumOfFactorialsOfDigits(next);
-                }
-
-                chainLength[i] = chain.size();
-            }
-        }
-
-        return chainLength;
     }
 
     private static int[] calculateDigitFactorials() {
@@ -72,5 +56,63 @@ public class Problem74 {
             sum += digitFactorials[s.charAt(j) - '0'];
 
         return sum;
+    }
+
+    private void calculateChainLengths() {
+        List<Integer> chain = new ArrayList<>(60);
+        int i = -1;
+        while (i < limit) {
+            i++;
+            if (noChainLengthHasBeenCalculated(i)) {
+                chain.clear();
+                int found = buildChainAndReturnLastLink(i, chain);
+                if (isWithinLimit(found))
+                    populateChainWithLengths(found, chain);
+            }
+        }
+    }
+
+    private boolean isWithinLimit(int found) {
+        return found <= limit;
+    }
+
+    private boolean noChainLengthHasBeenCalculated(int i) {
+        return chainLength[i] == 0;
+    }
+
+    private void populateChainWithLengths(int found, List<Integer> chain) {
+        int len = chainLength(found, chain);
+
+        for (int j = 0; j < chain.size(); j++) {
+            int link = chain.get(j);
+            if (isWithinLimit(link))
+                chainLength[link] = len - j;
+        }
+    }
+
+    private int chainLength(int found, List<Integer> chain) {
+        return chainLength[found] + chain.size();
+    }
+
+    private int buildChainAndReturnLastLink(int i, List<Integer> chain) {
+        int next;
+
+        for (next = i; !(chain.contains(next) || hasAChainLength(next)); next = getNext(next))
+            chain.add(next);
+
+        return next;
+    }
+
+    private boolean hasAChainLength(int next) {
+        return next <= limit && chainLength[next] != 0;
+    }
+
+    private int getNext(int next) {
+        if (isWithinLimit(next))
+            next = sumOfDigitFactorials[next];
+        else
+            next = sumOfFactorialsOfDigits(next);
+
+        return next;
     }
 }
