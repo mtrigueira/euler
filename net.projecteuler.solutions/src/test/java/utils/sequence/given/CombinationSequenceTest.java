@@ -8,6 +8,21 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CombinationSequenceTest {
+    @Test
+    void comboNone() {
+        CombinationSequence<String> cs = new CombinationSequence<>(List.of(), (a, b) -> a + b);
+        assertFalse(cs.hasNext());
+        assertThrows(NullPointerException.class, cs::next);
+    }
+
+    @Test
+    void comboA() {
+        CombinationSequence<String> cs = new CombinationSequence<>(List.of("A"), (a, b) -> a + b);
+        assertTrue(cs.hasNext());
+        assertEquals("A", cs.next());
+        assertFalse(cs.hasNext());
+        assertThrows(ArrayIndexOutOfBoundsException.class, cs::next);
+    }
 
     @Test
     void comboAB() {

@@ -26,12 +26,18 @@ class Problem60Test {
     void node() {
         Problem60.sumOfPrimePairSets(0);
         Problem60.Node n3 = new Problem60.Node(3);
+        assertEquals(n3,n3);
+
+        //noinspection EqualsBetweenInconvertibleTypes,SimplifiableAssertion
+        assertFalse(n3.equals("Dummy"));
+
         Problem60.Node n7 = new Problem60.Node(7);
         assertNull(n3.children);
         n3.add(n3.p);
         assertNull(n3.children);
         n3.add(n7.p);
         assertArrayEquals(Set.of(n7).toArray(),n3.children.toArray());
+        assertNotEquals(n7,n3);
     }
 
     @Test

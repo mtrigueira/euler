@@ -11,6 +11,8 @@ import static utils.SimpleFraction.ONE;
 import static utils.property.Factors.countRelativePrimes;
 
 public class EulersPhiSequence extends ArithmeticSequence<Long> {
+    EulersPhiSequence() {}
+
     private int i = 2;
 
     static long phiEulersProductFormula(int n) {

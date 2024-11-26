@@ -1,4 +1,4 @@
-package problem.no61to70;
+package problem.no71to80;
 
 import java.util.HashSet;
 import java.util.Set;

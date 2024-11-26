@@ -2,6 +2,7 @@ package problem;
 
 import utils.Stopwatch;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -14,6 +15,7 @@ public class RunProblems {
             .toArray();
     public static final int TOO_SLOW_THRESHOLD_MS = 1000;
     public static boolean tooSlow = false;
+    private static boolean anyFailed;
 
     private RunProblems() {
     }
@@ -24,6 +26,7 @@ public class RunProblems {
 
     public static boolean runProblems(int[] problems) {
         tooSlow = false;
+        anyFailed = false;
         Stopwatch stopwatch = Stopwatch.start();
 
         String results = Arrays.stream(problems)
@@ -34,6 +37,8 @@ public class RunProblems {
         System.out.println("Problem,ms,Failed");
         System.out.println(results);
         System.out.println("Total time: " + stopwatch.elapsed() + " ms");
+        
+        if(anyFailed) throw new RuntimeException("Problems failed");
 
         return tooSlow;
     }
@@ -45,12 +50,14 @@ public class RunProblems {
 
     private static String runMain(String s) {
         Stopwatch stopwatch1 = Stopwatch.start();
-        boolean failed = true;
+        boolean failed = false;
         int i = problemNumber(s);
         try {
             Class<?> clazz = Class.forName(s);
             System.out.print(i + " ");
-            clazz.getMethod("main", String[].class).invoke(null, (Object) O);
+            Method main = clazz.getMethod("main", String[].class);
+            failed = true;
+            main.invoke(null, (Object) O);
             failed = false;
         } catch (Exception ignored) {
         }
@@ -58,6 +65,8 @@ public class RunProblems {
             System.err.println("Problem " + i + " took " + stopwatch1.elapsed() + " ms");
             tooSlow = true;
         }
+        if(failed)
+            anyFailed = true;
         return (i + "," + stopwatch1.elapsed() + "," + (failed ? "FAILED" : ""));
     }
 

@@ -21,7 +21,7 @@ public abstract class Sequence<T> implements Iterator<T> {
         return array;
     }
 
-    private Class<?> workOutClassOfTUsingReflection() {
+    Class<?> workOutClassOfTUsingReflection() {
         try {
             ParameterizedType g = (ParameterizedType) getClass().getGenericSuperclass();
             Type typeT = g.getActualTypeArguments()[0];

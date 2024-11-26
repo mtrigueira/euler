@@ -1,7 +1,5 @@
 package utils.data;
 
-import java.util.Set;
-
 public record Group(int a, int b, int c, int sum) {
     public Group(int a, int b, int c) {
         this(a, b, c, a + b + c);
@@ -10,9 +8,7 @@ public record Group(int a, int b, int c, int sum) {
     public static Group from(String s) {
         int aI = s.indexOf(',');
         int bI = s.indexOf(',', aI + 1);
-        return new Group(Integer.parseInt(s.substring(0, aI)),
-                Integer.parseInt(s.substring(aI + 1, bI)),
-                Integer.parseInt(s.substring(bI + 1)));
+        return new Group(Integer.parseInt(s.substring(0, aI)), Integer.parseInt(s.substring(aI + 1, bI)), Integer.parseInt(s.substring(bI + 1)));
     }
 
     public int compareGroups(Group that) {
@@ -32,10 +28,6 @@ public record Group(int a, int b, int c, int sum) {
         return a + "," + b + "," + c;
     }
 
-    public Set<Integer> set() {
-        return Set.of(a, b, c);
-    }
-
     public String toCompactString() {
         return Integer.toString(a) + b + c;
     }
@@ -44,7 +36,9 @@ public record Group(int a, int b, int c, int sum) {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Group group)) return false;
-        return a == group.a && b == group.b && c == group.c && sum == group.sum;
+        if (a != group.a) return false;
+        if (b != group.b) return false;
+        return c == group.c;
     }
 
     @Override

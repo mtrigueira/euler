@@ -1,10 +1,12 @@
 package utils.prime;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigInteger;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.BigIntegerConstants.big;
@@ -47,5 +49,10 @@ class PrimeTest {
         }
         assertEquals(isPrime, CachedPrimeChecker.isPrime(i));
         assertEquals(isPrime, BruteForcePrimeChecker.isPrime(candidate));
+    }
+
+    @Test
+    void primeFactorBuilder() {
+        assertEquals(Set.of(),Prime.primeFactorBuilder(1));
     }
 }

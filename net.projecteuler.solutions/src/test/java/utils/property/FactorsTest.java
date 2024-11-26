@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import utils.Maker;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +16,16 @@ import static utils.property.Factors.countRelativePrimes;
 import static utils.property.Factors.findRelativePrimes;
 
 class FactorsTest {
+    @Test
+    void factorsZERO() {
+        assertEquals(Collections.emptySet(), Factors.of(BigInteger.ZERO));
+    }
+
+    @Test
+    void factorsONE() {
+        assertEquals(Maker.set(1), Factors.of(BigInteger.ONE));
+    }
+
     @Test
     void factors0() {
         assertEquals(Collections.emptySet(), Factors.of(0));

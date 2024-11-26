@@ -1,5 +1,6 @@
 package utils.sequence.arithmetic;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -12,5 +13,11 @@ class EulersPhiSequenceTest {
     void countRelativePrimesTest(int n, int phi) {
         assertEquals(phi, phiBruteForce(n));
         assertEquals(phi, phiEulersProductFormula(n));
+    }
+
+    @Test
+    void next() {
+        EulersPhiSequence e = new EulersPhiSequence();
+        assertEquals(1,e.next());
     }
 }

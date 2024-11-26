@@ -5,23 +5,24 @@ import utils.prime.Prime;
 import utils.sequence.arithmetic.IntegerSequence;
 import utils.sequence.arithmetic.PrimeSequence;
 
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SequenceTest {
     @Test
     void intNextArray() {
         Sequence<?> sequence = new IntegerSequence();
-        assertEquals("[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",Arrays.toString(sequence.nextArray(10)));
+        assertEquals("[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]", Arrays.toString(sequence.nextArray(10)));
     }
 
     @Test
     void primeNextArray() {
         Sequence<Prime> sequence = PrimeSequence.fromFirst();
         Prime[] primes = sequence.nextArray(10);
-        assertEquals("[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]",Arrays.toString(primes));
+        assertEquals("[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]", Arrays.toString(primes));
     }
 
     @Test
@@ -32,7 +33,7 @@ class SequenceTest {
     }
 
     @Test
-    void primeNextArrayNoNext() {
+    void dummyNextArrayNoNext() {
         Sequence<String> sequence = new Sequence<>() {
             @Override
             public String next() {
@@ -46,5 +47,28 @@ class SequenceTest {
         };
         String[] primes = sequence.nextArray(10);
         assertEquals("[]", Arrays.toString(primes));
+        primes = sequence.nextArray(10);
+        assertEquals("[]", Arrays.toString(primes));
+    }
+
+    @Test
+    void dummyNextArrayClassException() {
+        @SuppressWarnings({"rawtypes", "unchecked", "unused"}) Sequence<String> sequence = new Sequence() {
+            @Override
+            public String next() {
+                throw new NoSuchElementException();
+            }
+
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+
+            //noinspection unused
+            Type getGenericSuperClass() {
+                throw new ClassCastException("Throw exception to test branch");
+            }
+        };
+        assertThrows(NullPointerException.class, ()->sequence.nextArray(10));
     }
 }
