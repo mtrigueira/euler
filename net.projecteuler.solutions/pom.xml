@@ -37,6 +37,7 @@
                 <configuration>
                     <excludes>
                         <exclude>problem/RunProblems.class</exclude>
+                        <exclude>utils/FileUtils.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>

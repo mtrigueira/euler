@@ -10,19 +10,25 @@ public class FileUtils {
     }
 
     public static Stream<String> getNames(String file) {
-        return getNamesWithoutQuotes(file).sorted();
+        Stream<String> stream = getNamesWithoutQuotes(file);
+        if (stream == null) return null;
+        return stream.sorted();
     }
 
     public static Stream<String> getStrings(String file) {
-        return getStringsBetweenSeparator(file,"\\R");
+        return getStringsBetweenSeparator(file, "\\R");
     }
 
     public static String getString(String file) {
-        return getStrings(file).collect(Collectors.joining("\n"));
+        Stream<String> stream = getStrings(file);
+        if (stream == null) return null;
+        return stream.collect(Collectors.joining("\n"));
     }
 
     private static Stream<String> getNamesWithoutQuotes(String file) {
-        return getStringsBetweenCommas(file).map(FileUtils::removeQuotes);
+        Stream<String> stream = getStringsBetweenCommas(file);
+        if (stream == null) return null;
+        return stream.map(FileUtils::removeQuotes);
     }
 
     private static Stream<String> getStringsBetweenCommas(String file) {
@@ -34,8 +40,8 @@ public class FileUtils {
             return new Scanner(getStream(file)).useDelimiter(separator).tokens();
         } catch (Exception ignored) {
         }
-        System.err.println("Could not load " + file+" substituted dummy");
-        return Stream.of("\"ANN\",\"BOB\"");
+        System.err.println("Could not load " + file);
+        return null;
     }
 
     private static InputStream getStream(String file) {
@@ -50,5 +56,28 @@ public class FileUtils {
         return s.replace("\"", "");
     }
 
+    public static String concat(String... a) {
+        for (String i : a)
+            if (i != null) return i;
 
+        return "";
+    }
+
+    public static <T> Stream<T> concat(Stream<T>... a) {
+        Stream<T> stream = Stream.of();
+        for (Stream<T> i : a)
+            if (i != null) {
+                stream = i;
+            } else {
+                stream.close();
+            }
+
+        return stream;
+    }
+
+    public static Stream<String> concat(Stream<String> i, String orElse) {
+        if (i != null) return i;
+
+        return Stream.of(orElse.split("\\R"));
+    }
 }

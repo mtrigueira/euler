@@ -5,9 +5,12 @@ import utils.FileUtils;
 import java.nio.charset.StandardCharsets;
 
 import static problem.Solution.problem;
+import static utils.FileUtils.concat;
 
 public class Problem59 {
-     private Problem59() {
+    static final byte[] ENCRYPTED = {32,7,10,84,30,26,29,12,4,84,13,29,27,24,1,84,9,0,12,79,5,1,2,31,17,11,79,27,25,10,6,79,27,28,10,79,24,14,21,13,79,11,27,8,65};
+
+    private Problem59() {
      }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=59
@@ -65,5 +68,5 @@ public class Problem59 {
         System.out.println();
     }
 
-    private static final byte[] MESSAGE = FileUtils.getString("/0059_cipher.txt").getBytes(StandardCharsets.UTF_8);
+    private static final byte[] MESSAGE = concat(FileUtils.getString("/0059_cipher.txt"),ENCRYPTED.toString()).getBytes(StandardCharsets.UTF_8);
 }

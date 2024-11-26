@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="net.projecteuler.files-1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../projecteuler.net-files/target/net.projecteuler.files-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar://$PROJECT_DIR$/../projecteuler.net-files/target/net.projecteuler.files-1.0-SNAPSHOT.jar!/" recursive="false" />
+  </library>
+</component>
