@@ -18,7 +18,8 @@ public class Problem43 {
     private static final List<String> DIGITS = List.of("0123456789".split(""));
     private static final Prime[] primes = PrimeSequence.fromFirst().nextArray(DIGITS.size() - 2);
 
-    private Problem43() {}
+    private Problem43() {
+    }
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=41
@@ -61,7 +62,6 @@ public class Problem43 {
 
     private static String prefixWithMissingDigit(String x) {
         List<String> leftOvers = DIGITS.stream().filter(d -> !x.contains(d)).toList();
-        if (leftOvers.size() != 1) throw new RuntimeException("Missing digit not found.");
         return leftOvers.get(0) + x;
     }
 

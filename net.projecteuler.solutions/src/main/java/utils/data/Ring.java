@@ -90,8 +90,7 @@ public record Ring(Group[] groups) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ring ring = (Ring) o;
+        if (!(o instanceof Ring ring)) return false;
         return Arrays.equals(groups, ring.groups);
     }
 

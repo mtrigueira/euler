@@ -45,14 +45,14 @@ class BruteForcePrimeChecker {
     private static boolean hasNoFactorGreaterThanOrEqualTo2withPrimes(long candidate) {
         if (candidate <= 1) return false;
         if (Factors.isFactor(candidate, 2)) return candidate == 2;
-        long maxPotentialFactor = (long)Math.sqrt(candidate);
+        long maxPotentialFactor = (long) Math.sqrt(candidate);
         Iterator<Integer> it = Prime.primes.iterator();
 
         long i;
-        for (i = it.next();i<=maxPotentialFactor;i = it.next())
-            if(Factors.isFactor(candidate, i)) return false;
+        for (i = it.next(); i <= maxPotentialFactor && it.hasNext(); i = it.next())
+            if (Factors.isFactor(candidate, i)) return false;
 
-        for (i += 2; i <= maxPotentialFactor; i+=2)
+        for (i += 2; i <= maxPotentialFactor; i += 2)
             if (Factors.isFactor(candidate, i))
                 return false;
 

@@ -2,12 +2,18 @@ package utils.property;
 
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static utils.Maker.setL;
 
 class ProperDivisorsTest {
+    @Test
+    void properDivisorsZERO() {
+        assertEquals(Collections.emptySet(), ProperDivisors.of(BigInteger.ZERO));
+    }
+
     @Test
     void properDivisors0() {
         assertEquals(Collections.emptySet(), ProperDivisors.of(0));

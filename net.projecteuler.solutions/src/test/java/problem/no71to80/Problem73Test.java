@@ -1,5 +1,6 @@
-package problem.no61to70;
+package problem.no71to80;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Problem73Test {
     @Test
     void orderedFractionBetweenWhere4() {
-        assertEquals(0,Problem73.orderedFractionBetweenWhere(3, 2,4));
+        Assertions.assertEquals(0, Problem73.orderedFractionBetweenWhere(3, 2,4));
     }
 
     @Test

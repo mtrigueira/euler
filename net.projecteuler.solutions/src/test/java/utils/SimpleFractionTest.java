@@ -41,6 +41,15 @@ class SimpleFractionTest {
     }
 
     @Test
+    void toBigIntegerExact() {
+        assertThrows(ArithmeticException.class, HALF::toBigIntegerExact);
+    }
+
+    @Test void toStirng() {
+        assertEquals("1/2", HALF.toString());
+    }
+
+    @Test
     void add() {
         assertEquals(TWO, ONE.add(ONE));
         assertEquals(THREE, TWO.add(ONE));

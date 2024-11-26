@@ -1,5 +1,6 @@
-package problem.no61to70;
+package problem.no71to80;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Problem75Test {
     @Test
     void countSingularRightTriangles12() {
-        assertEquals(1,Problem75.countSingularRightTriangles(12));
+        Assertions.assertEquals(1, Problem75.countSingularRightTriangles(12));
     }
 
     @Test

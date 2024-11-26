@@ -12,6 +12,4 @@ class Problem11Test {
     void maxProductInGridOfAdjacentCells() {
         assertEquals(4, Problem11.maxProductInGridOfAdjacentCells(GRID,2));
     }
-
-
 }

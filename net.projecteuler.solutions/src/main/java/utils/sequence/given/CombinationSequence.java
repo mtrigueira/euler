@@ -51,13 +51,11 @@ public class CombinationSequence<T> extends Sequence<T> {
         else
             current = values[index++];
 
-        if (values.length > 1) {
-            //noinspection unchecked
-            T[] r = (T[]) new Object[values.length - 1];
-            System.arraycopy(values, 0, r, 0, index - 1);
-            System.arraycopy(values, index, r, index - 1, values.length - index);
-            remainderSequence = new CombinationSequence<>(r, reducer, limit - 1);
-        }
+        //noinspection unchecked
+        T[] r = (T[]) new Object[values.length - 1];
+        System.arraycopy(values, 0, r, 0, index - 1);
+        System.arraycopy(values, index, r, index - 1, values.length - index);
+        remainderSequence = new CombinationSequence<>(r, reducer, limit - 1);
     }
 
     @Override
@@ -73,8 +71,9 @@ public class CombinationSequence<T> extends Sequence<T> {
             nextRemainderOrCurrent();
         }
 
-        if (i > 0 && limit > 1)
+        if (i > 0)
             remainderSequence = remainderSequence.skip(i);
+
 
         return this;
     }

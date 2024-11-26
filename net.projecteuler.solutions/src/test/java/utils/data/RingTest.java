@@ -33,6 +33,18 @@ class RingTest {
     }
 
     @Test
+    void isChain() {
+        assertTrue(MAGIC_RING.isChain());
+        assertTrue(MUGGLE_RING.isChain());
+        assertFalse(MAGIC_BUT_NOT_RING.isChain());
+        Ring baddy = toRing(1,2,3,4,5,6,7,8);
+        baddy = baddy.append(new Group(99,99,99));
+        assertFalse(baddy.isChain());
+        Ring baddy2 = toRing(4, 2, 3, 2, 3, 1, 6, 1, 2);
+        assertFalse(baddy2.isChain());
+    }
+
+    @Test
     void sortRing3() {
         assertEquals(new Ring(4, 2, 3, 5, 3, 1, 6, 1, 2), new Ring(5, 3, 1, 6, 1, 2, 4, 2, 3).sort());
     }
@@ -45,5 +57,17 @@ class RingTest {
     @Test
     void sortRing5WithHorrid10() {
         assertEquals(new Ring(2, 5, 9, 4, 9, 3, 6, 3, 7, 8, 7, 1, 10, 1, 5), new Ring(10, 1, 5, 2, 5, 9, 4, 9, 3, 6, 3, 7, 8, 7, 1).sort());
+    }
+
+    @Test
+    void equals() {
+        assertEquals(MAGIC_RING, MAGIC_RING);
+        //noinspection EqualsBetweenInconvertibleTypes,SimplifiableAssertion
+        assertFalse(MUGGLE_RING.equals("Dummy"));
+    }
+
+    @Test
+    void toStringTest() {
+        assertEquals("4,2,3;5,3,1;6,1,2",MAGIC_RING.toString());
     }
 }
