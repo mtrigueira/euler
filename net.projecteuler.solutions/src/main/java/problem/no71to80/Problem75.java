@@ -13,7 +13,7 @@ public class Problem75 {
 
     public static void main(String[] args) {
         // https://projecteuler.net/problem=75
-        problem("", () ->
+        problem("Singular right angle triangles", () ->
                 countSingularRightTriangles(1_500_000));
     }
 
