@@ -11,12 +11,20 @@ class CachedSequenceTest {
     @Test
     void cachedSequence() {
         CachedSequence<Integer> cachedSequence = CachedSequence.of(integerSequence);
+        assertTrue(cachedSequence.hasNext());
         assertEquals(1, cachedSequence.next());
+        assertTrue(cachedSequence.hasNext());
         assertEquals(2, cachedSequence.next());
+        assertTrue(cachedSequence.hasNext());
         assertEquals(3, cachedSequence.next());
+        assertTrue(cachedSequence.hasNext());
         cachedSequence.reset();
+        assertTrue(cachedSequence.hasNext());
         assertEquals(1, cachedSequence.next());
+        assertTrue(cachedSequence.hasNext());
         assertEquals(2, cachedSequence.next());
+        assertTrue(cachedSequence.hasNext());
         assertEquals(3, cachedSequence.next());
+        assertTrue(cachedSequence.hasNext());
     }
 }
