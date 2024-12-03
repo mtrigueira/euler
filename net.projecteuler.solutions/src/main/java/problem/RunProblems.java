@@ -23,7 +23,7 @@ public class RunProblems {
     }
 
     public static void main(String[] args) {
-        runProblems(FAST);
+        if (runProblems(FAST)) throw new RuntimeException("Slow test in FAST bucket");
     }
 
     public static boolean runProblems(int[] problems) {
