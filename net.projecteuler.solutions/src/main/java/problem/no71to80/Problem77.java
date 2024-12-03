@@ -34,7 +34,7 @@ public class Problem77 {
             int delta = n - i;
             if (delta > 0)
                 count += numberOfWaysOfWritingAsASumOfPrimes(delta, i, primes);
-            else if (delta == 0)
+            else // (delta == 0)
                 count++;
         }
 
