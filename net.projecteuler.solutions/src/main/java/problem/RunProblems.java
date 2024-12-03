@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class RunProblems {
     private static final String[] O = {};
-    public static final int[] SLOW = {};
+    public static final int[] SLOW = {78};
     public static final int[] FAST = IntStream.range(1, 100)
             .filter(i -> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();
@@ -23,7 +23,7 @@ public class RunProblems {
     }
 
     public static void main(String[] args) {
-        runProblems(FAST);
+        if (runProblems(FAST)) throw new RuntimeException("Slow test in FAST bucket");
     }
 
     public static boolean runProblems(int[] problems) {
