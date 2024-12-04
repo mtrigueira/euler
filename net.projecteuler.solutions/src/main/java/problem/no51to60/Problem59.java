@@ -3,6 +3,7 @@ package problem.no51to60;
 import utils.FileUtils;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import static problem.Solution.problem;
 import static utils.FileUtils.concat;
@@ -68,5 +69,5 @@ public class Problem59 {
         System.out.println();
     }
 
-    private static final byte[] MESSAGE = concat(FileUtils.getString("/0059_cipher.txt"),ENCRYPTED.toString()).getBytes(StandardCharsets.UTF_8);
+    private static final byte[] MESSAGE = concat(FileUtils.getString("/0059_cipher.txt"), Arrays.toString(ENCRYPTED)).getBytes(StandardCharsets.UTF_8);
 }

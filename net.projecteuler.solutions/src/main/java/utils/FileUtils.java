@@ -63,18 +63,6 @@ public class FileUtils {
         return "";
     }
 
-    public static <T> Stream<T> concat(Stream<T>... a) {
-        Stream<T> stream = Stream.of();
-        for (Stream<T> i : a)
-            if (i != null) {
-                stream = i;
-            } else {
-                stream.close();
-            }
-
-        return stream;
-    }
-
     public static Stream<String> concat(Stream<String> i, String orElse) {
         if (i != null) return i;
 
