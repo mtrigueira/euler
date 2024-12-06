@@ -11,10 +11,6 @@ import static java.math.BigInteger.TWO;
 public class ProperDivisors {
     private final BigInteger n;
 
-    private ProperDivisors(BigInteger n) {
-        this.n = n;
-    }
-
     public static Set<BigInteger> of(BigInteger i) {
         return new ProperDivisors(i).of();
     }
@@ -25,9 +21,9 @@ public class ProperDivisors {
         if (n == 1) return s;
         s.add(1L);
 
-        long sqrt = (long)Math.sqrt(n);
-        for (long i = 2; i <=sqrt; i++)
-            if (Factors.isFactor(n,i)) {
+        long sqrt = (long) Math.sqrt(n);
+        for (long i = 2; i <= sqrt; i++)
+            if (Factors.isFactor(n, i)) {
                 s.add(i);
                 s.add(n / i);
             }
@@ -54,5 +50,9 @@ public class ProperDivisors {
 
     private boolean isFactor(BigInteger i) {
         return n.mod(i).signum() == 0;
+    }
+
+    private ProperDivisors(BigInteger n) {
+        this.n = n;
     }
 }

@@ -7,12 +7,10 @@ import static problem.Solution.problem;
 import static utils.continuedFraction.SqrtContinuedFraction.isPerfectSquare;
 
 public class Problem64 {
-     private Problem64() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=64
         problem("Odd period square roots",
-        () -> countOddPeriodSquareRoots(10_000));
+                () -> countOddPeriodSquareRoots(10_000));
     }
 
     static int countOddPeriodSquareRoots(int limitInclusive) {
@@ -28,9 +26,12 @@ public class Problem64 {
 
     static boolean isPeriodOdd(int i) {
         ContinuedFraction cf = ContinuedFraction.sqrt(i);
-        if(cf instanceof IrrationalSqrtContinuedFraction)
+        if (cf instanceof IrrationalSqrtContinuedFraction)
             return ((IrrationalSqrtContinuedFraction) cf).period() % 2 == 1;
         else
             return false;
+    }
+
+    private Problem64() {
     }
 }

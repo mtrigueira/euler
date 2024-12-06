@@ -5,12 +5,10 @@ import utils.PythagoreanTriangle;
 import static problem.Solution.problem;
 
 public class Problem9 {
-     private Problem9() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=9
         problem("Special Pythagorean triplet",
-        () -> productWhenSumEquals(1000));
+                () -> productWhenSumEquals(1000));
     }
 
     public static int productWhenSumEquals(int sum) {
@@ -24,5 +22,8 @@ public class Problem9 {
             }
 
         return -1;
+    }
+
+    private Problem9() {
     }
 }

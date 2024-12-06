@@ -11,9 +11,6 @@ import static utils.operator.BigComparisonOperator.lessThanOrEqual;
 import static utils.sequence.arithmetic.PrimeSequence.THREE;
 
 class BruteForcePrimeChecker {
-    private BruteForcePrimeChecker() {
-    }
-
     public static boolean isPrime(BigInteger candidate) {
         return isPrimeByTrialDivision(candidate);
     }
@@ -57,5 +54,8 @@ class BruteForcePrimeChecker {
                 return false;
 
         return true;
+    }
+
+    private BruteForcePrimeChecker() {
     }
 }

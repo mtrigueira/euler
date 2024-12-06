@@ -1,15 +1,15 @@
 package utils;
 
 public class NaturalNumber {
+    private final int value;
+
     public static NaturalNumber of(int value) {
         return new NaturalNumber(value);
     }
 
-    private final int value;
-
-    private NaturalNumber(int value) {
-        if (value <= 0) throw new IllegalArgumentException("Natural number must be positive");
-        this.value = value;
+    static int sumTo(int n) {
+        // Gauss sum of pairs trick
+        return n * (n + 1) / 2;
     }
 
     public int sumOfMultiplesOf(int n) {
@@ -18,8 +18,8 @@ public class NaturalNumber {
         return sumTo(numberOfMultiples) * n;
     }
 
-    static int sumTo(int n) {
-        // Gauss sum of pairs trick
-        return n * (n + 1) / 2;
+    private NaturalNumber(int value) {
+        if (value <= 0) throw new IllegalArgumentException("Natural number must be positive");
+        this.value = value;
     }
 }

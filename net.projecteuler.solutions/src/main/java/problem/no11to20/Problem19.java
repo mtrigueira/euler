@@ -10,12 +10,10 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem19 {
-     private Problem19() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=19
         problem("Counting Sundays",
-        () -> between(1901, 2000));
+                () -> between(1901, 2000));
     }
 
     static long between(int startYear, int endYear) {
@@ -32,5 +30,8 @@ public class Problem19 {
     static boolean firstDayOfWeekIsASunday(int year, Month month) {
         LocalDate date = Year.of(year).atMonth(month).atDay(1);
         return (DayOfWeek.from(date).equals(DayOfWeek.SUNDAY));
+    }
+
+    private Problem19() {
     }
 }

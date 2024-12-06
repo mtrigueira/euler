@@ -8,8 +8,6 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem77 {
-    private Problem77() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=77
         problem("Prime summations", Problem77::firstNumberWithOver5000WaysOfWritingAsASumOfPrimes);
@@ -45,6 +43,9 @@ public class Problem77 {
         List<Integer> primes = Prime.primes.stream()
                 .filter(a -> a <= i)
                 .sorted(Comparator.reverseOrder()).toList();
-        return numberOfWaysOfWritingAsASumOfPrimes(i, i,primes);
+        return numberOfWaysOfWritingAsASumOfPrimes(i, i, primes);
+    }
+
+    private Problem77() {
     }
 }

@@ -3,6 +3,12 @@ package utils.data;
 import java.math.BigInteger;
 
 public class DigitNumber {
+    protected final byte[] digits;
+
+    protected DigitNumber(byte[] digits) {
+        this.digits = digits;
+    }
+
     public static DigitNumber of(String number) {
         return new DigitNumber(toByteArray(number));
     }
@@ -13,11 +19,6 @@ public class DigitNumber {
 
     public static DigitNumber of(BigInteger i) {
         return of(i.toString());
-    }
-
-    protected final byte[] digits;
-    protected DigitNumber(byte[] digits) {
-        this.digits = digits;
     }
 
     public static byte[] toByteArray(String number) {
@@ -34,7 +35,7 @@ public class DigitNumber {
         byte[] digits = new byte[count];
 
         for (int i = 0; i < count; i++)
-            digits[count-i-1] = (byte) ((number/Math.pow(10,i)) % 10);
+            digits[count - i - 1] = (byte) ((number / Math.pow(10, i)) % 10);
 
         return digits;
     }

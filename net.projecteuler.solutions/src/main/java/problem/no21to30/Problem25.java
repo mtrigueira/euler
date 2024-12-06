@@ -7,12 +7,10 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem25 {
-     private Problem25() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=25
         problem("1000-digit Fibonacci number",
-        () -> indexOfFirstFibonacciNumberWithLengthAtLeast(1_000));
+                () -> indexOfFirstFibonacciNumberWithLengthAtLeast(1_000));
     }
 
     static long indexOfFirstFibonacciNumberWithLengthAtLeast(int i) {
@@ -21,5 +19,8 @@ public class Problem25 {
                 .map(String::length)
                 .takeWhile(a -> a < i)
                 .count() + 1;
+    }
+
+    private Problem25() {
     }
 }

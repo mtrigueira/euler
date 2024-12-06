@@ -1,8 +1,7 @@
 package utils;
 
 public class Worth {
-    private Worth() {
-    }
+    private static final int OFFSET_TO_MAP_A_TO_1 = 'A' - 1;
 
     public static long wordWorth(String name) {
         return name.chars().map(Worth::charWorth).sum();
@@ -12,5 +11,6 @@ public class Worth {
         return c - OFFSET_TO_MAP_A_TO_1;
     }
 
-    private static final int OFFSET_TO_MAP_A_TO_1 = 'A' - 1;
+    private Worth() {
+    }
 }

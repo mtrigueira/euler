@@ -3,12 +3,10 @@ package problem.no51to60;
 import static problem.Solution.problem;
 
 public class Problem52 {
-     private Problem52() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=52
         problem("Permuted multiples",
-        () -> permutedMultiples(6));
+                () -> permutedMultiples(6));
     }
 
     static int permutedMultiples(int maxMultiplier) {
@@ -39,5 +37,8 @@ public class Problem52 {
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                 .toString();
+    }
+
+    private Problem52() {
     }
 }

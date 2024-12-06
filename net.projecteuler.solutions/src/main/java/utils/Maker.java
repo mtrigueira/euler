@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 public class Maker {
-    private Maker() {
-    }
-
     public static Set<Long> setL(int... values) {
         return Arrays.stream(values).asLongStream().collect(HashSet::new, HashSet::add, HashSet::addAll);
     }
@@ -20,5 +17,8 @@ public class Maker {
 
     public static List<BigInteger> list(int... values) {
         return Arrays.stream(values).asLongStream().mapToObj(BigInteger::valueOf).toList();
+    }
+
+    private Maker() {
     }
 }

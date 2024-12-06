@@ -3,8 +3,6 @@ package problem.no71to80;
 import static problem.Solution.problem;
 
 public class Problem73 {
-    private Problem73() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=73
         problem("Counting fractions in a range", () ->
@@ -28,5 +26,8 @@ public class Problem73 {
         }
 
         return sum;
+    }
+
+    private Problem73() {
     }
 }

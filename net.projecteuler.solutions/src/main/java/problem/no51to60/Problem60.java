@@ -8,9 +8,6 @@ import java.util.*;
 import static problem.Solution.problem;
 
 public class Problem60 {
-    private Problem60() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=
         problem("Prime pair sets",
@@ -18,7 +15,7 @@ public class Problem60 {
     }
 
     static long sumOfPrimePairSets(int i) {
-        Iterator<Integer> s= Prime.primes.iterator();
+        Iterator<Integer> s = Prime.primes.iterator();
 
         Root root = new Root();
 
@@ -92,11 +89,6 @@ public class Problem60 {
             this(p, null);
         }
 
-        private Node(long p, Set<Node> children) {
-            this.p = p;
-            this.children = children;
-        }
-
         boolean bothConcatenationsArePrime(long b) {
             if (!PrimeChecker.isPrime(concat(p, b))) return false;
             return PrimeChecker.isPrime(concat(b, p));
@@ -118,6 +110,14 @@ public class Problem60 {
         public int hashCode() {
             return Objects.hashCode(p);
         }
+
+        private Node(long p, Set<Node> children) {
+            this.p = p;
+            this.children = children;
+        }
+    }
+
+    private Problem60() {
     }
 }
 

@@ -7,8 +7,8 @@ import java.math.BigInteger;
 import static java.math.BigInteger.ONE;
 
 public class PolygonalSequence extends ArithmeticSequence<BigInteger> {
-    private BigInteger index = ONE;
     private final Polygonal polygonal;
+    private BigInteger index = ONE;
 
     public PolygonalSequence(Polygonal polygonal) {
         this.polygonal = polygonal;

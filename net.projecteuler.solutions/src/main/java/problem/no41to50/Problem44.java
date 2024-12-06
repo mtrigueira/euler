@@ -11,12 +11,10 @@ import static problem.Solution.problem;
 import static utils.polyagonal.Polygonal.PENTAGONAL;
 
 public class Problem44 {
-     private Problem44() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=44
         problem("Pentagonal numbers",
-        () -> minimumDifferenceForPolygonalPairs(PENTAGONAL));
+                () -> minimumDifferenceForPolygonalPairs(PENTAGONAL));
     }
 
     static BigInteger minimumDifferenceForPolygonalPairs(Polygonal polygonal) {
@@ -38,5 +36,8 @@ public class Problem44 {
 
             polygonals.add(next);
         }
+    }
+
+    private Problem44() {
     }
 }

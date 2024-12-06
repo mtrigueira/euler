@@ -4,8 +4,8 @@ import utils.data.DigitNumber;
 import utils.sequence.Sequence;
 
 public class DigitNumberSequence extends Sequence<Long> {
-    int index = 0;
     final byte[] digits;
+    int index = 0;
 
     protected DigitNumberSequence(String number) {
         this.digits = DigitNumber.of(number).digits();

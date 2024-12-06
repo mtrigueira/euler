@@ -5,16 +5,14 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem63 {
-     private Problem63() {
-     }
-    public static final int EXPONENT_LIMIT_FOUND_EMPIRICALLY = 22;
-    public static final int BASE_LIMIT_FOUND_EMPIRICALLY = 10;
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=63
         problem("Powerful digit counts",
-        () -> powerfulDigitCounts(BASE_LIMIT_FOUND_EMPIRICALLY, EXPONENT_LIMIT_FOUND_EMPIRICALLY));
+                () -> powerfulDigitCounts(BASE_LIMIT_FOUND_EMPIRICALLY, EXPONENT_LIMIT_FOUND_EMPIRICALLY));
     }
+
+    public static final int EXPONENT_LIMIT_FOUND_EMPIRICALLY = 22;
+    public static final int BASE_LIMIT_FOUND_EMPIRICALLY = 10;
 
     static int powerfulDigitCounts(int baseLimit, int exponentLimit) {
         int count = 0;
@@ -37,5 +35,8 @@ public class Problem63 {
 
     private static BigInteger exponent(int i, int j) {
         return BigInteger.valueOf(i).pow(j);
+    }
+
+    private Problem63() {
     }
 }

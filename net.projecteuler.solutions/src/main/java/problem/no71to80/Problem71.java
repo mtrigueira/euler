@@ -3,8 +3,6 @@ package problem.no71to80;
 import static problem.Solution.problem;
 
 public class Problem71 {
-    private Problem71() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=71
         problem("Ordered fractions", () ->
@@ -31,5 +29,8 @@ public class Problem71 {
         }
 
         return leftN;
+    }
+
+    private Problem71() {
     }
 }

@@ -6,9 +6,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileUtils {
-    private FileUtils() {
-    }
-
     public static Stream<String> getNames(String file) {
         Stream<String> stream = getNamesWithoutQuotes(file);
         if (stream == null) return null;
@@ -67,5 +64,8 @@ public class FileUtils {
         if (i != null) return i;
 
         return Stream.of(orElse.split("\\R"));
+    }
+
+    private FileUtils() {
     }
 }

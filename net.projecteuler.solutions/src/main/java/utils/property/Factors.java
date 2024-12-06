@@ -12,9 +12,6 @@ import java.util.stream.Collectors;
 import static java.math.BigInteger.ONE;
 
 public class Factors {
-    private Factors() {
-    }
-
     public static Set<Long> of(long n) {
         if (n < 1) return Collections.emptySet();
 
@@ -52,7 +49,6 @@ public class Factors {
         return primes;
     }
 
-
     public static int countRelativePrimes(int i) {
         BigInteger n = BigInteger.valueOf(i);
         int primes = 0;
@@ -66,5 +62,8 @@ public class Factors {
 
     public static Set<BigInteger> primeFactors(int n) {
         return ProperDivisors.of(n).stream().map(BigInteger::valueOf).dropWhile(ONE::equals).filter(PrimeChecker::isPrime).collect(Collectors.toSet());
+    }
+
+    private Factors() {
     }
 }

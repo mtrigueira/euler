@@ -9,12 +9,10 @@ import static problem.Solution.problem;
 import static utils.polyagonal.Polygonal.POLYGONALS;
 
 public class Problem61 {
-     private Problem61() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=61
         problem("Cyclical figurate numbers",
-        () -> cyclicNumbersWithUniquePolygonals(6));
+                () -> cyclicNumbersWithUniquePolygonals(6));
     }
 
     static int cyclicNumbersWithUniquePolygonals(int count) {
@@ -26,7 +24,7 @@ public class Problem61 {
 
         List<List<Node>> cycles = findCycles(numbers);
 
-        cycles=cycles.stream().filter(c ->c.size()==count).toList();
+        cycles = cycles.stream().filter(c -> c.size() == count).toList();
 
         return cycles.get(0).stream().mapToInt(n -> n.i).sum();
     }
@@ -36,7 +34,7 @@ public class Problem61 {
 
         for (Node node : nodes) {
             List<List<Node>> chains = chain(node);
-            for(List<Node> chain : chains)
+            for (List<Node> chain : chains)
                 if (isCyclical(chain)) {
                     sortChain(chain);
                     if (!cycles.contains(chain))
@@ -92,7 +90,7 @@ public class Problem61 {
                 if (i == j) continue;
 
                 if (areChained(i, j))
-                    if(areDifferentPolygonals(m,n))
+                    if (areDifferentPolygonals(m, n))
                         m.nextInChain.add(n);
             }
     }
@@ -127,5 +125,8 @@ public class Problem61 {
         public String toString() {
             return i + " is " + polygonal + ", next " + nextInChain.stream().map(n -> n.i).toList();
         }
+    }
+
+    private Problem61() {
     }
 }

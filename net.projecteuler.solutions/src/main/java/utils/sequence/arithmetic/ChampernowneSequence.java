@@ -3,6 +3,7 @@ package utils.sequence.arithmetic;
 public class ChampernowneSequence extends ArithmeticSequence<Byte> {
     private final IntegerSequence integerSequence = new IntegerSequence();
     private String remainingDigits = "";
+
     @Override
     public Byte next() {
         if (remainingDigits.isEmpty()) {

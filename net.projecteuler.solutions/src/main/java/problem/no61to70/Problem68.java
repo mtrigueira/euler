@@ -14,8 +14,6 @@ import java.util.stream.Stream;
 import static problem.Solution.problem;
 
 public class Problem68 {
-    private Problem68() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=68
         problem("Magic 5-gon ring", () ->
@@ -58,9 +56,12 @@ public class Problem68 {
         if (n == 0) return Stream.of(r).filter(Ring::isChain).filter(Ring::isRing);
 
         return e.stream()
-                .filter(a-> !Arrays.asList(r.groups()).contains(a))
+                .filter(a -> !Arrays.asList(r.groups()).contains(a))
                 .map(r::append)
                 .filter(Ring::isChain)
                 .flatMap(ring -> ringStream(n - 1, e, ring));
+    }
+
+    private Problem68() {
     }
 }

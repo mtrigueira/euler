@@ -12,9 +12,6 @@ import java.util.Set;
 import static problem.Solution.problem;
 
 public class Problem70 {
-    private Problem70() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=70
         problem("Totient permutations", () ->
@@ -43,7 +40,7 @@ public class Problem70 {
                 if (product.longValueExact() > lessThan) continue;
                 int n = product.intValueExact();
 
-                int phi = (int)EulersPhiSequence.forGivenFactors(n, Set.of(i.intValueExact(), j.intValueExact()));
+                int phi = (int) EulersPhiSequence.forGivenFactors(n, Set.of(i.intValueExact(), j.intValueExact()));
                 if (isPermutation(n, phi))
                     if (lessThan(n, phi, foundN, foundPhi)) {
                         foundPhi = phi;
@@ -64,5 +61,8 @@ public class Problem70 {
 
     private static String sorted(String permutation) {
         return permutation.chars().sorted().mapToObj(c -> (char) c + "").reduce("", (a, b) -> a + b);
+    }
+
+    private Problem70() {
     }
 }

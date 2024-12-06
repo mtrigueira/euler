@@ -11,9 +11,10 @@ import static utils.SimpleFraction.ONE;
 import static utils.property.Factors.countRelativePrimes;
 
 public class EulersPhiSequence extends ArithmeticSequence<Long> {
-    EulersPhiSequence() {}
-
     private int i = 2;
+
+    EulersPhiSequence() {
+    }
 
     static long phiEulersProductFormula(int n) {
         Set<Integer> factors = Factors.primeFactors(n).stream().map(BigInteger::intValueExact).collect(Collectors.toSet());
@@ -30,7 +31,7 @@ public class EulersPhiSequence extends ArithmeticSequence<Long> {
     }
 
     public static long forGivenFactors(int n, Set<Integer> factors) {
-        return phiEulersProductFormula(n,factors);
+        return phiEulersProductFormula(n, factors);
     }
 
     static int phiBruteForce(int n) {

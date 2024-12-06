@@ -6,8 +6,6 @@ import static problem.Solution.problem;
 import static utils.prime.PrimeChecker.isPrime;
 
 public class Problem5 {
-    private Problem5() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=5
         problem("Smallest multiple",
@@ -39,5 +37,8 @@ public class Problem5 {
 
     private static boolean isAFactor(long i, long candidate) {
         return i % candidate == 0;
+    }
+
+    private Problem5() {
     }
 }

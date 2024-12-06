@@ -11,12 +11,10 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem33 {
-     private Problem33() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=33
         problem("Digit cancelling fractions",
-        () -> productOfDenominatorsOfDigitCancellingFractions().map(Objects::toString).orElse("Not found"));
+                () -> productOfDenominatorsOfDigitCancellingFractions().map(Objects::toString).orElse("Not found"));
     }
 
     static Optional<Long> productOfDenominatorsOfDigitCancellingFractions() {
@@ -59,5 +57,8 @@ public class Problem33 {
     private static boolean isAccidentallyCorrect(
             int nCommon, int dCommon, int nRemaining, int dRemaining, double originalQuotient) {
         return nCommon == dCommon && (double) nRemaining / dRemaining == originalQuotient;
+    }
+
+    private Problem33() {
     }
 }

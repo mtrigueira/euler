@@ -6,15 +6,11 @@ import java.util.Map;
 import static utils.property.Evenness.isEven;
 
 public class CollatzSequence extends ArithmeticSequence<Long> {
+    private static final Map<Long, Integer> cache = new HashMap<>();
+    private long n;
+
     public static CollatzSequence of(long i) {
         return new CollatzSequence(i);
-    }
-
-    private long n;
-    private static final Map<Long,Integer> cache = new HashMap<>();
-
-    private CollatzSequence(long start) {
-        n = start;
     }
 
     @Override
@@ -33,7 +29,7 @@ public class CollatzSequence extends ArithmeticSequence<Long> {
         long old = n;
         int count = 0;
         while (n > 1) {
-            if(cache.containsKey(n)) {
+            if (cache.containsKey(n)) {
                 count += cache.get(n);
                 break;
             }
@@ -42,5 +38,9 @@ public class CollatzSequence extends ArithmeticSequence<Long> {
         }
         cache.put(old, count);
         return count;
+    }
+
+    private CollatzSequence(long start) {
+        n = start;
     }
 }

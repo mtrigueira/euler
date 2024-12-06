@@ -3,8 +3,6 @@ package problem.no31to40;
 import static problem.Solution.problem;
 
 public class Problem39 {
-    private Problem39() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=39
         problem("Integer right triangles",
@@ -37,5 +35,8 @@ public class Problem39 {
         }
 
         return count;
+    }
+
+    private Problem39() {
     }
 }

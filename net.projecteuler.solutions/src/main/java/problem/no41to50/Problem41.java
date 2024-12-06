@@ -12,22 +12,20 @@ import java.util.Optional;
 import static problem.Solution.problem;
 
 public class Problem41 {
-     private Problem41() {
-     }
-    private static final List<String> DIGITS = List.of("123456789".split(""));
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=41
         problem("Pandigital prime",
-        () -> 
-                findPanDigitalPrimes(10)
-                        .map(Prime::toString)
-                        .orElse("No pandigital primes found")
+                () ->
+                        findPanDigitalPrimes(10)
+                                .map(Prime::toString)
+                                .orElse("No pandigital primes found")
         );
     }
 
+    private static final List<String> DIGITS = List.of("123456789".split(""));
+
     static Optional<Prime> findPanDigitalPrimes(int digitCount) {
-        ArrayList<String> digits = new ArrayList<>(DIGITS.subList(0, digitCount-1));
+        ArrayList<String> digits = new ArrayList<>(DIGITS.subList(0, digitCount - 1));
         Optional<Prime> maybeMaxPrime;
 
         while (!digits.isEmpty()) {
@@ -45,5 +43,8 @@ public class Problem41 {
                 .filter(PrimeChecker::isPrime)
                 .max(BigInteger::compareTo)
                 .flatMap(Prime::of);
+    }
+
+    private Problem41() {
     }
 }

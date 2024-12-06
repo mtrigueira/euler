@@ -8,19 +8,17 @@ import static problem.Solution.problem;
 import static utils.prime.PrimeChecker.isPrime;
 
 public class Problem27 {
-     private Problem27() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=27
         problem("Quadratic primes",
-        () -> productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(1000, 1000));
+                () -> productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(1000, 1000));
     }
 
     static long productOfCoefficientsThatMaximiseConsecutiveValuesThatArePrime(int aExclusive, int bInclusive) {
         return IntStream.rangeClosed(-bInclusive, bInclusive)
                 .filter(PrimeChecker::isPrime)
                 .boxed()
-                .flatMap(b -> IntStream.range(-aExclusive+1, aExclusive)
+                .flatMap(b -> IntStream.range(-aExclusive + 1, aExclusive)
                         .mapToObj(a -> new Ugly(a * b, getN(a, b)))
                 )
                 .reduce((L, R) -> (L.n > R.n) ? L : R)
@@ -32,12 +30,15 @@ public class Problem27 {
         long candidate;
 
         for (int n = 1; ; n++) {
-            candidate = (long)n * n+ (long)a * n + b;
+            candidate = (long) n * n + (long) a * n + b;
             if (!isPrime(candidate))
                 return n - 1;
         }
     }
 
     record Ugly(int product, int n) {
+    }
+
+    private Problem27() {
     }
 }

@@ -12,16 +12,15 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem23 {
-    static final int NON_ABUNDANT_SUM_CEILING = 28123;
-    static Set<BigInteger> abundants;
-    static Set<BigInteger> abundantsInOrder;
-    private Problem23() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=23
         problem("Non-abundant sums",
                 () -> sumOfNonAbundantSums(NON_ABUNDANT_SUM_CEILING));
     }
+
+    static final int NON_ABUNDANT_SUM_CEILING = 28123;
+    static Set<BigInteger> abundants;
+    static Set<BigInteger> abundantsInOrder;
 
     static long sumOfNonAbundantSums(int n) {
         abundants = CachedSequence.of(new AbundantSequence())
@@ -42,6 +41,9 @@ public class Problem23 {
         return abundantsInOrder.stream()
                 .map(b::subtract)
                 .takeWhile(i -> i.signum() > 0)
-                .anyMatch(a->abundants.contains(a));
+                .anyMatch(a -> abundants.contains(a));
+    }
+
+    private Problem23() {
     }
 }

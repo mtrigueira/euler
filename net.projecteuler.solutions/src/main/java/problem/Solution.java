@@ -5,9 +5,6 @@ import utils.Stopwatch;
 import java.util.concurrent.Callable;
 
 public class Solution {
-    private Solution() {
-    }
-
     public static void problem(String problem, Callable<Object> solution) {
         Stopwatch stopwatch;
         stopwatch = Stopwatch.start();
@@ -18,5 +15,8 @@ public class Solution {
             throw new RuntimeException(e);
         }
         stopwatch.println();
+    }
+
+    private Solution() {
     }
 }

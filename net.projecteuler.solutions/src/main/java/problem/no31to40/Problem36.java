@@ -9,13 +9,11 @@ import static utils.Palindrome.BASE_TWO;
 import static utils.Palindrome.isPalindrome;
 
 public class Problem36 {
-     private Problem36() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=36
         problem("Double-base palindromes",
-        () -> 
-                sumOfDoubleBasePalindromesBelow(1000000)
+                () ->
+                        sumOfDoubleBasePalindromesBelow(1000000)
         );
     }
 
@@ -24,5 +22,8 @@ public class Problem36 {
                 .filter(Palindrome::isPalindrome)
                 .filter(i -> isPalindrome(i, BASE_TWO))
                 .sum();
+    }
+
+    private Problem36() {
     }
 }
