@@ -7,10 +7,6 @@ public class SimpleFraction extends Fraction {
     public static final SimpleFraction ONE = SimpleFraction.factory(BigInteger.ONE, BigInteger.ONE);
     public static final SimpleFraction TWO = SimpleFraction.factory(BigInteger.TWO, BigInteger.ONE);
 
-    private SimpleFraction(BigInteger numerator, BigInteger denominator) {
-        super(numerator, denominator);
-    }
-
     public static SimpleFraction of(BigInteger numerator, BigInteger denominator) {
         BigInteger gcd = numerator.gcd(denominator);
         return factory(numerator.divide(gcd), denominator.divide(gcd));
@@ -74,5 +70,9 @@ public class SimpleFraction extends Fraction {
     @Override
     public String toString() {
         return n + "/" + d;
+    }
+
+    private SimpleFraction(BigInteger numerator, BigInteger denominator) {
+        super(numerator, denominator);
     }
 }

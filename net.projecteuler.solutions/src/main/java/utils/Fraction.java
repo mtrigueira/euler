@@ -15,7 +15,7 @@ public abstract class Fraction {
     public boolean equals(Object obj) {
         if (obj == this) return true;
         if (!(obj instanceof Fraction that)) return false;
-        return n.equals(that.n)&&d.equals(that.d);
+        return n.equals(that.n) && d.equals(that.d);
     }
 
     public BigInteger denominator() {

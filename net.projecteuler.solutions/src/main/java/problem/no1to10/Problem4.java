@@ -5,8 +5,6 @@ import utils.Palindrome;
 import static problem.Solution.problem;
 
 public class Problem4 {
-     private Problem4() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=4
         problem("Largest palindrome product",
@@ -26,5 +24,8 @@ public class Problem4 {
             }
 
         return maxPalindrome;
+    }
+
+    private Problem4() {
     }
 }

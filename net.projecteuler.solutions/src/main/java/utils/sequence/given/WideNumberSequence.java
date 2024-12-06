@@ -2,6 +2,7 @@ package utils.sequence.given;
 
 public class WideNumberSequence extends DigitNumberSequence {
     final int width;
+
     public WideNumberSequence(String number, int width) {
         super(number);
         this.width = width;
@@ -11,8 +12,8 @@ public class WideNumberSequence extends DigitNumberSequence {
     public Long next() {
         long value = 0;
 
-        for(int i=0;i<width;i++)
-            value = value * 10 + digits[index+i];
+        for (int i = 0; i < width; i++)
+            value = value * 10 + digits[index + i];
         index++;
 
         return value;
@@ -20,6 +21,6 @@ public class WideNumberSequence extends DigitNumberSequence {
 
     @Override
     public boolean hasNext() {
-        return index+width<=digits.length;
+        return index + width <= digits.length;
     }
 }

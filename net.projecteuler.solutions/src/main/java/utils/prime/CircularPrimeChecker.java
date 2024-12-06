@@ -1,9 +1,6 @@
 package utils.prime;
 
 public class CircularPrimeChecker {
-    private CircularPrimeChecker() {
-    }
-    
     public static boolean isCircularPrime(long prime) {
         String digits = Long.toString(prime);
         int size = digits.length() - 1;
@@ -19,5 +16,8 @@ public class CircularPrimeChecker {
 
     private static String rotate(String digits) {
         return digits.substring(1) + digits.charAt(0);
+    }
+
+    private CircularPrimeChecker() {
     }
 }

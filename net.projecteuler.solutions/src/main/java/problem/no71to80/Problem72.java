@@ -3,9 +3,6 @@ package problem.no71to80;
 import static problem.Solution.problem;
 
 public class Problem72 {
-    private Problem72() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=72
         problem("Counting fractions", () ->
@@ -24,5 +21,8 @@ public class Problem72 {
         }
 
         return sum;
+    }
+
+    private Problem72() {
     }
 }

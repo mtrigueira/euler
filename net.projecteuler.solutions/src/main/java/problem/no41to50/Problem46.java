@@ -11,11 +11,9 @@ import static java.math.BigInteger.TWO;
 import static problem.Solution.problem;
 
 public class Problem46 {
-     private Problem46() {
-     }
     public static void main(String[] args) {
         problem("Goldbach's other conjecture",
-        () -> goldbachsOtherConjecture(1).map(BigInteger::toString).orElse("Not found"));
+                () -> goldbachsOtherConjecture(1).map(BigInteger::toString).orElse("Not found"));
     }
 
     static Optional<BigInteger> goldbachsOtherConjecture(int failure) {
@@ -46,5 +44,8 @@ public class Problem46 {
         return x.subtract(p)
                 .divide(TWO)
                 .sqrt();
+    }
+
+    private Problem46() {
     }
 }

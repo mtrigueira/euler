@@ -8,9 +8,6 @@ import java.util.TreeSet;
 import static problem.Solution.problem;
 
 public class Problem75 {
-    private Problem75() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=75
         problem("Singular right angle triangles", () ->
@@ -50,5 +47,8 @@ public class Problem75 {
 
     private static long gcd(long a, long b) {
         return b == 0 ? a : gcd(b, a % b);
+    }
+
+    private Problem75() {
     }
 }

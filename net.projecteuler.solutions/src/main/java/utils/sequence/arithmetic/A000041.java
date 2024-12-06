@@ -9,17 +9,16 @@ public class A000041 {
     public static final int GROW_ARRAY_BY = 100;
     private static int maxN = 0;
     private static BigInteger[] A = {ONE};
-    private A000041() {}
 
     public static BigInteger a(int n) {
-        if(n>maxN) {
-            if(n+1>A.length) {
+        if (n > maxN) {
+            if (n + 1 > A.length) {
                 BigInteger[] p = new BigInteger[n + GROW_ARRAY_BY];
-                System.arraycopy(A,0,p,0,A.length);
+                System.arraycopy(A, 0, p, 0, A.length);
                 A = p;
             }
         }
-        for (int i = maxN+1; i <= n; i++) {
+        for (int i = maxN + 1; i <= n; i++) {
             A[i] = ZERO;
             boolean isRed = true;
             int plusPhase = 0;
@@ -45,8 +44,11 @@ public class A000041 {
                 plusPhase++;
             }
         }
-        if(n>maxN) maxN=n;
+        if (n > maxN) maxN = n;
 
         return A[n];
+    }
+
+    private A000041() {
     }
 }

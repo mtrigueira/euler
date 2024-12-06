@@ -8,12 +8,10 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem28 {
-     private Problem28() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=28
         problem("Number spiral diagonals",
-        () -> sumOfDiagonalsInAGridOfSizeNxN(1001));
+                () -> sumOfDiagonalsInAGridOfSizeNxN(1001));
     }
 
     static long sumOfDiagonalsInAGridOfSizeNxN(int n) {
@@ -25,8 +23,11 @@ public class Problem28 {
                 .mapToObj(Layer::of)
                 .map(Layer::corners)
                 .map(LongStream::of)
-                .flatMapToLong(a->a)
+                .flatMapToLong(a -> a)
                 .reduce(0L, Long::sum);
+    }
+
+    private Problem28() {
     }
 }
 

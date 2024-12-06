@@ -9,10 +9,6 @@ import java.util.TreeSet;
 public class Prime extends BigInteger {
     public static SortedSet<Integer> primes = primeFactorBuilder(9999);
 
-    private Prime(byte[] val) {
-        super(val);
-    }
-
     public static Optional<Prime> of(BigInteger i) {
         return PrimeChecker.isPrime(i) ? Optional.of(new Prime(i.toByteArray())) : Optional.empty();
     }
@@ -60,10 +56,10 @@ public class Prime extends BigInteger {
             boolean notPrime = false;
             for (int j = 0; j <= last; j++)
                 if (i % sieve[j] == 0) {
-                    notPrime=true;
+                    notPrime = true;
                     break;
                 }
-            if(!notPrime) {
+            if (!notPrime) {
                 last++;
                 sieve[last] = i;
             }
@@ -74,5 +70,9 @@ public class Prime extends BigInteger {
             primes.add(sieve[j]);
 
         return primes;
+    }
+
+    private Prime(byte[] val) {
+        super(val);
     }
 }

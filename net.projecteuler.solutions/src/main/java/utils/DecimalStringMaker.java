@@ -1,8 +1,6 @@
 package utils;
 
 public class DecimalStringMaker {
-    private DecimalStringMaker() {}
-
     public static String toString(LongDivision ld) {
         String s = ld.nextDigit() + "." + decimalsUntilTerminationOrRecursion(ld);
 
@@ -28,5 +26,8 @@ public class DecimalStringMaker {
 
     private static String decorateRecurringCycle(String s, int i) {
         return s.substring(0, i + 1) + "(" + s.substring(i + 1) + ")";
+    }
+
+    private DecimalStringMaker() {
     }
 }

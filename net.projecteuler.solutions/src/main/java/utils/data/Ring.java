@@ -97,7 +97,7 @@ public record Ring(Group[] groups) {
     public boolean isChain() {
         int n = groups.length;
         if (n == 1) return true;
-        Set<Integer> elements = new HashSet<>(n*2);
+        Set<Integer> elements = new HashSet<>(n * 2);
         Group g0 = groups[0];
         elements.add(g0.a());
         elements.add(g0.b());

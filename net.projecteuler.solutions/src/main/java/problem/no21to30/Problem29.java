@@ -5,8 +5,6 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem29 {
-    private Problem29() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=29
         problem("Distinct powers",
@@ -18,8 +16,11 @@ public class Problem29 {
                 .mapToObj(a ->
                         IntStream.rangeClosed(2, bLimit)
                                 .mapToDouble(b -> Math.pow(a, b))
-                ).flatMapToDouble(d->d)
+                ).flatMapToDouble(d -> d)
                 .distinct()
                 .count();
+    }
+
+    private Problem29() {
     }
 }

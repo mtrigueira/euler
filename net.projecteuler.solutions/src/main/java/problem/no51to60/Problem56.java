@@ -6,12 +6,10 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem56 {
-     private Problem56() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=56
         problem("Powerful digit sum",
-        () -> powerfulDigitSum(100));
+                () -> powerfulDigitSum(100));
     }
 
     static long powerfulDigitSum(int endInclusive) {
@@ -24,5 +22,8 @@ public class Problem56 {
                 )
                 .max()
                 .orElse(0L);
+    }
+
+    private Problem56() {
     }
 }

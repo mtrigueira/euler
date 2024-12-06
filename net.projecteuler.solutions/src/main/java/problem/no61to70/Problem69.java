@@ -9,8 +9,6 @@ import static java.math.BigInteger.ONE;
 import static problem.Solution.problem;
 
 public class Problem69 {
-    private Problem69() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=69
         problem("Totient maximum", () ->
@@ -28,5 +26,8 @@ public class Problem69 {
         }
 
         return p.intValueExact();
+    }
+
+    private Problem69() {
     }
 }

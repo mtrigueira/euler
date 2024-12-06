@@ -10,9 +10,6 @@ import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
 
 public class Problem66 {
-    private Problem66() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=66
         problem("Diophantine equation",
@@ -48,5 +45,8 @@ public class Problem66 {
 
     private static boolean isSquare(int d) {
         return Math.sqrt(d) % 1 == 0;
+    }
+
+    private Problem66() {
     }
 }

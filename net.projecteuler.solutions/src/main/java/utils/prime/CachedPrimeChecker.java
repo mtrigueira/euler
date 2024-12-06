@@ -7,7 +7,12 @@ import java.util.TreeSet;
 import static java.math.BigInteger.TWO;
 
 class CachedPrimeChecker {
-    private CachedPrimeChecker() {}
+    static final SortedSet<BigInteger> primes = new TreeSet<>();
+
+    static {
+        primes.add(TWO);
+        primes.add(BigInteger.valueOf(3));
+    }
 
     public static boolean isPrime(BigInteger candidate) {
         if (primes.contains(candidate)) return true;
@@ -19,9 +24,6 @@ class CachedPrimeChecker {
         return true;
     }
 
-    static final SortedSet<BigInteger> primes = new TreeSet<>();
-    static {
-        primes.add(TWO);
-        primes.add(BigInteger.valueOf(3));
+    private CachedPrimeChecker() {
     }
 }

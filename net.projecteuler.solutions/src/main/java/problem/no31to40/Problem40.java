@@ -7,12 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static problem.Solution.problem;
 
 public class Problem40 {
-     private Problem40() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=40
         problem("Champernowne's constant",
-        () -> productOfChampernownesDigetsAtPositionsMod10Below(1_000_000));
+                () -> productOfChampernownesDigetsAtPositionsMod10Below(1_000_000));
     }
 
     static int productOfChampernownesDigetsAtPositionsMod10Below(int limit) {
@@ -28,5 +26,8 @@ public class Problem40 {
         int digits = (int) Math.log10(i) + 1;
         int pow = (int) Math.pow(10, digits - 1);
         return i == pow;
+    }
+
+    private Problem40() {
     }
 }

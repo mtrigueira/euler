@@ -8,12 +8,10 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem47 {
-     private Problem47() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=47
         problem("Distinct primes factors",
-        () -> firstNConsecutiveIntegersToHaveNDistinctPrimes(4));
+                () -> firstNConsecutiveIntegersToHaveNDistinctPrimes(4));
     }
 
     static BigInteger firstNConsecutiveIntegersToHaveNDistinctPrimes(int n) {
@@ -25,5 +23,8 @@ public class Problem47 {
                     return BigInteger.valueOf(i - n + 1);
             } else
                 consecutiveCount = 0;
+    }
+
+    private Problem47() {
     }
 }

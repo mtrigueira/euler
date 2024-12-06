@@ -6,9 +6,6 @@ import utils.prime.TruncatablePrimeChecker;
 import static problem.Solution.problem;
 
 public class Problem37 {
-    private Problem37() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=37
         problem("Truncatable primes",
@@ -27,9 +24,12 @@ public class Problem37 {
                     sum += i;
                     limit--;
                 }
-            i+=2;
+            i += 2;
         }
 
         return sum;
+    }
+
+    private Problem37() {
     }
 }

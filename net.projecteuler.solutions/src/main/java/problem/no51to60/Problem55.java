@@ -8,12 +8,10 @@ import java.util.stream.IntStream;
 import static problem.Solution.problem;
 
 public class Problem55 {
-     private Problem55() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=55
         problem("Lychrel numbers",
-        () -> countLychrelNumbers(10_000));
+                () -> countLychrelNumbers(10_000));
     }
 
     static long countLychrelNumbers(int endExclusive) {
@@ -23,8 +21,11 @@ public class Problem55 {
     }
 
     private static IntPredicate isLycrhelCandidate() {
-        return i ->  new LycrhelSequence(i).stream()
+        return i -> new LycrhelSequence(i).stream()
                 .limit(50)
                 .count() >= 50;
+    }
+
+    private Problem55() {
     }
 }

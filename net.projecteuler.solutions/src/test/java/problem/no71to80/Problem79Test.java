@@ -9,4 +9,9 @@ class Problem79Test {
     void shortestPasscode() {
         assertEquals("1234",Problem79.shortestPasscode("123,234".split(",")));
     }
+
+    @Test
+    void noShortestPasscode() {
+        assertThrows(RuntimeException.class,()->Problem79.shortestPasscode("123,321".split(",")));
+    }
 }

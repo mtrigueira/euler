@@ -6,8 +6,6 @@ import java.math.MathContext;
 import static problem.Solution.problem;
 
 public class Problem80 {
-    private Problem80() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=80
         problem("Square root digital expansion", Problem80::solution);
@@ -27,15 +25,18 @@ public class Problem80 {
         int sum = 0;
         BigDecimal d = new BigDecimal(n).sqrt(new MathContext(1010));
         String s = d.toString();
-        s=s.charAt(0)+s.substring(2);
+        s = s.charAt(0) + s.substring(2);
 
         for (int i = 0; i < 100; i++)
-            sum += Integer.parseInt(s.substring(i,i+1));
+            sum += Integer.parseInt(s.substring(i, i + 1));
 
         return sum;
     }
 
     private static boolean isSquare(int d) {
         return Math.sqrt(d) % 1 == 0;
+    }
+
+    private Problem80() {
     }
 }

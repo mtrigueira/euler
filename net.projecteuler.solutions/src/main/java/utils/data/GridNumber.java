@@ -6,9 +6,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class GridNumber {
-    private GridNumber() {
-    }
-
     public static final Pattern SPACE = Pattern.compile(" ");
 
     public static short[][] toShortGrid(Stream<String> lines) {
@@ -40,12 +37,15 @@ public class GridNumber {
     private static List<List<Short>> makeGrid(Stream<String> lines) {
         List<List<Short>> grid = new ArrayList<>();
 
-        lines.forEach(line->{
+        lines.forEach(line -> {
             List<Short> row = new ArrayList<>();
-            SPACE.splitAsStream(line).forEach(token->row.add(Short.parseShort(token)));
+            SPACE.splitAsStream(line).forEach(token -> row.add(Short.parseShort(token)));
             grid.add(row);
         });
 
         return grid;
+    }
+
+    private GridNumber() {
     }
 }

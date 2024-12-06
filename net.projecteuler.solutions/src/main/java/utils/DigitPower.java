@@ -4,11 +4,6 @@ public class DigitPower {
     private final long[] digitPower;
     private final long maxSum;
 
-    private DigitPower(int exponent) {
-        digitPower = makeDigitPower(exponent);
-        maxSum = toLongExact(Math.pow(9, exponent) * 10);
-    }
-
     public static DigitPower forExponent(int i) {
         return new DigitPower(i);
     }
@@ -23,7 +18,7 @@ public class DigitPower {
     }
 
     private long toLongExact(double d) {
-        if ((long)d != d) throw new ArithmeticException("long overflow");
+        if ((long) d != d) throw new ArithmeticException("long overflow");
         return (long) d;
     }
 
@@ -37,5 +32,10 @@ public class DigitPower {
 
     public long getMaxPossibleSum() {
         return maxSum;
+    }
+
+    private DigitPower(int exponent) {
+        digitPower = makeDigitPower(exponent);
+        maxSum = toLongExact(Math.pow(9, exponent) * 10);
     }
 }

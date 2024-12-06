@@ -9,6 +9,13 @@ public abstract class ContinuedFraction {
         return e;
     }
 
+    public static ContinuedFraction sqrt(int radicand) {
+        if (IrrationalSqrtContinuedFraction.isPerfectSquare(radicand))
+            return IrrationalSqrtContinuedFraction.perfectSquare(radicand);
+
+        return new IrrationalSqrtContinuedFraction(radicand);
+    }
+
     public abstract BigInteger at(int i);
 
     private static class eContinuedFraction extends ContinuedFraction {
@@ -23,12 +30,5 @@ public abstract class ContinuedFraction {
         public String toString() {
             return "[2; 1, 2, 1, 1, 4, ..., 1, 2k, 1, ...]";
         }
-    }
-
-    public static ContinuedFraction sqrt(int radicand) {
-        if (IrrationalSqrtContinuedFraction.isPerfectSquare(radicand))
-            return IrrationalSqrtContinuedFraction.perfectSquare(radicand);
-
-        return new IrrationalSqrtContinuedFraction(radicand);
     }
 }

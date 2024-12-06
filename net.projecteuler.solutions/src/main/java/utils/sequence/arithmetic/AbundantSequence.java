@@ -8,6 +8,7 @@ import static utils.operator.Aliquot.isAbundant;
 public class AbundantSequence extends ArithmeticSequence<BigInteger> {
     private static final BigInteger FIRST_ABUNDANT_NUMBER = BigInteger.valueOf(12);
     private BigInteger n = FIRST_ABUNDANT_NUMBER.subtract(ONE);
+
     @Override
     public BigInteger next() {
         do

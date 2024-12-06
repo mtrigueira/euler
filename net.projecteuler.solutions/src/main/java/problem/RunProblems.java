@@ -10,21 +10,18 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RunProblems {
-    private static final String[] O = {};
+    public static void main(String[] args) {
+        if (runProblems(FAST)) throw new RuntimeException("Slow test in FAST bucket");
+    }
+
     public static final int[] SLOW = {78};
     public static final int[] FAST = IntStream.range(1, 100)
             .filter(i -> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();
+    private static final String[] O = {};
     private static final int TOO_SLOW_THRESHOLD_MS = 1000;
-    private static boolean tooSlow = false;
     private static final List<Integer> failed = new ArrayList<>();
-
-    private RunProblems() {
-    }
-
-    public static void main(String[] args) {
-        if (runProblems(FAST)) throw new RuntimeException("Slow test in FAST bucket");
-    }
+    private static boolean tooSlow = false;
 
     public static boolean runProblems(int[] problems) {
         tooSlow = false;
@@ -39,8 +36,8 @@ public class RunProblems {
         System.out.println("Problem,ms,Failed");
         System.out.println(results);
         System.out.println("Total time: " + stopwatch.elapsed() + " ms");
-        
-        if(!failed.isEmpty()) throw new RuntimeException("Problems failed. "+failed);
+
+        if (!failed.isEmpty()) throw new RuntimeException("Problems failed. " + failed);
 
         return tooSlow;
     }
@@ -63,11 +60,11 @@ public class RunProblems {
             failedFlag = false;
         } catch (Exception ignored) {
         }
-        if(stopwatch1.elapsed() > TOO_SLOW_THRESHOLD_MS) {
+        if (stopwatch1.elapsed() > TOO_SLOW_THRESHOLD_MS) {
             System.err.println("Problem " + i + " took " + stopwatch1.elapsed() + " ms");
             tooSlow = true;
         }
-        if(failedFlag)
+        if (failedFlag)
             failed.add(i);
 
         return (i + "," + stopwatch1.elapsed() + "," + (failedFlag ? "FAILED" : ""));
@@ -75,5 +72,8 @@ public class RunProblems {
 
     private static int problemNumber(String s) {
         return Integer.parseInt(s.substring(s.lastIndexOf("Problem") + 7));
+    }
+
+    private RunProblems() {
     }
 }

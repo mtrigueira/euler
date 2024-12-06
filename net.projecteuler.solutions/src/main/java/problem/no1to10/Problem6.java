@@ -5,8 +5,6 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem6 {
-     private Problem6() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=6
         problem("Sum square difference",
@@ -24,5 +22,8 @@ public class Problem6 {
 
     static double sumOfSquares(int i) {
         return LongStream.rangeClosed(1, i).mapToDouble(j -> Math.pow(j, 2)).sum();
+    }
+
+    private Problem6() {
     }
 }

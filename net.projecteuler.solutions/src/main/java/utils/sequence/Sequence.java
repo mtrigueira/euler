@@ -8,14 +8,15 @@ import java.util.stream.Stream;
 
 public abstract class Sequence<T> implements Iterator<T> {
     private Class<?> T_getClass = null;
+
     public T[] nextArray(int sizeOfArray) {
         List<T> list = new ArrayList<>();
-        for(int i = 0; i < sizeOfArray; i++) {
+        for (int i = 0; i < sizeOfArray; i++) {
             if (!hasNext()) break;
             list.add(next());
         }
 
-        if (T_getClass==null) T_getClass = workOutClassOfTUsingReflection();
+        if (T_getClass == null) T_getClass = workOutClassOfTUsingReflection();
         @SuppressWarnings("unchecked") // These objects are type T since list is <T>
         T[] array = list.toArray((T[]) Array.newInstance(T_getClass, list.size()));
         return array;
@@ -27,7 +28,7 @@ public abstract class Sequence<T> implements Iterator<T> {
             Type typeT = g.getActualTypeArguments()[0];
             String nameOfT = typeT.getTypeName();
             return Class.forName(nameOfT);
-        } catch (ClassNotFoundException|ClassCastException ignored) {
+        } catch (ClassNotFoundException | ClassCastException ignored) {
         }
         return null;
     }

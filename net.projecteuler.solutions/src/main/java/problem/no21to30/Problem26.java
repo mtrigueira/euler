@@ -10,12 +10,10 @@ import static java.math.BigInteger.ZERO;
 import static problem.Solution.problem;
 
 public class Problem26 {
-     private Problem26() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=26
         problem("Reciprocal cycles",
-        () -> indexOfLargestReciprocalCycle(1000));
+                () -> indexOfLargestReciprocalCycle(1000));
     }
 
     static BigInteger indexOfLargestReciprocalCycle(int endExclusive) {
@@ -29,6 +27,9 @@ public class Problem26 {
 
     private static Decimal largestReciprocalCycle(Decimal a, Decimal b) {
         return a.reciprocalLength() > b.reciprocalLength() ? a : b;
+    }
+
+    private Problem26() {
     }
 }
 

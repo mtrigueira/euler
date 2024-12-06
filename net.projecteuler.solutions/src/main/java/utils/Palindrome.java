@@ -5,8 +5,6 @@ import java.math.BigInteger;
 import static utils.operator.BigComparisonOperator.lessThan;
 
 public class Palindrome {
-    private Palindrome() {}
-
     public static final int BASE_TEN = 10;
     public static final int BASE_TWO = 2;
 
@@ -38,5 +36,8 @@ public class Palindrome {
 
     public static boolean isPalindrome(long i, int base) {
         return isPalindrome(BigInteger.valueOf(i), base);
+    }
+
+    private Palindrome() {
     }
 }

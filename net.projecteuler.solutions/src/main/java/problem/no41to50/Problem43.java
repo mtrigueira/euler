@@ -15,17 +15,14 @@ import java.util.stream.Stream;
 import static problem.Solution.problem;
 
 public class Problem43 {
-    private static final List<String> DIGITS = List.of("0123456789".split(""));
-    private static final Prime[] primes = PrimeSequence.fromFirst().nextArray(DIGITS.size() - 2);
-
-    private Problem43() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=41
         problem("Pandigital primes",
                 () -> findDivisiblePanDigitals(10));
     }
+
+    private static final List<String> DIGITS = List.of("0123456789".split(""));
+    private static final Prime[] primes = PrimeSequence.fromFirst().nextArray(DIGITS.size() - 2);
 
     static String findDivisiblePanDigitals(int limit) {
         return combine(threeDigitPrimeDivisibles()).stream()
@@ -92,5 +89,8 @@ public class Problem43 {
 
     private static boolean uniqueDigits(String a) {
         return a.chars().distinct().count() == a.length();
+    }
+
+    private Problem43() {
     }
 }

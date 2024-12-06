@@ -15,7 +15,7 @@ public class CompositeSequence extends ArithmeticSequence<BigInteger> {
     public BigInteger next() {
         BigInteger current = i;
         i = i.add(ONE);
-        if(lastPrime.equals(i)) {
+        if (lastPrime.equals(i)) {
             lastPrime = p.next();
             i = i.add(ONE);
         }

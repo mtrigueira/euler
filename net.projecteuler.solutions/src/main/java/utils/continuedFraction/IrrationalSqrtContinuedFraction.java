@@ -16,10 +16,6 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
         this.a = sequenceForSqrt(radicand, INFINITE_LOOP_PROTECTION);
     }
 
-    public int period() {
-        return a.size() - 1;
-    }
-
     static List<BigInteger> sequenceForSqrt(int radicand, int infiniteLoopProtection) {
         List<BigInteger> integerParts = new ArrayList<>();
         BigInteger n = BigInteger.valueOf(radicand);
@@ -57,10 +53,14 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
             }
         }
         if (integerParts.size() == infiniteLoopProtection) {
-            throw new RuntimeException("sqrt("+n+"): Too many iterations "+integerParts.size()+". Fix bug, or increase. Terminated sequence "+integerParts);
+            throw new RuntimeException("sqrt(" + n + "): Too many iterations " + integerParts.size() + ". Fix bug, or increase. Terminated sequence " + integerParts);
         }
 
         return integerParts;
+    }
+
+    public int period() {
+        return a.size() - 1;
     }
 
     public BigInteger at(int i) {

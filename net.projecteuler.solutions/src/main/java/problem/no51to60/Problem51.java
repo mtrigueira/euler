@@ -9,15 +9,13 @@ import java.math.BigInteger;
 import static problem.Solution.problem;
 
 public class Problem51 {
-    static int minPrime = Integer.MAX_VALUE;
-
-    private Problem51() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=51
         problem("Prime digit replacements",
                 () -> smallestPrime(8));
     }
+
+    static int minPrime = Integer.MAX_VALUE;
 
     static Prime smallestPrime(int familySize) {
         return PrimeSequence.fromFirst().stream()
@@ -72,5 +70,8 @@ public class Problem51 {
             if (localMin < minPrime)
                 minPrime = localMin;
         return count;
+    }
+
+    private Problem51() {
     }
 }

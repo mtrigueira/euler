@@ -5,15 +5,13 @@ import utils.sequence.arithmetic.CollatzSequence;
 import static problem.Solution.problem;
 
 public class Problem14 {
-    public static final int LIMIT = 1000000;
-
-    private Problem14() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=14
         problem("Longest Collatz sequence",
                 () -> getMaxChainLengthNumberForNaturalNumbersBelow(LIMIT));
     }
+
+    public static final int LIMIT = 1000000;
 
     static long getMaxChainLengthNumberForNaturalNumbersBelow(int limit) {
         long bestI = 0;
@@ -32,5 +30,8 @@ public class Problem14 {
 
     private static long chainLength(int i) {
         return CollatzSequence.of(i).count();
+    }
+
+    private Problem14() {
     }
 }

@@ -8,12 +8,10 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem62 {
-     private Problem62() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=62
         problem("Cubic Permutations",
-        () -> lowestValueWithCubicPermutations(5));
+                () -> lowestValueWithCubicPermutations(5));
     }
 
     static BigInteger lowestValueWithCubicPermutations(int targetNumberOfPermutations) {
@@ -30,7 +28,7 @@ public class Problem62 {
             if (map.containsKey(sameForPermutations)) {
                 List<BigInteger> permutations = map.get(sameForPermutations);
                 permutations.add(c);
-                if(permutations.size() == targetNumberOfPermutations)
+                if (permutations.size() == targetNumberOfPermutations)
                     return permutations.get(0);
 
             } else {
@@ -47,5 +45,8 @@ public class Problem62 {
 
     private static BigInteger cube(int i) {
         return BigInteger.valueOf(i).pow(3);
+    }
+
+    private Problem62() {
     }
 }

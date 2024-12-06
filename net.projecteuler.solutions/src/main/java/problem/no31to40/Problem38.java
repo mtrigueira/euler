@@ -7,12 +7,10 @@ import java.util.stream.LongStream;
 import static problem.Solution.problem;
 
 public class Problem38 {
-     private Problem38() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=38
         problem("Largest pandigital multiple",
-        () -> largestPandigitalMultiple(10_000));
+                () -> largestPandigitalMultiple(10_000));
     }
 
     static long largestPandigitalMultiple(int endExclusive) {
@@ -47,5 +45,8 @@ public class Problem38 {
 
     private static long lengthOfDigits(long i) {
         return (long) Math.log10(i) + 1;
+    }
+
+    private Problem38() {
     }
 }

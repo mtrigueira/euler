@@ -3,12 +3,22 @@ package utils.data;
 public class Triangle {
     private final short[][] triangle;
 
-    private Triangle(short[][] triangle) {
-        this.triangle = triangle;
-    }
-
     public static Triangle of(String triangle) {
         return new Triangle(GridNumber.toShortGrid(triangle.lines()));
+    }
+
+    private static void calculateMaximumSumForRowUsingRowBelow(int row, short[][] triangle) {
+        for (int column = 0; column <= row; column++) {
+            short max = highestValueFromTwoAdjacentValuesOnRowBelow(row, column, triangle);
+            if ((int) triangle[row][column] + max > Short.MAX_VALUE) throw new ArithmeticException("Overflow");
+            triangle[row][column] += max;
+        }
+    }
+
+    private static short highestValueFromTwoAdjacentValuesOnRowBelow(int row, int column, short[][] triangle) {
+        short a = triangle[row + 1][column];
+        short b = triangle[row + 1][column + 1];
+        return a > b ? a : b;
     }
 
     public int maxPathSum() {
@@ -21,29 +31,19 @@ public class Triangle {
         return accumulator[0][0];
     }
 
-    private static void calculateMaximumSumForRowUsingRowBelow(int row, short[][] triangle) {
-        for (int column = 0; column <= row; column++) {
-            short max = highestValueFromTwoAdjacentValuesOnRowBelow(row, column, triangle);
-            if ((int)triangle[row][column] + max > Short.MAX_VALUE) throw new ArithmeticException("Overflow");
-            triangle[row][column] += max;
-        }
-    }
-
-    private static short highestValueFromTwoAdjacentValuesOnRowBelow(int row, int column, short[][] triangle) {
-        short a = triangle[row + 1][column];
-        short b = triangle[row + 1][column + 1];
-        return a > b ? a : b;
-    }
-
     public String toString() {
         String s = "";
         for (int i = 0; i < triangle.length; i++) {
             for (int j = 0; j <= i; j++) {
-                s=s+triangle[i][j]+" ";
+                s = s + triangle[i][j] + " ";
             }
-            s=s.stripTrailing()+"\n";
+            s = s.stripTrailing() + "\n";
         }
-        s=s.stripTrailing();
+        s = s.stripTrailing();
         return s;
+    }
+
+    private Triangle(short[][] triangle) {
+        this.triangle = triangle;
     }
 }

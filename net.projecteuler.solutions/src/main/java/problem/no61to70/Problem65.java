@@ -1,17 +1,15 @@
 package problem.no61to70;
 
-import utils.continuedFraction.ContinuedFraction;
 import utils.SimpleFraction;
+import utils.continuedFraction.ContinuedFraction;
 
 import static problem.Solution.problem;
 
 public class Problem65 {
-     private Problem65() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=65
         problem("Convergents of e",
-        () -> convergentsOfE(100));
+                () -> convergentsOfE(100));
     }
 
     static int convergentsOfE(int n) {
@@ -22,5 +20,8 @@ public class Problem65 {
             f = f.add(SimpleFraction.of(e.at(i))).reciprocal();
 
         return f.denominator().toString().chars().map(c -> c - '0').sum();
+    }
+
+    private Problem65() {
     }
 }

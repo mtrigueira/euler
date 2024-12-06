@@ -1,9 +1,6 @@
 package utils.data;
 
 public class NumberWord {
-    private NumberWord() {
-    }
-
     private static final String[] UNITS = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     private static final String[] TEENS = {"", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
     private static final String[] TENS = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
@@ -44,5 +41,8 @@ public class NumberWord {
             }
         }
         return result;
+    }
+
+    private NumberWord() {
     }
 }

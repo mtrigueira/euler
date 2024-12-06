@@ -9,13 +9,13 @@ import static java.lang.Math.toIntExact;
 import static problem.Solution.problem;
 
 public class Problem34 {
-     private Problem34() {
-     }
     public static void main(String[] args) {
         // https://projecteuler.net/problem=34
         problem("Digit factorials",
                 Problem34::sumOfNumbersWhereTheSumOfItsDigitsEqualsItself);
     }
+
+    private static final int[] FACTORIALS = makeFactorials();
 
     private static int sumOfNumbersWhereTheSumOfItsDigitsEqualsItself() {
         return IntStream.rangeClosed(10, guessMax())
@@ -24,14 +24,12 @@ public class Problem34 {
     }
 
     private static int guessMax() {
-        return (int)(FACTORIALS[9] *  Math.ceil(Math.log10(FACTORIALS[9])) + 1);
+        return (int) (FACTORIALS[9] * Math.ceil(Math.log10(FACTORIALS[9])) + 1);
     }
 
     static boolean doesSumOfFactorialsOfDigitsEqualsItself(int i) {
         return (sumOfFactorialsOfDigits(i) == i);
     }
-
-    private static final int[] FACTORIALS = makeFactorials();
 
     private static int[] makeFactorials() {
         int[] factorials = new int[10];
@@ -49,5 +47,8 @@ public class Problem34 {
             sum += FACTORIALS[d];
 
         return sum;
+    }
+
+    private Problem34() {
     }
 }

@@ -9,16 +9,13 @@ import java.util.stream.Stream;
 import static problem.Solution.problem;
 
 public class Problem49 {
-    public static final List<Integer> EXCLUDE = List.of(1487);
-
-    private Problem49() {
-    }
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=49
         problem("Prime permutations",
                 () -> primePermutations(EXCLUDE));
     }
+
+    public static final List<Integer> EXCLUDE = List.of(1487);
 
     static String primePermutations(List<Integer> exclude) {
         List<Integer> primes = Prime.eratosthenesSieve(9999).stream().dropWhile(a1 -> a1 < 1000).filter(a -> !exclude.contains(a)).toList();
@@ -69,5 +66,8 @@ public class Problem49 {
         byte[] sorted = Integer.toString(a).getBytes();
         Arrays.sort(sorted);
         return new String(sorted);
+    }
+
+    private Problem49() {
     }
 }

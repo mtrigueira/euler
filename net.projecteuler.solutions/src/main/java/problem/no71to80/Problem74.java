@@ -8,6 +8,11 @@ import java.util.List;
 import static problem.Solution.problem;
 
 public class Problem74 {
+    public static void main(String[] args) {
+        // https://projecteuler.net/problem=74
+        problem("Digit factorial chains", Problem74::solution);
+    }
+
     private static final int[] digitFactorials = calculateDigitFactorials();
     final int[] chainLength;
     private final int limit;
@@ -21,11 +26,6 @@ public class Problem74 {
 
         chainLength = new int[limit + 1];
         calculateChainLengths();
-    }
-
-    public static void main(String[] args) {
-        // https://projecteuler.net/problem=74
-        problem("Digit factorial chains", Problem74::solution);
     }
 
     private static int solution() {

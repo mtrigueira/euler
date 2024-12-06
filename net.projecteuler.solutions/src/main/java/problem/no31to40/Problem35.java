@@ -6,8 +6,6 @@ import utils.prime.Prime;
 import static problem.Solution.problem;
 
 public class Problem35 {
-    private Problem35() {}
-
     public static void main(String[] args) {
         // https://projecteuler.net/problem=35
         problem("Circular primes",
@@ -19,5 +17,8 @@ public class Problem35 {
                 .stream()
                 .filter(CircularPrimeChecker::isCircularPrime)
                 .count();
+    }
+
+    private Problem35() {
     }
 }
