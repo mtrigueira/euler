@@ -3,8 +3,6 @@ package problem.no1to10;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
-
 class Problem10Test {
     @Test
     void forZero() {
