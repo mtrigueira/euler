@@ -3,6 +3,7 @@ package utils.data;
 import java.util.Formatter;
 
 public class Grid {
+    private static final int INVALID_CELL = Integer.MAX_VALUE;
     private final short[][] grid;
     private final int rows;
     private final int columns;
@@ -11,15 +12,44 @@ public class Grid {
         return new Grid(grid);
     }
 
-    private static String toString(short[][] grid) {
+    private static String toString(int[][] grid) {
         Formatter formatter = new Formatter();
-        for (short[] shorts : grid) {
-            for (short aShort : shorts) {
+        for (int[] shorts : grid) {
+            for (int aShort : shorts) {
                 formatter.format("%10d", aShort);
             }
             formatter.format("\n");
         }
         return formatter.toString();
+    }
+
+    private int[][] gridOfMinSums() {
+        int[][] gridOfMinSums = new int[rows][columns];
+        for (int i = rows - 1; i >= 0; i--) {
+            for (int j = columns - 1; j >= 0; j--) {
+                gridOfMinSums[i][j] = sum(i, j, gridOfMinSums);
+            }
+        }
+        return gridOfMinSums;
+    }
+
+    private int sum(int r, int c, int[][] gridOfMinSums) {
+        int right = (r + 1 >= rows) ? INVALID_CELL : gridOfMinSums[r + 1][c];
+        int down = (c + 1 < columns) ? gridOfMinSums[r][c + 1] : INVALID_CELL;
+
+        return (right == INVALID_CELL) && (down == INVALID_CELL) ? grid[r][c] : grid[r][c] + Math.min(right, down);
+    }
+
+    private static int[][] shortGridToIntGrid(short[][] grid) {
+        int rows = grid.length;
+        int columns = grid[0].length;
+        int[][] g2 = new int[rows][columns];
+
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < columns; j++)
+                g2[i][j] = grid[i][j];
+
+        return g2;
     }
 
     public int findMaxProduct(int cells) {
@@ -35,24 +65,7 @@ public class Grid {
     }
 
     public long findMinPathSum() {
-        long sum = 0;
-        int r = rows - 1;
-        int c = columns - 1;
-
-        while ((r > 0) && (c > 0)) {
-            sum += grid[r][c];
-            if (grid[r - 1][c] > grid[r][c - 1])
-                c--;
-            else
-                r--;
-        }
-        sum += grid[r][c];
-        if (c == 0)
-            while (r-- > 0) sum += grid[r][c];
-        else
-            while (c-- > 0) sum += grid[r][c];
-
-        return sum;
+        return gridOfMinSums()[0][0];
     }
 
     private int maxProduct(int r, int c, int cells) {
@@ -61,7 +74,8 @@ public class Grid {
 
     @Override
     public String toString() {
-        return toString(grid);
+        int[][] g2 = shortGridToIntGrid(grid);
+        return toString(g2);
     }
 
     private Grid(short[][] grid) {
