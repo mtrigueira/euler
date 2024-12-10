@@ -59,7 +59,7 @@ public class Problem43 {
 
     private static String prefixWithMissingDigit(String x) {
         List<String> leftOvers = DIGITS.stream().filter(d -> !x.contains(d)).toList();
-        return leftOvers.get(0) + x;
+        return leftOvers.getFirst() + x;
     }
 
     private static List<String> combine(Map<Prime, List<String>> ints) {

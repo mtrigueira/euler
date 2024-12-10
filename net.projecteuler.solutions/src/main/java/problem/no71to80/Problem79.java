@@ -47,7 +47,7 @@ public class Problem79 {
     private static String rightMost(Set<String> precedes) {
         Set<String> hasOneOnTheLeft = leftmost(precedes);
         if (hasOneOnTheLeft.size() != 1) throw new RuntimeException("Could not isolate last digit");
-        String last = hasOneOnTheLeft.stream().toList().get(0);
+        String last = hasOneOnTheLeft.stream().toList().getFirst();
         Set<String> filtered = precedes.stream().filter(x -> !x.substring(1, 2).equals(last)).collect(Collectors.toSet());
         precedes.clear();
         precedes.addAll(filtered);

@@ -27,7 +27,7 @@ public class Problem70 {
             next = seq.next();
         }
 
-        int maxDigits = primes.get(primes.size() - 1).toString().length();
+        int maxDigits = primes.getLast().toString().length();
         primes = primes.stream().filter(p -> p.toString().length() == maxDigits).toList();
 
         int foundPhi = 1;
