@@ -29,7 +29,7 @@ public class Problem62 {
                 List<BigInteger> permutations = map.get(sameForPermutations);
                 permutations.add(c);
                 if (permutations.size() == targetNumberOfPermutations)
-                    return permutations.get(0);
+                    return permutations.getFirst();
 
             } else {
                 map.put(sameForPermutations, new ArrayList<>(List.of(c)));

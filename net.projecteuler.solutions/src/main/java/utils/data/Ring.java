@@ -90,8 +90,8 @@ public record Ring(Group[] groups) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Ring ring)) return false;
-        return Arrays.equals(groups, ring.groups);
+        if (!(o instanceof Ring(Group[] groups1))) return false;
+        return Arrays.equals(groups, groups1);
     }
 
     public boolean isChain() {

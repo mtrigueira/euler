@@ -3,16 +3,16 @@ package utils.data;
 import java.util.Formatter;
 
 public class Grid {
-    private static final int INVALID_CELL = Integer.MAX_VALUE;
-    private final short[][] grid;
-    private final int rows;
-    private final int columns;
+    static final int INVALID_CELL = Integer.MAX_VALUE;
+    final short[][] grid;
+    final int rows;
+    final int columns;
 
     public static Grid of(short[][] grid) {
         return new Grid(grid);
     }
 
-    private static String toString(int[][] grid) {
+    static String toString(int[][] grid) {
         Formatter formatter = new Formatter();
         for (int[] shorts : grid) {
             for (int aShort : shorts) {
@@ -21,23 +21,6 @@ public class Grid {
             formatter.format("\n");
         }
         return formatter.toString();
-    }
-
-    private int[][] gridOfMinSums() {
-        int[][] gridOfMinSums = new int[rows][columns];
-        for (int i = rows - 1; i >= 0; i--) {
-            for (int j = columns - 1; j >= 0; j--) {
-                gridOfMinSums[i][j] = sum(i, j, gridOfMinSums);
-            }
-        }
-        return gridOfMinSums;
-    }
-
-    private int sum(int r, int c, int[][] gridOfMinSums) {
-        int right = (r + 1 >= rows) ? INVALID_CELL : gridOfMinSums[r + 1][c];
-        int down = (c + 1 < columns) ? gridOfMinSums[r][c + 1] : INVALID_CELL;
-
-        return (right == INVALID_CELL) && (down == INVALID_CELL) ? grid[r][c] : grid[r][c] + Math.min(right, down);
     }
 
     private static int[][] shortGridToIntGrid(short[][] grid) {
@@ -65,7 +48,7 @@ public class Grid {
     }
 
     public long findMinPathSum() {
-        return gridOfMinSums()[0][0];
+        return new GridSumTwoWays(this).gridOfMinSums()[0][0];
     }
 
     private int maxProduct(int r, int c, int cells) {
@@ -76,6 +59,17 @@ public class Grid {
     public String toString() {
         int[][] g2 = shortGridToIntGrid(grid);
         return toString(g2);
+    }
+
+    public long findMinPathSumThreeWays() {
+        int[][] grid = new GridSumThreeWays(this).gridOfMinSums();
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < rows; i++)
+            if (grid[i][0] < min)
+                min = grid[i][0];
+
+        return min;
     }
 
     private Grid(short[][] grid) {

@@ -53,8 +53,8 @@ public class LongDivision {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof BigPair other) {
-                return a.equals(other.a) && b.equals(other.b);
+            if (obj instanceof BigPair(BigInteger a1, BigInteger b1)) {
+                return a.equals(a1) && b.equals(b1);
             }
             return false;
         }

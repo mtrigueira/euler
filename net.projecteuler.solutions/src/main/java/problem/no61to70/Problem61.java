@@ -26,7 +26,7 @@ public class Problem61 {
 
         cycles = cycles.stream().filter(c -> c.size() == count).toList();
 
-        return cycles.get(0).stream().mapToInt(n -> n.i).sum();
+        return cycles.getFirst().stream().mapToInt(n -> n.i).sum();
     }
 
     private static List<List<Node>> findCycles(List<Node> nodes) {
@@ -46,7 +46,7 @@ public class Problem61 {
     }
 
     private static boolean isCyclical(List<Node> chain) {
-        return chain.get(chain.size() - 1).nextInChain.contains(chain.get(0));
+        return chain.getLast().nextInChain.contains(chain.getFirst());
     }
 
     private static void sortChain(List<Node> chain) {
