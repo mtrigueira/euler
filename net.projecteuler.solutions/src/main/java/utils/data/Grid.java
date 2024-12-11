@@ -14,9 +14,9 @@ public class Grid {
 
     static String toString(int[][] grid) {
         Formatter formatter = new Formatter();
-        for (int[] shorts : grid) {
-            for (int aShort : shorts) {
-                formatter.format("%10d", aShort);
+        for (int[] rows : grid) {
+            for (int cell : rows) {
+                formatter.format("%12d", cell);
             }
             formatter.format("\n");
         }
@@ -70,6 +70,11 @@ public class Grid {
                 min = grid[i][0];
 
         return min;
+    }
+
+    public long findMinPathSumFourWays() {
+        if (this.columns == 0) return 0;
+        return new GridSumFourWays(this).gridOfMinSums()[rows - 1][columns - 1];
     }
 
     private Grid(short[][] grid) {

@@ -5,7 +5,7 @@ public class GridSumThreeWays extends GridSum {
         super(grid);
     }
 
-
+    @Override
     int[][] gridOfMinSums() {
         int[][] gridOfMinSums = new int[grid.rows][grid.columns];
 
@@ -33,8 +33,7 @@ public class GridSumThreeWays extends GridSum {
         return gridOfMinSums;
     }
 
-    @Override
-    int sum(int r, int c, int[][] gridOfMinSums) {
+    private int sum(int r, int c, int[][] gridOfMinSums) {
         int up;
         if (r - 1 < 0)
             up = Grid.INVALID_CELL;
