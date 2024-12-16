@@ -7,7 +7,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Prime extends BigInteger {
-    public static SortedSet<Integer> primes = primeFactorBuilder(9999);
+    public static final SortedSet<Integer> primes = primeFactorBuilder(9999);
 
     public static Optional<Prime> of(BigInteger i) {
         return PrimeChecker.isPrime(i) ? Optional.of(new Prime(i.toByteArray())) : Optional.empty();

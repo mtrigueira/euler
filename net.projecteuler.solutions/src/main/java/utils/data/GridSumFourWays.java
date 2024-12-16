@@ -1,8 +1,8 @@
 package utils.data;
 
 public class GridSumFourWays extends GridSum {
-    int[][] gridOfMinSums = new int[grid.rows][grid.columns];
-    boolean[][] visited = new boolean[grid.rows][grid.columns];
+    final int[][] gridOfMinSums = new int[grid.rows][grid.columns];
+    final boolean[][] visited = new boolean[grid.rows][grid.columns];
 
     GridSumFourWays(Grid grid) {
         super(grid);

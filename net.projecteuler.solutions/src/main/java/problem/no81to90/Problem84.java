@@ -114,7 +114,8 @@ public class Problem84 {
     private void nextUtility() {
         switch (location) {
             case CH1, CH3 -> location = U1;
-            case CH2 -> location = U2;
+//            case CH2 -> location = U2;
+            default -> location = U2;
         }
     }
 
@@ -122,7 +123,8 @@ public class Problem84 {
         switch (location) {
             case CH1 -> location = R2;
             case CH2 -> location = R3;
-            case CH3 -> location = R1;
+//            case CH3 -> location = R1;
+            default -> location = R1;
         }
     }
 

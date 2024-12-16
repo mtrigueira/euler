@@ -5,10 +5,10 @@ import static problem.Solution.problem;
 public class Problem85 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=85
-        problem("Counting rectangles", Problem85::areadOfGridWithMaximumRectanglesInGridBelow2_000_000);
+        problem("Counting rectangles", Problem85::areaOfGridWithMaximumRectanglesInGridBelow2_000_000);
     }
 
-    private static int areadOfGridWithMaximumRectanglesInGridBelow2_000_000() {
+    private static int areaOfGridWithMaximumRectanglesInGridBelow2_000_000() {
         int columns = 1;
         int rows = 1;
         int max = 0;
@@ -43,4 +43,6 @@ public class Problem85 {
 
         return rectangles;
     }
+
+    private Problem85() {}
 }
