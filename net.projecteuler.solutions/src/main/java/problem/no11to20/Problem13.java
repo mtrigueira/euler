@@ -12,13 +12,14 @@ public class Problem13 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=13
         problem("Large sum",
-                () -> left(sum(concat(FileUtils.getStrings(NUMBERS_TXT), "0")), 10));
+                () -> left(sum(concat(FileUtils.getStrings(NUMBERS_TXT), "0"))));
     }
 
     public static final String NUMBERS_TXT = "/0013_numbers.txt";
+    public static final int NUMBER_OF_CHARACTERS = 10;
 
-    private static String left(String string, int numberOfCharacters) {
-        return string.substring(0, Math.min(numberOfCharacters, string.length()));
+    private static String left(String string) {
+        return string.substring(0, Math.min(NUMBER_OF_CHARACTERS, string.length()));
     }
 
     static String sum(Stream<String> numbers) {

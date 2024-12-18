@@ -8,7 +8,6 @@ public class GridSumFourWays extends GridSum {
         super(grid);
     }
 
-    @Override
     int[][] gridOfMinSums() {
         // Dijkstra's algorithm
         for (int r = 0; r < grid.rows; r++)

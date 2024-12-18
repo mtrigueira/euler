@@ -7,5 +7,4 @@ public abstract class GridSum {
         this.grid = grid;
     }
 
-    abstract int[][] gridOfMinSums();
 }

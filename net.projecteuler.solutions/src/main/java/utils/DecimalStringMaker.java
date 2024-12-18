@@ -11,17 +11,17 @@ public class DecimalStringMaker {
     }
 
     private static String decimalsUntilTerminationOrRecursion(LongDivision ld) {
-        String s = "";
+        StringBuilder s = new StringBuilder();
 
         while (!ld.isTerminated()) {
             long digit = ld.nextDigit();
             if (ld.isRecurringCycle()) break;
-            s += digit;
+            s.append(digit);
         }
 
-        if (s.isEmpty()) s = "0";
+        if (s.isEmpty()) s = new StringBuilder("0");
 
-        return s;
+        return s.toString();
     }
 
     private static String decorateRecurringCycle(String s, int i) {

@@ -32,15 +32,15 @@ public class Triangle {
     }
 
     public String toString() {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (int i = 0; i < triangle.length; i++) {
             for (int j = 0; j <= i; j++) {
-                s = s + triangle[i][j] + " ";
+                s.append(triangle[i][j]).append(" ");
             }
-            s = s.stripTrailing() + "\n";
+            s = new StringBuilder(s.toString().stripTrailing() + "\n");
         }
-        s = s.stripTrailing();
-        return s;
+        s = new StringBuilder(s.toString().stripTrailing());
+        return s.toString();
     }
 
     private Triangle(short[][] triangle) {
