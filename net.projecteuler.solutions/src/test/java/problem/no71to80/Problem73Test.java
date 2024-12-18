@@ -7,113 +7,113 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Problem73Test {
     @Test
-    void orderedFractionBetweenWhere4() {
-        Assertions.assertEquals(0, Problem73.orderedFractionBetweenWhere(3, 2,4));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere4() {
+        Assertions.assertEquals(0, Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(4));
     }
 
     @Test
-    void orderedFractionBetweenWhere5() {
-        assertEquals(1,Problem73.orderedFractionBetweenWhere(3, 2,5));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere5() {
+        assertEquals(1,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(5));
     }
 
     @Test
-    void orderedFractionBetweenWhere6() {
-        assertEquals(1,Problem73.orderedFractionBetweenWhere(3, 2,6));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere6() {
+        assertEquals(1,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(6));
     }
 
     @Test
-    void orderedFractionBetweenWhere7() {
-        assertEquals(2,Problem73.orderedFractionBetweenWhere(3, 2,7));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere7() {
+        assertEquals(2,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(7));
     }
 
     @Test
-    void orderedFractionBetweenWhere8() {
-        assertEquals(3,Problem73.orderedFractionBetweenWhere(3, 2,8));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere8() {
+        assertEquals(3,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(8));
     }
 
     @Test
-    void orderedFractionBetweenWhere9() {
-        assertEquals(4,Problem73.orderedFractionBetweenWhere(3, 2,9));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere9() {
+        assertEquals(4,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(9));
     }
 
     @Test
-    void orderedFractionBetweenWhere10() {
-        assertEquals(4,Problem73.orderedFractionBetweenWhere(3, 2,10));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere10() {
+        assertEquals(4,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(10));
     }
 
     @Test
-    void orderedFractionBetweenWhere11() {
-        assertEquals(6,Problem73.orderedFractionBetweenWhere(3, 2,11));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere11() {
+        assertEquals(6,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(11));
     }
 
     @Test
-    void orderedFractionBetweenWhere12() {
-        assertEquals(7,Problem73.orderedFractionBetweenWhere(3, 2,12));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere12() {
+        assertEquals(7,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(12));
     }
 
     @Test
-    void orderedFractionBetweenWhere13() {
-        assertEquals(9,Problem73.orderedFractionBetweenWhere(3, 2,13));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere13() {
+        assertEquals(9,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(13));
     }
 
     @Test
-    void orderedFractionBetweenWhere14() {
-        assertEquals(10,Problem73.orderedFractionBetweenWhere(3, 2,14));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere14() {
+        assertEquals(10,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(14));
     }
 
     @Test
-    void orderedFractionBetweenWhere15() {
-        assertEquals(11,Problem73.orderedFractionBetweenWhere(3, 2,15));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere15() {
+        assertEquals(11,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(15));
     }
 
     @Test
-    void orderedFractionBetweenWhere16() {
-        assertEquals(12,Problem73.orderedFractionBetweenWhere(3, 2,16));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere16() {
+        assertEquals(12,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(16));
     }
 
     @Test
-    void orderedFractionBetweenWhere20() {
-        assertEquals(21,Problem73.orderedFractionBetweenWhere(3, 2,20));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere20() {
+        assertEquals(21,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(20));
     }
 
     @Test
-    void orderedFractionBetweenWhere21() {
-        assertEquals(23,Problem73.orderedFractionBetweenWhere(3, 2,21));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere21() {
+        assertEquals(23,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(21));
     }
 
     @Test
-    void orderedFractionBetweenWhere22() {
-        assertEquals(24,Problem73.orderedFractionBetweenWhere(3, 2,22));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere22() {
+        assertEquals(24,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(22));
     }
 
     @Test
-    void orderedFractionBetweenWhere23() {
-        assertEquals(28,Problem73.orderedFractionBetweenWhere(3, 2,23));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere23() {
+        assertEquals(28,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(23));
     }
 
     @Test
-    void orderedFractionBetweenWhere24() {
-        assertEquals(29,Problem73.orderedFractionBetweenWhere(3, 2,24));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere24() {
+        assertEquals(29,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(24));
     }
 
     @Test
-    void orderedFractionBetweenWhere25() {
-        assertEquals(29,Problem73.orderedFractionBetweenWhere(3, 2,24));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere25() {
+        assertEquals(29,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(24));
     }
 
     @Test
-    void orderedFractionBetweenWhere26() {
-        assertEquals(34,Problem73.orderedFractionBetweenWhere(3, 2,26));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere26() {
+        assertEquals(34,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(26));
     }
 
     @Test
-    void orderedFractionBetweenWhere29() {
-        assertEquals(44,Problem73.orderedFractionBetweenWhere(3, 2,29));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere29() {
+        assertEquals(44,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(29));
     }
 
     @Test
-    void orderedFractionBetweenWhere30() {
-        assertEquals(46,Problem73.orderedFractionBetweenWhere(3, 2,30));
+    void orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere30() {
+        assertEquals(46,Problem73.orderedFractionBetweenOneOverFromDenominatorToOneOverTwoDenominatorWhere(30));
     }
 
     @Test

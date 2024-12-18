@@ -33,4 +33,7 @@ public class Problem87 {
 
         return count;
     }
+
+    private Problem87() {
+    }
 }

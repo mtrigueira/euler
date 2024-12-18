@@ -86,7 +86,7 @@ public class Problem60 {
         final long p;
 
         public Node(long p) {
-            this(p, null);
+            this.p = p;
         }
 
         boolean bothConcatenationsArePrime(long b) {
@@ -109,11 +109,6 @@ public class Problem60 {
         @Override
         public int hashCode() {
             return Objects.hashCode(p);
-        }
-
-        private Node(long p, Set<Node> children) {
-            this.p = p;
-            this.children = children;
         }
     }
 

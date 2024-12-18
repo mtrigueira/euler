@@ -5,7 +5,6 @@ public class GridSumThreeWays extends GridSum {
         super(grid);
     }
 
-    @Override
     int[][] gridOfMinSums() {
         int[][] gridOfMinSums = new int[grid.rows][grid.columns];
 
