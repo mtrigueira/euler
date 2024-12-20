@@ -48,11 +48,10 @@ public class Problem88 {
                 minimalProductSumR(i + 1);
             } else {
                 if (sums[i] % froms[i + 1] == 0)
-                    if (sums[i] == (products[i] - 1) * froms[i + 1])
-                        if (sums[i] + froms[i + 1] < minProdSum) {
-                            minProdSum = sums[i] + froms[i + 1];
-                            break;
-                        }
+                    if (sums[i] == (products[i] - 1) * froms[i + 1]) {
+                        minProdSum = sums[i] + froms[i + 1];
+                        break;
+                    }
             }
         }
     }
