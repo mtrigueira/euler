@@ -15,8 +15,10 @@ public class Factorial {
     }
 
     public static BigInteger ofBig(BigInteger n) {
-        if (ZERO.equals(n)) return BigInteger.ONE;
-        if (n.signum() == -1) throw new IllegalArgumentException("Factorial is undefined for negative numbers");
+        if (ZERO.equals(n))
+            return BigInteger.ONE;
+        if (n.signum() == -1)
+            throw new IllegalArgumentException("Factorial is undefined for negative numbers");
 
         return factorial(n);
     }

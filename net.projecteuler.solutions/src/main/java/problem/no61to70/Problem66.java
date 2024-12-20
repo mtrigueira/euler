@@ -21,7 +21,8 @@ public class Problem66 {
         int dAtXMax = 0;
 
         for (int d = 2; d <= limit; d++) {
-            if (isSquare(d)) continue;
+            if (isSquare(d))
+                continue;
             IrrationalSqrtContinuedFraction cf = (IrrationalSqrtContinuedFraction) ContinuedFraction.sqrt(d);
             BigInteger p_kMinus1 = ZERO;
             BigInteger p_k = ONE;

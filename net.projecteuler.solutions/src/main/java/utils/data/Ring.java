@@ -83,20 +83,24 @@ public record Ring(Group[] groups) {
     }
 
     public boolean isRing() {
-        if (!isChain()) return false;
+        if (!isChain())
+            return false;
         return groups[groups.length - 1].isNextInRing(groups[0]);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Ring(Group[] groups1))) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Ring(Group[] groups1)))
+            return false;
         return Arrays.equals(groups, groups1);
     }
 
     public boolean isChain() {
         int n = groups.length;
-        if (n == 1) return true;
+        if (n == 1)
+            return true;
         Set<Integer> elements = new HashSet<>(n * 2);
         Group g0 = groups[0];
         elements.add(g0.a());
@@ -109,9 +113,11 @@ public record Ring(Group[] groups) {
             if (!gOld.isNextInRing(gI)) {
                 return false;
             } else {
-                if (!elements.add(gI.a())) return false;
+                if (!elements.add(gI.a()))
+                    return false;
                 // .b() is equal to the previous group .c()
-                if (!elements.add(gI.c())) return false;
+                if (!elements.add(gI.c()))
+                    return false;
             }
             gOld = gI;
         }

@@ -61,7 +61,8 @@ public class Problem61 {
     }
 
     private static List<List<Node>> chain(Node node, List<Node> chain) {
-        if (node.nextInChain.isEmpty()) return List.of();
+        if (node.nextInChain.isEmpty())
+            return List.of();
         if (chain.contains(node)) {
             return List.of(chain);
         }
@@ -87,7 +88,8 @@ public class Problem61 {
             for (Node n : numbers) {
                 int i = m.i;
                 int j = n.i;
-                if (i == j) continue;
+                if (i == j)
+                    continue;
 
                 if (areChained(i, j))
                     if (areDifferentPolygonals(m, n))

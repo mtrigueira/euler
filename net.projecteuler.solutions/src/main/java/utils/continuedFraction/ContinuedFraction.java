@@ -21,8 +21,10 @@ public abstract class ContinuedFraction {
     private static class eContinuedFraction extends ContinuedFraction {
         @Override
         public BigInteger at(int i) {
-            if (i == 0) return BigInteger.TWO;
-            if (i % 3 == 2) return BigInteger.valueOf((i + 1) / 3 * 2);
+            if (i == 0)
+                return BigInteger.TWO;
+            if (i % 3 == 2)
+                return BigInteger.valueOf((i + 1) / 3 * 2);
             return BigInteger.ONE;
         }
 

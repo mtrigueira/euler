@@ -33,7 +33,8 @@ public class A000041 {
                     j += blue;
                     blue++;
                 }
-                if (j > i) break;
+                if (j > i)
+                    break;
 
                 if (plusPhase / 2 % 2 == 0)
                     A[i] = A[i].add(A[i - j]);
@@ -44,7 +45,8 @@ public class A000041 {
                 plusPhase++;
             }
         }
-        if (n > maxN) maxN = n;
+        if (n > maxN)
+            maxN = n;
 
         return A[n];
     }

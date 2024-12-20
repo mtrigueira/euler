@@ -71,5 +71,6 @@ public class Problem86 {
         }
     }
 
-    private Problem86() {}
+    private Problem86() {
+    }
 }

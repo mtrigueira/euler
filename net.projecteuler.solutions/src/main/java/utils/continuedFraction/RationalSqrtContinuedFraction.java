@@ -16,7 +16,8 @@ public class RationalSqrtContinuedFraction extends SqrtContinuedFraction {
 
     @Override
     public BigInteger at(int i) {
-        if (i == 0) return root;
+        if (i == 0)
+            return root;
         return BigInteger.ZERO;
     }
 }

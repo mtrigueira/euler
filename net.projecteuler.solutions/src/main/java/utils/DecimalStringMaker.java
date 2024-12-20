@@ -15,11 +15,13 @@ public class DecimalStringMaker {
 
         while (!ld.isTerminated()) {
             long digit = ld.nextDigit();
-            if (ld.isRecurringCycle()) break;
+            if (ld.isRecurringCycle())
+                break;
             s.append(digit);
         }
 
-        if (s.isEmpty()) s = new StringBuilder("0");
+        if (s.isEmpty())
+            s = new StringBuilder("0");
 
         return s.toString();
     }

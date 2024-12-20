@@ -23,7 +23,8 @@ public class Layer {
     }
 
     public long[] corners() {
-        if (layer == 1) return new long[]{1L};
+        if (layer == 1)
+            return new long[]{1L};
         long offset = lengthOfSide() - 1;
 
         long NE_corner = (2 * layer - 1);

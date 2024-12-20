@@ -11,7 +11,8 @@ public abstract class PrimeChecker {
     }
 
     public static boolean isPrime(BigInteger candidate) {
-        if (lessThan(candidate, TWO)) return false;
+        if (lessThan(candidate, TWO))
+            return false;
 
         return CachedPrimeChecker.isPrime(candidate);
     }

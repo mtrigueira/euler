@@ -33,7 +33,8 @@ public class Problem51 {
 
     private static int replacementPrimeCount(String in, int stars, int familySize) {
         for (int i = 0; i < in.length(); i++) {
-            if (alreadyStarOrCannotBeMinima(in, i)) continue;
+            if (alreadyStarOrCannotBeMinima(in, i))
+                continue;
             String mask = in.substring(0, i) + "*" + in.substring(i + 1);
             if (isNotDivisibleByThreeSoMayBePrime(stars))
                 if (replacementPrimeCount(mask, familySize) == familySize)

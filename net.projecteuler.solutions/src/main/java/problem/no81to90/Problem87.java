@@ -27,13 +27,16 @@ public class Problem87 {
             }
 
         for (int k = 0; k < primes.length; k++) {
-            if (raised[k][4] > limit) break;
+            if (raised[k][4] > limit)
+                break;
             for (int j = 0; j < primes.length; j++) {
                 long part = raised[k][4] + raised[j][3];
-                if (part >= limit) break;
+                if (part >= limit)
+                    break;
                 for (int i = 0; i < primes.length; i++) {
-                    if (part + raised[i][2] >= limit) break;
-                    uniques.add((int)(part+raised[i][2]));
+                    if (part + raised[i][2] >= limit)
+                        break;
+                    uniques.add((int) (part + raised[i][2]));
                 }
             }
         }

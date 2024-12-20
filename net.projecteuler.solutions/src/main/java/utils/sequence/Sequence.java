@@ -12,11 +12,13 @@ public abstract class Sequence<T> implements Iterator<T> {
     public T[] nextArray(int sizeOfArray) {
         List<T> list = new ArrayList<>();
         for (int i = 0; i < sizeOfArray; i++) {
-            if (!hasNext()) break;
+            if (!hasNext())
+                break;
             list.add(next());
         }
 
-        if (T_getClass == null) T_getClass = workOutClassOfTUsingReflection();
+        if (T_getClass == null)
+            T_getClass = workOutClassOfTUsingReflection();
         @SuppressWarnings("unchecked") // These objects are type T since list is <T>
         T[] array = list.toArray((T[]) Array.newInstance(T_getClass, list.size()));
         return array;

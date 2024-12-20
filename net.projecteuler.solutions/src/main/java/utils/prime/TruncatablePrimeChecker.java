@@ -4,14 +4,18 @@ import static utils.prime.PrimeChecker.isPrime;
 
 public class TruncatablePrimeChecker {
     static boolean isTruncatablePrimeL(long i) {
-        if (i < 10) return isPrime(i);
-        if (!isPrime(i)) return false;
+        if (i < 10)
+            return isPrime(i);
+        if (!isPrime(i))
+            return false;
         return isTruncatablePrimeL(truncateL(i));
     }
 
     static boolean isTruncatablePrimeR(long i) {
-        if (i < 10) return isPrime(i);
-        if (!isPrime(i)) return false;
+        if (i < 10)
+            return isPrime(i);
+        if (!isPrime(i))
+            return false;
         return isTruncatablePrimeR(truncateR(i));
     }
 

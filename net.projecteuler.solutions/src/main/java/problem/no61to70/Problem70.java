@@ -35,9 +35,11 @@ public class Problem70 {
 
         for (BigInteger i : primes) {
             for (BigInteger j : primes) {
-                if (i.compareTo(j) >= 0) continue;
+                if (i.compareTo(j) >= 0)
+                    continue;
                 BigInteger product = i.multiply(j);
-                if (product.longValueExact() > lessThan) continue;
+                if (product.longValueExact() > lessThan)
+                    continue;
                 int n = product.intValueExact();
 
                 int phi = (int) EulersPhiSequence.forGivenFactors(n, Set.of(i.intValueExact(), j.intValueExact()));

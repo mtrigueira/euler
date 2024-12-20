@@ -10,7 +10,8 @@ public class NumberWord {
             throw new IllegalArgumentException("Number must be between 1 and 1000 inclusive");
         String result = "";
 
-        if (number == 1000) return "one thousand";
+        if (number == 1000)
+            return "one thousand";
 
         int belowHundreds = number % 100;
         int hundreds = number / 100;

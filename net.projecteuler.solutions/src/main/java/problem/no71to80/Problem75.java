@@ -25,8 +25,10 @@ public class Problem75 {
                 long b = 2L * m * n;
                 long c = mSquared + nSquared;
                 long perimeter = a + b + c;
-                if (perimeter > limit) break;
-                if (gcd(gcd(a, b), c) > 1) continue;
+                if (perimeter > limit)
+                    break;
+                if (gcd(gcd(a, b), c) > 1)
+                    continue;
                 if (!uniquePrimitiveTrianglePerimeters.add((int) perimeter))
                     dupes.add((int) perimeter);
             }
@@ -40,7 +42,8 @@ public class Problem75 {
 
         int count = 0;
         for (int i = 0; i <= limit; i++)
-            if (sieve[i] == 1) count++;
+            if (sieve[i] == 1)
+                count++;
 
         return count;
     }

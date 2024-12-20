@@ -53,7 +53,8 @@ public class Problem68 {
     }
 
     private static Stream<Ring> ringStream(int n, List<Group> e, Ring r) {
-        if (n == 0) return Stream.of(r).filter(Ring::isChain).filter(Ring::isRing);
+        if (n == 0)
+            return Stream.of(r).filter(Ring::isChain).filter(Ring::isRing);
 
         return e.stream()
                 .filter(a -> !Arrays.asList(r.groups()).contains(a))

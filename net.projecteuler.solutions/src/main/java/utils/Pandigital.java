@@ -4,11 +4,13 @@ public class Pandigital {
     private static final String[] DIGITS = "123456789".split("");
 
     public static boolean isPandigital(long i) {
-        if (lengthOfDigits(i) != 9) return false;
+        if (lengthOfDigits(i) != 9)
+            return false;
         String s = String.valueOf(i);
 
         for (String c : DIGITS)
-            if (!s.contains(c)) return false;
+            if (!s.contains(c))
+                return false;
 
         return true;
     }

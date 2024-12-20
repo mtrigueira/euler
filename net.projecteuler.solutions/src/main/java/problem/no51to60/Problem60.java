@@ -90,19 +90,23 @@ public class Problem60 {
         }
 
         boolean bothConcatenationsArePrime(long b) {
-            if (!PrimeChecker.isPrime(concat(p, b))) return false;
+            if (!PrimeChecker.isPrime(concat(p, b)))
+                return false;
             return PrimeChecker.isPrime(concat(b, p));
         }
 
         public void add(long newest) {
-            if (!bothConcatenationsArePrime(newest)) return;
+            if (!bothConcatenationsArePrime(newest))
+                return;
             super.add(newest);
         }
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Node node)) return false;
+            if (this == o)
+                return true;
+            if (!(o instanceof Node node))
+                return false;
             return p == node.p;
         }
 
