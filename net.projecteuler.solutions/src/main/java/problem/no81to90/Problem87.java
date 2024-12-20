@@ -26,10 +26,10 @@ public class Problem87 {
                 raised[i][pow] = d > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) d;
             }
 
-        for (int k = 0; k < primes.length; k++) {
+        for (int k = 0; ; k++) {
             if (raised[k][4] > limit)
                 break;
-            for (int j = 0; j < primes.length; j++) {
+            for (int j = 0; ; j++) {
                 long part = raised[k][4] + raised[j][3];
                 if (part >= limit)
                     break;
