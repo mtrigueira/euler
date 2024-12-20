@@ -7,7 +7,8 @@ public class Lattice {
     private final long[][] lattice;
 
     public Lattice(int n) {
-        if (n < 1) throw new IllegalArgumentException("n must be greater than 0");
+        if (n < 1)
+            throw new IllegalArgumentException("n must be greater than 0");
         this.n = n;
         this.lattice = createStartingLattice(n);
     }

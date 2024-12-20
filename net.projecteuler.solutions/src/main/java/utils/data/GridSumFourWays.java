@@ -20,17 +20,21 @@ public class GridSumFourWays extends GridSum {
 
         while (true) {
             Node n = currentNode();
-            if (n.r == -1) break;
+            if (n.r == -1)
+                break;
             int sum = gridOfMinSums[n.r][n.c];
 
             for (int i = -1; i <= 1; i++)
                 for (int j = -1; j <= 1; j++) {
-                    if (i == j) continue;
-                    if (i == -j) continue;
+                    if (i == j)
+                        continue;
+                    if (i == -j)
+                        continue;
 
                     int r = n.r + i;
                     int c = n.c + j;
-                    if (isOutsideGrid(r, c)) continue;
+                    if (isOutsideGrid(r, c))
+                        continue;
                     int value = grid.grid[r][c] + sum;
                     if (gridOfMinSums[r][c] > value) {
                         gridOfMinSums[r][c] = value;

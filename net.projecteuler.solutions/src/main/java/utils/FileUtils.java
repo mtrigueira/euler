@@ -8,7 +8,8 @@ import java.util.stream.Stream;
 public class FileUtils {
     public static Stream<String> getNames(String file) {
         Stream<String> stream = getNamesWithoutQuotes(file);
-        if (stream == null) return null;
+        if (stream == null)
+            return null;
         return stream.sorted();
     }
 
@@ -18,13 +19,15 @@ public class FileUtils {
 
     public static String getString(String file) {
         Stream<String> stream = getStrings(file);
-        if (stream == null) return null;
+        if (stream == null)
+            return null;
         return stream.collect(Collectors.joining("\n"));
     }
 
     private static Stream<String> getNamesWithoutQuotes(String file) {
         Stream<String> stream = getStringsBetweenCommas(file);
-        if (stream == null) return null;
+        if (stream == null)
+            return null;
         return stream.map(FileUtils::removeQuotes);
     }
 
@@ -55,13 +58,15 @@ public class FileUtils {
 
     public static String concat(String... a) {
         for (String i : a)
-            if (i != null) return i;
+            if (i != null)
+                return i;
 
         return "";
     }
 
     public static Stream<String> concat(Stream<String> i, String orElse) {
-        if (i != null) return i;
+        if (i != null)
+            return i;
 
         return Stream.of(orElse.split("\\R"));
     }

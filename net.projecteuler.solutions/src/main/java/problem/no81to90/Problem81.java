@@ -11,7 +11,7 @@ public class Problem81 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=81
         problem("Path sum: Two ways", () ->
-                solution(Grid.of(GridNumber.toShortGrid(concat(FileUtils.getString("/0081_matrix.txt"),"1").replaceAll(","," ").lines()))));
+                solution(Grid.of(GridNumber.toShortGrid(concat(FileUtils.getString("/0081_matrix.txt"), "1").replaceAll(",", " ").lines()))));
     }
 
     static long solution(Grid grid) {

@@ -12,13 +12,15 @@ public class Problem4 {
     }
 
     static long productOfDigits(int digits) {
-        if (digits < 1) throw new RuntimeException("Digits must be greater than 0");
+        if (digits < 1)
+            throw new RuntimeException("Digits must be greater than 0");
         int highestMultiplier = (int) (Math.pow(10, digits) - 1);
         long maxPalindrome = 0;
 
         for (long i = highestMultiplier; i * i > maxPalindrome; i--)
             for (long j = i; j > 0; j--) {
-                if (i * j <= maxPalindrome) break;
+                if (i * j <= maxPalindrome)
+                    break;
                 if (Palindrome.isPalindrome(i * j))
                     maxPalindrome = i * j;
             }

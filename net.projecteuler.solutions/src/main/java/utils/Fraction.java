@@ -13,8 +13,10 @@ public abstract class Fraction {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (!(obj instanceof Fraction that)) return false;
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Fraction that))
+            return false;
         return n.equals(that.n) && d.equals(that.d);
     }
 

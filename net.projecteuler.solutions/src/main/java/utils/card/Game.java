@@ -41,7 +41,8 @@ public record Game(Hand player1, Hand player2) {
     private static Result fourOfAKindBeats(Hand left, Hand right) {
         byte i = left.highestFourOfAKind();
         byte a = right.highestFourOfAKind();
-        if (a == i) return TIE;
+        if (a == i)
+            return TIE;
         return i > a ? LEFT : RIGHT;
     }
 
@@ -62,28 +63,32 @@ public record Game(Hand player1, Hand player2) {
     private static Result flushBeats(Hand left, Hand right) {
         boolean leftFlush = left.suits().length() == 1;
         boolean rightFlush = right.suits().length() == 1;
-        if (leftFlush == rightFlush) return TIE;
+        if (leftFlush == rightFlush)
+            return TIE;
         return leftFlush ? LEFT : RIGHT;
     }
 
     private static Result straightBeats(Hand left, Hand right) {
         byte i = left.highestCardInStraight();
         byte a = right.highestCardInStraight();
-        if (a == i) return TIE;
+        if (a == i)
+            return TIE;
         return i > a ? LEFT : RIGHT;
     }
 
     private static Result threeOfAKindBeats(Hand left, Hand right) {
         byte i = left.highestThreeOfAKind();
         byte a = right.highestThreeOfAKind();
-        if (a == i) return TIE;
+        if (a == i)
+            return TIE;
         return i > a ? LEFT : RIGHT;
     }
 
     private static Result twoPairBeats(Hand left, Hand right) {
         byte leftHighestPair = left.secondHighestPair();
         byte rightHighestPair = right.secondHighestPair();
-        if (rightHighestPair == leftHighestPair) return TIE;
+        if (rightHighestPair == leftHighestPair)
+            return TIE;
         return leftHighestPair > rightHighestPair ? LEFT : RIGHT;
     }
 
@@ -91,7 +96,8 @@ public record Game(Hand player1, Hand player2) {
         byte leftHighestPair = left.highestPair();
         byte rightHighestPair = right.highestPair();
 
-        if (rightHighestPair == leftHighestPair) return TIE;
+        if (rightHighestPair == leftHighestPair)
+            return TIE;
         return leftHighestPair > rightHighestPair ? LEFT : RIGHT;
     }
 
@@ -100,8 +106,10 @@ public record Game(Hand player1, Hand player2) {
             Card leftCard = left.cards[i];
             Card rightCard = right.cards[i];
 
-            if (leftCard.greaterThan(rightCard)) return true;
-            if (rightCard.greaterThan(leftCard)) return false;
+            if (leftCard.greaterThan(rightCard))
+                return true;
+            if (rightCard.greaterThan(leftCard))
+                return false;
         }
 
         return false;

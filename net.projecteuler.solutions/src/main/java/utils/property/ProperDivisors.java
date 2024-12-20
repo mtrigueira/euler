@@ -16,9 +16,11 @@ public class ProperDivisors {
     }
 
     public static Set<Long> of(long n) {
-        if (n < 1) return Collections.emptySet();
+        if (n < 1)
+            return Collections.emptySet();
         Set<Long> s = new HashSet<>();
-        if (n == 1) return s;
+        if (n == 1)
+            return s;
         s.add(1L);
 
         long sqrt = (long) Math.sqrt(n);
@@ -32,9 +34,11 @@ public class ProperDivisors {
     }
 
     public Set<BigInteger> of() {
-        if (n.signum() < 1) return Collections.emptySet();
+        if (n.signum() < 1)
+            return Collections.emptySet();
         Set<BigInteger> s = new HashSet<>();
-        if (ONE.equals(n)) return s;
+        if (ONE.equals(n))
+            return s;
         s.add(ONE);
 
 

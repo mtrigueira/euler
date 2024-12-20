@@ -35,7 +35,8 @@ public class Problem23 {
     }
 
     static boolean hasAbundantSum(int n) {
-        if (n > NON_ABUNDANT_SUM_CEILING) return true;
+        if (n > NON_ABUNDANT_SUM_CEILING)
+            return true;
         BigInteger b = BigInteger.valueOf(n);
 
         return abundantsInOrder.stream()

@@ -17,12 +17,12 @@ public class GridSumThreeWays extends GridSum {
 
             boolean change = true;
             while (change) {
-                change =false;
+                change = false;
                 for (int r = grid.rows - 1; r >= 0; r--) {
                     int newValue = sum(r, c, gridOfMinSums);
-                    if(newValue!=gridOfMinSums[r][c]) {
+                    if (newValue != gridOfMinSums[r][c]) {
                         gridOfMinSums[r][c] = newValue;
-                        change=true;
+                        change = true;
                     }
                 }
             }

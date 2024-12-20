@@ -21,7 +21,8 @@ public class Problem80 {
     }
 
     static long sumOfFirst100DigitsOfRoot(int n) {
-        if (isSquare(n)) return 0;
+        if (isSquare(n))
+            return 0;
         int sum = 0;
         BigDecimal d = new BigDecimal(n).sqrt(new MathContext(1010));
         String s = d.toString();

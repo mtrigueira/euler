@@ -10,8 +10,10 @@ public class Problem52 {
     }
 
     static int permutedMultiples(int maxMultiplier) {
-        if (maxMultiplier < 1) throw new IllegalArgumentException("maxMultiplier must be greater than 0");
-        if (maxMultiplier == 1) return 1;
+        if (maxMultiplier < 1)
+            throw new IllegalArgumentException("maxMultiplier must be greater than 0");
+        if (maxMultiplier == 1)
+            return 1;
         int i = 0;
 
         while (true)

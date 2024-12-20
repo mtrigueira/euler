@@ -10,7 +10,8 @@ public class Triangle {
     private static void calculateMaximumSumForRowUsingRowBelow(int row, short[][] triangle) {
         for (int column = 0; column <= row; column++) {
             short max = highestValueFromTwoAdjacentValuesOnRowBelow(row, column, triangle);
-            if ((int) triangle[row][column] + max > Short.MAX_VALUE) throw new ArithmeticException("Overflow");
+            if ((int) triangle[row][column] + max > Short.MAX_VALUE)
+                throw new ArithmeticException("Overflow");
             triangle[row][column] += max;
         }
     }

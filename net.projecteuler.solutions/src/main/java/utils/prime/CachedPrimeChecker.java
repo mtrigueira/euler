@@ -15,7 +15,8 @@ class CachedPrimeChecker {
     }
 
     public static boolean isPrime(BigInteger candidate) {
-        if (primes.contains(candidate)) return true;
+        if (primes.contains(candidate))
+            return true;
 
         if (!BruteForcePrimeChecker.isPrime(candidate))
             return false;

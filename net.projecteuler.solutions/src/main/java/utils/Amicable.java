@@ -27,8 +27,10 @@ public class Amicable {
 
     public boolean hasAmicable(int i) {
         long sum = sums[i];
-        if (sum == i) return false;
-        if (sum >= sums.length) return sumOfProperDivisors(sum) == i;
+        if (sum == i)
+            return false;
+        if (sum >= sums.length)
+            return sumOfProperDivisors(sum) == i;
 
         return sums[(int) sum] == i;
     }

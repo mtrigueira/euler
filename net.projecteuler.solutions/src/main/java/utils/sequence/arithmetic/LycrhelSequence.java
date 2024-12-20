@@ -15,7 +15,8 @@ public class LycrhelSequence extends ArithmeticSequence<BigInteger> {
 
     @Override
     public BigInteger next() {
-        if (!hasNext()) throw new NoSuchElementException("No next element in Lycrhel Sequence");
+        if (!hasNext())
+            throw new NoSuchElementException("No next element in Lycrhel Sequence");
         BigInteger temp = current;
         current = nextLycrhel(current);
         i++;

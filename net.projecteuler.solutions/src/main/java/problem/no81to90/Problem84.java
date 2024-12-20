@@ -32,9 +32,9 @@ public class Problem84 {
     private static final int TURNS = 2_000_000;
     private static final int E3 = 24;
     private final int sidesOnDie;
+    private final int[] tallies = new int[40];
     private Random r;
     private int location;
-    private final int[] tallies = new int[40];
     private int ccCardPointer;
     private int chCardPointer;
     private int doubles;

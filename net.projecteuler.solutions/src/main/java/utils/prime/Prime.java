@@ -19,7 +19,8 @@ public class Prime extends BigInteger {
     }
 
     public static SortedSet<Integer> eratosthenesSieve(int n) {
-        if (n < 2) return new TreeSet<>();
+        if (n < 2)
+            return new TreeSet<>();
         boolean[] sieve = new boolean[n];
         Arrays.fill(sieve, true);
 
@@ -42,7 +43,8 @@ public class Prime extends BigInteger {
     }
 
     public static SortedSet<Integer> primeFactorBuilder(int n) {
-        if (n < 2) return new TreeSet<>();
+        if (n < 2)
+            return new TreeSet<>();
         int[] sieve = new int[n];
         Arrays.fill(sieve, 0);
         int last = 0;

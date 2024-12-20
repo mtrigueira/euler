@@ -44,5 +44,6 @@ public class Problem85 {
         return rectangles;
     }
 
-    private Problem85() {}
+    private Problem85() {
+    }
 }

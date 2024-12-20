@@ -15,8 +15,13 @@ public class GridProduct {
         this.cells = cells;
     }
 
+    private static int maxOf(int... a) {
+        return Arrays.stream(a).max().orElse(0);
+    }
+
     private int getProductHorizontal() {
-        if (c + cells > grid[0].length) return 0;
+        if (c + cells > grid[0].length)
+            return 0;
         int product = 1;
         short[] row = grid[r];
 
@@ -27,7 +32,8 @@ public class GridProduct {
     }
 
     private int getProductVertical() {
-        if (r + cells > grid.length) return 0;
+        if (r + cells > grid.length)
+            return 0;
         int product = 1;
 
         for (int i = 0; i < cells; i++)
@@ -37,8 +43,10 @@ public class GridProduct {
     }
 
     private int getProductDiagonalDownRight() {
-        if (r + cells > grid.length) return 0;
-        if (c + cells > grid.length) return 0;
+        if (r + cells > grid.length)
+            return 0;
+        if (c + cells > grid.length)
+            return 0;
         int product = 1;
 
         for (int i = 0; i < cells; i++)
@@ -47,20 +55,17 @@ public class GridProduct {
         return product;
     }
 
-
     private int getProductDiagonalDownLeft() {
-        if (r + cells > grid.length) return 0;
-        if (c + cells > grid.length) return 0;
+        if (r + cells > grid.length)
+            return 0;
+        if (c + cells > grid.length)
+            return 0;
         int product = 1;
 
         for (int i = 0; i < cells; i++)
             product *= grid[r + i][c + cells - i - 1];
 
         return product;
-    }
-
-    private static int maxOf(int... a) {
-        return Arrays.stream(a).max().orElse(0);
     }
 
     public int max() {

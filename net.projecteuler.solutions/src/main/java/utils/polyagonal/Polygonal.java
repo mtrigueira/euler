@@ -21,7 +21,8 @@ public class Polygonal {
 
     Polygonal(BigInteger sides, String name) {
         this.name = name;
-        if (sides == null) throw new IllegalArgumentException("sides cannot be null");
+        if (sides == null)
+            throw new IllegalArgumentException("sides cannot be null");
         this.sides = sides;
         this.sMinus2 = this.sides.subtract(TWO);
         this.sMinus4 = this.sides.subtract(FOUR);

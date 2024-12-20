@@ -33,7 +33,8 @@ public class Problem38 {
         for (int i = 1; i <= n; i++) {
             long product = i * k;
             s = shiftDigitPlaces(s, product) + product;
-            if (lengthOfDigits(s) > 9) return 0;
+            if (lengthOfDigits(s) > 9)
+                return 0;
         }
 
         return s;

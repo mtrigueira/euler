@@ -44,7 +44,7 @@ public class Problem88 {
             if (k != i + 1) {
                 sums[i + 1] = sums[i] + froms[i + 1];
                 products[i + 1] = products[i] * froms[i + 1];
-                prepare(i+1);
+                prepare(i + 1);
                 minimalProductSumR(i + 1);
             } else {
                 if (sums[i] % froms[i + 1] == 0)

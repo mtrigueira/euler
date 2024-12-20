@@ -13,9 +13,12 @@ public class Palindrome {
     }
 
     public static boolean isPalindrome(BigInteger i, int base) {
-        if (base < 2) throw new IllegalArgumentException("Base must be at least 2");
-        if (lessThan(i, 0)) return false;
-        if (lessThan(i, base)) return true;
+        if (base < 2)
+            throw new IllegalArgumentException("Base must be at least 2");
+        if (lessThan(i, 0))
+            return false;
+        if (lessThan(i, base))
+            return true;
 
         return isPalindrome(i.toString(base));
     }
@@ -25,7 +28,8 @@ public class Palindrome {
         int lastDigit = digits.length - 1;
 
         for (int leftDigit = 0; leftDigit < digits.length / 2; leftDigit++)
-            if (digits[leftDigit] != digits[lastDigit - leftDigit]) return false;
+            if (digits[leftDigit] != digits[lastDigit - leftDigit])
+                return false;
 
         return true;
     }

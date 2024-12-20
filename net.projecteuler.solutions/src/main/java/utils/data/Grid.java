@@ -36,8 +36,10 @@ public class Grid {
     }
 
     public int findMaxProduct(int cells) {
-        if (cells < 1) return 0;
-        if (rows == 0) return 0;
+        if (cells < 1)
+            return 0;
+        if (rows == 0)
+            return 0;
         int max = 0;
 
         for (int r = 0; r < rows; r++)
@@ -73,7 +75,8 @@ public class Grid {
     }
 
     public long findMinPathSumFourWays() {
-        if (this.columns == 0) return 0;
+        if (this.columns == 0)
+            return 0;
         return new GridSumFourWays(this).gridOfMinSums()[rows - 1][columns - 1];
     }
 

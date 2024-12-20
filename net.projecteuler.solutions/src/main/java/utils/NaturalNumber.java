@@ -19,7 +19,8 @@ public class NaturalNumber {
     }
 
     private NaturalNumber(int value) {
-        if (value <= 0) throw new IllegalArgumentException("Natural number must be positive");
+        if (value <= 0)
+            throw new IllegalArgumentException("Natural number must be positive");
         this.value = value;
     }
 }

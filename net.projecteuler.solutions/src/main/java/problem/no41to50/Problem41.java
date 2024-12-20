@@ -30,7 +30,8 @@ public class Problem41 {
 
         while (!digits.isEmpty()) {
             maybeMaxPrime = findMaxPanDigitalPrime(digits);
-            if (maybeMaxPrime.isPresent()) return maybeMaxPrime;
+            if (maybeMaxPrime.isPresent())
+                return maybeMaxPrime;
             digits.removeLast();
         }
 

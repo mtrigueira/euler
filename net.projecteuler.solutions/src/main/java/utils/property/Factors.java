@@ -13,7 +13,8 @@ import static java.math.BigInteger.ONE;
 
 public class Factors {
     public static Set<Long> of(long n) {
-        if (n < 1) return Collections.emptySet();
+        if (n < 1)
+            return Collections.emptySet();
 
         Set<Long> s = ProperDivisors.of(n);
         s.add(n);
@@ -22,7 +23,8 @@ public class Factors {
     }
 
     public static Set<BigInteger> of(BigInteger n) {
-        if (n.signum() < 1) return Collections.emptySet();
+        if (n.signum() < 1)
+            return Collections.emptySet();
 
         Set<BigInteger> s = ProperDivisors.of(n);
         s.add(n);

@@ -13,9 +13,11 @@ public record Group(int a, int b, int c, int sum) {
 
     public int compareGroups(Group that) {
         int t = this.a - that.a;
-        if (t != 0) return t;
+        if (t != 0)
+            return t;
         t = this.b - that.b;
-        if (t != 0) return t;
+        if (t != 0)
+            return t;
         return this.c - that.c;
     }
 
@@ -34,10 +36,14 @@ public record Group(int a, int b, int c, int sum) {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Group group)) return false;
-        if (a != group.a) return false;
-        if (b != group.b) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Group group))
+            return false;
+        if (a != group.a)
+            return false;
+        if (b != group.b)
+            return false;
         return c == group.c;
     }
 

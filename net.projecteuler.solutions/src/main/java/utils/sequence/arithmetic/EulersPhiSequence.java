@@ -22,7 +22,8 @@ public class EulersPhiSequence extends ArithmeticSequence<Long> {
     }
 
     static long phiEulersProductFormula(int n, Set<Integer> factors) {
-        if (factors.isEmpty()) return n - 1;
+        if (factors.isEmpty())
+            return n - 1;
         return factors.stream()
                 .map(p -> ONE.subtract(ONE.divide(SimpleFraction.of(p))))
                 .reduce(SimpleFraction::multiply)

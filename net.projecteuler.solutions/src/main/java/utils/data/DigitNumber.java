@@ -41,7 +41,8 @@ public class DigitNumber {
     }
 
     public static int countDigits(long number) {
-        if (number < 0) throw new IllegalArgumentException("Number must be non-negative");
+        if (number < 0)
+            throw new IllegalArgumentException("Number must be non-negative");
         return (int) (Math.log10(number) + 1);
     }
 
@@ -52,7 +53,8 @@ public class DigitNumber {
     public int sumOfDigits() {
         int sum = 0;
 
-        for (byte digit : digits) sum += digit;
+        for (byte digit : digits)
+            sum += digit;
 
         return sum;
     }

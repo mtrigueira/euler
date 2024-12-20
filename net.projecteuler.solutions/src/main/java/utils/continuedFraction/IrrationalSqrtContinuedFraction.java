@@ -64,7 +64,8 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
     }
 
     public BigInteger at(int i) {
-        if (i < a.size()) return a.get(i);
+        if (i < a.size())
+            return a.get(i);
         int period = period();
         int indexInPeriod = (i - 1) % period;
         return a.get(1 + indexInPeriod);
@@ -75,10 +76,14 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = 0; i < a.size(); i++) {
-            if (i == 1) sb.append("(");
+            if (i == 1)
+                sb.append("(");
             sb.append(a.get(i));
-            if (i < a.size() - 1) if (i == 0) sb.append("; ");
-            else sb.append(", ");
+            if (i < a.size() - 1)
+                if (i == 0)
+                    sb.append("; ");
+                else
+                    sb.append(", ");
         }
         sb.append(")]");
         return sb.toString();

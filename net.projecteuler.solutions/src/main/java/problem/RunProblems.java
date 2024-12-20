@@ -11,10 +11,11 @@ import java.util.stream.IntStream;
 
 public class RunProblems {
     public static void main(String[] args) {
-        if (runProblems(FAST)) throw new RuntimeException("Slow test in FAST bucket");
+        if (runProblems(FAST))
+            throw new RuntimeException("Slow test in FAST bucket");
     }
 
-    public static final int[] SLOW = {78,86};
+    public static final int[] SLOW = {78, 86};
     public static final int[] FAST = IntStream.range(1, 100)
             .filter(i -> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();
@@ -37,7 +38,8 @@ public class RunProblems {
         System.out.println(results);
         System.out.println("Total time: " + stopwatch.elapsed() + " ms");
 
-        if (!failed.isEmpty()) throw new RuntimeException("Problems failed. " + failed);
+        if (!failed.isEmpty())
+            throw new RuntimeException("Problems failed. " + failed);
 
         return tooSlow;
     }
