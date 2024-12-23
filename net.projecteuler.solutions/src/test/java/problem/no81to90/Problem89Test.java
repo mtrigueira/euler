@@ -1,6 +1,7 @@
 package problem.no81to90;
 
 import org.junit.jupiter.api.Test;
+import utils.roman.Roman;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -28,7 +29,7 @@ class Problem89Test {
 
     @Test
     void smallestToString() {
-        assertEquals("MI",Roman.parseRoman("MI").toString());
+        assertEquals("MI", Roman.parseRoman("MI").toString());
     }
 
     private static void getAssertEquals(int expected, String romanNumerals) {
