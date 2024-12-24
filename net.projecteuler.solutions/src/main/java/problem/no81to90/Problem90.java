@@ -65,11 +65,6 @@ public class Problem90 {
     }
 
     static class Die {
-        Set<Integer> faces;
-        Die(Set<Integer> faces) {
-            this.faces = faces;
-        }
-
         private static void combos(HashSet<Set<Integer>> combos, HashSet<Integer> integers) {
             for (int i = 0; i <= 9; i++) {
                 if (!integers.add(i))
@@ -96,5 +91,11 @@ public class Problem90 {
             if (set.contains(9))
                 set.add(6);
         }
+
+        private Die() {
+        }
+    }
+
+    private Problem90() {
     }
 }

@@ -12,7 +12,6 @@ class GridSumTwoWays extends GridSum {
             for (int r = grid.rows - 1; r >= 0; r--)
                 gridOfMinSums[r][c] = sum(r, c, gridOfMinSums);
 
-        System.out.println(Grid.toString(gridOfMinSums));
         return gridOfMinSums;
     }
 

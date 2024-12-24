@@ -28,7 +28,6 @@ public class GridSumThreeWays extends GridSum {
             }
         }
 
-        System.out.println(Grid.toString(gridOfMinSums));
         return gridOfMinSums;
     }
 
