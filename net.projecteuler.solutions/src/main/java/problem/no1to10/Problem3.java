@@ -23,7 +23,8 @@ public class Problem3 {
                 .map(Prime::of)
                 .flatMap(Optional::stream)
                 .max(BigInteger::compareTo)
-                .map(BigInteger::toString).orElse("No prime factor found");
+                .map(BigInteger::toString)
+                .orElse("No prime factor found");
     }
 
     private Problem3() {
