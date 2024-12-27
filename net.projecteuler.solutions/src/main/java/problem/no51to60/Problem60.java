@@ -9,7 +9,7 @@ import static problem.Solution.problem;
 
 public class Problem60 {
     public static void main(String[] args) {
-        // https://projecteuler.net/problem=
+        // https://projecteuler.net/problem=60
         problem("Prime pair sets",
                 () -> sumOfPrimePairSets(5));
     }
