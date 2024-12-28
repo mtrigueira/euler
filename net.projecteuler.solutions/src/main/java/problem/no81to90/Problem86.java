@@ -6,7 +6,7 @@ public class Problem86 {
     public static void main(String[] args) {
         // https://projecteuler.net/problem=86
         problem("Cuboid route", () ->
-                solution(1_000_000));
+                solution(100));
     }
 
     static int solution(int limit) {
