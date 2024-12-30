@@ -31,9 +31,6 @@ public class Problem86 {
         return count;
     }
 
-    private static boolean isInteger(double d) {
-        return d % 1 == 0;
-    }
 
     private static double min(double... a) {
         double m = a[0];
@@ -68,6 +65,10 @@ public class Problem86 {
 
         boolean isShortestRouteInteger() {
             return isInteger(shortestRoute());
+        }
+
+        private static boolean isInteger(double d) {
+            return d % 1 == 0;
         }
     }
 
