@@ -28,6 +28,5 @@ public class Problem17 {
         return NOT_ALPHABETIC.matcher(number).replaceAll("");
     }
 
-    private Problem17() {
-    }
+    private Problem17() {}
 }

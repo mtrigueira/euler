@@ -24,6 +24,5 @@ public class Problem12 {
         return Factors.of(candidate).size();
     }
 
-    private Problem12() {
-    }
+    private Problem12() {}
 }

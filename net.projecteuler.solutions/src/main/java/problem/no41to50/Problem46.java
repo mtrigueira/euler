@@ -46,6 +46,5 @@ public class Problem46 {
                 .sqrt();
     }
 
-    private Problem46() {
-    }
+    private Problem46() {}
 }

@@ -20,7 +20,6 @@ public class Problem1 {
                 - doubleCounts;
     }
 
-    private Problem1() {
-    }
+    private Problem1() {}
 }
 

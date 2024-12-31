@@ -24,6 +24,5 @@ public class Problem6 {
         return LongStream.rangeClosed(1, i).mapToDouble(j -> Math.pow(j, 2)).sum();
     }
 
-    private Problem6() {
-    }
+    private Problem6() {}
 }

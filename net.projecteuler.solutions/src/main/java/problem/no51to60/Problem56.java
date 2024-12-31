@@ -24,6 +24,5 @@ public class Problem56 {
                 .orElse(0L);
     }
 
-    private Problem56() {
-    }
+    private Problem56() {}
 }

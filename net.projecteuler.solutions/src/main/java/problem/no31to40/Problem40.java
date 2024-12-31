@@ -28,6 +28,5 @@ public class Problem40 {
         return i == pow;
     }
 
-    private Problem40() {
-    }
+    private Problem40() {}
 }

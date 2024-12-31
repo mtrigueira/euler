@@ -39,6 +39,5 @@ public class Problem27 {
     record Ugly(int product, int n) {
     }
 
-    private Problem27() {
-    }
+    private Problem27() {}
 }

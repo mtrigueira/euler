@@ -18,6 +18,5 @@ public class Problem10 {
                 .sum();
     }
 
-    private Problem10() {
-    }
+    private Problem10() {}
 }

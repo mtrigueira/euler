@@ -16,6 +16,5 @@ public class Problem15 {
         return new Lattice(n).countRoutes();
     }
 
-    private Problem15() {
-    }
+    private Problem15() {}
 }

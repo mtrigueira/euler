@@ -23,6 +23,5 @@ public class Problem72 {
         return sum;
     }
 
-    private Problem72() {
-    }
+    private Problem72() {}
 }

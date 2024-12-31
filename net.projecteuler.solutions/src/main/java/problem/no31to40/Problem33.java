@@ -59,6 +59,5 @@ public class Problem33 {
         return nCommon == dCommon && (double) nRemaining / dRemaining == originalQuotient;
     }
 
-    private Problem33() {
-    }
+    private Problem33() {}
 }

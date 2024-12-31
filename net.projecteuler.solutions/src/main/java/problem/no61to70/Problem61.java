@@ -129,6 +129,5 @@ public class Problem61 {
         }
     }
 
-    private Problem61() {
-    }
+    private Problem61() {}
 }

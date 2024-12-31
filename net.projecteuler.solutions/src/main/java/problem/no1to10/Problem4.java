@@ -28,6 +28,5 @@ public class Problem4 {
         return maxPalindrome;
     }
 
-    private Problem4() {
-    }
+    private Problem4() {}
 }

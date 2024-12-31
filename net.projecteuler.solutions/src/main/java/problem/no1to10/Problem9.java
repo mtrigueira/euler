@@ -24,6 +24,5 @@ public class Problem9 {
         return -1;
     }
 
-    private Problem9() {
-    }
+    private Problem9() {}
 }

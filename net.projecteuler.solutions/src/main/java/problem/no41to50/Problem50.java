@@ -39,6 +39,5 @@ public class Problem50 {
     record Ugly(int delta, long prime, long sum) {
     }
 
-    private Problem50() {
-    }
+    private Problem50() {}
 }

@@ -20,6 +20,5 @@ public class Problem20 {
         return DigitNumber.of(Factorial.ofBig(i));
     }
 
-    private Problem20() {
-    }
+    private Problem20() {}
 }

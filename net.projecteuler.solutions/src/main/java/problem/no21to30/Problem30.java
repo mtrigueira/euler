@@ -20,7 +20,6 @@ public class Problem30 {
                 .sum();
     }
 
-    private Problem30() {
-    }
+    private Problem30() {}
 }
 

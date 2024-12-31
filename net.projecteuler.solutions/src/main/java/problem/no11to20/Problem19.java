@@ -32,6 +32,5 @@ public class Problem19 {
         return (DayOfWeek.from(date).equals(DayOfWeek.SUNDAY));
     }
 
-    private Problem19() {
-    }
+    private Problem19() {}
 }

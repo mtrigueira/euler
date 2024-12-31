@@ -17,6 +17,5 @@ public class Problem7 {
         return PrimeSequence.fromFirst().stream().skip(n - 1).findFirst().orElse(null);
     }
 
-    private Problem7() {
-    }
+    private Problem7() {}
 }

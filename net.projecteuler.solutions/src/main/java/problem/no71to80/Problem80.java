@@ -38,6 +38,5 @@ public class Problem80 {
         return Math.sqrt(d) % 1 == 0;
     }
 
-    private Problem80() {
-    }
+    private Problem80() {}
 }

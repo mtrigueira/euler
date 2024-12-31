@@ -28,6 +28,5 @@ public class Problem69 {
         return p.intValueExact();
     }
 
-    private Problem69() {
-    }
+    private Problem69() {}
 }

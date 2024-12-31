@@ -55,6 +55,5 @@ public class Problem32 {
         return (long) (a % Math.pow(10, digitLength(a) + 1 - start));
     }
 
-    private Problem32() {
-    }
+    private Problem32() {}
 }

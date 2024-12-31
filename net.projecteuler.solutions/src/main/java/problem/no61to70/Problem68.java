@@ -63,6 +63,5 @@ public class Problem68 {
                 .flatMap(ring -> ringStream(n - 1, e, ring));
     }
 
-    private Problem68() {
-    }
+    private Problem68() {}
 }

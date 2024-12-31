@@ -68,6 +68,5 @@ public class Problem59 {
         System.out.println();
     }
 
-    private Problem59() {
-    }
+    private Problem59() {}
 }

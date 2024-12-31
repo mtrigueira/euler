@@ -59,6 +59,10 @@ public class Problem86 {
             return new Cube(x, y, z);
         }
 
+        private static boolean isInteger(double d) {
+            return d % 1 == 0;
+        }
+
         double shortestRoute() {
             return Math.sqrt(z * z + (y + x) * (y + x));
         }
@@ -66,12 +70,7 @@ public class Problem86 {
         boolean isShortestRouteInteger() {
             return isInteger(shortestRoute());
         }
-
-        private static boolean isInteger(double d) {
-            return d % 1 == 0;
-        }
     }
 
-    private Problem86() {
-    }
+    private Problem86() {}
 }

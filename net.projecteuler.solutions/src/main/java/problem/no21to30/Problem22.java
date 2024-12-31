@@ -22,6 +22,5 @@ public class Problem22 {
         return Score.of(names);
     }
 
-    private Problem22() {
-    }
+    private Problem22() {}
 }
