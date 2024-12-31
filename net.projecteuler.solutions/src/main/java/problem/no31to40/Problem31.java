@@ -35,6 +35,5 @@ public class Problem31 {
         return count;
     }
 
-    private Problem31() {
-    }
+    private Problem31() {}
 }

@@ -22,6 +22,5 @@ public class Problem65 {
         return f.denominator().toString().chars().map(c -> c - '0').sum();
     }
 
-    private Problem65() {
-    }
+    private Problem65() {}
 }

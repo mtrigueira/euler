@@ -25,6 +25,5 @@ public class Problem47 {
                 consecutiveCount = 0;
     }
 
-    private Problem47() {
-    }
+    private Problem47() {}
 }

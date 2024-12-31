@@ -21,6 +21,5 @@ public class Problem8 {
                 .reduce(0L, Long::max);
     }
 
-    private Problem8() {
-    }
+    private Problem8() {}
 }

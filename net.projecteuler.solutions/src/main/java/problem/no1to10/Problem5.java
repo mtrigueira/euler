@@ -39,6 +39,5 @@ public class Problem5 {
         return i % candidate == 0;
     }
 
-    private Problem5() {
-    }
+    private Problem5() {}
 }

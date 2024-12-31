@@ -31,7 +31,7 @@ public class Problem91 {
             }
 
         // Double counted since triangle OPQ is OQP
-        return count/2;
+        return count / 2;
     }
 
     record Triangle(Point A, Point B) {
@@ -63,6 +63,5 @@ public class Problem91 {
     record Point(int x, int y) {
     }
 
-    private Problem91() {
-    }
+    private Problem91() {}
 }

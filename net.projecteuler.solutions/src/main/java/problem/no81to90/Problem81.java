@@ -18,6 +18,5 @@ public class Problem81 {
         return grid.findMinPathSum();
     }
 
-    private Problem81() {
-    }
+    private Problem81() {}
 }

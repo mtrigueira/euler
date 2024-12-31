@@ -31,6 +31,5 @@ public class Problem71 {
         return leftN;
     }
 
-    private Problem71() {
-    }
+    private Problem71() {}
 }

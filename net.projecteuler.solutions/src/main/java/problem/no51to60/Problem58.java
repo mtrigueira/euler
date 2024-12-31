@@ -35,6 +35,5 @@ public class Problem58 {
         }
     }
 
-    private Problem58() {
-    }
+    private Problem58() {}
 }

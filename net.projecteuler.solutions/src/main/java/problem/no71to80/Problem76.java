@@ -14,6 +14,5 @@ public class Problem76 {
         return a(n).longValueExact() - 1;
     }
 
-    private Problem76() {
-    }
+    private Problem76() {}
 }

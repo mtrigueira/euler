@@ -49,6 +49,5 @@ public class Problem34 {
         return sum;
     }
 
-    private Problem34() {
-    }
+    private Problem34() {}
 }

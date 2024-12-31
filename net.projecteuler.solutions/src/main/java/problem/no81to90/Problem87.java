@@ -43,6 +43,5 @@ public class Problem87 {
         return uniques.size();
     }
 
-    private Problem87() {
-    }
+    private Problem87() {}
 }

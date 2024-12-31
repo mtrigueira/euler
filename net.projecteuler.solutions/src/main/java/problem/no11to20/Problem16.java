@@ -16,6 +16,5 @@ public class Problem16 {
         return DigitNumber.of(TWO.pow(i)).sumOfDigits();
     }
 
-    private Problem16() {
-    }
+    private Problem16() {}
 }

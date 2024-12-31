@@ -27,6 +27,5 @@ public class Problem3 {
                 .orElse("No prime factor found");
     }
 
-    private Problem3() {
-    }
+    private Problem3() {}
 }

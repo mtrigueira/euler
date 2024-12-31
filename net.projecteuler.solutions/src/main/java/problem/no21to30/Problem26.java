@@ -29,7 +29,6 @@ public class Problem26 {
         return a.reciprocalLength() > b.reciprocalLength() ? a : b;
     }
 
-    private Problem26() {
-    }
+    private Problem26() {}
 }
 

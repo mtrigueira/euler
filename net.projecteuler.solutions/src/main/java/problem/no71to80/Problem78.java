@@ -17,6 +17,5 @@ public class Problem78 {
         return a(powerOfTen + 1);
     }
 
-    private Problem78() {
-    }
+    private Problem78() {}
 }

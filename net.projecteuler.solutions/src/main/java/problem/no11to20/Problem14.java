@@ -32,6 +32,5 @@ public class Problem14 {
         return CollatzSequence.of(i).count();
     }
 
-    private Problem14() {
-    }
+    private Problem14() {}
 }

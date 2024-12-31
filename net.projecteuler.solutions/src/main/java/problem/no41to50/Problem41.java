@@ -46,6 +46,5 @@ public class Problem41 {
                 .flatMap(Prime::of);
     }
 
-    private Problem41() {
-    }
+    private Problem41() {}
 }

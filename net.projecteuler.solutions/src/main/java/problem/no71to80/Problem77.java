@@ -46,6 +46,5 @@ public class Problem77 {
         return numberOfWaysOfWritingAsASumOfPrimes(i, i, primes);
     }
 
-    private Problem77() {
-    }
+    private Problem77() {}
 }

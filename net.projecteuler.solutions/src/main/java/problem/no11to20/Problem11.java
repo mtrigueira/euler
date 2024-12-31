@@ -20,6 +20,5 @@ public class Problem11 {
         return grid.findMaxProduct(cells);
     }
 
-    private Problem11() {
-    }
+    private Problem11() {}
 }

@@ -68,6 +68,5 @@ public class Problem49 {
         return new String(sorted);
     }
 
-    private Problem49() {
-    }
+    private Problem49() {}
 }

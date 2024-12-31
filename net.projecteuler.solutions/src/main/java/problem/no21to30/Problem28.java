@@ -27,7 +27,6 @@ public class Problem28 {
                 .reduce(0L, Long::sum);
     }
 
-    private Problem28() {
-    }
+    private Problem28() {}
 }
 

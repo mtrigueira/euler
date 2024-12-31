@@ -32,6 +32,5 @@ public class Problem64 {
             return false;
     }
 
-    private Problem64() {
-    }
+    private Problem64() {}
 }

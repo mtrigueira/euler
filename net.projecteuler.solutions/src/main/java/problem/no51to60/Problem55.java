@@ -26,6 +26,5 @@ public class Problem55 {
                 .count() >= 50;
     }
 
-    private Problem55() {
-    }
+    private Problem55() {}
 }

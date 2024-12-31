@@ -48,6 +48,5 @@ public class Problem38 {
         return (long) Math.log10(i) + 1;
     }
 
-    private Problem38() {
-    }
+    private Problem38() {}
 }

@@ -29,6 +29,5 @@ public class Problem13 {
                 .toString();
     }
 
-    private Problem13() {
-    }
+    private Problem13() {}
 }

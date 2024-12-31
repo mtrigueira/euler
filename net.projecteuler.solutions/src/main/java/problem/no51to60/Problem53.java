@@ -33,6 +33,5 @@ public class Problem53 {
         return Factorial.ofBig(n).divide(Factorial.ofBig(r).multiply(Factorial.ofBig(n.subtract(r))));
     }
 
-    private Problem53() {
-    }
+    private Problem53() {}
 }

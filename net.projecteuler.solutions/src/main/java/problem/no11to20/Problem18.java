@@ -15,6 +15,5 @@ public class Problem18 {
 
     private static final String TRIANGLE = concat(FileUtils.getString("/0018_triangle.txt"), "1");
 
-    private Problem18() {
-    }
+    private Problem18() {}
 }

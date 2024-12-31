@@ -23,6 +23,5 @@ public class Problem45 {
                 .findFirst();
     }
 
-    private Problem45() {
-    }
+    private Problem45() {}
 }

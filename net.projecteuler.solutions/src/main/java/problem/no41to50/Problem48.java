@@ -26,6 +26,5 @@ public class Problem48 {
                 .reduce(ZERO, BigInteger::add);
     }
 
-    private Problem48() {
-    }
+    private Problem48() {}
 }

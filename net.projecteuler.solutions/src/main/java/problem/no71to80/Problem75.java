@@ -52,6 +52,5 @@ public class Problem75 {
         return b == 0 ? a : gcd(b, a % b);
     }
 
-    private Problem75() {
-    }
+    private Problem75() {}
 }

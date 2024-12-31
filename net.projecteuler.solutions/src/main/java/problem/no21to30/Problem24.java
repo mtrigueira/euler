@@ -25,6 +25,5 @@ public class Problem24 {
                 .orElse("Not found");
     }
 
-    private Problem24() {
-    }
+    private Problem24() {}
 }

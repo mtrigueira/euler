@@ -22,7 +22,6 @@ public class Problem89 {
                 .sum();
     }
 
-    private Problem89() {
-    }
+    private Problem89() {}
 }
 

@@ -37,6 +37,5 @@ public class Problem63 {
         return BigInteger.valueOf(i).pow(j);
     }
 
-    private Problem63() {
-    }
+    private Problem63() {}
 }

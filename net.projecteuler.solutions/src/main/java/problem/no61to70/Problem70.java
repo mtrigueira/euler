@@ -65,6 +65,5 @@ public class Problem70 {
         return permutation.chars().sorted().mapToObj(c -> (char) c + "").reduce("", (a, b) -> a + b);
     }
 
-    private Problem70() {
-    }
+    private Problem70() {}
 }

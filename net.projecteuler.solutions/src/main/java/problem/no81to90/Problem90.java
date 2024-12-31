@@ -96,6 +96,5 @@ public class Problem90 {
         }
     }
 
-    private Problem90() {
-    }
+    private Problem90() {}
 }

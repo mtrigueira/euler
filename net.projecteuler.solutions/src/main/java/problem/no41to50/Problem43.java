@@ -91,6 +91,5 @@ public class Problem43 {
         return a.chars().distinct().count() == a.length();
     }
 
-    private Problem43() {
-    }
+    private Problem43() {}
 }

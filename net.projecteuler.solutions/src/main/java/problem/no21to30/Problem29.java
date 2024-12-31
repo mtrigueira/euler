@@ -21,6 +21,5 @@ public class Problem29 {
                 .count();
     }
 
-    private Problem29() {
-    }
+    private Problem29() {}
 }

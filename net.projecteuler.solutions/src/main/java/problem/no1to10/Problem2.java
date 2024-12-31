@@ -18,6 +18,5 @@ public class Problem2 {
         return new EvenFibonacciSequence().stream().takeWhile(a -> lessThanOrEqual(a, limit)).reduce(ZERO, BigInteger::add);
     }
 
-    private Problem2() {
-    }
+    private Problem2() {}
 }

@@ -45,6 +45,5 @@ public class Problem23 {
                 .anyMatch(a -> abundants.contains(a));
     }
 
-    private Problem23() {
-    }
+    private Problem23() {}
 }

@@ -69,6 +69,5 @@ public class Problem79 {
         return hasOneOnTheLeft;
     }
 
-    private Problem79() {
-    }
+    private Problem79() {}
 }

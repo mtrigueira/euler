@@ -17,6 +17,5 @@ public class Problem21 {
         return new Amicable(limit - 1).sum();
     }
 
-    private Problem21() {
-    }
+    private Problem21() {}
 }
