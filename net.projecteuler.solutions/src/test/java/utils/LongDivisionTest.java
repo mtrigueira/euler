@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static utils.BigIntegerConstants.big;
 
 class LongDivisionTest {
-
     @Test
     void nextDigit1div2() {
         LongDivision longDivision = LongDivision.of(1,2);
