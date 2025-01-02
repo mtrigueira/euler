@@ -63,9 +63,13 @@ public class SimpleFraction extends Fraction {
     }
 
     public BigInteger toBigIntegerExact() {
-        if (BigInteger.ONE.equals(denominator()))
+        if (isInteger())
             return numerator();
         throw new ArithmeticException("Fraction is not an integer: " + this);
+    }
+
+    public boolean isInteger() {
+        return BigInteger.ONE.equals(denominator());
     }
 
     @Override
