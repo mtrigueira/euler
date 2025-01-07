@@ -52,7 +52,7 @@ public class Problem95 {
             return sums;
         }
 
-        private List<Integer> chain;
+        private final List<Integer> chain;
 
         private int chainLength(int i) {
             int index = chain.indexOf(i);
