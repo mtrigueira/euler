@@ -35,7 +35,7 @@ public class Problem91 {
     }
 
     record Triangle(Point A, Point B) {
-        static Point C = new Point(0, 0);
+        static final Point C = new Point(0, 0);
 
         static Triangle of(Point P, Point Q) {
             return new Triangle(P, Q);
