@@ -51,6 +51,5 @@ public class A000041 {
         return A[n];
     }
 
-    private A000041() {
-    }
+    private A000041() {}
 }

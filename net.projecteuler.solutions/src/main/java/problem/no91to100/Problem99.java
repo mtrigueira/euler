@@ -34,7 +34,7 @@ public class Problem99 {
         return max.i;
     }
 
-    record Pair(int i, double d){}
+    record Pair(int i, double d) {}
 
     private Problem99() {}
 }
