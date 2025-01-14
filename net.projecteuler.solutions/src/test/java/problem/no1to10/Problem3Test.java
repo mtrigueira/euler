@@ -15,6 +15,4 @@ class Problem3Test {
     void testLargestPrimeFactorOf1() {
         assertEquals("No prime factor found", largestPrimeFactorOrNotFound(1L));
     }
-
-
 }

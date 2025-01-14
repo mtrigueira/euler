@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Problem6Test {
-    @ParameterizedTest
+    @ParameterizedTest(name = "squareOfsums({0})-sumOfSquares({0}) = {1}")
     @CsvSource({
             "1, 0",
             "2, 4",
