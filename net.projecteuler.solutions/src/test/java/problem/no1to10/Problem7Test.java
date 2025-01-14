@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Problem7Test {
-    @ParameterizedTest
+    @ParameterizedTest(name = "prime({0}) = {1}")
     @CsvSource({
             "1, 2",
             "2, 3",

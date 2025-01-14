@@ -8,7 +8,7 @@ import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem2Test {
-    @ParameterizedTest
+    @ParameterizedTest(name = "sum({1}) = {0}")
     @CsvSource({
             "0, 0",
             "2, 2",
@@ -23,10 +23,8 @@ class Problem2Test {
             "1089154, 832040",
             "4613732, 3524578"
     })
-    void assertSumForLimit(int expected, int limit) {
+    void sumForLimit(int expected, int limit) {
         BigInteger b = BigInteger.valueOf(expected);
         assertEquals(b, Problem2.sum(limit));
     }
-
-
 }

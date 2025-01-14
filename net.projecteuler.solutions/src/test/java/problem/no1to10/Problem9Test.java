@@ -15,7 +15,7 @@ class Problem9Test {
         assertFalse(isSpecialTriplet(a, c, b));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "isSpecialTriplet({0},{1},{2}) = true")
     @CsvSource({
             "3, 4, 5",
             "5, 12, 13",
