@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem12Test {
-    @ParameterizedTest
+    @ParameterizedTest(name = "countFactors({0}) = {1}")
     @CsvSource({"0,0", "1,1", "3,2", "6,4", "10,4", "15,4", "21,4", "28,6", "36,9"})
-    void countFactors0(int operand, int count) {
-        assertEqualsCount(count, operand);
+    void countFactors0(int operand, int expected) {
+        assertEqualsCount(expected, operand);
     }
 
     @Test
@@ -32,7 +32,7 @@ class Problem12Test {
         assertEquals(count, Problem12.triangularNumber(numberOfDivisors));
     }
 
-    private static void assertEqualsCount(int count, int candidate) {
-        assertEquals(count, Problem12.countFactors(candidate));
+    private static void assertEqualsCount(int expected, int candidate) {
+        assertEquals(expected, Problem12.countFactors(candidate));
     }
 }

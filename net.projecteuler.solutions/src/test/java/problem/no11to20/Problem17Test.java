@@ -19,6 +19,4 @@ class Problem17Test {
     void forNumbersTo21() {
         assertEquals(121, Problem17.forNumbersTo(21));
     }
-
-
 }

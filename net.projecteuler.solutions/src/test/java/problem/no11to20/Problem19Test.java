@@ -7,19 +7,19 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem19Test {
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @ValueSource(ints = {2021, 2022, 2025, 2027, 2028})
     void yearsWithOneMonthStartingOnASunday(int year) {
         assertEquals(1, Problem19.numberOfSundaysInAYear(year));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @ValueSource(ints = {2020, 2023, 2024, 2029})
     void yearsWithTwoMonthsStartingOnASunday(int year) {
         assertEquals(2, Problem19.numberOfSundaysInAYear(year));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @ValueSource(ints = {2026})
     void yearsWithThreeMonthsStartingOnASunday(int year) {
         assertEquals(3, Problem19.numberOfSundaysInAYear(year));
@@ -39,6 +39,4 @@ class Problem19Test {
     void between2021and2022() {
         assertEquals(6, Problem19.between(2024, 2026));
     }
-
-
 }

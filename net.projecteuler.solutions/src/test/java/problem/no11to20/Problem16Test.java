@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem16Test {
-
-
     @Test
     void TwoToThe0() {
         assertEquals(1, Problem16.of2ToThe(0));
