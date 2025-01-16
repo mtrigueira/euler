@@ -13,19 +13,19 @@ class Problem23Test {
         Problem23.sumOfNonAbundantSums(28124);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @ValueSource(ints = {24, 30, 36, 40, 42, 48, 54, 56, 60, 66, 70, 72, 78, 80, 84, 88, 90, 96, 100, 28124})
     void hasAbundantSum(int n) {
         assertTrue(Problem23.hasAbundantSum(n));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @ValueSource(ints = {1, 23, 31, 6673})
     void hasNotAbundantSum(int n) {
         assertFalse(Problem23.hasAbundantSum(n));
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "f({0}) = {1}")
     @CsvSource({
             "1,1",
             "2,3",

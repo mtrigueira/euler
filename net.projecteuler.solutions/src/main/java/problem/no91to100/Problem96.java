@@ -28,7 +28,8 @@ public class Problem96 {
             005010300""");
 
     static int solution(Stream<String> file) {
-        Stream<Grid> gridStream = file.map(PuzzleMaker::line).filter(grid -> Grid.NIL != grid);
+        PuzzleMaker puzzleMaker = new PuzzleMaker();
+        Stream<Grid> gridStream = file.map(puzzleMaker::line).filter(grid -> Grid.NIL != grid);
         return gridStream.mapToInt(grid -> {
             grid.solve();
             return grid.checkSum();
@@ -294,10 +295,10 @@ public class Problem96 {
     }
 
     private static class PuzzleMaker {
-        private static final StringBuilder sb = new StringBuilder();
-        private static int lineCounter = 0;
+        private final StringBuilder sb = new StringBuilder();
+        private int lineCounter = 0;
 
-        public static Grid line(String line) {
+        public Grid line(String line) {
             lineCounter++;
             lineCounter %= 10;
 
