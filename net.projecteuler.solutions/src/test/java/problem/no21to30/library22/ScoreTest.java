@@ -10,7 +10,7 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ScoreTest {
-    @ParameterizedTest
+    @ParameterizedTest(name = "score({0},{1}) = {2}")
     @CsvSource({
             "1,A,1",
             "2,Z,52",

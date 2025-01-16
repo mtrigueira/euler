@@ -24,6 +24,4 @@ class Problem29Test {
     void testDistinctPowers5and5() {
         assertEquals(15, Problem29.numberOfDistinctTerms(5, 5));
     }
-
-
 }
