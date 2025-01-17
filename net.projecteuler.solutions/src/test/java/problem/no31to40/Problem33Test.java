@@ -1,8 +1,12 @@
 package problem.no31to40;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import utils.SimpleFraction;
+import utils.Tupple;
 
+import java.math.BigInteger;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,26 +14,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class Problem33Test {
     @Test
     void productOfDenominatorsOfDigitCancellingFractions() {
-        assertEquals(Optional.of(100L), Problem33.productOfDenominatorsOfDigitCancellingFractions());
+        Optional<Long> actual = Problem33.productOfDenominatorsOfDigitCancellingFractions();
+        assertEquals(Optional.of(100L), actual);
     }
 
-    @Test
-    void cancellingDigits16over64() {
-        assertEquals(Optional.of(SimpleFraction.of(1, 4)), Problem33.cancellingDigits(16, 64));
-    }
+    @ParameterizedTest(name = "f({1}) = {0}")
+    @CsvSource({
+            "1/4,16/64",
+            "1/5,19/95",
+            "2/5,26/65",
+            "49/98,49/98"
+    })
+    void cancellingDigitsNOverD(String expectedString, String givenString) {
+        SimpleFraction expected = SimpleFraction.parseSimpleFraction(expectedString);
+        Tupple<BigInteger> given = SimpleFraction.parse(givenString);
+        int n = given.left().intValueExact();
+        int d = given.right().intValueExact();
 
-    @Test
-    void cancellingDigits19over95() {
-        assertEquals(Optional.of(SimpleFraction.of(1, 5)), Problem33.cancellingDigits(19, 95));
-    }
+        SimpleFraction actual = Problem33.cancellingDigits(n, d).orElseThrow();
 
-    @Test
-    void cancellingDigit26over65() {
-        assertEquals(Optional.of(SimpleFraction.of(2, 5)), Problem33.cancellingDigits(26, 65));
-    }
-
-    @Test
-    void cancellingDigits49over98() {
-        assertEquals(Optional.of(SimpleFraction.of(49, 98)), Problem33.cancellingDigits(49, 98));
+        assertEquals(expected, actual);
     }
 }

@@ -9,6 +9,4 @@ class Problem40Test {
     void productOfChampernownesDigetsAtPositionsMod10Below() {
         assertEquals(5, Problem40.productOfChampernownesDigetsAtPositionsMod10Below(100));
     }
-
-
 }
