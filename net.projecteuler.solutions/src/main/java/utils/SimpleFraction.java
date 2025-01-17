@@ -12,24 +12,40 @@ public class SimpleFraction extends Fraction {
         return factory(numerator.divide(gcd), denominator.divide(gcd));
     }
 
-    public static SimpleFraction of(int nRight) {
-        return of(BigInteger.valueOf(nRight));
+    public static SimpleFraction of(int numerator) {
+        return of(BigInteger.valueOf(numerator));
     }
 
-    public static SimpleFraction of(int nRight, int dRight) {
-        return of(BigInteger.valueOf(nRight), BigInteger.valueOf(dRight));
+    public static SimpleFraction of(int numerator, int denominator) {
+        return of(BigInteger.valueOf(numerator), BigInteger.valueOf(denominator));
     }
 
-    public static SimpleFraction of(BigInteger aSubN) {
-        return of(aSubN, BigInteger.ONE);
+    public static SimpleFraction of(BigInteger integer) {
+        return of(integer, BigInteger.ONE);
     }
 
     private static SimpleFraction factory(BigInteger numerator, BigInteger denominator) {
         return new SimpleFraction(numerator, denominator);
     }
 
-    public static SimpleFraction of(int i, BigInteger cheat) {
-        return of(BigInteger.valueOf(i), cheat);
+    public static SimpleFraction of(int numerator, BigInteger denominator) {
+        return of(BigInteger.valueOf(numerator), denominator);
+    }
+
+    public static Tupple<BigInteger> parse(String expectedString) {
+        String[] split = expectedString.split("/");
+        if (split.length > 2)
+            throw new NumberFormatException();
+
+        BigInteger n = new BigInteger(split[0]);
+        BigInteger d = split.length == 1 ? BigInteger.ONE : new BigInteger(split[1]);
+
+        return new Tupple<>(n, d);
+    }
+
+    public static SimpleFraction parseSimpleFraction(String string) {
+        Tupple<BigInteger> tupple = parse(string);
+        return of(tupple.left(),tupple.right());
     }
 
     public SimpleFraction multiply(SimpleFraction by) {

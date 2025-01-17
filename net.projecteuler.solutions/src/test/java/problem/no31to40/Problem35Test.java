@@ -14,6 +14,4 @@ class Problem35Test {
     void countCircularPrimesBelow100() {
         assertEquals(13, Problem35.countCircularPrimesBelow(100));
     }
-
-
 }

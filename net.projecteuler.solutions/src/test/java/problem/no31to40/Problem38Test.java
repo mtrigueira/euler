@@ -9,6 +9,4 @@ class Problem38Test {
     void largestPandigitalMultiple() {
         assertEquals(918273645, Problem38.largestPandigitalMultiple(10));
     }
-
-
 }

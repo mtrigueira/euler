@@ -7,16 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Problem34Test {
     @Test
-    void check() {
+    void sumOfFactorialsOfDigitsEqualsItself() {
         assertTrue(Problem34.doesSumOfFactorialsOfDigitsEqualsItself(145));
-
     }
 
     @Test
-    void check2() {
+    void sumOfFactorialsOfDigitsDoesNotEqualItself() {
         Problem34.doesSumOfFactorialsOfDigitsEqualsItself(120);
         assertFalse(Problem34.doesSumOfFactorialsOfDigitsEqualsItself(123));
     }
-
-
 }

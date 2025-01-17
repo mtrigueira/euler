@@ -69,4 +69,15 @@ class SimpleFractionTest {
         assertEquals(ONE, TWO.subtract(ONE));
         assertEquals(ONE, THREE.subtract(TWO));
     }
+
+    @Test
+    void parseSimpleFraction() {
+        assertEquals(THREE, SimpleFraction.parseSimpleFraction("3"));
+        assertEquals(THREE, SimpleFraction.parseSimpleFraction("3/1"));
+        assertEquals(THREE, SimpleFraction.parseSimpleFraction("6/2"));
+        assertEquals(HALF, SimpleFraction.parseSimpleFraction("1/2"));
+        assertThrows(NumberFormatException.class, ()->SimpleFraction.parseSimpleFraction("1/2/3"));
+
+        assertThrows(NumberFormatException.class, ()->SimpleFraction.parseSimpleFraction("Banana"));
+    }
 }
