@@ -11,6 +11,4 @@ class Problem44Test {
     void minimumDifferenceForTriangularPairs() {
         assertEquals(big(6), Problem44.minimumDifferenceForPolygonalPairs(TRIANGULAR));
     }
-
-
 }

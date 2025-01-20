@@ -15,7 +15,7 @@ public class RunProblems {
             throw new RuntimeException("Slow test in FAST bucket");
     }
 
-    public static final int[] SLOW = {78, 86};
+    public static final int[] SLOW = {78, 44};
     public static final int[] FAST = IntStream.rangeClosed(1, 100)
             .filter(i -> Arrays.stream(SLOW).noneMatch(n -> n == i))
             .toArray();
