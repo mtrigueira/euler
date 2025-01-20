@@ -12,7 +12,7 @@ class CombinationSequenceTest {
     void comboNone() {
         CombinationSequence<String> cs = new CombinationSequence<>(List.of(), (a, b) -> a + b);
         assertFalse(cs.hasNext());
-        assertThrows(NullPointerException.class, cs::next);
+        assertThrows(NoSuchElementException.class, cs::next);
     }
 
     @Test
@@ -21,7 +21,7 @@ class CombinationSequenceTest {
         assertTrue(cs.hasNext());
         assertEquals("A", cs.next());
         assertFalse(cs.hasNext());
-        assertThrows(ArrayIndexOutOfBoundsException.class, cs::next);
+        assertThrows(NoSuchElementException.class, cs::next);
     }
 
     @Test
