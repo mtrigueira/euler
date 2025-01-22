@@ -28,8 +28,7 @@ public class Problem96 {
             005010300""");
 
     static int solution(Stream<String> file) {
-        PuzzleMaker puzzleMaker = new PuzzleMaker();
-        Stream<Grid> gridStream = file.map(puzzleMaker::line).filter(grid -> Grid.NIL != grid);
+        Stream<Grid> gridStream = file.map(PuzzleMaker.from()::line).filter(grid -> Grid.NIL != grid);
         return gridStream.mapToInt(grid -> {
             grid.solve();
             return grid.checkSum();
@@ -138,7 +137,8 @@ public class Problem96 {
                 return;
             Grid grid = new Grid((byte) (depth + 1));
 
-            for (Set<Point> points : sortedLeftovers.values())
+            for (Iterator<Set<Point>> iterator = sortedLeftovers.values().iterator(); iterator.hasNext(); ) {
+                Set<Point> points = iterator.next();
                 for (Point point : points)
                     for (byte leftover : leftovers.at(point)) {
                         copyArray(puzzle, grid.puzzle);
@@ -152,9 +152,10 @@ public class Problem96 {
                         if (grid.isSolved()) {
                             copyArray(grid.puzzle, puzzle);
                             leftovers = grid.leftovers;
-                            return;
+                            iterator.forEachRemaining(ignore->{});
                         }
                     }
+            }
         }
 
         private void copyArray(byte[] from, byte[] to) {
@@ -298,7 +299,13 @@ public class Problem96 {
         private final StringBuilder sb = new StringBuilder();
         private int lineCounter = 0;
 
-        public Grid line(String line) {
+        private PuzzleMaker() {}
+
+        private static PuzzleMaker from() {
+            return new PuzzleMaker();
+        }
+
+        Grid line(String line) {
             lineCounter++;
             lineCounter %= 10;
 

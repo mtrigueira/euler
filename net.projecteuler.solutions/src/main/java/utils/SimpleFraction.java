@@ -71,7 +71,14 @@ public class SimpleFraction extends Fraction {
     }
 
     public SimpleFraction subtract(SimpleFraction that) {
-        return add(that.multiply(SimpleFraction.of(-1)));
+        BigInteger cm = this.denominator().multiply(that.denominator());
+
+        BigInteger newNumerator = (this.numerator().multiply(cm).divide(this.denominator())
+                .add(that.numerator().negate().multiply(cm).divide(that.denominator())));
+
+        BigInteger gcd = cm.gcd(newNumerator);
+
+        return SimpleFraction.of(newNumerator.divide(gcd), cm.divide(gcd));
     }
 
     public SimpleFraction reciprocal() {

@@ -14,7 +14,7 @@ public class Problem98 {
                 solution(WORDS));
     }
 
-    public static final Stream<String> WORDS = FileUtils.concat(FileUtils.getNames("/0098_words.txt"), "TEA\nEAT");
+    public static final Stream<String> WORDS = FileUtils.concat(FileUtils.getNames("/0098_words.txt"), "REDUCTION\nINTRODUCE\nARISE\nRAISE\nTEA\nEAT\n\nPOT\nTOP\nNO\nON");
 
     static int solution(Stream<String> words) {
         List<Set<String>> anagramsSortedByLength = anagramsSortedByLength(words);
