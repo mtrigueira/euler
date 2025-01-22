@@ -12,6 +12,5 @@ public class A046641 {
         return m;
     }
 
-    private A046641() {
-    }
+    private A046641() {}
 }

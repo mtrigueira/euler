@@ -17,7 +17,9 @@ public class Polygonal {
     private final BigInteger sides;
     private final BigInteger sMinus2;
     private final BigInteger sMinus4;
+    private final BigInteger sMinus4Squared;
     private final String name;
+    private final BigInteger twoMultiplySMinus2;
 
     Polygonal(BigInteger sides, String name) {
         this.name = name;
@@ -26,24 +28,21 @@ public class Polygonal {
         this.sides = sides;
         this.sMinus2 = this.sides.subtract(TWO);
         this.sMinus4 = this.sides.subtract(FOUR);
+        sMinus4Squared = sMinus4.multiply(sMinus4);
+        twoMultiplySMinus2 = TWO.multiply(sMinus2);
     }
 
     public boolean is(BigInteger x) {
-        BigInteger n = indexOf(x);
-        BigInteger x2 = at(n);
-        return x2.equals(x);
+        return at(indexOf(x)).equals(x);
     }
 
     private BigInteger indexOf(BigInteger x) {
-        return ((x.multiply(sMinus2.multiply(EIGHT)).add(sides.subtract(FOUR).pow(2)))
-                .sqrt().add(sides.subtract(FOUR))).divide(TWO.multiply(sMinus2));
+        return ((x.multiply(sMinus2.multiply(EIGHT)).add(sMinus4Squared))
+                .sqrt().add(sMinus4)).divide(twoMultiplySMinus2);
     }
 
     public BigInteger at(BigInteger n) {
-        BigInteger nSquared = n.pow(2);
-        BigInteger a = sMinus2.multiply(nSquared);
-        BigInteger b = sMinus4.multiply(n);
-        return a.subtract(b).divide(TWO);
+        return sMinus2.multiply(n.multiply(n)).subtract(sMinus4.multiply(n)).divide(TWO);
     }
 
     @Override
