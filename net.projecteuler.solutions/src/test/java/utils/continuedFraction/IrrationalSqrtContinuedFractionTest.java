@@ -2,7 +2,8 @@ package utils.continuedFraction;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utils.Maker;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.BigIntegerConstants.big;
@@ -12,7 +13,6 @@ class IrrationalSqrtContinuedFractionTest {
     private static void assertIrrationalFraction(ContinuedFraction f, int... a) {
         assertInstanceOf(IrrationalSqrtContinuedFraction.class, f);
         IrrationalSqrtContinuedFraction irrational = (IrrationalSqrtContinuedFraction) f;
-        Assertions.assertEquals(Maker.list(a), irrational.atList());
         assertEquals(a.length - 1, irrational.period());
 
         for (int i = 0; i < a.length; i++)
