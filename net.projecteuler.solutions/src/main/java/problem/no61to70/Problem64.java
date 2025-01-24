@@ -17,7 +17,7 @@ public class Problem64 {
         int count = 0;
 
         for (int i = 1; i <= limitInclusive; i++)
-            if (!isPerfectSquare(i))
+            if (Math.sqrt(i)%1!=0)
                 if (isPeriodOdd(i))
                     count++;
 
