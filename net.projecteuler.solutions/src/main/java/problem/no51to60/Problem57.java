@@ -13,11 +13,11 @@ public class Problem57 {
     }
 
     static int countFractions(int until) {
-        SimpleFraction previous = ZERO;
         int count = 0;
+        SimpleFraction f = ZERO;
+
         for (int i = 1; i <= until; i++) {
-            SimpleFraction f = ONE.divide(TWO.add(previous));
-            previous = f;
+            f = ONE.divide(TWO.add(f));
             SimpleFraction rootTwoEstimate = ONE.add(f);
             if (rootTwoEstimate.numerator().toString().length() > rootTwoEstimate.denominator().toString().length())
                 count++;
