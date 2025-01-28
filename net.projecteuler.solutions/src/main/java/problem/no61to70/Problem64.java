@@ -4,7 +4,6 @@ import utils.continuedFraction.ContinuedFraction;
 import utils.continuedFraction.IrrationalSqrtContinuedFraction;
 
 import static problem.Solution.problem;
-import static utils.continuedFraction.SqrtContinuedFraction.isPerfectSquare;
 
 public class Problem64 {
     public static void main(String[] args) {

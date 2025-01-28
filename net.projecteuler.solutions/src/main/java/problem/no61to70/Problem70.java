@@ -6,7 +6,6 @@ import utils.sequence.arithmetic.PrimeSequence;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static problem.Solution.problem;
 import static utils.SimpleFraction.ONE;
