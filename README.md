@@ -1,5 +1,4 @@
 # projecteuler.net solutions
-![Excluded from coverage](https://img.shields.io/badge/Excluded_from_coverage-1_file-red)
 ![Class coverage](https://img.shields.io/badge/Class_coverage-100%25-brightgreen)
 ![Instruction coverage](https://img.shields.io/badge/Instruction_coverage-100%25-brightgreen)
 ![Branch coverage](https://img.shields.io/badge/Branch_coverage-100%25-brightgreen)

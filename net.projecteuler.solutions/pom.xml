@@ -38,11 +38,6 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
-                <configuration>
-                    <excludes>
-                        <exclude>utils/FileUtils.class</exclude>
-                    </excludes>
-                </configuration>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
