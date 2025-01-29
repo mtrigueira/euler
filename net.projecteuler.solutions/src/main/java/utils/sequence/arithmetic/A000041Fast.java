@@ -1,7 +1,5 @@
 package utils.sequence.arithmetic;
 
-import java.util.Arrays;
-
 public class A000041Fast {
     public static final int GROW_ARRAY_BY = 100;
     private static int maxN = 10;

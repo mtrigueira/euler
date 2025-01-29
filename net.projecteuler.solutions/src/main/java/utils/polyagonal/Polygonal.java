@@ -1,6 +1,5 @@
 package utils.polyagonal;
 
-import java.math.BigInteger;
 import java.util.List;
 
 public class Polygonal {
@@ -19,18 +18,17 @@ public class Polygonal {
     private final long sMinus2multiply8;
     private final String name;
 
-    public boolean is(BigInteger x) {
-        return at(indexOf(x)).equals(x);
+    public boolean is(long x) {
+        return at(indexOf(x)) == x;
     }
 
-    private BigInteger indexOf(BigInteger x) {
-        return BigInteger.valueOf(((long) Math.sqrt((x.longValueExact() * sMinus2multiply8 + sMinus4Squared)
+    private int indexOf(long x) {
+        return (int) (((long) Math.sqrt((x * sMinus2multiply8 + sMinus4Squared)
         ) + sMinus4) / twoMultiplySMinus2);
     }
 
-    public BigInteger at(BigInteger n) {
-        long en = n.longValueExact();
-        return BigInteger.valueOf((sMinus2 * en * en - sMinus4 * en) / 2);
+    public int at(int n) {
+        return (int) ((sMinus2 * n * n - sMinus4 * n) / 2);
     }
 
     @Override

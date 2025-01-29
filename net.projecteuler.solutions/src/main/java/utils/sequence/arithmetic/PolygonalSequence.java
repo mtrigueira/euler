@@ -2,22 +2,16 @@ package utils.sequence.arithmetic;
 
 import utils.polyagonal.Polygonal;
 
-import java.math.BigInteger;
-
-import static java.math.BigInteger.ONE;
-
-public class PolygonalSequence extends ArithmeticSequence<BigInteger> {
+public class PolygonalSequence extends ArithmeticSequence<Long> {
     private final Polygonal polygonal;
-    private BigInteger index = ONE;
+    private int index = 0;
 
     public PolygonalSequence(Polygonal polygonal) {
         this.polygonal = polygonal;
     }
 
     @Override
-    public BigInteger next() {
-        BigInteger result = polygonal.at(index);
-        index = index.add(ONE);
-        return result;
+    public Long next() {
+        return (long) polygonal.at(++index);
     }
 }

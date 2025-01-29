@@ -3,7 +3,6 @@ package problem.no41to50;
 import utils.polyagonal.Polygonal;
 import utils.sequence.arithmetic.PolygonalSequence;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +16,18 @@ public class Problem44 {
                 () -> minimumDifferenceForPolygonalPairs(PENTAGONAL));
     }
 
-    static BigInteger minimumDifferenceForPolygonalPairs(Polygonal polygonal) {
+    static long minimumDifferenceForPolygonalPairs(Polygonal polygonal) {
         PolygonalSequence seq = new PolygonalSequence(polygonal);
-        List<BigInteger> polygonals = new ArrayList<>();
+        List<Long> polygonals = new ArrayList<>();
 
         while (true) {
-            BigInteger next = seq.next();
+            Long next = seq.next();
 
-            for (BigInteger k : polygonals) {
-                BigInteger difference = next.subtract(k);
+            for (Long k : polygonals) {
+                long difference = next-(k);
 
                 if (polygonal.is(difference)) {
-                    BigInteger sum = k.add(next);
+                    long sum = k + next;
                     if (polygonal.is(sum))
                         return difference;
                 }

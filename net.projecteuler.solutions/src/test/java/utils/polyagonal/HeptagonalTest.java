@@ -3,8 +3,6 @@ package utils.polyagonal;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.math.BigInteger;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.polyagonal.Polygonal.HEPTAGONAL;
 
@@ -14,23 +12,20 @@ class HeptagonalTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 7, 18, 34, 55})
     void heptagonalAtTest(int i) {
-        BigInteger b = BigInteger.valueOf(i);
-        assertEquals(b, HEPTAGONAL.at(BigInteger.valueOf(lastIndex++)));
+        assertEquals(i, HEPTAGONAL.at(lastIndex++));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 7, 18, 34, 55})
     void isHeptagonalTest(int i) {
-        BigInteger b = BigInteger.valueOf(i);
-        assertTrue(HEPTAGONAL.is(b));
+        assertTrue(HEPTAGONAL.is(i));
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 7, 18, 34, 55})
     void isNotHeptagonalBetweenTest(int i) {
         for(int j = lastHeptagonal +1; j < i; j++) {
-            BigInteger b = BigInteger.valueOf(j);
-            boolean isHeptagonal = HEPTAGONAL.is(b);
+            boolean isHeptagonal = HEPTAGONAL.is(j);
             assertFalse(isHeptagonal);
         }
         lastHeptagonal = i;
@@ -39,8 +34,7 @@ class HeptagonalTest {
     @ParameterizedTest
     @ValueSource(ints = {13})
     void isNotHeptagonalTest(int i) {
-        BigInteger b = BigInteger.valueOf(i);
-        boolean isHeptagonal = HEPTAGONAL.is(b);
+        boolean isHeptagonal = HEPTAGONAL.is(i);
         assertFalse(isHeptagonal);
     }
 }
