@@ -3,7 +3,6 @@ package problem.no41to50;
 import utils.FileUtils;
 import utils.Worth;
 
-import java.math.BigInteger;
 import java.util.stream.Stream;
 
 import static problem.Solution.problem;
@@ -22,7 +21,6 @@ public class Problem42 {
     static long countTriangularWords(Stream<String> words) {
         return words
                 .map(Worth::wordWorth)
-                .map(BigInteger::valueOf)
                 .filter(TRIANGULAR::is)
                 .count();
     }

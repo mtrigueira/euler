@@ -2,7 +2,6 @@ package problem.no61to70;
 
 import utils.polyagonal.Polygonal;
 
-import java.math.BigInteger;
 import java.util.*;
 
 import static problem.Solution.problem;
@@ -108,8 +107,7 @@ public class Problem61 {
     }
 
     private static List<Polygonal> polygonalsOf(List<Polygonal> POLYGONAL_LIST, int i) {
-        var b = BigInteger.valueOf(i);
-        return POLYGONAL_LIST.stream().filter(p -> p.is(b)).toList();
+        return POLYGONAL_LIST.stream().filter(p -> p.is(i)).toList();
     }
 
     static boolean areDifferentPolygonals(Node... m) {

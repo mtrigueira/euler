@@ -3,7 +3,6 @@ package problem.no61to70;
 import org.junit.jupiter.api.Test;
 import utils.polyagonal.Polygonal;
 
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +37,6 @@ class Problem61Test {
     }
 
     private static List<Polygonal> polygonalsOf(int i) {
-        var b = BigInteger.valueOf(i);
-        return POLYGONALS.stream().filter(p -> p.is(b)).toList();
+        return POLYGONALS.stream().filter(p -> p.is(i)).toList();
     }
 }

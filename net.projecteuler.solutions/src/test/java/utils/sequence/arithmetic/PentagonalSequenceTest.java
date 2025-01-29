@@ -18,6 +18,6 @@ class PentagonalSequenceTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 5, 12, 22, 35, 51, 70, 92, 117, 145})
     void pentagonalSequenceTest(int i) {
-        assertEquals(i, f.next().longValueExact());
+        assertEquals(i, f.next());
     }
 }
