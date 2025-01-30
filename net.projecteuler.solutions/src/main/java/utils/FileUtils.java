@@ -2,10 +2,21 @@ package utils;
 
 import java.io.InputStream;
 import java.util.Scanner;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileUtils {
+    private static Function<String, InputStream> resourceGetter = FileUtils.class::getResourceAsStream;
+
+    static void setResourceGetter(Function<String, InputStream> resourceGetter) {
+        FileUtils.resourceGetter = resourceGetter;
+    }
+
+    static void resetDefaultResourceGetter() {
+        resourceGetter = FileUtils.class::getResourceAsStream;
+    }
+
     public static Stream<String> getNames(String file) {
         Stream<String> stream = getNamesWithoutQuotes(file);
         if (stream == null)
@@ -48,8 +59,8 @@ public class FileUtils {
         return getResourceAsStream(file);
     }
 
-    private static InputStream getResourceAsStream(String file) {
-        return FileUtils.class.getResourceAsStream(file);
+    protected static InputStream getResourceAsStream(String file) {
+        return resourceGetter.apply(file);
     }
 
     private static String removeQuotes(String s) {
@@ -57,6 +68,9 @@ public class FileUtils {
     }
 
     public static String concat(String... a) {
+        if (a == null)
+            return "";
+
         for (String i : a)
             if (i != null)
                 return i;
@@ -71,6 +85,5 @@ public class FileUtils {
         return Stream.of(orElse.split("\\R"));
     }
 
-    private FileUtils() {
-    }
+    private FileUtils() {}
 }
