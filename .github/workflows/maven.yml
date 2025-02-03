@@ -40,9 +40,9 @@ jobs:
         git config --global user.name "GitHub Action"
         git config --global user.email "action@github.com"
         git fetch origin main --unshallow
-        git fetch origin ${{ github.ref_name }} 
+        git fetch origin ${{ github.ref }}:temp-branch 
         git checkout main
         git reset --hard origin/main
-        git merge ${{ github.ref_name }}
+        git merge temp-branch
         git push origin main
         git push origin --delete ${{ github.ref_name }}
