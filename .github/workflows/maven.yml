@@ -34,14 +34,14 @@ jobs:
       with:
         path: target/site/jacoco/jacoco.xml
         name: jacoco_report
-    - name: Merge to master
+    - name: Merge to main
       if: success()
       run: |
         git config --global user.name "GitHub Action"
         git config --global user.email "action@github.com"
-        git fetch origin master --unshallow
-        git checkout master
-        git reset --hard origin/master
+        git fetch origin main --unshallow
+        git checkout main
+        git reset --hard origin/main
         git merge ${{ github.ref }}
-        git push origin master
+        git push origin main
         git branch -d ${{ github.ref }}
