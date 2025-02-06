@@ -28,25 +28,25 @@ class SolutionTest {
     @Test
     void problem() {
         Solution.problem("This is a test.", () -> "Hello world!");
-        assertLinesMatch("This is a test.\nHello world!\nTime taken: [1-9]*[0-9] ms\n".lines(), captured.toString().lines());
+        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
     }
 
     @Test
     void problemInt() {
         Solution.problem("This is a test.", () -> 12345);
-        assertLinesMatch("This is a test.\n12345\nTime taken: [1-9]*[0-9] ms\n".lines(), captured.toString().lines());
+        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
     }
 
     @Test
     void problemLong() {
         Solution.problem("This is a test.", () -> 12345L);
-        assertLinesMatch("This is a test.\n12345\nTime taken: [1-9]*[0-9] ms\n".lines(), captured.toString().lines());
+        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
     }
 
     @Test
     void problemBigInteger() {
         Solution.problem("This is a test.", () -> BigInteger.valueOf(12345));
-        assertLinesMatch("This is a test.\n12345\nTime taken: [1-9]*[0-9] ms\n".lines(), captured.toString().lines());
+        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
     }
 
     @Test

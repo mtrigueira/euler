@@ -8,7 +8,7 @@ public class Stopwatch {
     }
 
     public void println() {
-        System.out.println("Time taken: " + elapsed() + " ms");
+        System.out.println(elapsed() + " ms");
     }
 
     public long elapsed() {

@@ -1,20 +1,17 @@
 package problem;
 
-import utils.Stopwatch;
-
 import java.util.concurrent.Callable;
 
 public class Solution {
+    static Object answer;
+
     public static void problem(String problem, Callable<Object> solution) {
-        Stopwatch stopwatch;
-        stopwatch = Stopwatch.start();
-        System.out.println(problem);
         try {
-            System.out.println(solution.call().toString());
+            System.out.print(problem);
+            answer = solution.call();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        stopwatch.println();
     }
 
     private Solution() {
