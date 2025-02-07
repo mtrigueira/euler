@@ -46,7 +46,7 @@ public class RunProblems {
             error = e.getMessage();
         }
 
-        return Solution.answer == null ? error : Solution.answer.toString();
+        return !error.isEmpty() ? error : Solution.answer.toString();
     }
 
     private static int problemNumber(String s) {
