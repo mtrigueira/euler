@@ -3,7 +3,6 @@ package problem;
 import utils.Stopwatch;
 
 import java.lang.reflect.Method;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class RunProblems {
@@ -16,13 +15,10 @@ public class RunProblems {
     public static void runProblems() {
         Stopwatch stopwatch = Stopwatch.start();
 
-        String results = IntStream.rangeClosed(1, 101)
+        IntStream.rangeClosed(1, 101)
                 .mapToObj(i -> "problem." + groupName(i) + ".Problem" + i)
-                .map(RunProblems::runMain
-                ).collect(Collectors.joining("\n"));
+                .forEach(RunProblems::runMain);
 
-        System.out.println("Problem,ms,Failed");
-        System.out.println(results);
         System.out.println("Total time: " + stopwatch.elapsed() + " ms");
     }
 
@@ -32,21 +28,25 @@ public class RunProblems {
     }
 
     private static String runMain(String s) {
-        Stopwatch stopwatch1 = Stopwatch.start();
         String error = "";
+
         int i = problemNumber(s);
         try {
             Class<?> clazz = Class.forName(s);
-            System.out.print(i + " ");
+
             Method main = clazz.getMethod("main", String[].class);
 
+            Stopwatch stopwatch;
+            stopwatch = Stopwatch.start();
+            System.out.print(i + ". [");
             main.invoke(null, (Object) O);
-
+            System.out.print("](net.projecteuler.solutions/src/main/java/" + s.replaceAll("\\.", "/") + ".java) ");
+            stopwatch.println();
         } catch (ReflectiveOperationException e) {
             error = e.getMessage();
         }
 
-        return (i + "," + stopwatch1.elapsed() + "," + error);
+        return !error.isEmpty() ? error : Solution.answer.toString();
     }
 
     private static int problemNumber(String s) {
