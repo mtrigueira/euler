@@ -16,15 +16,10 @@ public class RunProblems {
         Stopwatch stopwatch = Stopwatch.start();
 
         IntStream.rangeClosed(1, 101)
-                .mapToObj(i -> "problem." + groupName(i) + ".Problem" + i)
+                .mapToObj(i -> "problem.Problem" + i)
                 .forEach(RunProblems::runMain);
 
         System.out.println("Total time: " + stopwatch.elapsed() + " ms");
-    }
-
-    private static String groupName(int i) {
-        int g = (i - 1) / 10;
-        return "no" + ((g == 0) ? "" : g) + "1to" + (g + 1) * 10;
     }
 
     private static String runMain(String s) {
