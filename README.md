@@ -1,6 +1,9 @@
 # projecteuler.net solutions
 
-Solutions to first 100 problems from [projecteuler.net](https://projecteuler.net)
+Solutions to the first 100 problems from [projecteuler.net](https://projecteuler.net) in Java with 
+Tests.
+
+![Java version](https://img.shields.io/badge/Java-21_LTS-black?labelColor=red)
 
 ![Class coverage](https://img.shields.io/badge/Class_coverage-100%25-brightgreen)
 ![Method coverage](https://img.shields.io/badge/Method_coverage-100%25-brightgreen)
