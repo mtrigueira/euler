@@ -44,3 +44,6 @@ jobs:
         git reset --hard origin/main
         git merge temp-branch
         git push origin main
+        git fetch
+        git pull
+        git branch -r --merged main | awk '!/origin\/main/' | sed 's/origin\///' | xargs -n 1 git push origin --delete
