@@ -56,7 +56,7 @@ public class Problem33 {
 
     private static boolean isAccidentallyCorrect(
             int nCommon, int dCommon, int nRemaining, int dRemaining, double originalQuotient) {
-        return nCommon == dCommon && (double) nRemaining / dRemaining == originalQuotient;
+        return nCommon == dCommon && ((double) nRemaining / dRemaining - originalQuotient == 0);
     }
 
     private Problem33() {}

@@ -164,9 +164,9 @@ public class Problem96 {
 
         private SortedMap<Byte, Set<Point>> sortedLeftovers() {
             SortedMap<Byte, Set<Point>> map = new TreeMap<>();
-            for (Point p : leftovers.keySet()) {
-                Set<Point> points = map.computeIfAbsent((byte) leftovers.get(p).size(), k -> new HashSet<>());
-                points.add(p);
+            for (var e : leftovers.entrySet()) {
+                Set<Point> points = map.computeIfAbsent((byte) e.getValue().size(), k -> new HashSet<>());
+                points.add(e.getKey());
             }
             return map;
         }

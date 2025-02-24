@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static utils.sequence.arithmetic.EulersPhiSequence.*;
 
@@ -19,5 +21,13 @@ class EulersPhiSequenceTest {
     void next() {
         EulersPhiSequence e = new EulersPhiSequence();
         assertEquals(1,e.next());
+    }
+
+    @Test
+    void next2() {
+        EulersPhiSequence e = new EulersPhiSequence();
+        e.skipTo(Integer.MAX_VALUE);
+        e.next();
+        assertThrows(NoSuchElementException.class, e::next);
     }
 }

@@ -2,6 +2,7 @@ package utils.sequence.arithmetic;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static utils.property.Evenness.isEven;
 
@@ -21,6 +22,8 @@ public class CollatzSequence extends ArithmeticSequence<Long> {
             n = n / 2;
         else
             n = n * 3 + 1;
+
+        if (n < 0) throw new NoSuchElementException(new ArithmeticException("Sequence overflowed"));
 
         return old;
     }

@@ -26,7 +26,7 @@ public class Problem64 {
     static boolean isPeriodOdd(int i) {
         ContinuedFraction cf = ContinuedFraction.sqrt(i);
         if (cf instanceof IrrationalSqrtContinuedFraction)
-            return ((IrrationalSqrtContinuedFraction) cf).period() % 2 == 1;
+            return (((IrrationalSqrtContinuedFraction) cf).period() & 1) == 1;
         else
             return false;
     }

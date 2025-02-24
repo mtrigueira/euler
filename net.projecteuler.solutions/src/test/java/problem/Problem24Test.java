@@ -6,9 +6,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem24Test {
-    static int i = 1;
-    static int j = 1;
-    static int k = 1;
+    private static class Singleton {
+        int i = 1;
+        int j = 1;
+        int k = 1;
+    }
+    private static Singleton INSTANCE = new Singleton();
 
     @ParameterizedTest(name = "{0}")
     @ValueSource(strings = {"0", "01", "012", "0123", "01234"})
@@ -31,19 +34,19 @@ class Problem24Test {
     @ParameterizedTest(name = "{0}")
     @ValueSource(strings = {"01", "10"})
     void permutation01(String permutation) {
-        assertEquals(permutation, Problem24.permutation(i++, "01"));
+        assertEquals(permutation, Problem24.permutation(INSTANCE.i++, "01"));
     }
 
     @ParameterizedTest(name = "{0}")
     @ValueSource(strings = {"012", "021", "102", "120", "201", "210"})
     void permutation012(String permutation) {
-        assertEquals(permutation, Problem24.permutation(j++, "012"));
+        assertEquals(permutation, Problem24.permutation(INSTANCE.j++, "012"));
     }
 
     @ParameterizedTest(name = "{0}")
     @ValueSource(strings = {"0123", "0132", "0213", "0231", "0312", "0321","1023"})
     void permutation0123(String permutation) {
-        assertEquals(permutation, Problem24.permutation(k++, "0123"));
+        assertEquals(permutation, Problem24.permutation(INSTANCE.k++, "0123"));
     }
 
     private static String sorted(String permutation) {

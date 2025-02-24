@@ -20,6 +20,11 @@ public abstract class Fraction {
         return n.equals(that.n) && d.equals(that.d);
     }
 
+    @Override
+    public int hashCode() {
+        return d.intValue() + n.intValue();
+    }
+
     public BigInteger denominator() {
         return d;
     }

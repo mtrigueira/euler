@@ -2,6 +2,7 @@ package problem;
 
 import utils.prime.Prime;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -63,9 +64,9 @@ public class Problem49 {
     }
 
     private static String sortDigits(int a) {
-        byte[] sorted = Integer.toString(a).getBytes();
+        byte[] sorted = Integer.toString(a).getBytes(StandardCharsets.UTF_8);
         Arrays.sort(sorted);
-        return new String(sorted);
+        return new String(sorted, StandardCharsets.UTF_8);
     }
 
     private Problem49() {}

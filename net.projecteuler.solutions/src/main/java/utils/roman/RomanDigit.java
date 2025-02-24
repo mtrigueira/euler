@@ -2,6 +2,7 @@ package utils.roman;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import static utils.roman.RomanDigitFrequency.MULTIPLE_ALLOWED;
@@ -56,6 +57,18 @@ class RomanDigit implements Comparable<RomanDigit> {
     @Override
     public int compareTo(RomanDigit other) {
         return Integer.compare(this.i, other.i);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof RomanDigit that))
+            return false;
+        return i == that.i;
+    }
+
+    @Override
+    public int hashCode() {
+        return i;
     }
 
     private RomanDigit(String c, int i) {

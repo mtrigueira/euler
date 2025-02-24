@@ -9,7 +9,7 @@ class LatticeTest {
 
     @Test
     void test0() {
-        assertThrows(IllegalArgumentException.class,()-> new Lattice(0).countRoutes());
+        assertThrows(IllegalArgumentException.class, () -> new Lattice(0).countRoutes());
     }
 
     @Test

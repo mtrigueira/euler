@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -17,7 +18,7 @@ class SolutionTest {
 
     @BeforeEach
     void setUp() {
-        System.setOut(new PrintStream(captured));
+        System.setOut(new PrintStream(captured, false, StandardCharsets.UTF_8));
     }
 
     @AfterEach

@@ -1,9 +1,13 @@
 package utils.sequence.arithmetic;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CollatzSequenceTest {
     static final CollatzSequence collatzSequence = CollatzSequence.of(13);
@@ -20,5 +24,11 @@ class CollatzSequenceTest {
     void chainLength(int n) {
         valueIndexIsChainLength++;
         assertEquals(valueIndexIsChainLength, CollatzSequence.of(n).count());
+    }
+
+    @Test
+    void overFlow() {
+        CollatzSequence s = CollatzSequence.of(Long.MAX_VALUE/3+1);
+        assertThrows(NoSuchElementException.class, ()-> s.next());
     }
 }

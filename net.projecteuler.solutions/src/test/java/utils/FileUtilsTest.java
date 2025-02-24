@@ -71,7 +71,6 @@ public class FileUtilsTest {
 
     @Test
     public void testConcatWithNullOrElse() {
-        Stream<String> input = Stream.of("test");
         assertThrows(NullPointerException.class, () -> FileUtils.concat(null, null));
     }
 

@@ -4,6 +4,7 @@ import utils.SimpleFraction;
 import utils.property.Factors;
 
 import java.math.BigInteger;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,11 @@ public class EulersPhiSequence extends ArithmeticSequence<Long> {
 
     @Override
     public Long next() {
+        if(i<0) throw new NoSuchElementException(new ArithmeticException("Sequence overflowed"));
         return phiEulersProductFormula(i++);
+    }
+
+    void skipTo(int i) {
+        this.i = i;
     }
 }
