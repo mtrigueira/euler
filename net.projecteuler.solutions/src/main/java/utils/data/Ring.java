@@ -2,11 +2,15 @@ package utils.data;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public record Ring(Group[] groups) {
+public final class Ring {
     public static final Ring EMPTY = new Ring();
+    private final Group[] groups;
+
+    public Ring(Group[] groups) {this.groups = groups.clone();}
 
     public Ring(int... a) {
         this(groupsFromArrayOfInt(a));
@@ -92,9 +96,9 @@ public record Ring(Group[] groups) {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof Ring(Group[] groups1)))
+        if (!(o instanceof Ring ring))
             return false;
-        return Arrays.equals(groups, groups1);
+        return Arrays.equals(groups, ring.groups);
     }
 
     public boolean isChain() {
@@ -128,4 +132,12 @@ public record Ring(Group[] groups) {
     public Ring append(Group g) {
         return groups.length == 0 ? new Ring(g) : new Ring(this, g);
     }
+
+    public Group[] groups() {return groups.clone();}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash((Object[]) groups);
+    }
+
 }

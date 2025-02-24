@@ -13,7 +13,7 @@ public class Problem15 {
     }
 
     static long numberOfRoutesThroughALatticeOfSize(int n) {
-        return new Lattice(n).countRoutes();
+        return Lattice.createLattice(n).countRoutes();
     }
 
     private Problem15() {}

@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.NoSuchElementException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,17 +19,16 @@ class CollatzSequenceTest {
         assertEquals(number, collatzSequence.next());
     }
 
-    static int valueIndexIsChainLength = 0;
+    static AtomicInteger valueIndexIsChainLength = new AtomicInteger(1);
     @ParameterizedTest
     @ValueSource(ints = {2,4,8,16,5,10,20,40,13})
     void chainLength(int n) {
-        valueIndexIsChainLength++;
-        assertEquals(valueIndexIsChainLength, CollatzSequence.of(n).count());
+        assertEquals(valueIndexIsChainLength.getAndIncrement(), CollatzSequence.of(n).count());
     }
 
     @Test
     void overFlow() {
         CollatzSequence s = CollatzSequence.of(Long.MAX_VALUE/3+1);
-        assertThrows(NoSuchElementException.class, ()-> s.next());
+        assertThrows(NoSuchElementException.class, s::next);
     }
 }

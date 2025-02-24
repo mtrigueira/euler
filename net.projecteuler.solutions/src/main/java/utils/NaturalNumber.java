@@ -4,6 +4,9 @@ public class NaturalNumber {
     private final int value;
 
     public static NaturalNumber of(int value) {
+        if (value <= 0)
+            throw new IllegalArgumentException("Natural number must be positive");
+
         return new NaturalNumber(value);
     }
 
@@ -19,8 +22,6 @@ public class NaturalNumber {
     }
 
     private NaturalNumber(int value) {
-        if (value <= 0)
-            throw new IllegalArgumentException("Natural number must be positive");
         this.value = value;
     }
 }

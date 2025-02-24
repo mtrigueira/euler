@@ -3,6 +3,8 @@ package utils.sequence.given;
 import utils.data.DigitNumber;
 import utils.sequence.Sequence;
 
+import java.util.NoSuchElementException;
+
 public class DigitNumberSequence extends Sequence<Long> {
     final byte[] digits;
     int index = 0;
@@ -16,6 +18,7 @@ public class DigitNumberSequence extends Sequence<Long> {
     }
 
     public Long next() {
+        if (index>=digits.length) throw new NoSuchElementException();
         long value = digits[index];
         index++;
 

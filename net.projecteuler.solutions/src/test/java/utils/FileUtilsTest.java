@@ -2,10 +2,8 @@ package utils;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -101,8 +99,9 @@ public class FileUtilsTest {
     public void testGetNamesSortsAndReturnsValidNames() {
         String testFile = "/test_names.txt";
         List<String> expectedNames = Arrays.asList("Alice", "Bob", "Charlie", "David");
+        String names = String.join(",", expectedNames);
 
-        FileUtils.setResourceGetter((filename)-> new ByteArrayInputStream(expectedNames.stream().collect(Collectors.joining(",")).getBytes()));
+        FileUtils.setResourceGetter((filename)-> toStream(names));
         Stream<String> result = FileUtils.getNames(testFile);
 
         assertNotNull(result);
@@ -146,8 +145,7 @@ public class FileUtilsTest {
     @Test
     void testGetString_Valid() {
         String expectedString = "Hello, World!\nHow are you?";
-        InputStream inputStream = new ByteArrayInputStream(expectedString.getBytes());
-        FileUtils.setResourceGetter((filename)->inputStream);
+        FileUtils.setResourceGetter((filename)-> toStream(expectedString));
 
         String actualString = FileUtils.getString("ignored");
         assertEquals(expectedString, actualString);
@@ -155,14 +153,17 @@ public class FileUtilsTest {
         FileUtils.resetDefaultResourceGetter();
     }
 
+    private static InputStream toStream(String expectedString) {
+        return new ByteArrayInputStream(expectedString.getBytes(StandardCharsets.UTF_8));
+    }
+
     @Test
     public void testGetStringsBetweenSeparatorWithComma() {
         String fileContent = "apple,banana,cherry,date";
-        InputStream inputStream = new ByteArrayInputStream(fileContent.getBytes());
         String fileName = "test.txt";
         String separator = ",";
 
-        FileUtils.setResourceGetter((filename)-> inputStream);
+        FileUtils.setResourceGetter((filename)-> toStream(fileContent));
 
         Stream<String> result = FileUtils.getStringsBetweenSeparator(fileName, separator);
 
@@ -189,12 +190,13 @@ public class FileUtilsTest {
     @Test
     public void testGetStringsBetweenSeparatorWithNonExistentFile() {
         ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-        System.setErr(new PrintStream(errContent));
+        System.setErr(new PrintStream(errContent, false, StandardCharsets.UTF_8));
 
         Stream<String> result = FileUtils.getStringsBetweenSeparator("nonexistent.txt", ",");
 
         assertNull(result);
-        assertTrue(errContent.toString().contains("Could not load nonexistent.txt"),
+        assertTrue(errContent.toString(StandardCharsets.UTF_8)
+                        .contains("Could not load nonexistent.txt"),
                 "Error message should be printed for non-existent file");
 
         System.setErr(System.err);
@@ -215,13 +217,17 @@ public class FileUtilsTest {
     @Test
     public void testGetStringsWithMultipleLines() {
         String testContent = "Line 1\nLine 2\nLine 3";
-        InputStream inputStream = new ByteArrayInputStream(testContent.getBytes());
 
-        FileUtils.setResourceGetter((filename)-> inputStream);
+        try (InputStream inputStream = toStream(testContent)) {
+            FileUtils.setResourceGetter((filename) -> inputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         Stream<String> result = FileUtils.getStrings("testFile.txt");
 
         assertNotNull(result);
-        List<String> resultList = result.collect(Collectors.toList());
+        List<String> resultList = result.toList();
         assertEquals(3, resultList.size());
         assertEquals("Line 1", resultList.get(0));
         assertEquals("Line 2", resultList.get(1));

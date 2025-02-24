@@ -1,6 +1,5 @@
 package utils.sequence.arithmetic;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
@@ -9,12 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static utils.BigIntegerConstants.big;
 
 class LycrhelSequenceTest {
-    private static LycrhelSequence f;
-
-    @BeforeAll
-    static void setUp() {
-        f = new LycrhelSequence(47);
-    }
+    private LycrhelSequence f;
 
     @Test
     void lycrhel47Test() {

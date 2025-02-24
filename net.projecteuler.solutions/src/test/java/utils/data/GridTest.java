@@ -58,7 +58,7 @@ class GridTest {
 
     @Test
     void testToString() {
-        assertEquals("           1\n", Grid.of(ONE_BY_ONE).toString());
+        assertEquals("           1%n".formatted(), Grid.of(ONE_BY_ONE).toString());
     }
     @Test
     void testToString2() {
@@ -66,6 +66,6 @@ class GridTest {
                 """
                                    1           2
                                    3           4
-                        """, Grid.of(TWO_BY_TWO).toString());
+                        """.replace("\n","%n".formatted()), Grid.of(TWO_BY_TWO).toString());
     }
 }

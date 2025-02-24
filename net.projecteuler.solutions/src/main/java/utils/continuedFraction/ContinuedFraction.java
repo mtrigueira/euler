@@ -13,7 +13,7 @@ public abstract class ContinuedFraction {
         if (IrrationalSqrtContinuedFraction.isPerfectSquare(radicand))
             return IrrationalSqrtContinuedFraction.perfectSquare(radicand);
 
-        return new IrrationalSqrtContinuedFraction(radicand);
+        return IrrationalSqrtContinuedFraction.createIrrationalSqrtContinuedFraction(radicand);
     }
 
     public abstract BigInteger at(int i);

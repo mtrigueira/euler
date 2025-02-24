@@ -1,6 +1,7 @@
 package problem;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,11 +10,12 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SolutionTest {
+    public static final String BANNER = "This is a test.";
     private final OutputStream captured = new ByteArrayOutputStream();
 
     @BeforeEach
@@ -28,31 +30,38 @@ class SolutionTest {
 
     @Test
     void problem() {
-        Solution.problem("This is a test.", () -> "Hello world!");
-        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
+        Solution.problem(BANNER, () -> "Hello world!");
+        assertSolutionBanner(captured);
+    }
+
+    private static void assertSolutionBanner(Object actual) {
+        Assertions.assertLinesMatch(
+                Arrays.asList(BANNER.split("%n".formatted())),
+                Arrays.asList(actual.toString().split("%n".formatted()))
+        );
     }
 
     @Test
     void problemInt() {
-        Solution.problem("This is a test.", () -> 12345);
-        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
+        Solution.problem(BANNER, () -> 12345);
+        assertSolutionBanner(captured);
     }
 
     @Test
     void problemLong() {
-        Solution.problem("This is a test.", () -> 12345L);
-        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
+        Solution.problem(BANNER, () -> 12345L);
+        assertSolutionBanner(captured);
     }
 
     @Test
     void problemBigInteger() {
-        Solution.problem("This is a test.", () -> BigInteger.valueOf(12345));
-        assertLinesMatch("This is a test.".lines(), captured.toString().lines());
+        Solution.problem(BANNER, () -> BigInteger.valueOf(12345));
+        assertSolutionBanner(captured);
     }
 
     @Test
     void problemThrows() {
-        assertThrows(RuntimeException.class, () -> Solution.problem("This is a test.", () -> {
+        assertThrows(RuntimeException.class, () -> Solution.problem(BANNER, () -> {
             throw new Exception("Hello world!");
         }));
     }

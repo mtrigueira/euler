@@ -2,7 +2,9 @@ package utils.sequence.given;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.NoSuchElementException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class WideNumberProductSequenceTest {
     private static final String BIG_NUMBER = "123456789";
@@ -40,5 +42,20 @@ class WideNumberProductSequenceTest {
     @Test
     void bigWidthFour() {
         assertEquals(9*8*7*6, (long) new WideNumberProductSequence(BIG_NUMBER, 4).stream().reduce(0L, Long::max));
+    }
+
+    @Test
+    void noSuchElement() {
+        WideNumberProductSequence seq = new WideNumberProductSequence("2", 1);
+        seq.next();
+        assertFalse(seq.hasNext());
+        assertThrows(NoSuchElementException.class, seq::next);
+    }
+
+    @Test
+    void arithmeticException() {
+        WideNumberProductSequence seq = new WideNumberProductSequence("#", 1);
+        assertTrue(seq.hasNext());
+        assertThrows(NoSuchElementException.class, seq::next);
     }
 }

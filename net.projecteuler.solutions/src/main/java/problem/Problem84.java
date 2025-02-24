@@ -93,6 +93,7 @@ public class Problem84 {
             case CC1, CC2, CC3 -> communityChest();
             case CH1, CH2, CH3 -> chance();
             case G2G -> location = GAOL;
+            default -> {}
         }
     }
 
@@ -107,8 +108,10 @@ public class Problem84 {
             case 6, 7 -> nextRailway();
             case 8 -> nextUtility();
             case 9 -> location -= 3;
+            default -> {}
         }
-        chCardPointer = ++chCardPointer % 16;
+        chCardPointer++;
+        chCardPointer = chCardPointer % 16;
     }
 
     private void nextUtility() {
@@ -132,8 +135,10 @@ public class Problem84 {
         switch (ccCardPointer % 16) {
             case 0 -> location = GO;
             case 1 -> location = GAOL;
+            default -> {}
         }
-        ccCardPointer = ++ccCardPointer % 16;
+        ccCardPointer++;
+        ccCardPointer = ccCardPointer % 16;
     }
 
     private int rollDie() {

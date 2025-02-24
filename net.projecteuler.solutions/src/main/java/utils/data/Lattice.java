@@ -6,9 +6,7 @@ public class Lattice {
     private final int n;
     private final long[][] lattice;
 
-    public Lattice(int n) {
-        if (n < 1)
-            throw new IllegalArgumentException("n must be greater than 0");
+    private Lattice(int n) {
         this.n = n;
         this.lattice = createStartingLattice(n);
     }
@@ -28,6 +26,13 @@ public class Lattice {
             }
 
         return lattice;
+    }
+
+    public static Lattice createLattice(int n) {
+        if (n < 1)
+            throw new IllegalArgumentException("n must be greater than 0");
+
+        return new Lattice(n);
     }
 
     public long countRoutes() {

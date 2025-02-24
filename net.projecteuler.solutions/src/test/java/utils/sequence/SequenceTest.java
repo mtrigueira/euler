@@ -9,12 +9,13 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SequenceTest {
     @Test
     void intNextArray() {
-        Sequence<?> sequence = new IntegerSequence();
+        Sequence<?> sequence = new IntegerSequence(0);
         assertEquals("[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]", Arrays.toString(sequence.nextArray(10)));
     }
 
@@ -53,22 +54,24 @@ class SequenceTest {
 
     @Test
     void dummyNextArrayClassException() {
-        @SuppressWarnings({"rawtypes", "unchecked", "unused"}) Sequence<String> sequence = new Sequence() {
-            @Override
-            public String next() {
-                throw new NoSuchElementException();
-            }
-
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            //noinspection unused
-            Type getGenericSuperClass() {
-                throw new ClassCastException("Throw exception to test branch");
-            }
-        };
+        Sequence<String> sequence = new ExceptionThrowingSequence<>();
         assertThrows(NullPointerException.class, ()->sequence.nextArray(10));
+    }
+
+    private static class ExceptionThrowingSequence<T> extends Sequence<T> {
+        @Override
+        public T next() {
+            throw new NoSuchElementException();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @SuppressWarnings("unused")
+        Type getGenericSuperClass() {
+            throw new ClassCastException("Throw exception to test branch");
+        }
     }
 }

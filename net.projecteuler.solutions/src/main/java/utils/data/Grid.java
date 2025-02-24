@@ -18,7 +18,7 @@ public class Grid {
             for (int cell : rows) {
                 formatter.format("%12d", cell);
             }
-            formatter.format("\n");
+            formatter.format("%n");
         }
         return formatter.toString();
     }

@@ -1,7 +1,7 @@
 package utils.sequence.arithmetic;
 
 public class ChampernowneSequence extends ArithmeticSequence<Byte> {
-    private final IntegerSequence integerSequence = new IntegerSequence();
+    private final IntegerSequence integerSequence = new IntegerSequence(0);
     private String remainingDigits = "";
 
     @Override

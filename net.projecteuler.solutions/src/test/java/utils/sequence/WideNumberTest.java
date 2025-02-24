@@ -5,8 +5,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import utils.sequence.given.WideNumberSequence;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import java.util.NoSuchElementException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class WideNumberTest {
     private static final WideNumberSequence seriesTwoDigitsWide = new WideNumberSequence("0123456789", 2);
@@ -22,5 +23,20 @@ class WideNumberTest {
     void onlyOneWideNumber() {
         assertEquals(123456789, seriesWide.next());
         assertFalse(seriesWide.hasNext());
+    }
+
+    @Test
+    void noSuchElement() {
+        WideNumberSequence seq = new WideNumberSequence("2", 1);
+        seq.next();
+        assertFalse(seq.hasNext());
+        assertThrows(NoSuchElementException.class, seq::next);
+    }
+
+    @Test
+    void arithmeticException() {
+        WideNumberSequence seq = new WideNumberSequence("#", 1);
+        assertTrue(seq.hasNext());
+        assertThrows(NoSuchElementException.class, seq::next);
     }
 }

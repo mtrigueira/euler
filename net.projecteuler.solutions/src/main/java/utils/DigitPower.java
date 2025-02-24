@@ -3,9 +3,15 @@ package utils;
 public class DigitPower {
     private final long[] digitPower;
     private final long maxSum;
+    private final ArithmeticException exception;
 
     public static DigitPower forExponent(int i) {
-        return new DigitPower(i);
+        DigitPower d = new DigitPower(i);
+
+        if(d.exception!=null)
+            throw d.exception;
+
+        return d;
     }
 
     private long[] makeDigitPower(int exponent) {
@@ -36,7 +42,19 @@ public class DigitPower {
     }
 
     private DigitPower(int exponent) {
-        digitPower = makeDigitPower(exponent);
-        maxSum = toLongExact(Math.pow(9, exponent) * 10);
+        long[] digitPower = new long[0];
+        ArithmeticException exception = null;
+        long maxSum = -1;
+
+        try {
+            digitPower = makeDigitPower(exponent);
+            maxSum = toLongExact(Math.pow(9, exponent) * 10);
+        } catch (ArithmeticException e) {
+            exception = e;
+        }
+
+        this.digitPower = digitPower;
+        this.maxSum = maxSum;
+        this.exception = exception;
     }
 }

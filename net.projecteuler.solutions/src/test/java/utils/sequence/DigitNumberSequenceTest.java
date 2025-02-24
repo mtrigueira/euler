@@ -4,6 +4,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import utils.sequence.given.DigitNumberSequence;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DigitNumberSequenceTest {
@@ -14,7 +16,9 @@ class DigitNumberSequenceTest {
     void checkSequence(int expected) {
         assertTrue(DIGIT_NUMBER_SEQUENCE.hasNext());
         assertEquals(expected, DIGIT_NUMBER_SEQUENCE.next());
-        if(expected == 9)
+        if(expected == 9) {
             assertFalse(DIGIT_NUMBER_SEQUENCE.hasNext());
+            assertThrows(NoSuchElementException.class, DIGIT_NUMBER_SEQUENCE::next);
+        }
     }
 }

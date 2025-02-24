@@ -6,7 +6,7 @@ import utils.sequence.arithmetic.IntegerSequence;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CachedSequenceTest {
-    final IntegerSequence integerSequence = new IntegerSequence();
+    final IntegerSequence integerSequence = new IntegerSequence(0);
 
     @Test
     void cachedSequence() {

@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -48,7 +49,8 @@ public class FileUtils {
 
     public static Stream<String> getStringsBetweenSeparator(String file, String separator) {
         try {
-            return new Scanner(getStream(file)).useDelimiter(separator).tokens();
+            Scanner scanner = new Scanner(getStream(file), StandardCharsets.UTF_8);
+            return scanner.useDelimiter(separator).tokens();
         } catch (Exception ignored) {
         }
         System.err.println("Could not load " + file);

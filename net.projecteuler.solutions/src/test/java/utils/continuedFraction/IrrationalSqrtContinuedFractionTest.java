@@ -67,6 +67,7 @@ class IrrationalSqrtContinuedFractionTest {
 
     @Test
     void infiniteLoop() {
-        assertThrows(RuntimeException.class, () -> IrrationalSqrtContinuedFraction.sequenceForSqrt(2566, 10));
+        assertThrows(RuntimeException.class, () ->
+                IrrationalSqrtContinuedFraction.createIrrationalSqrtContinuedFraction(2566, 10));
     }
 }

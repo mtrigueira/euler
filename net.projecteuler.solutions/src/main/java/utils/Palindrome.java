@@ -1,6 +1,7 @@
 package utils;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 
 import static utils.operator.BigComparisonOperator.lessThan;
 
@@ -24,7 +25,7 @@ public class Palindrome {
     }
 
     private static boolean isPalindrome(String s) {
-        byte[] digits = s.getBytes();
+        byte[] digits = s.getBytes(StandardCharsets.UTF_8);
         int lastDigit = digits.length - 1;
 
         for (int leftDigit = 0; leftDigit < digits.length / 2; leftDigit++)

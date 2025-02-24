@@ -4,17 +4,13 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
     private static final int INFINITE_LOOP_PROTECTION = 220;
     private final List<Integer> a;
 
-    IrrationalSqrtContinuedFraction(int radicand) {
-        this.a = sequenceForSqrt(radicand, INFINITE_LOOP_PROTECTION);
-    }
-
-    static List<Integer> sequenceForSqrt(int radicand, int infiniteLoopProtection) {
+    private static List<Integer> sequenceForSqrt(int radicand, int infiniteLoopProtection) {
         List<Integer> integerParts = new ArrayList<>();
-        int n = radicand;
         int b = 1;
         int c = 1;
         int d = 0;
@@ -22,7 +18,7 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
         int b1, c1, d1;
         b1 = c1 = d1 = dummy;
 
-        int a = (int) Math.sqrt(n);
+        int a = (int) Math.sqrt(radicand);
         final int a0 = a;
 
         while (integerParts.size() < infiniteLoopProtection) {
@@ -30,7 +26,7 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
             integerParts.add(a);
 
             final int bn = b * c;
-            final int cn = b * b * n - (d * d) - (a * a * c * c) + (2 * a * c * d);
+            final int cn = b * b * radicand - (d * d) - (a * a * c * c) + (2 * a * c * d);
             final int dn = a * c * c - (c * d);
 
             final int g = gcd(bn, gcd(cn, dn));
@@ -47,15 +43,26 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
                 d1 = d;
             }
         }
-        if (integerParts.size() == infiniteLoopProtection) {
-            throw new RuntimeException("sqrt(" + n + "): Too many iterations " + integerParts.size() + ". Fix bug, or increase. Terminated sequence " + integerParts);
-        }
+
 
         return integerParts;
     }
 
     private static int gcd(int a, int b) {
         return b == 0 ? a : gcd(b, a % b);
+    }
+
+    static IrrationalSqrtContinuedFraction createIrrationalSqrtContinuedFraction(int radicand,
+                                                                                 int infiniteLoopProtection) {
+        IrrationalSqrtContinuedFraction f = new IrrationalSqrtContinuedFraction(radicand, infiniteLoopProtection);
+        if (f.a.size() == infiniteLoopProtection) {
+            throw new RuntimeException("sqrt(" + radicand + "): Too many iterations " + infiniteLoopProtection + ". Fix bug, or increase. Terminated sequence " + f.a);
+        }
+        return f;
+    }
+
+    static IrrationalSqrtContinuedFraction createIrrationalSqrtContinuedFraction(int radicand) {
+        return createIrrationalSqrtContinuedFraction(radicand, INFINITE_LOOP_PROTECTION);
     }
 
     public int period() {
@@ -87,4 +94,9 @@ public class IrrationalSqrtContinuedFraction extends SqrtContinuedFraction {
         sb.append(")]");
         return sb.toString();
     }
+
+    private IrrationalSqrtContinuedFraction(int radicand, int infiniteLoopProtection) {
+        this.a = sequenceForSqrt(radicand, infiniteLoopProtection);
+    }
 }
+

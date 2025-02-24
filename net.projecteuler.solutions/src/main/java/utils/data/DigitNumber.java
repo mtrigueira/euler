@@ -47,7 +47,7 @@ public class DigitNumber {
     }
 
     public byte[] digits() {
-        return digits;
+        return digits.clone();
     }
 
     public int sumOfDigits() {

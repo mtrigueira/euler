@@ -15,7 +15,7 @@ public class Problem12 {
     public static final int NUMBER_OF_DIVISORS = 500;
 
     static long triangularNumber(int numberOfDivisors) {
-        return new TriangleNumberSequence().stream()
+        return new TriangleNumberSequence(0L).stream()
                 .dropWhile(i -> countFactors(i) < numberOfDivisors)
                 .findFirst().orElse(0L);
     }

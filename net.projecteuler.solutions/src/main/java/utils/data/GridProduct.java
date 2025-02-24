@@ -9,7 +9,7 @@ public class GridProduct {
     private final int cells;
 
     public GridProduct(short[][] grid, int r, int c, int cells) {
-        this.grid = grid;
+        this.grid = grid.clone();
         this.r = r;
         this.c = c;
         this.cells = cells;
