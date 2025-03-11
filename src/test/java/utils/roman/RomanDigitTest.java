@@ -9,6 +9,7 @@ class RomanDigitTest {
     void testEquals() {
         assertEquals(RomanDigit.M, RomanDigit.romanDigit("M"));
         assertNotEquals(RomanDigit.M, RomanDigit.romanDigit("X"));
+        //noinspection SimplifiableAssertion
         assertFalse(RomanDigit.M.equals(new Object()));
     }
 
